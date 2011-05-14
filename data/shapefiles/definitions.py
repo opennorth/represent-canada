@@ -9,27 +9,26 @@ import utils
 
 SHAPEFILES = {
     # This key should be the plural name of the boundaries in this set
-    'Neighborhoods': {
-        # Path to a shapefile, relative to /data
-        'file': 'neighborhoods/Neighboorhoods.shp',
+    'City Council Districts': {
+        # Path to a shapefile, relative to /data/shapefiles
+        'file': 'city_council_districts/Council Districts.shp',
         # Generic singular name for an boundary of from this set
-        'singular': 'Neighborhood',
+        'singular': 'City Council District',
         # Should the singular name come first when creating canonical identifiers for this set?
-        # (e.g. True in this case would result in "Neighborhood South Austin" rather than "South Austin Neighborhood")
         'kind_first': False,
         # Function which each feature wall be passed to in order to extract its "external_id" property
         # The utils module contains several generic functions for doing this
-        'ider': utils.simple_namer(['PRI_NEIGH_']),
+        'ider': utils.simple_namer(['DISTRICT']),
         # Function which each feature will be passed to in order to extract its "name" property
-        'namer': utils.simple_namer(['PRI_NEIGH']),
+        'namer': utils.simple_namer(['NAME']),
         # Authority that is responsible for the accuracy of this data
-        'authority': 'City of Chicago',
+        'authority': 'Tyler GIS Department',
         # Geographic extents which the boundary set encompasses
-        'domain': 'Chicago',
+        'domain': 'Tyler',
         # Last time the source was checked for new data
-        'last_updated': date(2010, 12, 12),
+        'last_updated': date(2011, 5, 14),
         # A url to the source of the data
-        'href': 'http://www.cityofchicago.org/city/en/depts/doit/supp_info/gis_data.html',
+        'href': 'http://www.smithcountymapsite.org/webshare/data.html',
         # Notes identifying any pecularities about the data, such as columns that were deleted or files which were merged
         'notes': '',
         # Encoding of the text fields in the shapefile, i.e. 'utf-8'. If this is left empty 'ascii' is assumed

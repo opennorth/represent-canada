@@ -102,11 +102,9 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
 
     'tastypie',
-
     'boundaryservice',
 
-    'newsapps.templatelib',
-    'demo',
+    'finder',
 )
 
 # Predefined domain

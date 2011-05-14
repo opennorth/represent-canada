@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.conf.urls.defaults import patterns
+from django.conf.urls.defaults import include, patterns
 from django.contrib import admin
 
 admin.autodiscover()
@@ -13,5 +13,5 @@ urlpatterns = patterns('',
     }),
 
     (r'', include('boundaryservice.urls')),
-    (r'', include('demo.urls'))
+    (r'', include('finder.urls'))
 )

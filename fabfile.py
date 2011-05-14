@@ -13,11 +13,11 @@ env.project_name = 'boundaryservice'
 env.database_password = 'dMQlbUCftr'
 env.site_media_prefix = "site_media"
 env.admin_media_prefix = "admin_media"
-env.path = '/home/newsapps/sites/%(project_name)s' % env
-env.log_path = '/home/newsapps/logs/%(project_name)s' % env
-env.env_path = '/home/newsapps/sites/virtualenvs/%(project_name)s' % env
+env.path = '/home/ubuntu/sites/%(project_name)s' % env
+env.log_path = '/home/ubuntu/logs/%(project_name)s' % env
+env.env_path = '/home/ubuntu/sites/virtualenvs/%(project_name)s' % env
 env.repo_path = '%(path)s' % env
-env.apache_config_path = '/home/newsapps/sites/apache/%(project_name)s' % env
+env.apache_config_path = '/home/ubuntu/sites/apache/%(project_name)s' % env
 env.python = 'python2.6'
 env.repository_url = "git@github.com:onyxfish/hacktyler-boundaryservice.git"
 env.memcached_server_address = "cache"
@@ -33,7 +33,7 @@ def production():
     """
     env.settings = 'production'
     env.hosts = ['db.hacktyler.com']
-    env.user = 'newsapps'
+    env.user = 'ubuntu'
     env.s3_bucket = 'media.hacktyler.com'
     env.site_domain = 'boundaryservice.hacktyler.com'    
 
@@ -43,7 +43,7 @@ def staging():
     """
     env.settings = 'staging'
     env.hosts = ['db.beta.hacktyler.com'] 
-    env.user = 'newsapps'
+    env.user = 'ubuntu'
     env.s3_bucket = 'media.beta.hacktyler.com'
     env.site_domain = 'boundaryservice.beta.hacktyler.com'    
     

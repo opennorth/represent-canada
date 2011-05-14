@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
 
-{% load newsappstags %}
-
 {% block title %}You are here.{% endblock %}
 
 {% block head %}
@@ -9,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-<div id="outside-il">Outside Illinois? <a href="javascript:void(0)" id="use-tribune-tower">Go to Tribune Tower</a> or drag the pin on the map!</div>
+<div id="outside">Outside Smith County, TX? <a href="javascript:void(0)" id="use-default-location">Jump to Tyler Public Library</a> or drag the pin on the map!</div>
 <div id="wrap">
     <div id="page-links">
         <a href="javascript:switch_page('demo')">Demo</a>&nbsp;&nbsp;

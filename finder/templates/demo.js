@@ -1,10 +1,10 @@
 var geolocate_supported = true; // until prove false
 
 var geocoder = new google.maps.Geocoder();
-var southwest_limit = new google.maps.LatLng(36.970298, -91.513079);
-var northeast_limit = new google.maps.LatLng(42.508338, -87.019935);
+var southwest_limit = new google.maps.LatLng(32.1342, -95.6219);
+var northeast_limit = new google.maps.LatLng(32.6871, -94.9844);
 var bounding_box = new google.maps.LatLngBounds(southwest_limit, northeast_limit);
-var outside_il = false; // until prove true
+var outside = false; // until prove true
 
 var map = null;
 
@@ -31,7 +31,7 @@ function init_map(lat, lng) {
     var center = new google.maps.LatLng(lat, lng);
     map.panTo(center);
 
-    check_for_illinois(center);
+    check_for_locale(center);
     resize_listener(center);
 }
 
@@ -53,10 +53,10 @@ function show_user_marker(lat, lng) {
 
 function geocode(query) {
     if (typeof(query) == 'string') {
-        pattr = /\sil\s|\sillinois\s/gi;
+        pattr = /\stx\s|\stexas\s/gi;
         match = query.match(pattr);
         if (!match) {
-            query = query + ' IL';
+            query = query + ' TX';
         }
         gr = { 'address': query };
     } else {
@@ -84,9 +84,9 @@ function geolocate() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(geolocation_success, geolocation_error);
     } else {
-        process_location(41.890498, -87.62361);
+        use_default_location();
 
-        $('#resultinfo').html('Your browser does not support automatically determining your location so we\'re showing you where <a href="http://twitter.com/#!/coloneltribune">@ColonelTribune</a> lives.');
+        $('#resultinfo').html('Your browser does not support automatically determining your location so we\'re showing you Tyler Public Library.');
 
         geolocate_supported = false;
     }
@@ -97,14 +97,14 @@ function geolocation_success(position) {
     lat_lng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
     geocode(lat_lng);
-    check_for_illinois(lat_lng);
+    check_for_locale(lat_lng);
     hide_search()
 }
 
 function geolocation_error() {
-    process_location(41.890498, -87.62361);
+    use_default_location();
 
-    $('#resultinfo').html('We could not automatically determine your location so we\'re showing you where <a href="http://twitter.com/#!/coloneltribune">@ColonelTribune</a> lives.');
+    $('#resultinfo').html('Your browser does not support automatically determining your location so we\'re showing you Tyler Public Library.');
 }
 
 function process_location(lat, lng) {
@@ -140,13 +140,13 @@ function check_saved_location() {
     }
 }
 
-function check_for_illinois(center) {
+function check_for_locale(center) {
     if (!bounding_box.contains(center) && window.location.hash == "#demo") {
-        show_outside_il();
-        outside_il = true;
+        show_outside();
+        outside = true;
     } else {
-        hide_outside_il();
-        outside_il = false;
+        hide_outside();
+        outside = false;
     }
 }
 
@@ -289,8 +289,8 @@ function switch_page(page_id) {
     window.location.hash = page_id
 
     if (window.location.hash == "#demo") {
-        if (outside_il) {
-            show_outside_il();
+        if (outside) {
+            show_outside();
         }
 
         resize_end_trigger(); 
@@ -304,17 +304,17 @@ function switch_page(page_id) {
             }
         }
     } else {
-        hide_outside_il();
+        hide_outside();
     }
 }
 
 
-function show_outside_il() {
-    $('#outside-il').fadeIn(500);
+function show_outside() {
+    $('#outside').fadeIn(500);
 }
 
-function hide_outside_il() {
-    $('#outside-il').fadeOut(250);
+function hide_outside() {
+    $('#outside').fadeOut(250);
 }
 
 /* DOM EVENT HANDLERS */
@@ -346,8 +346,8 @@ function use_current_location() {
     geolocate();
 }
 
-function use_tribune_tower() {
-    process_location(41.890422, -87.623702);
+function use_default_location() {
+    process_location(32.349549, -95.301829);
 }
 
 function toggle_alt_addresses() {
@@ -386,7 +386,7 @@ $(document).ready(function() {
     $('body').click(hide_alt_addresses);
     $('#not-where-i-am').click(not_where_i_am);
     $('#use-current-location').click(use_current_location);
-    $('#use-tribune-tower').click(use_tribune_tower);
+    $('#use-default-location').click(use_default_location);
     $('#did-you-mean').click(function(e) { e.stopPropagation(); toggle_alt_addresses(); });
     $('#location-form input[type=text]').focus(search_focused);
     $('#location-form').submit(address_search)
