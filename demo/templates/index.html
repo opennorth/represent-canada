@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load newsappstags %}
+
+{% block title %}You are here.{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="/site_media/css/demo.css" type="text/css" charset="utf-8"/>
+{% endblock %}
+
+{% block content %}
+<div id="outside-il">Outside Illinois? <a href="javascript:void(0)" id="use-tribune-tower">Go to Tribune Tower</a> or drag the pin on the map!</div>
+<div id="wrap">
+    <div id="page-links">
+        <a href="javascript:switch_page('demo')">Demo</a>&nbsp;&nbsp;
+        <a href="javascript:switch_page('api')">API</a>&nbsp;&nbsp;
+        <a href="javascript:switch_page('src')">Source</a>&nbsp;&nbsp;
+        <a href="javascript:switch_page('about')">About</a>&nbsp;&nbsp;
+    </div>
+
+    <h1 id="page-title">You are here.</h1>
+
+    <div id="demo-page" class="page-content">
+        {% include '_demo.html' %}
+    </div>
+
+    <div id="api-page" class="page-content">
+        {% include '_api.html' %} 
+    </div>
+
+    <div id="src-page" class="page-content">
+        {% include '_src.html' %} 
+    </div>
+
+    <div id="about-page" class="page-content">
+        {% include '_about.html' %}  
+    </div>
+</div>
+{% endblock %}
+{% block foot %}
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script> 
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script> 
+<script type="text/javascript" src="/site_media/js/store.js"></script>
+<script type="text/javascript" src="/site_media/js/json.js"></script>
+<script type="text/javascript">
+    {{ demo_js }}
+</script>
+{% endblock %}

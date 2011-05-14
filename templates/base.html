@@ -1,0 +1,12 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+      <link rel="stylesheet" href="/site_media/css/reset.css" type="text/css" charset="utf-8"/>
+      {% block head %}{% endblock %}
+</head>
+<body>
+    {% block content %}{% endblock %}
+    {% block foot %}{% endblock %}
+</body>
+</html>
