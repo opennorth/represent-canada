@@ -4,7 +4,7 @@ DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 # Database
-DATABASES['default']['HOST'] = 'db'
+DATABASES['default']['HOST'] = 'db.hacktyler.com'
 DATABASES['default']['PORT'] = '5433'
 DATABASES['default']['USER'] = 'boundaryservice'
 DATABASES['default']['PASSWORD'] = 'dMQlbUCftr'

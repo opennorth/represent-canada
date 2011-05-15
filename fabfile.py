@@ -12,11 +12,11 @@ env.site_media_prefix = "site_media"
 env.admin_media_prefix = "admin_media"
 env.path = '/home/ubuntu/sites/%(project_name)s' % env
 env.log_path = '/home/ubuntu/logs/%(project_name)s' % env
-env.env_path = '/home/ubuntu/sites/virtualenvs/%(project_name)s' % env
+env.env_path = '/home/ubuntu/virtualenvs/%(project_name)s' % env
 env.repo_path = '%(path)s' % env
 env.apache_config_path = '/home/ubuntu/sites/apache/%(project_name)s' % env
-env.python = 'python2.6'
-env.repository_url = "git@github.com:onyxfish/hacktyler-boundaryservice.git"
+env.python = 'python2.7'
+env.repository_url = "git@github.com:hacktyler/hacktyler-boundaryservice.git"
 env.memcached_server_address = "cache"
 env.cache_server = "lb"
 env.multi_server = False
@@ -117,7 +117,7 @@ def install_requirements():
     """
     Install the required packages using pip.
     """
-    run('source %(env_path)s/bin/activate; yes w | pip install -q -r %(repo_path)s/requirements.txt' % env)
+    run('source %(env_path)s/bin/activate; pip install -r %(repo_path)s/requirements.txt' % env)
 
 def install_apache_conf():
     """
@@ -173,7 +173,7 @@ def deploy_to_s3():
     Deploy the latest project site media to S3.
     """
     env.media_path = '%(repo_path)s/media/' % env
-    run(('s3cmd -P --guess-mime-type --rexclude-from=%(repot_path)s/s3exclude sync %(media_path)s s3://%(s3_bucket)s/%(project_name)s/%(site_media_prefix)s/') % env)
+    run(('s3cmd -P --guess-mime-type --rexclude-from=%(repo_path)s/s3exclude sync %(media_path)s s3://%(s3_bucket)s/%(project_name)s/%(site_media_prefix)s/') % env)
 
     env.gzip_path = '%(repo_path)s/gzip_media/' % env
     run(('s3cmd -P --add-header=Content-encoding:gzip --guess-mime-type --rexclude-from=%(repo_path)s/s3exclude sync %(gzip_path)s s3://%(s3_bucket)s/%(project_name)s/%(site_media_prefix)s/') % env)
