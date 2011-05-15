@@ -1,6 +1,3 @@
-# Chicago Tribune News Applications fabfile
-# No copying allowed
-
 from fabric.api import *
 
 """
@@ -44,7 +41,7 @@ def staging():
     env.settings = 'staging'
     env.hosts = ['db.beta.hacktyler.com'] 
     env.user = 'ubuntu'
-    env.s3_bucket = 'media.beta.hacktyler.com'
+    env.s3_bucket = 'media-beta.hacktyler.com'
     env.site_domain = 'boundaryservice.beta.hacktyler.com'    
     
 """
