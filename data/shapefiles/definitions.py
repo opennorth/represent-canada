@@ -32,9 +32,37 @@ SHAPEFILES = {
         # Notes identifying any pecularities about the data, such as columns that were deleted or files which were merged
         'notes': '',
         # Encoding of the text fields in the shapefile, i.e. 'utf-8'. If this is left empty 'ascii' is assumed
-        'encoding': ''
+        'encoding': '',
         # SRID of the geometry data in the shapefile if it can not be inferred from an accompanying .prj file
         # This is normally not necessary and can be left undefined or set to an empty string to maintain the default behavior
-        #'srid': ''
+        'srid': ''
+    },
+    'Justice of the Peace Precincts': {
+        'file': 'justice_peace_precincts/JP.shp',
+        'singular': 'Justice of the Peace Precinct',
+        'kind_first': True,
+        'ider': utils.simple_namer(['JP']),
+        'namer': utils.simple_namer(['JP']),
+        'authority': 'Smith County',
+        'domain': 'Smith County',
+        'last_updated': date(2011, 5, 14),
+        'href': 'http://www.smithcountymapsite.org/webshare/data.html',
+        'notes': '',
+        'encoding': '',
+        'srid': ''
+    },
+    'Commissioners Court Precincts': {
+        'file': 'commissioners_court_precincts/COMM.shp',
+        'singular': 'Commissioners Court Precinct',
+        'kind_first': True,
+        'ider': utils.simple_namer(['COMMISSION']),
+        'namer': utils.simple_namer(['COMMISSION']),
+        'authority': 'Smith County',
+        'domain': 'Smith County',
+        'last_updated': date(2011, 5, 14),
+        'href': 'http://www.smithcountymapsite.org/webshare/data.html',
+        'notes': '',
+        'encoding': '',
+        'srid': ''
     },
 }
