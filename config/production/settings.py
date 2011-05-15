@@ -40,7 +40,7 @@ AWS_S3_URL = 's3://media.hacktyler.com/boundaryservice/'
 # Internal IPs for security
 INTERNAL_IPS = ()
 
-API_DOMAIN = 'TKTK'
+API_DOMAIN = 'boundaryservice.hacktyler.com'
 
 # logging
 import logging.config

@@ -17,8 +17,8 @@ env.repo_path = '%(path)s' % env
 env.apache_config_path = '/home/ubuntu/sites/apache/%(project_name)s' % env
 env.python = 'python2.7'
 env.repository_url = "git@github.com:hacktyler/hacktyler-boundaryservice.git"
-env.memcached_server_address = "cache"
-env.cache_server = "lb"
+env.memcached_server_address = "cache.hacktyler.com"
+env.cache_server = "lb.hacktyler.com"
 env.multi_server = False
 
 """
