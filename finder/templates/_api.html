@@ -6,52 +6,46 @@
 
 <h3>Boundary Sets</h3>
 
-<p>Boundary Sets describe the extent and provenance of a group of Boundaries as well how recently they were last updated. Here, for example, is the Boundary Set for census tracts:</p>
+<p>Boundary Sets describe the extent and provenance of a group of Boundaries as well how recently they were last updated. Here, for example, is the Boundary Set for Tyler City Council Districts:</p>
 
 <p><pre>
 {
-    authority: "U.S. Census Bureau",
+    authority: "Tyler GIS Department"
     boundaries: [
-        "/1.0/boundary/census-tract-1-7/",
-        "/1.0/boundary/census-tract-1-9/",
-        "/1.0/boundary/census-tract-1/",
-        "/1.0/boundary/census-tract-1-8/",
-        ...
-    ],
-    count: 3123,
-    domain: "Illinois",
-    href: "http://www.census.gov/cgi-bin/geo/shapefiles2010/main",
-    last_updated: "2011-01-08",
+        "/1.0/boundary/central-city-council-district/"
+        "/1.0/boundary/east-city-council-district/"
+        "/1.0/boundary/northeast-city-council-district/"
+        "/1.0/boundary/northwest-city-council-district/"
+        "/1.0/boundary/south-city-council-district/"
+        "/1.0/boundary/west-city-council-district/"
+    ]
+    count: 6
+    domain: "Tyler"
+    href: "http://www.smithcountymapsite.org/webshare/data.html"
+    last_updated: "2011-05-14"
     metadata_fields: [
-        "STATEFP10",
-        "COUNTYFP10",
-        "TRACTCE10",
-        "GEOID10",
-        "NAME10",
-        "NAMELSAD10",
-        "MTFCC10",
-        "FUNCSTAT10",
-        "ALAND10",
-        "AWATER10",
-        "INTPTLAT10",
-        "INTPTLON10"
-    ],
-    name: "Census Tracts",
-    notes: "Shapes used for 2010 census.",
-    resource_uri: "/1.0/boundary-set/census-tracts/",
-    slug: "census-tracts"
+        "DISTRICT"
+        "NAME"
+        "REP"
+        "SHAPE_STAr"
+        "SHAPE_STLe"
+    ]
+    name: "City Council Districts"
+    notes: ""
+    resource_uri: "/1.0/boundary-set/city-council-districts/"
+    slug: "city-council-districts"
 }
 </pre></p>
-
-<p>Descriptions of all the properties of a Boundary Set can be accessed at:</p>
-
-<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary-set/schema/</code></p>
 
 <p>To see a paginated list of available Boundary Sets access the following url:</p>
 
 <p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary-set/</code></p>
 
-<p>A single BoundarySet may be accessed directly by its slug:</p>
+<p>Descriptions of all the properties of a Boundary Set can be accessed at:</p>
+
+<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary-set/schema/</code></p>
+
+<p>A single Boundary Set may be accessed directly by its slug:</p>
 
 <p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary-set/community-areas/</code></p>
 
@@ -63,55 +57,32 @@
 {
     centroid: {
         coordinates: [
-            -90.084528
-            39.952622
-        ],
+            -95.319192
+            32.276927
+        ]
         type: "Point"
     }
-    external_id: "00105",
-    kind: "Unified School District",
+    external_id: "1"
+    kind: "City Council District"
     metadata: {
-        ALAND: 377198165,
-        AWATER: 1185357,
-        FUNCSTAT: "E",
-        HIGRADE: "12",
-        INTPTLAT: "+39.8619840",
-        INTPTLON: "-090.0553779",
-        LOGRADE: "PK",
-        LSAD: "00",
-        MTFCC: "G5420",
-        NAME: "A-C Central Community Unit School District 262",
-        SDTYP: "",
-        STATEFP: "17",
-        STATENS: "01779784",
-        UNSDIDFP: "1700105",
-        UNSDLEA: "00105"
-    },
-    name: "A-C Central Community Unit School District 262",
-    resource_uri: "/1.0/boundary/a-c-central-community-unit-school-district-262-unified-school-district/",
-    set: "/1.0/boundary-set/unified-school-districts/",
-    simple_shape: {
-    coordinates: [
-        [
-            [
-                [
-                    -89.9756,
-                    39.886457
-                ],
-                [
-                    -89.975954,
-                    39.836324
-                ]
-                ...
-            ]
-        ],
+        DISTRICT: "1"
+        NAME: "CENTRAL"
+        REP: "Sam Mezayek"
+        SHAPE_STAr: 264373899.847
+        SHAPE_STLe: 92241.0919277
+    }
+    name: "CENTRAL"
+    resource_uri: "/1.0/boundary/central-city-council-district/"
+    set: "/1.0/boundary-set/city-council-districts/"
+        simple_shape: {
+        coordinates: [ … ]
         type: "MultiPolygon"
-    },
-    slug: "a-c-central-community-unit-school-district-262-unified-school-district"
+    }
+slug: "central-city-council-district"
 }
 </pre></p>
 
-<p>Resources representing individual Boundaries can be accessed at:</p>
+<p>A paginated list of all Boundaries can be accessed at:</p>
 
 <p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary/</code></p>
 
@@ -123,13 +94,11 @@
 
 <p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary/austin-community-area/</code></p>
 
-<p>For ease of url construction a Boundary may also be referenced by appending the Boundary's <code>external_id</code> property to it's parent BoundarySet's uri. Example:</p>
+<p>For ease of url construction a Boundary may also be referenced by appending the Boundary's <code>external_id</code> property to it's parent Boundary Set's URL. For example:</p>
 
-<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary-set/wards/22</code></p>
+<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary-set/city-council-districts/2</code></p>
 
-<p>This returns the 22nd Chicago city ward.</p>
-
-<p><strong>Note:</strong> The metadata fields returned with a Boundary are taken directly from the relevant data sources. In certain cases these are known to be out-dated. An effort has been made to capture such issues in the BoundarySet's notes property, but these values should generally not be taken at face value.</p>
+<p><strong>Note:</strong> The metadata fields returned with a Boundary are taken directly from the original data sources. In certain cases these may be out of date. An effort has been made to capture such issues in the Boundary Set's notes property, but these values should generally not be taken at face value.</p>
 
 <h3>Limiting resources returned</h3>
 
@@ -137,35 +106,35 @@
 
 <p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary/?limit=10&offset=10</code></p>
 
-<p>In addition, queries may (and should) be constrained by passing a comma-delimited list of BoundarySet slugs to the <code>sets</code> parameter:</p>
+<p>In addition, queries may (and should) be constrained by passing a comma-delimited list of Boundary Set slugs to the <code>sets</code> parameter:</p>
 
-<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary/?sets=community-areas,neighborhoods</code></p>
+<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary/?sets=city-council-districts,justice-of-the-peace-precincts</code></p>
 
 <h3>Point queries</h3>
 
 <p>The fundamental query exposed by the Boundary Service is a point-in-polygon search by latitude and longitude.  Here is an example:</p>
 
-<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary/?contains=41.8903239,-87.623458&sets=community-areas</code></p>
+<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary/?contains=32.349549,-95.301829&sets=city-council-districts</code></p>
 
-<p>This will return the community area that Tribune Tower resides in, the Near North Side.</p>
+<p>This will return the community area that Tyler Public Library resides in.</p>
 
-<p><strong>Note:</strong> In addition to the <code>contains</code> parameter we also pass the <code>sets</code> parameter to constrain the query. Its important to use this parameter to limit your queries to only the data you need so your queries will be performant.</p>
+<p><strong>Note:</strong> In addition to the <code>contains</code> parameter we also pass the <code>sets</code> parameter to constrain the query. Its important to use this parameter to limit your queries to only the data you need so your queries will be fast.</p>
 
 <h3>Near queries</h3>
 
 <p>The near query finds all Boundaries that intersect a circle of a specified radius using a given point as its center:</p>
 
-<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary/?near=41.8903239,-87.623458,1mi&sets=wards</code></p>
+<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary/?near=32.349549,-95.301829,1mi&sets=wards</code></p>
 
-<p>This returns all wards within one mile of Tribune Tower. The radius parameter may be specified in any units <a href="http://docs.djangoproject.com/en/dev/ref/contrib/gis/measure/#supported-units">supported by GeoDjango</a>.</p>
+<p>This returns all wards within one mile of Tyler Public Library. The radius parameter may be specified in any units <a href="http://docs.djangoproject.com/en/dev/ref/contrib/gis/measure/#supported-units">supported by GeoDjango</a>.</p>
 
 <p><strong>Note:</strong> This query will execute more slowly than the point query.</p>
 
 <h3>Intersection queries</h3>
 
-<p>The intersects query finds all Boundaries which intersect a specified Boundary.  For example, to find all neighborhoods which intersect the Humbolt Park Community Area, one would request:</p>
+<p>The intersects query finds all Boundaries which intersect a specified Boundary. For example, to find all Justice of the Peace Precincts which intersect the Central City Council District, one would request:</p>
 
-<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary/?intersects=humboldt-park-community-area&sets=neighborhoods</code></p>
+<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary/?intersects=central-city-council-district&sets=justice-of-the-peace-precincts</code></p>
 
 <p>The Boundary Service does not currently support querying by arbitrary shapes.</p>
 
@@ -175,10 +144,3 @@
 
 <p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary/?format=jsonp&callback=func</code></p>
 
-<h3>Throttling & API keys</h3>
-
-<p>The Boundary Service API can be accessed anonymously up to <strong>100</strong> times per hour per IP address. This throttling is in place in order to ensure that it can be scaled to meet demand without extensive outages. If you intend to build an application which will query the API in bulk, please <a href="mailto:newsapps@tribune.com">e-mail us</a> your requested username and we will provide you with an API key that allows unlimited access. This implementation will allow us to take appropriate action in the event that a single source of the traffic is causing the service to be unstable.</p>
-
-<p>An API key can be used as follows:</p>
-
-<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary/?username=example_user&api_key=3b7b288ca1f9d90bef69c3eb4d880184f84ff740</code></p>
