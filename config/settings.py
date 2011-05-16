@@ -1,4 +1,3 @@
-import logging
 import os
 
 import django
@@ -11,8 +10,11 @@ SITE_ROOT = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+EMAIL_BACKEND = 'django_ses.SESBackend'
+SERVER_EMAIL = 'staringmonkey+hacktyler@gmail.com'
+
 ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
+    ('Christopher Groskopf', 'staringmonkey+hacktyler@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -100,6 +102,7 @@ INSTALLED_APPS = (
     'django.contrib.gis',
     'django.contrib.sitemaps',
 
+    'django_ses',
     'tastypie',
     'boundaryservice',
 
@@ -112,9 +115,9 @@ MY_SITE_DOMAIN = 'localhost:8000'
 # Email
 # run "python -m smtpd -n -c DebuggingServer localhost:1025" to see outgoing
 # messages dumped to the terminal
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 1025
-DEFAULT_FROM_EMAIL = 'do.not.reply@hacktyler.com'
+#EMAIL_HOST = 'localhost'
+#EMAIL_PORT = 1025
+#DEFAULT_FROM_EMAIL = 'do.not.reply@hacktyler.com'
 
 # Caching
 CACHE_MIDDLEWARE_KEY_PREFIX='boundaryservice'
@@ -129,6 +132,7 @@ CACHES = {
 API_DOMAIN = 'localhost:8000'
 
 # Logging
+import logging
 logging.basicConfig(
     level=logging.DEBUG,
 )

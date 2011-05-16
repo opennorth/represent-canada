@@ -22,10 +22,6 @@ ADMIN_MEDIA_PREFIX = 'http://media-beta.hacktyler.com/boundaryservice/admin_medi
 # Predefined domain
 MY_SITE_DOMAIN = 'boundaryservice.beta.hacktyler.com'
 
-# Email
-EMAIL_HOST = 'mail.hacktyler.com'
-EMAIL_PORT = 25
-
 # Caching
 CACHES = {
     'default': {
