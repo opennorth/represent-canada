@@ -1,4 +1,4 @@
-<VirtualHost *:80>
+<VirtualHost *:8080>
     ServerName boundaryservice.beta.hacktyler.com
     ServerAlias www.boundaryservice.beta.hacktyler.com
 
