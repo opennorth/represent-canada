@@ -259,7 +259,7 @@ def load_data():
     """
     Loads data from the repository into PostgreSQL.
     """
-    run('psql -q %(project_name)s < %(repo_path)s/data/psql/dump.sql' % env)
+    run('source %(env_path)s/bin/activate; cd %(repo_path)s; python manage.py syncdb; python manage.py load_shapefiles;' % env)
     
 def pgpool_down():
     """

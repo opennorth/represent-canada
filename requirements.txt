@@ -4,3 +4,4 @@ geopy
 psycopg2
 python-memcached
 django-boundaryservice
+lxml
