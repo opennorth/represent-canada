@@ -47,11 +47,11 @@
 
 <p>A single Boundary Set may be accessed directly by its slug:</p>
 
-<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary-set/community-areas/</code></p>
+<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary-set/city-council-districts/</code></p>
 
 <h3>Boundaries</h3>
 
-<p>Boundaries are the individual shapes within a Boundary Set. The Boundary for A-C Central Community Unit School District 262 looks like:</p>
+<p>Boundaries are the individual shapes within a Boundary Set. The Boundary for Tyler's Central City Council District looks like:</p>
 
 <p><pre>
 {
@@ -92,7 +92,7 @@ slug: "central-city-council-district"
 
 <p>And a single Boundary may be accessed directly by its slug:</p>
 
-<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary/austin-community-area/</code></p>
+<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary/central-city-council-district/</code></p>
 
 <p>For ease of url construction a Boundary may also be referenced by appending the Boundary's <code>external_id</code> property to it's parent Boundary Set's URL. For example:</p>
 
@@ -116,7 +116,7 @@ slug: "central-city-council-district"
 
 <p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary/?contains=32.349549,-95.301829&sets=city-council-districts</code></p>
 
-<p>This will return the community area that Tyler Public Library resides in.</p>
+<p>This will return the City Council District that Tyler Public Library resides in.</p>
 
 <p><strong>Note:</strong> In addition to the <code>contains</code> parameter we also pass the <code>sets</code> parameter to constrain the query. Its important to use this parameter to limit your queries to only the data you need so your queries will be fast.</p>
 
