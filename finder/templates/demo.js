@@ -277,8 +277,6 @@ function display_smith_county() {
     // Construct new polygons
     var paths = [];
 
-    console.log(SMITH_COUNTY);
-  
     $.each(SMITH_COUNTY['features'][0]['geometry']['coordinates'], function(i, n){
         var path = [];
 
