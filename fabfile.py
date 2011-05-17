@@ -281,10 +281,7 @@ def clear_cache():
     """
     Restart memcache, wiping the current cache.
     """
-    if env.multi_server:
-        run('bounce-memcaches-for-cluster')
-    else:
-        sudo('service memcached restart')
+    sudo('service memcached restart')
 
     run('curl -X PURGE -H "Host: %(site_domain)s" http://%(cache_server)s/' % env)
     
