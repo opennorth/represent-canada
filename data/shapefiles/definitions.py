@@ -65,4 +65,32 @@ SHAPEFILES = {
         'encoding': '',
         'srid': ''
     },
+    'Census Places': {
+        'file': 'census_places/census_places.shp',
+        'singular': 'Census Place',
+        'kind_first': False,
+        'ider': utils.simple_namer(['GEOID10']),
+        'namer': utils.simple_namer(['NAMELSAD']),
+        'authority': 'U.S. Census Bureau',
+        'domain': 'Smith County',
+        'last_updated': date(2011, 5, 16),
+        'href': 'http://www.census.gov/cgi-bin/geo/shapefiles2010/main',
+        'notes': 'Reduced from Texas-wide dataset to only those intersecting the census polygon for Smith County.',
+        'encoding': '',
+        'srid': ''
+    },
+    'Census Tracts': {
+        'file': 'census_tracts/tl_2010_48423_tract10.shp',
+        'singular': 'Census Tract',
+        'kind_first': True,
+        'ider': utils.simple_namer(['GEOID10']),
+        'namer': utils.simple_namer(['NAME10']),
+        'authority': 'U.S. Census Bureau',
+        'domain': 'Smith County',
+        'last_updated': date(2011, 5, 16),
+        'href': 'http://www.census.gov/cgi-bin/geo/shapefiles2010/main',
+        'notes': '',
+        'encoding': '',
+        'srid': ''
+    },
 }
