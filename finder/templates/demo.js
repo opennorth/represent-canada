@@ -11,6 +11,7 @@ var map = null;
 var user_marker = null;
 var displayed_slug = null;
 var displayed_polygon = null;
+var smith_county_polygon = null;
 
 var boundaries = new Array();
 
@@ -33,6 +34,8 @@ function init_map(lat, lng) {
 
     check_for_locale(center);
     resize_listener(center);
+    
+    display_smith_county();
 }
 
 function show_user_marker(lat, lng) {
@@ -268,6 +271,35 @@ function display_boundary(slug, no_fit) {
     if (!no_fit) {
         map.fitBounds(bounds);
     }
+}
+
+function display_smith_county() {
+    // Construct new polygons
+    var paths = [];
+
+    console.log(SMITH_COUNTY);
+  
+    $.each(SMITH_COUNTY['features'][0]['geometry']['coordinates'], function(i, n){
+        var path = [];
+
+        $.each(n, function(k, p){
+            var ll = new google.maps.LatLng(p[1], p[0]);
+            path.push(ll);
+        });
+
+        paths.push(path);
+    });
+  
+    smith_county_polygon = new google.maps.Polygon({
+        paths: paths,
+        strokeColor: "#000000",
+        strokeOpacity: 1.0,
+        strokeWeight: 2,
+        fillColor: "#000000",
+        fillOpacity: 0.0
+    });
+  
+    smith_county_polygon.setMap(map);
 }
 
 function show_search() {
