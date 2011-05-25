@@ -54,7 +54,7 @@ function show_user_marker(lat, lng) {
 
     user_marker.on('dragend', function() {
         ll = user_marker.getLatLng();
-        geocode(L.LatLng(ll.lat, ll.lng))
+        geocode(ll)
     });
 }
 
@@ -204,7 +204,7 @@ function get_boundaries(lat, lng) {
     if (displayed_polygon != null) {
         // Hide old polygon
         displayed_kind = boundaries[displayed_slug].kind;
-        displayed_polygon.setMap(null);
+        map.removeLayer(displayed_polygon);
         displayed_polygon = null;
         displayed_slug = null;
     }
@@ -234,7 +234,7 @@ function get_boundaries(lat, lng) {
 function display_boundary(slug, no_fit) {
     // Clear old polygons
     if (displayed_polygon != null) {
-        displayed_polygon.setMap(null);
+        map.removeLayer(displayed_polygon);
         displayed_polygon = null;
         displayed_slug = null;
 
@@ -244,7 +244,7 @@ function display_boundary(slug, no_fit) {
     // Construct new polygons
     var coords = boundaries[slug]["simple_shape"].coordinates;
     var paths = [];
-    var bounds = new L.LatLngBounds(); 
+    var bounds = null;
 
     $.each(coords, function(i, n){
         $.each(n, function(j, o){
@@ -253,7 +253,12 @@ function display_boundary(slug, no_fit) {
             $.each(o, function(k,p){
                 var ll = new L.LatLng(p[1], p[0]);
                 path.push(ll);
-                bounds.extend(ll);
+
+                if (bounds === null) {
+                    bounds = new L.LatLngBounds(ll, ll);
+                } else {
+                    bounds.extend(ll);
+                }
             });
 
             paths.push(path);
@@ -270,7 +275,7 @@ function display_boundary(slug, no_fit) {
     });
 
     displayed_slug = slug;
-    displayed_polygon.setMap(map);
+    map.addLayer(displayed_polygon);
 
     $("#boundaries #" + slug).addClass("selected");
 
