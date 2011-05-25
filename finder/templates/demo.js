@@ -1,9 +1,9 @@
 var geolocate_supported = true; // until prove false
 
 var geocoder = new google.maps.Geocoder();
-var southwest_limit = new google.maps.LatLng(32.1342, -95.6219);
-var northeast_limit = new google.maps.LatLng(32.6871, -94.9844);
-var bounding_box = new google.maps.LatLngBounds(southwest_limit, northeast_limit);
+var southwest_limit = new L.LatLng(32.1342, -95.6219);
+var northeast_limit = new L.LatLng(32.6871, -94.9844);
+var bounding_box = new L.LatLngBounds(southwest_limit, northeast_limit);
 var outside = false; // until prove true
 
 var map = null;
@@ -17,19 +17,22 @@ var boundaries = new Array();
 
 function init_map(lat, lng) {
     if (map == null) {
-        var ll = new google.maps.LatLng(lat, lng);
+        var ll = new L.LatLng(lat, lng);
 
-        var map_options = {
+        map = new L.Map('map_canvas', {
             zoom: 14,
             center: ll,
-            mapTypeId: google.maps.MapTypeId.TERRAIN,
-            scrollwheel: false
-        };
+        });
 
-        map = new google.maps.Map(document.getElementById("map_canvas"), map_options);
+        tiles = new L.TileLayer("http://mt1.google.com/vt/lyrs=m@155000000&hl=en&x={x}&y={y}&z={z}&s={s}", {
+            maxZoom: 17,
+            attribution: "Map data is Copyright Google, 2011"
+        });
+        
+        map.addLayer(tiles);
     }
 
-    var center = new google.maps.LatLng(lat, lng);
+    var center = new L.LatLng(lat, lng);
     map.panTo(center);
 
     check_for_locale(center);
@@ -39,19 +42,20 @@ function init_map(lat, lng) {
 }
 
 function show_user_marker(lat, lng) {
-    if (user_marker == null) {
-        user_marker = new google.maps.Marker();
+    var ll = new L.LatLng(lat, lng);
 
-        user_marker.setDraggable(true);
-        user_marker.setMap(map);
-
-        google.maps.event.addListener(user_marker, 'dragend', function() {
-            ll = user_marker.getPosition();
-            geocode(new google.maps.LatLng(ll.lat(), ll.lng()))
-        });
+    if (user_marker != null) {
+        map.removeLayer(user_marker);
+        user_marker = null;
     }
 
-    user_marker.setPosition(new google.maps.LatLng(lat, lng));
+    user_marker = new L.Marker(ll, { draggable: true });
+    map.addLayer(user_marker);
+
+    user_marker.on('dragend', function() {
+        ll = user_marker.getLatLng();
+        geocode(L.LatLng(ll.lat, ll.lng))
+    });
 }
 
 function geocode(query) {
@@ -97,10 +101,10 @@ function geolocate() {
 
 function geolocation_success(position) {
     process_location(position.coords.latitude, position.coords.longitude)
-    lat_lng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    ll = new L.LatLng(position.coords.latitude, position.coords.longitude);
 
-    geocode(lat_lng);
-    check_for_locale(lat_lng);
+    geocode(ll);
+    check_for_locale(ll);
     hide_search()
 }
 
@@ -144,7 +148,9 @@ function check_saved_location() {
 }
 
 function check_for_locale(center) {
-    if (!bounding_box.contains(center) && window.location.hash == "#demo") {
+    var temp = new L.LatLngBounds(center, center);
+
+    if (!bounding_box.contains(temp) && window.location.hash == "#demo") {
         show_outside();
         outside = true;
     } else {
@@ -275,29 +281,23 @@ function display_boundary(slug, no_fit) {
 
 function display_smith_county() {
     // Construct new polygons
-    var paths = [];
+    var path = [];
 
     $.each(SMITH_COUNTY['features'][0]['geometry']['coordinates'], function(i, n){
-        var path = [];
-
         $.each(n, function(k, p){
-            var ll = new google.maps.LatLng(p[1], p[0]);
+            var ll = new L.LatLng(p[1], p[0]);
             path.push(ll);
         });
+    });
 
-        paths.push(path);
+    smith_county_polygon = new L.Polygon(path, {
+        color: "#000000",
+        opacity: 1.0,
+        weight: 2,
+        fill: false
     });
   
-    smith_county_polygon = new google.maps.Polygon({
-        paths: paths,
-        strokeColor: "#000000",
-        strokeOpacity: 1.0,
-        strokeWeight: 2,
-        fillColor: "#000000",
-        fillOpacity: 0.0
-    });
-  
-    smith_county_polygon.setMap(map);
+    map.addLayer(smith_county_polygon);
 }
 
 function show_search() {
