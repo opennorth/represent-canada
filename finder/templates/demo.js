@@ -67,7 +67,7 @@ function geocode(query) {
         }
         gr = { 'address': query };
     } else {
-        gr = { 'location': query };
+        gr = { 'location': new google.maps.LatLng(ll.lat, ll.lng) };
     }
     geocoder.geocode(gr, handle_geocode);
 }
@@ -244,14 +244,14 @@ function display_boundary(slug, no_fit) {
     // Construct new polygons
     var coords = boundaries[slug]["simple_shape"].coordinates;
     var paths = [];
-    var bounds = new google.maps.LatLngBounds(); 
+    var bounds = new L.LatLngBounds(); 
 
     $.each(coords, function(i, n){
         $.each(n, function(j, o){
             var path = [];
 
             $.each(o, function(k,p){
-                var ll = new google.maps.LatLng(p[1], p[0]);
+                var ll = new L.LatLng(p[1], p[0]);
                 path.push(ll);
                 bounds.extend(ll);
             });
@@ -260,11 +260,11 @@ function display_boundary(slug, no_fit) {
         });
     });
 
-    displayed_polygon = new google.maps.Polygon({
-        paths: paths,
-        strokeColor: "#244f79",
-        strokeOpacity: 0.8,
-        strokeWeight: 3,
+    displayed_polygon = new L.Polygon(paths, {
+        color: "#244f79",
+        opacity: 0.8,
+        weight: 3,
+        fill: true,
         fillColor: "#244f79",
         fillOpacity: 0.2
     });
@@ -281,16 +281,20 @@ function display_boundary(slug, no_fit) {
 
 function display_smith_county() {
     // Construct new polygons
-    var path = [];
+    var paths = [];
 
     $.each(SMITH_COUNTY['features'][0]['geometry']['coordinates'], function(i, n){
+        var path = [];
+
         $.each(n, function(k, p){
             var ll = new L.LatLng(p[1], p[0]);
             path.push(ll);
         });
+
+        paths.push(path);
     });
 
-    smith_county_polygon = new L.Polygon(path, {
+    smith_county_polygon = new L.Polygon(paths, {
         color: "#000000",
         opacity: 1.0,
         weight: 2,
@@ -328,7 +332,7 @@ function switch_page(page_id) {
         if (!map) {
             if (check_saved_location()) {
                 last_location = store.get('last_location');
-                geocode(new google.maps.LatLng(last_location[0], last_location[1]));
+                geocode(new L.LatLng(last_location[0], last_location[1]));
             } else {
                 geolocate();
             }
