@@ -107,4 +107,18 @@ SHAPEFILES = {
         'encoding': '',
         'srid': ''
     },
+    'School Districts': {
+        'file': 'school_districts/school_districts.shp',
+        'singular': 'School District',
+        'kind_first': False,
+        'ider': utils.simple_namer(['GEOID10']),
+        'namer': utils.simple_namer(['NAME10'], normalizer=lambda x: x[:-len(' School District')]),
+        'authority': 'U.S. Census Bureau',
+        'domain': 'Smith County',
+        'last_updated': date(2011, 5, 28),
+        'href': 'http://www.census.gov/cgi-bin/geo/shapefiles2010/main',
+        'notes': 'Reduced from Texas-wide dataset to only those intersecting the census polygon for Smith County. Only includes Unified School Districts because there are no divided school districts within Smith County.',
+        'encoding': '',
+        'srid': ''
+    },
 }
