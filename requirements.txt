@@ -3,7 +3,7 @@ fabric==0.9.4
 geopy
 psycopg2
 python-memcached
-django-boundaryservice
+django-boundaryservice==0.1.7
 lxml
 boto
 django-ses

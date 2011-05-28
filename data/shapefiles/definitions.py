@@ -93,4 +93,18 @@ SHAPEFILES = {
         'encoding': '',
         'srid': ''
     },
+    'Voting Districts': {
+        'file': 'voting_districts/tl_2010_48423_vtd10.shp',
+        'singular': 'Voting District',
+        'kind_first': True,
+        'ider': utils.simple_namer(['GEOID10']),
+        'namer': utils.simple_namer(['NAME10'], normalizer=lambda x: x.lstrip('0')),
+        'authority': 'U.S. Census Bureau',
+        'domain': 'Smith County',
+        'last_updated': date(2011, 5, 28),
+        'href': 'http://www.census.gov/cgi-bin/geo/shapefiles2010/main',
+        'notes': '',
+        'encoding': '',
+        'srid': ''
+    },
 }
