@@ -122,3 +122,20 @@ SHAPEFILES = {
         'srid': ''
     },
 }
+
+# Not loading Congressional Districts as only one intersects Smith County
+# and their complexity degrades query performance.
+"""'Congressional Districts': {
+    'file': 'congressional_districts/tl_2010_48_cd111.shp',
+    'singular': 'Congressional District',
+    'kind_first': False,
+    'ider': utils.simple_namer(['CD111FP'], normalizer=lambda x: x.lstrip('0')),
+    'namer': utils.simple_namer(['CD111FP'], normalizer=lambda x: ordinal(x.lstrip('0'))),
+    'authority': 'U.S. Census Bureau',
+    'domain': 'Texas',
+    'last_updated': date(2011, 5, 28),
+    'href': 'http://www.census.gov/cgi-bin/geo/shapefiles2010/main',
+    'notes': '',
+    'encoding': '',
+    'srid': ''
+},"""
