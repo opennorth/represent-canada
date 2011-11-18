@@ -1,8 +1,10 @@
-from django.conf import settings
+#!/usr/bin/env python
+
 from django.shortcuts import render_to_response
+from django.template import RequestContext
 
 def index(request):
-    context = { 'settings': settings }
+    context = RequestContext(request)
 
     try:
         address = request.REQUEST.get('address')

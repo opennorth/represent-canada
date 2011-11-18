@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import os
 
 import django
@@ -10,9 +12,6 @@ SITE_ROOT = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-EMAIL_BACKEND = 'django_ses.SESBackend'
-SERVER_EMAIL = 'staringmonkey+hacktyler@gmail.com'
-
 ADMINS = (
     ('Christopher Groskopf', 'staringmonkey+hacktyler@gmail.com'),
 )
@@ -21,44 +20,32 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'boundaryservice',                      # Or path to database file if using sqlite3.
-        'USER': 'boundaryservice',                      # Not used with sqlite3.
-        'PASSWORD': 'dMQlbUCftr',                  # Not used with sqlite3.
-        'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '5432',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'hacktyler_boundaryservice',
+        'USER': 'hacktyler_boundaryservice',
+        'PASSWORD': 'dMQlbUCftr',
     }
 }
 
-# Local time
+# Localization
 TIME_ZONE = 'America/Chicago'
-
-# Local language
 LANGUAGE_CODE = 'en-us'
-
-# Site framework
-SITE_ID = 1
-
-# If you set this to False, Django will make some optimizations so as not
-# to load the internationalization machinery.
 USE_I18N = True
-
-# If you set this to False, Django will not format dates, numbers and
-# calendars according to the current locale
 USE_L10N = True
 
-# Absolute path to the directory that holds media.
-MEDIA_ROOT = os.path.join(SITE_ROOT, 'media')
+# Media
+STATIC_ROOT = os.path.join(SITE_ROOT, 'media')
+STATIC_URL = '/site_media/'
+ADMIN_MEDIA_PREFIX = '/site_media/admin/'
 
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash if there is a path component (optional in other cases).
-# Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = '/site_media/'
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
 
-# URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
-# trailing slash.
-# Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/media/'
+# Uploads 
+MEDIA_ROOT = '/tmp/hacktyler_boundaryservice'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '+t(q+ljogaj(+7m@kueu-g881gb8xp_oaz)$iabxjp8a1@2#u!'
@@ -71,17 +58,15 @@ TEMPLATE_LOADERS = (
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.contrib.auth.context_processors.auth'
 )
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    # 'django.contrib.auth.middleware.AuthenticationMiddleware',
-    # 'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
 )
 
@@ -92,16 +77,14 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
-    'django.contrib.contenttypes',
-    'django.contrib.sites',
-    'django.contrib.admin',
-    'django.contrib.admindocs',
-    'django.contrib.sessions',
     'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.admin',
     'django.contrib.humanize',
+    'django.contrib.staticfiles',
     'django.contrib.gis',
-    'django.contrib.sitemaps',
 
+    'compressor',
     'django_ses',
     'tastypie',
     'boundaryservice',
@@ -109,36 +92,84 @@ INSTALLED_APPS = (
     'finder',
 )
 
-# Predefined domain
-MY_SITE_DOMAIN = 'localhost:8000'
-
 # Email
 # run "python -m smtpd -n -c DebuggingServer localhost:1025" to see outgoing
 # messages dumped to the terminal
-#EMAIL_HOST = 'localhost'
-#EMAIL_PORT = 1025
-#DEFAULT_FROM_EMAIL = 'do.not.reply@hacktyler.com'
+EMAIL_BACKEND = 'django_ses.SESBackend'
+SERVER_EMAIL = 'staringmonkey+hacktyler@gmail.com'
+
+# Django-compressor
+COMPRESS_ENABLED = False 
 
 # Caching
-CACHE_MIDDLEWARE_KEY_PREFIX='boundaryservice'
+CACHE_MIDDLEWARE_KEY_PREFIX='hacktyler_boundaryservice'
 CACHE_MIDDLEWARE_SECONDS=90 * 60 # 90 minutes
 
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
     }
 }
 
-API_DOMAIN = 'localhost:8000'
-
 # Logging
-import logging
-logging.basicConfig(
-    level=logging.DEBUG,
-)
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': True,
+    'formatters': {
+        'standard': {
+            'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
+        },
+    },
+    'handlers': {  
+        'console': {
+            'level':'DEBUG',
+            'class':'logging.StreamHandler',
+            'formatter': 'standard'
+        },
+        'default': {
+            'level':'INFO',
+            'class':'logging.handlers.RotatingFileHandler',
+            'filename': '/var/log/sites/hacktyler_boundaryservice/hacktyler_boundaryservice.log',
+            'maxBytes': 1024*1024*5, # 5 MB
+            'backupCount': 5,
+            'formatter':'standard',
+        },
+        'request_handler': {
+                'level':'INFO',
+                'class':'logging.handlers.RotatingFileHandler',
+                'filename': '/var/log/sites/hacktyler_boundaryservice/requests.log',
+                'maxBytes': 1024*1024*5, # 5 MB
+                'backupCount': 5,
+                'formatter':'standard',
+        },  
+        'backend_handler': {
+                'level':'DEBUG',
+                'class':'django.utils.log.NullHandler',
+        },
+    },
+    'loggers': {
+        '': {
+            'handlers': ['default', 'console'],
+            'level': 'DEBUG',
+            'propagate': True
+        },
+        'django.request': {
+            'handlers': ['request_handler', 'console'],
+            'level': 'DEBUG',
+            'propagate': False
+        },
+        'django.db': { 
+            'handlers': ['backend_handler'],
+            'level': 'DEBUG',
+            'propagate': False
+        },
+    }
+}
 
 # Allow for local (per-user) override
 try:
     from local_settings import *
 except ImportError:
     pass
+
+

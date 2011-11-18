@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 
+{% load compress %}
+
 {% block title %}Smith County Boundaries{% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="/site_media/css/demo.css" type="text/css" charset="utf-8"/>
-<link rel="stylesheet" href="/site_media/leaflet/leaflet.css" type="text/css" charset="utf-8"/>
+{% compress css %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/demo.css" type="text/css" charset="utf-8"/>
+<link rel="stylesheet" href="{{ STATIC_URL }}leaflet/leaflet.css" type="text/css" charset="utf-8"/>
+{% endcompress %}
 {% endblock %}
 
 {% block content %}
@@ -37,11 +41,14 @@
 </div>
 {% endblock %}
 {% block foot %}
-<script type="text/javascript" src="/site_media/js/jquery-1.6.1.min.js"></script> 
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-<script type="text/javascript" src="/site_media/leaflet/leaflet.js"></script>
-<script type="text/javascript" src="/site_media/js/store.js"></script>
-<script type="text/javascript" src="/site_media/js/json.js"></script>
-<script type="text/javascript" src="/site_media/js/smith_county.js"></script>
-<script type="text/javascript" src="/site_media/js/finder.js"></script>
+
+{% compress js %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.6.1.min.js"></script> 
+<script type="text/javascript" src="{{ STATIC_URL }}leaflet/leaflet.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/store.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/json.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/smith_county.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/finder.js"></script>
+{% endcompress %}
 {% endblock %}
