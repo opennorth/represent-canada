@@ -97,9 +97,12 @@ def install_server_conf():
     """
     Install the server config file.
     """
-    sudo('ln -s %(repo_path)s/config/%(settings)s/nginx %(server_config_path)s' % env)
-    sudo('ln -s %(repo_path)s/config/%(settings)s/uwsgi.conf /etc/init.d/%(project_name)s.conf' % env)
+    with settings(warn_only=True):
+        sudo('ln -s %(repo_path)s/config/deployed/nginx %(server_config_path)s' % env)
+        sudo('ln -s %(repo_path)s/config/deployed/uwsgi.conf /etc/init/%(project_name)s.conf' % env)
+
     sudo('initctl reload-configuration' % env)
+    sudo('service %(project_name)s start' % env)
 
 """
 Commands - deployment
@@ -126,7 +129,7 @@ def reload_app():
     """
     Restart the uwsgi server.
     """
-    sudo('service %(project)s restart' % env)
+    sudo('service %(project_name)s restart' % env)
     
 def update_requirements():
     """
@@ -152,7 +155,7 @@ def create_database():
     Creates the user and database for this project.
     """
     sudo('echo "CREATE USER %(project_name)s WITH PASSWORD \'%(database_password)s\';" | psql postgres' % env, user='postgres')
-    sudo('createdb -O %(project_name)s %(project_name)s -T template_postgis' % env, user='postgres')
+    sudo('createdb -T template_postgis -O %(project_name)s %(project_name)s' % env, user='postgres')
     
 def destroy_database():
     """
