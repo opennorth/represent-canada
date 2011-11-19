@@ -64,6 +64,7 @@ def setup_directories():
     Create directories necessary for deployment.
     """
     run('mkdir -p %(path)s' % env)
+    sudo('mkdir -p /var/log/sites/%(project_name)s' % env, user='uwsgi')
     
 def setup_virtualenv():
     """

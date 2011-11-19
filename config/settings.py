@@ -23,7 +23,7 @@ DATABASES = {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'hacktyler_boundaryservice',
         'USER': 'hacktyler_boundaryservice',
-        'PASSWORD': 'dMQlbUCftr',
+        'PASSWORD': 'oZGWDn7y0L',
     }
 }
 
