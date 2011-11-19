@@ -127,11 +127,11 @@
 	height: 27px;
 	}
 .leaflet-control-zoom-in {
-	background-image: url(images/zoom-in.png);
+	background-image: url(/site_media/leaflet/images/zoom-in.png);
 	margin-bottom: 5px;
 	}
 .leaflet-control-zoom-out {
-	background-image: url(images/zoom-out.png);
+	background-image: url(/site_media/leaflet/images/zoom-out.png);
 	}
 	
 .leaflet-container .leaflet-control-attribution {
@@ -260,5 +260,5 @@
 	font: 12px/1.4 Arial, Helvetica, sans-serif;
 	}
 .leaflet-popup-close-button {
-	background: white url(images/popup-close.png);
+	background: white url(/site_media/leaflet/images/popup-close.png);
 	}

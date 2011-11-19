@@ -103,6 +103,7 @@ def install_server_conf():
 
     sudo('initctl reload-configuration' % env)
     sudo('service %(project_name)s start' % env)
+    sudo('service nginx restart' % env)
 
 """
 Commands - deployment
