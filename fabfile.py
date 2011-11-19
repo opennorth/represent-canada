@@ -6,6 +6,7 @@ from fabric.api import *
 Base configuration
 """
 env.project_name = 'hacktyler_boundaryservice'
+env.user = 'ubuntu'
 env.database_password = 'oZGWDn7y0L'
 env.path = '/home/ubuntu/src/%(project_name)s' % env
 env.log_path = '/var/log/src/%(project_name)s' % env
@@ -53,7 +54,7 @@ def setup():
     install_requirements()
     destroy_database()
     create_database()
-    load_data()
+    syncdb()
     install_server_conf()
     collect_static_files()
     reload_app();
@@ -81,13 +82,15 @@ def checkout_latest():
     """
     Pull the latest code on the specified branch.
     """
+    require('branch', provided_by=[stable, master, branch])
+    
     run('cd %(repo_path)s; git checkout %(branch)s; git pull origin %(branch)s' % env)
 
 def install_requirements():
     """
     Install the required packages using pip.
     """
-    run('source %(env_path)s/bin/activate; pip install -q -r %(repo_path)s/requirements.txt' % env)
+    run('%(env_path)s/bin/pip install -r %(repo_path)s/requirements.txt' % env)
 
 def install_server_conf():
     """
@@ -128,7 +131,7 @@ def update_requirements():
     """
     Update the installed dependencies the server.
     """
-    run('source %(env_path)s/bin/activate; pip install -q -U -r %(repo_path)s/requirements.txt' % env)
+    run('%(env_path)s/bin/pip install -U -r %(repo_path)s/requirements.txt' % env)
 
 """
 Commands - data
