@@ -15,7 +15,7 @@ env.repo_path = '%(path)s' % env
 env.server_config_path = '/etc/nginx/sites-enabled/%(project_name)s' % env
 env.python = 'python2.7'
 env.repository_url = "git@github.com:hacktyler/hacktyler-boundaryservice.git"
-env.hosts = ["ec2-75-101-203-238.compute-1.amazonaws.com"]
+env.hosts = ["hasufel.hacktyler.com"]
     
 """
 Branches
@@ -119,6 +119,7 @@ def deploy():
     checkout_latest()
     collect_static_files()
     reload_app()
+    clear_cache()
 
 def collect_static_files():
     """
@@ -137,6 +138,12 @@ def update_requirements():
     Update the installed dependencies the server.
     """
     run('%(env_path)s/bin/pip install -U -r %(repo_path)s/requirements.txt' % env)
+
+def clear_cache():
+    """
+    Reset the cache.
+    """
+    sudo('service memcached restart')
 
 """
 Commands - data
