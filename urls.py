@@ -7,6 +7,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 from django.conf import settings
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = patterns('',
     # Examples:
@@ -24,3 +25,5 @@ urlpatterns = patterns('',
     (r'', include('boundaryservice.urls')),
     (r'', include('finder.urls')),
 )
+
+urlpatterns += staticfiles_urlpatterns()
