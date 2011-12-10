@@ -2,17 +2,18 @@
 
 {% load compress %}
 
-{% block title %}Smith County Boundaries{% endblock %}
+{% block title %}{{ EXAMPLE_SCOPE }} Boundaries{% endblock %}
 
 {% block head %}
 {% compress css %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/less.css" type="text/css" charset="utf-8"/>
 <link rel="stylesheet" href="{{ STATIC_URL }}css/demo.css" type="text/css" charset="utf-8"/>
 <link rel="stylesheet" href="{{ STATIC_URL }}leaflet/leaflet.css" type="text/css" charset="utf-8"/>
 {% endcompress %}
 {% endblock %}
 
 {% block content %}
-<div id="outside">Outside Smith County, TX? <a href="javascript:void(0)" id="use-default-location">Jump to Tyler Public Library</a> or drag the pin on the map!</div>
+<div id="outside">Outside {{ EXAMPLE_SCOPE }}? <a href="javascript:void(0)" id="use-default-location">Jump to {{ EXAMPLE_PLACE }}</a> or drag the pin on the map!</div>
 <div id="wrap">
     <div id="page-links">
         <a href="javascript:switch_page('demo')">Demo</a>&nbsp;&nbsp;
@@ -21,7 +22,7 @@
         <a href="javascript:switch_page('about')">About</a>&nbsp;&nbsp;
     </div>
 
-    <h1 id="page-title">Smith County Boundaries</h1>
+    <h1 id="page-title">{{ EXAMPLE_SCOPE }} Boundaries</h1>
 
     <div id="demo-page" class="page-content">
         {% include '_demo.html' %}
