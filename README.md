@@ -4,11 +4,17 @@ This project allows you to easily create sites like [You are here.](http://bound
 
 # Getting Started
 
-    DB=EXAMPLE_DB_NAME
+First, install the requirements. This assumes you already have Python 2.7.
+
+    sudo easy_install pip
     sudo pip install virtualenv
     virtualenv venv
     source venv/bin/activate
     pip install -r requirements.txt
+
+Next, create a PostgreSQL database, as the Boundary Service depends on PostGIS.
+
+    DB=EXAMPLE_DB_NAME
     createdb -h localhost $DB
     createlang -h localhost plpgsql $DB
 
@@ -17,19 +23,30 @@ To spatially-enable the database, you must load PostGIS definitions files. You c
     psql -h localhost -d $DB -f postgis.sql
     psql -h localhost -d $DB -f spatial_ref_sys.sql
 
-Lastly, configure `DATABASE` in `settings.py`.
+Lastly, configure the `DATABASES` Django setting.
+
+    cp settings_override.py.example settings_override.py
+    vi settings_override.py
 
 # Customization
 
-* Go through `@todo` in `finder.js`
-* Edit "Examples" in `settings.py`
+To localize the sample boundary sets, etc. edit these two files:
+
+* Go through the `@todo` in `finder.js`
+* Edit `EXAMPLE_*` in `settings_override.py`
 
 # Deployment
 
-* Configure `CACHES` and `STATIC_ROOT` in `settings.py`
-* Set `COMPRESS_ENABLED = True` in `settings.py`
+* Configure `CACHES` and `STATIC_ROOT` in `settings_override.py`
+* Set `COMPRESS_ENABLED = True` in `settings_override.py`
+
+# Contributing
+
+* [Newsapps Boundary Services issues](https://github.com/newsapps/django-boundaryservice/issues?sort=created&direction=desc&state=open)
 
 # Attribution
+
+This Boundary Service instance uses the following open-source software:
 
 * [Newsapps Boundary Service](https://github.com/newsapps/django-boundaryservice)
 * [Leaflet](http://leaflet.cloudmade.com/)
