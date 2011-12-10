@@ -23,10 +23,26 @@ To spatially-enable the database, you must load PostGIS definitions files. You c
     psql -h localhost -d $DB -f postgis.sql
     psql -h localhost -d $DB -f spatial_ref_sys.sql
 
-Lastly, configure the `DATABASES` Django setting.
+Lastly, configure the `DATABASES` Django setting and and create the database tables.
 
     cp settings_override.py.example settings_override.py
     vi settings_override.py
+    python manage.py syncdb
+
+# Adding geospatial data
+
+Add your geospatial data to `data/shapefiles`. It may be a zipfile or a directory containing a shp, shx, dbf, prj. Then, run `python manage.py loadshapefiles`.
+
+If you want to reset the database and start over, run:
+
+    python manage.py sqlreset boundaryservice | psql -h localhost
+
+# Development
+
+To test it locally:
+
+    python manage.py runserver
+    curl http://127.0.0.1:8000/1.0/
 
 # Customization
 
@@ -39,6 +55,25 @@ To localize the sample boundary sets, etc. edit these two files:
 
 * Configure `CACHES` in `settings_override.py`
 * Set `COMPRESS_ENABLED = True` in `settings_override.py`
+
+# Troubleshooting
+
+If `python manage.py runserver` quits unexpectedly without error, use an alternative server:
+
+    pip install gunicorn
+    python manage.py collectstatic
+    gunicorn_django settings.py
+
+If `python manage.py loadshapefiles` causes this error:
+
+    ERROR 1: dlopen(/Library/Application Support/GDAL/1.8/PlugIns/ogr_GRASS.dylib, 1): Symbol not found: __ZN11OGRSFDriver14CopyDataSourceEP13OGRDataSourcePKcPPc
+      Referenced from: /Library/Application Support/GDAL/1.8/PlugIns/ogr_GRASS.dylib
+      Expected in: flat namespace
+     in /Library/Application Support/GDAL/1.8/PlugIns/ogr_GRASS.dylib
+
+you may resolve it on OS X by running:
+
+    brew install gdal-grass
 
 # Contributing
 

@@ -3,4 +3,4 @@
 .DS_Store
 venv
 settings_override.py
-static
+/static
