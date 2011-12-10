@@ -353,7 +353,7 @@ function use_current_location() {
 }
 
 function use_default_location() {
-    process_location(32.349549, -95.301829);
+    process_location(32.349549, -95.301829); // @todo Replace coordinates.
 }
 
 function toggle_alt_addresses() {
