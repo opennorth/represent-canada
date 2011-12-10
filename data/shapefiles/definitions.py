@@ -1,11 +1,6 @@
-"""
-Configuration describing the shapefiles to be loaded.
-"""
 from datetime import date
 
-from django.contrib.humanize.templatetags.humanize import ordinal
-
-import utils
+from boundaryservice import utils
 
 SHAPEFILES = {
     # This key should be the plural name of the boundaries in this set
@@ -36,5 +31,5 @@ SHAPEFILES = {
         # SRID of the geometry data in the shapefile if it can not be inferred from an accompanying .prj file
         # This is normally not necessary and can be left undefined or set to an empty string to maintain the default behavior
         'srid': ''
-    },
+    }
 }
