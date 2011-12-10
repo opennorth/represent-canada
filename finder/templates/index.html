@@ -2,7 +2,7 @@
 
 {% load compress %}
 
-{% block title %}{{ EXAMPLE_SCOPE }} Boundaries{% endblock %}
+{% block title %}{{ settings.EXAMPLE_SCOPE }} Boundaries{% endblock %}
 
 {% block head %}
 {% compress css %}
@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block content %}
-<div id="outside">Outside {{ EXAMPLE_SCOPE }}? <a href="javascript:void(0)" id="use-default-location">Jump to {{ EXAMPLE_PLACE }}</a> or drag the pin on the map!</div>
+<div id="outside">Outside {{ settings.EXAMPLE_SCOPE }}? <a href="javascript:void(0)" id="use-default-location">Jump to {{ settings.EXAMPLE_PLACE }}</a> or drag the pin on the map!</div>
 <div id="wrap">
     <div id="page-links">
         <a href="javascript:switch_page('demo')">Demo</a>&nbsp;&nbsp;
@@ -22,7 +22,7 @@
         <a href="javascript:switch_page('about')">About</a>&nbsp;&nbsp;
     </div>
 
-    <h1 id="page-title">{{ EXAMPLE_SCOPE }} Boundaries</h1>
+    <h1 id="page-title">{{ settings.EXAMPLE_SCOPE }} Boundaries</h1>
 
     <div id="demo-page" class="page-content">
         {% include '_demo.html' %}

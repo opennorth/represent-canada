@@ -1,5 +1,10 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from django.conf import settings
+
+# @todo Shouldn't really be here.
+def settings_processor(request):
+    return {'settings': settings}
 
 def index(request):
     context = RequestContext(request)
