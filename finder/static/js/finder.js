@@ -11,7 +11,6 @@ var map = null;
 var user_marker = null;
 var displayed_slug = null;
 var displayed_polygon = null;
-var smith_county_polygon = null;
 
 var boundaries = new Array();
 
@@ -37,8 +36,6 @@ function init_map(lat, lng) {
 
     check_for_locale(center);
     resize_listener(center);
-    
-    display_smith_county();
 }
 
 function show_user_marker(lat, lng) {
@@ -60,11 +57,6 @@ function show_user_marker(lat, lng) {
 
 function geocode(query) {
     if (typeof(query) == 'string') {
-        pattr = /\stx\s|\stexas\s/gi;
-        match = query.match(pattr);
-        if (!match) {
-            query = query + ' TX';
-        }
         gr = { 'address': query };
     } else {
         gr = { 'location': new google.maps.LatLng(query.lat, query.lng) };
@@ -282,31 +274,6 @@ function display_boundary(slug, no_fit) {
     if (!no_fit) {
         map.fitBounds(bounds);
     }
-}
-
-function display_smith_county() {
-    // Construct new polygons
-    var paths = [];
-
-    $.each(SMITH_COUNTY['features'][0]['geometry']['coordinates'], function(i, n){
-        var path = [];
-
-        $.each(n, function(k, p){
-            var ll = new L.LatLng(p[1], p[0]);
-            path.push(ll);
-        });
-
-        paths.push(path);
-    });
-
-    smith_county_polygon = new L.Polygon(paths, {
-        color: "#000000",
-        opacity: 1.0,
-        weight: 2,
-        fill: false
-    });
-  
-    map.addLayer(smith_county_polygon);
 }
 
 function show_search() {
