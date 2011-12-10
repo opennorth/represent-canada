@@ -1,4 +1,4 @@
-/* Copyright (c) 2010 Marcus Westin
+/* Copyright (c) 2010-2011 Marcus Westin
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -19,12 +19,17 @@
  * THE SOFTWARE.
  */
 
-var store = (function(){
+(function(root, store) {
+  if (typeof module != 'undefined') { module.exports = store }
+  else if (typeof define === 'function' && define.amd) { define(store); }
+  else { root.store = store; }
+})(this, (function(){
 	var api = {},
 		win = window,
 		doc = win.document,
 		localStorageName = 'localStorage',
 		globalStorageName = 'globalStorage',
+		namespace = '__storejs__',
 		storage
 
 	api.disabled = false
@@ -109,9 +114,15 @@ var store = (function(){
 			}
 			storage.save(localStorageName)
 		})
-	} else {
+	}
+	
+	try {
+		api.set(namespace, namespace)
+		if (api.get(namespace) != namespace) { api.disabled = true }
+		api.remove(namespace)
+	} catch(e) {
 		api.disabled = true
 	}
-
+	
 	return api
-})();
+})());
