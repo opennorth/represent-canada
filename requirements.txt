@@ -5,7 +5,7 @@ python-memcached==1.47
 django_compressor==1.1
 sphinx==1.0.7
 geopy==0.94.1
-django-boundaryservice==0.1.7
+django-boundaryservice==0.1.11
 lxml==2.3.2
 boto==2.1.1
 django-ses==0.2
