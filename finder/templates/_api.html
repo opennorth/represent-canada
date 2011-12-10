@@ -1,43 +1,18 @@
 <h3>Introduction</h3>
 
-<p>The Boundary Service API provides a restful interface to a wealth of data about official geographic boundaries within Smith County.  Data is retrieved from the API as JSON (optionally JSONP) with nested GeoJSON for describing the boundary shapes.</p>
+<p>The Boundary Service API provides a RESTful interface to a wealth of data about official geographic boundaries within {{ EXAMPLE_SCOPE }}.  Data is retrieved from the API as JSON (optionally JSONP) with nested GeoJSON for describing the boundary shapes.</p>
 
 <p>There are two resources described by the API: Boundary Sets and Boundaries.</p>
 
 <h3>Boundary Sets</h3>
 
-<p>Boundary Sets describe the extent and provenance of a group of Boundaries as well how recently they were last updated. Here, for example, is the Boundary Set for Tyler City Council Districts:</p>
+<p>Boundary Sets describe the extent and provenance of a group of Boundaries as well how recently they were last updated. Here, for example, is the Boundary Set for {{ EXAMPLE_BOUNDARY_SETS }}:</p>
 
 <p><pre>
-{
-    authority: "Tyler GIS Department"
-    boundaries: [
-        "/1.0/boundary/central-city-council-district/"
-        "/1.0/boundary/east-city-council-district/"
-        "/1.0/boundary/northeast-city-council-district/"
-        "/1.0/boundary/northwest-city-council-district/"
-        "/1.0/boundary/south-city-council-district/"
-        "/1.0/boundary/west-city-council-district/"
-    ]
-    count: 6
-    domain: "Tyler"
-    href: "http://www.smithcountymapsite.org/webshare/data.html"
-    last_updated: "2011-05-14"
-    metadata_fields: [
-        "DISTRICT"
-        "NAME"
-        "REP"
-        "SHAPE_STAr"
-        "SHAPE_STLe"
-    ]
-    name: "City Council Districts"
-    notes: ""
-    resource_uri: "/1.0/boundary-set/city-council-districts/"
-    slug: "city-council-districts"
-}
+{{ EXAMPLE_BOUNDARY_SET_RESPONSE }}
 </pre></p>
 
-<p>To see a paginated list of available Boundary Sets access the following url:</p>
+<p>To see a paginated list of available Boundary Sets access the following URL:</p>
 
 <p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary-set/</code></p>
 
@@ -47,39 +22,14 @@
 
 <p>A single Boundary Set may be accessed directly by its slug:</p>
 
-<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary-set/city-council-districts/</code></p>
+<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary-set/{{ EXAMPLE_BOUNDARY_SET_CODE }}/</code></p>
 
 <h3>Boundaries</h3>
 
-<p>Boundaries are the individual shapes within a Boundary Set. The Boundary for Tyler's Central City Council District looks like:</p>
+<p>Boundaries are the individual shapes within a Boundary Set. The Boundary for {{ EXAMPLE_BOUNDARY }} looks like:</p>
 
 <p><pre>
-{
-    centroid: {
-        coordinates: [
-            -95.319192
-            32.276927
-        ]
-        type: "Point"
-    }
-    external_id: "1"
-    kind: "City Council District"
-    metadata: {
-        DISTRICT: "1"
-        NAME: "CENTRAL"
-        REP: "Sam Mezayek"
-        SHAPE_STAr: 264373899.847
-        SHAPE_STLe: 92241.0919277
-    }
-    name: "CENTRAL"
-    resource_uri: "/1.0/boundary/central-city-council-district/"
-    set: "/1.0/boundary-set/city-council-districts/"
-        simple_shape: {
-        coordinates: [ … ]
-        type: "MultiPolygon"
-    }
-slug: "central-city-council-district"
-}
+{{ EXAMPLE_BOUNDARY_RESPONSE }}
 </pre></p>
 
 <p>A paginated list of all Boundaries can be accessed at:</p>
@@ -92,11 +42,11 @@ slug: "central-city-council-district"
 
 <p>And a single Boundary may be accessed directly by its slug:</p>
 
-<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary/central-city-council-district/</code></p>
+<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary/{{ EXAMPLE_BOUNDARY_CODE }}/</code></p>
 
-<p>For ease of url construction a Boundary may also be referenced by appending the Boundary's <code>external_id</code> property to it's parent Boundary Set's URL. For example:</p>
+<p>For ease of URL construction a Boundary may also be referenced by appending the Boundary's <code>external_id</code> property to it's parent Boundary Set's URL. For example:</p>
 
-<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary-set/city-council-districts/2</code></p>
+<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary-set/{{ EXAMPLE_BOUNDARY_SET_CODE }}/2</code></p>
 
 <p><strong>Note:</strong> The metadata fields returned with a Boundary are taken directly from the original data sources. In certain cases these may be out of date. An effort has been made to capture such issues in the Boundary Set's notes property, but these values should generally not be taken at face value.</p>
 
@@ -108,15 +58,15 @@ slug: "central-city-council-district"
 
 <p>In addition, queries may (and should) be constrained by passing a comma-delimited list of Boundary Set slugs to the <code>sets</code> parameter:</p>
 
-<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary/?sets=city-council-districts,justice-of-the-peace-precincts</code></p>
+<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary/?sets={{ EXAMPLE_BOUNDARY_SET_CODE }},{{ EXAMPLE_BOUNDARY_SET_CODE_BIS }}</code></p>
 
 <h3>Point queries</h3>
 
 <p>The fundamental query exposed by the Boundary Service is a point-in-polygon search by latitude and longitude.  Here is an example:</p>
 
-<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary/?contains=32.349549,-95.301829&sets=city-council-districts</code></p>
+<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary/?contains={{ EXAMPLE_PLACE_LAT_LNG }}&sets={{ EXAMPLE_BOUNDARY_SET_CODE }}</code></p>
 
-<p>This will return the City Council District that Tyler Public Library resides in.</p>
+<p>This will return the {{ EXAMPLE_BOUNDARY_SET }} that {{ EXAMPLE_PLACE }} resides in.</p>
 
 <p><strong>Note:</strong> In addition to the <code>contains</code> parameter we also pass the <code>sets</code> parameter to constrain the query. Its important to use this parameter to limit your queries to only the data you need so your queries will be fast.</p>
 
@@ -124,17 +74,17 @@ slug: "central-city-council-district"
 
 <p>The near query finds all Boundaries that intersect a circle of a specified radius using a given point as its center:</p>
 
-<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary/?near=32.349549,-95.301829,1mi&sets=wards</code></p>
+<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary/?near={{ EXAMPLE_PLACE_LAT_LNG }},1{{ EXAMPLE_UNIT_CODE }}&sets={{ EXAMPLE_BOUNDARY_SET_CODE }}</code></p>
 
-<p>This returns all wards within one mile of Tyler Public Library. The radius parameter may be specified in any units <a href="http://docs.djangoproject.com/en/dev/ref/contrib/gis/measure/#supported-units">supported by GeoDjango</a>.</p>
+<p>This returns all {{ EXAMPLE_BOUNDARY_SETS }} within one {{ EXAMPLE_UNIT }} of {{ EXAMPLE_PLACE }}. The radius parameter may be specified in any units <a href="http://docs.djangoproject.com/en/dev/ref/contrib/gis/measure/#supported-units">supported by GeoDjango</a>.</p>
 
 <p><strong>Note:</strong> This query will execute more slowly than the point query.</p>
 
 <h3>Intersection queries</h3>
 
-<p>The intersects query finds all Boundaries which intersect a specified Boundary. For example, to find all Justice of the Peace Precincts which intersect the Central City Council District, one would request:</p>
+<p>The intersects query finds all Boundaries which intersect a specified Boundary. For example, to find all {{ EXAMPLE_BOUNDARY_SETS }} which intersect the {{ EXAMPLE_BOUNDARY }}, one would request:</p>
 
-<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary/?intersects=central-city-council-district&sets=justice-of-the-peace-precincts</code></p>
+<p><code>http://{{ settings.API_DOMAIN }}/1.0/boundary/?intersects={{ EXAMPLE_BOUNDARY_CODE }}&sets={{ EXAMPLE_BOUNDARY_SET_CODE }} </code></p>
 
 <p>The Boundary Service does not currently support querying by arbitrary shapes.</p>
 

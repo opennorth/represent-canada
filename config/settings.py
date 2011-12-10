@@ -4,6 +4,21 @@ import os
 
 import django
 
+# Examples
+EXAMPLE_SCOPE = 'The Universe'
+EXAMPLE_BOUNDARY_SET = 'Example Boundary Set'
+EXAMPLE_BOUNDARY_SETS = 'Example Boundary Sets' # plural
+EXAMPLE_BOUNDARY_SET_CODE = 'example-boundary-set'
+EXAMPLE_BOUNDARY_SET_CODE_BIS = 'example-boundary-set-b' # "bis" is latin for "again"
+EXAMPLE_BOUNDARY_SET_RESPONSE = '' # an example JSON response
+EXAMPLE_BOUNDARY = 'Example Boundary'
+EXAMPLE_BOUNDARY_CODE = 'example-boundary'
+EXAMPLE_BOUNDARY_RESPONSE = '' # an example JSON response
+EXAMPLE_PLACE = 'Example Place'
+EXAMPLE_PLACE_LAT_LNG = '32.349549,-95.301829'
+EXAMPLE_UNIT = 'kilometre'
+EXAMPLE_UNIT_CODE = 'km'
+
 # Base paths
 DJANGO_ROOT = os.path.dirname(os.path.realpath(django.__file__))
 SITE_ROOT = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
