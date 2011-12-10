@@ -3,21 +3,6 @@ import django
 
 SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 
-# Configure these in settings_override.py
-EXAMPLE_SCOPE = 'The Universe'
-EXAMPLE_BOUNDARY_SET = 'Example Boundary Set'
-EXAMPLE_BOUNDARY_SETS = 'Example Boundary Sets'
-EXAMPLE_BOUNDARY_SET_CODE = 'example-boundary-set'
-EXAMPLE_BOUNDARY_SET_CODE_BIS = 'example-boundary-set-b'
-EXAMPLE_BOUNDARY_SET_RESPONSE = ''
-EXAMPLE_BOUNDARY = 'Example Boundary'
-EXAMPLE_BOUNDARY_CODE = 'example-boundary'
-EXAMPLE_BOUNDARY_RESPONSE = ''
-EXAMPLE_PLACE = 'Example Place'
-EXAMPLE_PLACE_LAT_LNG = '32.349549,-95.301829'
-EXAMPLE_UNIT = 'kilometre'
-EXAMPLE_UNIT_CODE = 'km'
-
 # Django settings for project.
 
 DEBUG = True
@@ -28,18 +13,6 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
-
-# Configure DATABASES in settings_override.py
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': '',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-    }
-}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
