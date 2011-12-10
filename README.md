@@ -1,3 +1,7 @@
+The Newsapps Boundary Service is a ready-to-deploy system for aggregating regional boundary data (from shapefiles) and republishing via a RESTful JSON API. It is packaged as a pluggable Django application so that it can be easily integrated into any project.
+
+This project allows you to easily create sites like [You are here.](http://boundaries.tribapps.com/) and [Smith County Boundaries](http://boundaryservice.hacktyler.com/).
+
 # Getting Started
 
     DB=EXAMPLE_DB_NAME
@@ -13,12 +17,12 @@ To spatially-enable the database, you must load PostGIS definitions files. You c
     psql -h localhost -d $DB -f postgis.sql
     psql -h localhost -d $DB -f spatial_ref_sys.sql
 
-* Configure `DATABASE` in `settings.py`
+Lastly, configure `DATABASE` in `settings.py`.
 
 # Customization
 
 * Go through `@todo` in `finder.js`
-* Edit Examples in `settings.py`
+* Edit "Examples" in `settings.py`
 
 # Deployment
 
