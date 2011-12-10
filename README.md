@@ -37,7 +37,7 @@ To localize the sample boundary sets, etc. edit these two files:
 
 # Deployment
 
-* Configure `CACHES` and `STATIC_ROOT` in `settings_override.py`
+* Configure `CACHES` in `settings_override.py`
 * Set `COMPRESS_ENABLED = True` in `settings_override.py`
 
 # Contributing
