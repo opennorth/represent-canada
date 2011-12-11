@@ -31,11 +31,25 @@ Lastly, configure the `DATABASES` Django setting and and create the database tab
 
 # Adding geospatial data
 
-Add your geospatial data to `data/shapefiles`. It may be a zipfile or a directory containing a shp, shx, dbf, prj. Then, run `python manage.py loadshapefiles`.
+Add your geospatial data to `data/shapefiles`. It may be a zipfile or a directory containing a shp, shx, dbf, prj. Then, fill in `definitions.py`. Note that the keys of the `SHAPEFILES` dictionary and the value of the `singular` key should be ASCII.
+
+Then, run `python manage.py loadshapefiles`. Note that this command will import everything under `data/shapefiles`. If you're already run this command once, then you'll want to specify which data to import. You can include (whitelist) data for import:
+
+    python manage.py loadshapefiles -o KeyA,KeyB,...
+
+Or exclude (blacklist) data for import:
+
+    python manage.py loadshapefiles -e KeyA,KeyB,...
+
+__Important Note:__ The comma-separated arguments are the keys of the `SHAPEFILES` dictionary with spaces removed.
 
 If you want to reset the database and start over, run:
 
-    python manage.py sqlreset boundaryservice | psql -h localhost
+    python manage.py loadshapefiles -c
+
+If that doesn't work you can always do:
+
+    python manage.py sqlreset boundaryservice | psql -h localhost DB_NAME
 
 # Development
 
