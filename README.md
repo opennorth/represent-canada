@@ -23,7 +23,7 @@ To spatially-enable the database, you must load PostGIS definitions files. You c
     psql -h localhost -d $DB -f postgis.sql
     psql -h localhost -d $DB -f spatial_ref_sys.sql
 
-Lastly, configure the `DATABASES` Django setting and and create the database tables.
+It may be worthwhile to [create a template database](http://www.bigfastblog.com/landsliding-into-postgis-with-kml-files) if you will be creating many PostGIS databases. Lastly, configure the `DATABASES` Django setting and and create the database tables.
 
     cp settings_override.py.example settings_override.py
     vi settings_override.py
@@ -88,6 +88,12 @@ If `python manage.py loadshapefiles` causes this error:
 you may resolve it on OS X by running:
 
     brew install gdal-grass
+
+If `python manage.py loadshapefiles` causes this error:
+
+    IOError: [Errno 2] No such file or directory: '/var/folders/yn/4cwyp7v55w1c127fbn8sk8gm0000gn/...'
+
+make sure that all files referenced in `definitions.py` exist.
 
 # Contributing
 
