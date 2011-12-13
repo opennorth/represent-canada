@@ -33,6 +33,10 @@ Lastly, configure the `DATABASES` Django setting and and create the database tab
 
 Because the licenses for the digital boundary files are unclear, this data is currently held in a private repository, which is represented here as a submodule at `data/shapefiles`. The `tmp/definitions.py` file includes URLs to these files if publicly available and is identical to the `definitions.py` file used in the private repository. Please contact [james@opennorth.ca](mailto:james@opennorth.ca) to contribute new shapefiles.
 
+If you have access to the private repository, the command is:
+
+    git submodule update --init
+
 # Upstream Changes
 
 Canada Boundary Service is a fork of [Blank Boundary Service](https://github.com/opennorth/blank-boundaryservice). To pull in upstream changes, first add an upstream endpoint:
