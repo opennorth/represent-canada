@@ -30,3 +30,5 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
     }
 }
+
+API_DOMAIN = '127.0.0.1:8000'

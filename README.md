@@ -73,8 +73,11 @@ To localize the sample boundary sets, etc. edit these two files:
 
 # Deployment
 
-* Configure `CACHES` in `settings_override.py`
-* Set `COMPRESS_ENABLED = True` in `settings_override.py`
+In `settings_override.py`:
+
+* configure `CACHES`
+* set `COMPRESS_ENABLED = True`
+* set `API_DOMAIN`
 
 # Troubleshooting
 
