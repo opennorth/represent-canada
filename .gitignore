@@ -1,6 +1,7 @@
 *.pyc
 *.swp
 .DS_Store
+build
 venv
 settings_override.py
 /static
