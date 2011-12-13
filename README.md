@@ -29,7 +29,11 @@ Lastly, configure the `DATABASES` Django setting and and create the database tab
     vi settings_database.py
     python manage.py syncdb
 
-# Updates
+# Adding Data
+
+Because the licenses for the digital boundary files are unclear, this data is currently held in a private repository. The `definitions.py` file includes URLs to these files if publicly available. Please contact [james@opennorth.ca](mailto:james@opennorth.ca) to contribute new shapefiles.
+
+# Upstream Changes
 
 Canada Boundary Service is a fork of [Blank Boundary Service](https://github.com/opennorth/blank-boundaryservice). To pull in upstream changes, first add an upstream endpoint:
 
@@ -41,3 +45,7 @@ Now, you can pull in upstream changes ([as documented by GitHub](http://help.git
     git merge upstream/master
 
 Additional documentation is available from the [Blank Boundary Service README](https://github.com/opennorth/blank-boundaryservice#readme).
+
+# Contact
+
+Please contact [james@opennorth.ca](mailto:james@opennorth.ca) for all questions or comments. Please submit feature requests, bug fixes, etc. [through GitHub](https://github.com/opennorth/canada-boundaryservice/issues).
