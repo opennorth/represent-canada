@@ -23,11 +23,17 @@ To spatially-enable the database, you must load PostGIS definitions files. You c
     psql -h localhost -d $DB -f postgis.sql
     psql -h localhost -d $DB -f spatial_ref_sys.sql
 
-It may be worthwhile to [create a template database](http://www.bigfastblog.com/landsliding-into-postgis-with-kml-files) if you will be creating many PostGIS databases. Lastly, configure the `DATABASES` Django setting and and create the database tables.
+It may be worthwhile to [create a template database](http://www.bigfastblog.com/landsliding-into-postgis-with-kml-files) if you will be creating many PostGIS databases.
+
+Lastly, configure the `DATABASES` Django setting and and create the database tables.
 
     cp settings_override.py.example settings_override.py
     vi settings_override.py
     python manage.py syncdb
+
+You can now copy `definitions.py.example` to start adding your geospatial data:
+
+    cp data/shapefiles/definitions.py.example data/shapefiles/definitions.py
 
 # Adding geospatial data
 
