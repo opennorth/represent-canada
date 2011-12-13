@@ -31,7 +31,7 @@ Lastly, configure the `DATABASES` Django setting and and create the database tab
 
 # Adding Data
 
-Because the licenses for the digital boundary files are unclear, this data is currently held in a private repository. The `definitions.py` file includes URLs to these files if publicly available. Please contact [james@opennorth.ca](mailto:james@opennorth.ca) to contribute new shapefiles.
+Because the licenses for the digital boundary files are unclear, this data is currently held in a private repository, which is represented here as a submodule at `data/shapefiles`. The `tmp/definitions.py` file includes URLs to these files if publicly available and is identical to the `definitions.py` file used in the private repository. Please contact [james@opennorth.ca](mailto:james@opennorth.ca) to contribute new shapefiles.
 
 # Upstream Changes
 
