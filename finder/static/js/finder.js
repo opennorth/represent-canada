@@ -1,8 +1,8 @@
 var geolocate_supported = true; // until prove false
 
 var geocoder = new google.maps.Geocoder();
-var southwest_limit = new L.LatLng(32.1342, -95.6219); // @todo Replace coordinates.
-var northeast_limit = new L.LatLng(32.6871, -94.9844); // @todo Replace coordinates.
+var southwest_limit = new L.LatLng(45.20, -75.40); // @todo Replace coordinates.
+var northeast_limit = new L.LatLng(45.70, -76.00); // @todo Replace coordinates.
 var bounding_box = new L.LatLngBounds(southwest_limit, northeast_limit);
 var outside = false; // until prove true
 
@@ -85,7 +85,7 @@ function geolocate() {
     } else {
         use_default_location();
 
-        $('#resultinfo').html("Your browser does not support automatically determining your location so we're showing you Example Place."); // @todo Replace "Example Place"
+        $('#resultinfo').html("Your browser does not support automatically determining your location so we're showing you 24 Sussex Drive, Ottawa."); // @todo Replace "Example Place"
 
         geolocate_supported = false;
     }
@@ -103,7 +103,7 @@ function geolocation_success(position) {
 function geolocation_error() {
     use_default_location();
 
-    $('#resultinfo').html("Your browser does not support automatically determining your location so we're showing you Example Place."); // @todo Replace "Example Place"
+    $('#resultinfo').html("Your browser does not support automatically determining your location so we're showing you 24 Sussex Drive, Ottawa."); // @todo Replace "Example Place"
 }
 
 function process_location(lat, lng) {
@@ -353,7 +353,7 @@ function use_current_location() {
 }
 
 function use_default_location() {
-    process_location(32.349549, -95.301829); // @todo Replace coordinates.
+    process_location(45.444369,-75.693832); // @todo Replace coordinates.
 }
 
 function toggle_alt_addresses() {

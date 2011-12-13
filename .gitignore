@@ -2,6 +2,5 @@
 *.swp
 .DS_Store
 venv
-settings_override.py
+settings_database.py
 /static
-definitions.py
