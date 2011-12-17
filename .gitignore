@@ -5,3 +5,4 @@ build
 venv
 settings_database.py
 /static
+/fabfile.py
