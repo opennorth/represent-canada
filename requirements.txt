@@ -5,3 +5,4 @@ geopy>=0.94.1
 setproctitle
 python-memcached
 -e git+http://github.com/rhymeswithcycle/django-boundaryservice.git@experimental#egg=django-boundaryservice
+-e git+http://github.com/rhymeswithcycle/repapi.git#egg=repapi

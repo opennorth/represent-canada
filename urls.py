@@ -16,6 +16,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     (r'', include('boundaryservice.urls')),
+    (r'', include('repapi.urls')),
     (r'', include('finder.urls')),
 )
 
