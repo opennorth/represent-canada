@@ -188,14 +188,14 @@ function alt_addresses(results) {
 // Use boundary service to lookup what areas the location falls within
 function get_boundaries(lat, lng) {
     var table_html = '<h3>This location is within:</h3><table id="boundaries" border="0" cellpadding="0" cellspacing="0">';
-    var query_url = '/1.0/boundary/?limit=100&contains=' + lat + ',' + lng + '';
+    var query_url = '/boundary/?limit=100&contains=' + lat + ',' + lng + '';
 
     displayed_kind = null;
     for_display = null;
 
     if (displayed_polygon != null) {
         // Hide old polygon
-        displayed_kind = boundaries[displayed_slug].kind;
+        displayed_kind = boundaries[displayed_slug].set_name;
         map.removeLayer(displayed_polygon);
         displayed_polygon = null;
         displayed_slug = null;
@@ -206,11 +206,12 @@ function get_boundaries(lat, lng) {
 
     $.getJSON(query_url, function(data) {
         $.each(data.objects, function(i, obj) {
+            obj.slug = obj.url.replace(/\//g, '-'); // HACK, because the original code used a slug in HTML IDs
             boundaries[obj.slug] = obj;
-            table_html += '<tr id="' + obj.slug + '"><td>' + obj.kind + '</td><td><strong><a href="javascript:display_boundary(\'' + obj.slug + '\');">' + obj.name + '</a></strong></td></td>';
+            table_html += '<tr id="' + obj.slug + '"><td>' + obj.set_name + '</td><td><strong><a href="javascript:display_boundary(\'' + obj.slug + '\');">' + obj.name + '</a></strong></td></td>';
 
             // Try to display a new polygon of the same kind as the last shown
-            if (displayed_kind != null && obj.kind == displayed_kind) {
+            if (displayed_kind != null && obj.set_name == displayed_kind) {
                 for_display = obj; 
             }
         });
@@ -223,6 +224,19 @@ function get_boundaries(lat, lng) {
     });
 }
 
+var shapeCache = {};
+function getShape(url, callback) {
+    if (typeof(shapeCache[url]) !== 'undefined') {
+        callback(shapeCache[url]);
+    }
+    else {
+        $.getJSON(url + 'simple_shape', function(data) {
+            shapeCache[url] = data;
+            callback(data);
+        });
+    }
+}
+
 function display_boundary(slug, no_fit) {
     // Clear old polygons
     if (displayed_polygon != null) {
@@ -233,47 +247,49 @@ function display_boundary(slug, no_fit) {
         $("#boundaries .selected").removeClass("selected");
     }
 
-    // Construct new polygons
-    var coords = boundaries[slug]["simple_shape"].coordinates;
-    var paths = [];
-    var bounds = null;
+    getShape(boundaries[slug].url, function(shape) {
+        // Construct new polygons
+        var coords = shape.coordinates;
+        var paths = [];
+        var bounds = null;
 
-    $.each(coords, function(i, n){
-        $.each(n, function(j, o){
-            var path = [];
+        $.each(coords, function(i, n){
+            $.each(n, function(j, o){
+                var path = [];
 
-            $.each(o, function(k,p){
-                var ll = new L.LatLng(p[1], p[0]);
-                path.push(ll);
+                $.each(o, function(k,p){
+                    var ll = new L.LatLng(p[1], p[0]);
+                    path.push(ll);
 
-                if (bounds === null) {
-                    bounds = new L.LatLngBounds(ll, ll);
-                } else {
-                    bounds.extend(ll);
-                }
+                    if (bounds === null) {
+                        bounds = new L.LatLngBounds(ll, ll);
+                    } else {
+                        bounds.extend(ll);
+                    }
+                });
+
+                paths.push(path);
             });
-
-            paths.push(path);
         });
+
+        displayed_polygon = new L.Polygon(paths, {
+            color: "#244f79",
+            opacity: 0.8,
+            weight: 3,
+            fill: true,
+            fillColor: "#244f79",
+            fillOpacity: 0.2
+        });
+
+        displayed_slug = slug;
+        map.addLayer(displayed_polygon);
+
+        $("#boundaries #" + slug).addClass("selected");
+
+        if (!no_fit) {
+            map.fitBounds(bounds);
+        }
     });
-
-    displayed_polygon = new L.Polygon(paths, {
-        color: "#244f79",
-        opacity: 0.8,
-        weight: 3,
-        fill: true,
-        fillColor: "#244f79",
-        fillOpacity: 0.2
-    });
-
-    displayed_slug = slug;
-    map.addLayer(displayed_polygon);
-
-    $("#boundaries #" + slug).addClass("selected");
-
-    if (!no_fit) {
-        map.fitBounds(bounds);
-    }
 }
 
 function show_search() {
