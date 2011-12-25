@@ -25,6 +25,10 @@ LOGGING = {
         'django': {
             'handlers': ['console'],
             'level': 'WARNING',
+        },
+        'boundaryservice': {
+            'handlers': ['console'],
+            'level': 'INFO',
         }
     }
 }
