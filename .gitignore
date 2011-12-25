@@ -6,3 +6,4 @@ venv
 settings_database.py
 /static
 /fabfile.py
+data/shapefiles/
