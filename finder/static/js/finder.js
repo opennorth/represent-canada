@@ -188,7 +188,7 @@ function alt_addresses(results) {
 // Use boundary service to lookup what areas the location falls within
 function get_boundaries(lat, lng) {
     var table_html = '<h3>This location is within:</h3><table id="boundaries" border="0" cellpadding="0" cellspacing="0">';
-    var query_url = '/boundary/?limit=100&contains=' + lat + ',' + lng + '';
+    var query_url = '/boundaries/?limit=100&contains=' + lat + ',' + lng + '';
 
     displayed_kind = null;
     for_display = null;
