@@ -1,5 +1,10 @@
 pre {
-  font-family: monospace; }
+  font-family: monospace;
+  font-size: 14px;
+  width: 100%;
+  overflow: auto;
+  padding: 10px;
+}
 h1, h2, h3, h4, h5 {
   font-family: Georgia, "Times New Roman", serif; }
 

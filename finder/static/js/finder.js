@@ -327,6 +327,9 @@ function switch_page(page_id) {
         }
     } else {
         hide_outside();
+        if (page_id === 'api') {
+            loadJSONExamples();
+        }
     }
 }
 
@@ -401,6 +404,30 @@ function address_search() {
     geocode($("#location-form #address").val());
 
     return false;
+}
+
+function loadJSONExamples() {
+    $('pre.loadjson').each(function() {
+        var $el = $(this);
+        if (!$el.html().length) {
+            var url = $el.data('url');
+            $el.append($(document.createElement('div')).addClass('url').html(url));
+            if (url.indexOf('?') === -1) {
+                url += '?';
+            }
+            else {
+                url += '&';
+            }
+            url += 'pretty=1';
+            $.ajax({
+                url: url,
+                dataType: 'text',
+                success: function(data) {
+                    $el.append(formatJSON(data.replace(/[?&]pretty=1/g, '')));
+                }
+            });
+        }
+    });
 }
 
 $(document).ready(function() {
