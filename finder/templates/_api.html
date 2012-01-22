@@ -2,7 +2,9 @@
 
 <p>PROJNAME provides a RESTful JSON API to a wealth of information of Canadian political districts and elected representatives.</p>
 
-<p>The API describes four resources: boundary sets, boundaries, representative sets, and representatives.</p>
+<p>The API offers five resources: <a href="#boundary_sets">boundary sets</a>, <a href="#boundaries">boundaries</a>,
+    <a href="#postcodes">postal codes</a>, <a href="#representative_sets">representative sets</a>, and
+    <a href="#representatives">representatives</a>.</p>
 
 <h2 id="basics">Basics</h2>
 
@@ -59,6 +61,21 @@
 <h4 id="spatial_fields">Spatial fields</h4>
 
 <p>To access spatial fields, follow the links provided in the <code>shape_url</code>, <code>simple_shape_url</code>, and <code>centroid_url</code> keys. The <code>simple_shape</code> is the district&#8217;s shape, simplified to a tolerance of 0.002; this&#8217;ll usually look just fine if you&#8217;re displaying a map, and be quicker to load. Spatial fields additionally support the <code>kml</code> and <code>wkt</code> formats.</p>
+
+<h3 id="postcodes">Postal codes</h3>
+
+<p>URL: <code>/postcodes/A0A0A0/</code> (note that we don't provide access to a list of postcode resources, just individual-postcode URLs)</p>
+
+<p>A Canadian postal code. URLs should include the code in uppercase with no space.</p>
+
+<pre class="loadjson" data-url="/postcodes/L5G4L7/"></pre>
+
+<p>The <code>boundaries_centroid</code> field is a list of boundaries that contain the point in the <code>centroid</code> field. (That point comes from geocoder.ca data.) Because a centroid is a single point,
+whereas a postal code is a shape (or a collection of points), the list of boundaries based on the centroid <b>will in some
+cases be inaccurate</b>.</p>
+
+<p>When an explicit list of which postal codes correspond to which districts has been made available, we include that data
+in a field named <code>boundaries_concordance</code>.</p>
 
 <h3 id="representative_sets">Representative sets</h3>
 
