@@ -1,3 +1,0 @@
-[submodule "data/shapefiles"]
-	path = data/shapefiles
-	url = git@michaelmulley.com:repdb-shapes.git

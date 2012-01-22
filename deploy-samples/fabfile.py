@@ -12,6 +12,15 @@ def prod():
     
 def _env_init():
     env.django_dir = os.path.join(env.base_dir, 'canada-boundaryservice')
+    env.pip = env.python.replace('bin/python', 'bin/pip')
+    
+def deploy(ref='master'):
+    """Perform all the steps in a standard deployment"""
+    pull(ref)
+    update_requirements()
+    syncdb()
+    update_statics()
+    reload_code()
     
 def pull(ref='master'):
     """Update the git repository to the given branch or tag"""
@@ -24,20 +33,22 @@ def pull(ref='master'):
         if not is_tag:
             run('git pull origin %s' % ref)
             
-        run('git submodule update')
+        #run('git submodule update')
         
 def reload_code():
     """Send gunicorn a signal to restart its Python processes"""
     with cd(env.base_dir):
         run('kill -HUP `cat gunicorn.pid`')
+
+def update_requirements():
+    with cd(env.django_dir):
+        run(env.pip + ' install -r requirements.txt')
+
+def syncdb():
+    with cd(env.django_dir):
+        run(env.python + ' manage.py syncdb --noinput')
         
 def update_statics():
     """Tell Django staticfiles to update said files."""
     with cd(env.django_dir):
         run(env.python + ' manage.py collectstatic --noinput')
-        
-def deploy():
-    """Perform all the steps in a standard deployment"""
-    pull()
-    update_statics()
-    reload_code()

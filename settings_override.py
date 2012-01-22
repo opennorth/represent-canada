@@ -2,6 +2,36 @@ try:
     from settings_database import *
 except ImportError:
     pass
+    
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler'
+        },
+        'console':{
+            'level':'DEBUG',
+            'class':'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+        'django': {
+            'handlers': ['console'],
+            'level': 'WARNING',
+        },
+        'boundaryservice': {
+            'handlers': ['console'],
+            'level': 'INFO',
+        }
+    }
+}
 
 EXAMPLE_SCOPE = 'Canada'
 EXAMPLE_BOUNDARY_SET = 'Federal Electoral District'

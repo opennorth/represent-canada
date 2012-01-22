@@ -117,15 +117,13 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     'django.contrib.staticfiles',
     'django.contrib.gis',
-    # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'compressor',
-    'tastypie',
     'boundaryservice',
     'finder',
+    'repapi',
 )
 
 # A sample logging configuration. The only tangible logging
