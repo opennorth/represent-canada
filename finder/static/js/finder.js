@@ -20,14 +20,14 @@ function process(latlng) {
         var html = '';
         $.each(response.objects, function (i, object) {
             boundaries[object.url] = object;
-            html += '<tr><td>' + object.set_name + '</td><td><a href="#" data-url="' + object.url + '">' + object.name + '</a></td></tr>';
+            html += '<tr><td>' + object.boundary_set_name + '</td><td><a href="#" data-url="' + object.url + '">' + object.name + '</a></td></tr>';
         });
         $('#boundaries').html(html);
 
         // Try to display a boundary from the same set.
         if (boundary) {
             boundary = _.find(response.objects, function (object) {
-                return object.set_name == boundary.set_name;
+                return object.boundary_set_name == boundary.boundary_set_name;
             });
         }
         if (boundary) {
