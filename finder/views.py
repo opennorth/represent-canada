@@ -7,12 +7,7 @@ def settings_processor(request):
     return {'settings': settings}
 
 def index(request):
-    context = RequestContext(request)
+    return render_to_response('index.html', RequestContext(request))
 
-    try:
-        address = request.REQUEST.get('address')
-        context['address'] = address
-    except KeyError:
-        pass
-
-    return render_to_response('index.html', context)
+def api(request):
+    return render_to_response('api.html', RequestContext(request))
