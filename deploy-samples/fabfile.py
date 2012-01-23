@@ -4,7 +4,7 @@ import os
 
 def prod():
     """Select the prod environment for future commands."""
-    env.hosts = ['theelect.openparliament.ca', 'boundaries.opennorth.ca']
+    env.hosts = ['boundaries.opennorth.ca']
     env.user = 'deployer'
     env.python = '/home/deployer/.virtualenvs/repdb/bin/python'
     env.base_dir = '/home/deployer/repdb' # base_dir should contain canada-boundaryservice
