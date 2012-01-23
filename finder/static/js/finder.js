@@ -1,5 +1,4 @@
-// Cache boundaries.
-var boundaries = [];
+var boundaryCache = [], shapeCache = [];
 var map, marker, shape, boundary; // the displayed boundary
 
 /**
@@ -19,7 +18,7 @@ function process(latlng) {
         // Display the list of boundaries.
         var html = '';
         $.each(response.objects, function (i, object) {
-            boundaries[object.url] = object;
+            boundaryCache[object.url] = object;
             html += '<tr><td>' + object.boundary_set_name + '</td><td><a href="#" data-url="' + object.url + '">' + object.name + '</a></td></tr>';
         });
         $('#boundaries').html(html);
@@ -45,6 +44,7 @@ function process(latlng) {
 function display(url, fitBounds) {
     removeBoundary();
 
+    // @todo Cache these queries
     $.getJSON('http://boundaries.opennorth.ca' + url + 'simple_shape?callback=?', function (response) {
         var latlngs = [];
         var paths = [];
@@ -68,7 +68,7 @@ function display(url, fitBounds) {
             map.fitBounds(new L.LatLngBounds(latlngs));
         }
 
-        boundary = boundaries[url];
+        boundary = boundaryCache[url];
     });
 }
 
