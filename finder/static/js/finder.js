@@ -1,411 +1,167 @@
-var geolocate_supported = true; // until prove false
+// Cache boundaries.
+var boundaries = [];
+var map, marker, shape, boundary; // the displayed boundary
 
-var geocoder = new google.maps.Geocoder();
-var southwest_limit = new L.LatLng(45.20, -75.40); // @todo Replace coordinates.
-var northeast_limit = new L.LatLng(45.70, -76.00); // @todo Replace coordinates.
-var bounding_box = new L.LatLngBounds(southwest_limit, northeast_limit);
-var outside = false; // until prove true
+/**
+ * Calls the API and displays the results.
+ * @param L.LatLng latlng
+ */
+function process(latlng) {
+    removeBoundary();
 
-var map = null;
+    // Center the marker and map on the point.
+    marker.setLatLng(latlng);
+    map.panTo(latlng);
 
-var user_marker = null;
-var displayed_slug = null;
-var displayed_polygon = null;
-
-var boundaries = new Array();
-
-function init_map(lat, lng) {
-    if (map == null) {
-        var ll = new L.LatLng(lat, lng);
-
-        map = new L.Map('map_canvas', {
-            zoom: 14,
-            center: ll,
+    // @todo update to new API
+    $.getJSON('http://boundaries.opennorth.ca/boundaries/?contains=' + latlng.lat + ',' + latlng.lng + '&callback=?', function (response) {
+        console.log(response);
+        // Display the list of boundaries.
+        var html = '';
+        $.each(response.objects, function (i, object) {
+            boundaries[object.url] = object;
+            html += '<tr><td>' + object.set_name + '</td><td><a href="#" data-url="' + object.url + '">' + object.name + '</a></td></tr>';
         });
+        $('#boundaries').html(html);
 
-        tiles = new L.TileLayer("http://mt1.google.com/vt/lyrs=m@155000000&hl=en&x={x}&y={y}&z={z}&s={s}", {
-            maxZoom: 17,
-            attribution: "Map data is Copyright Google, 2011"
-        });
-        
-        map.addLayer(tiles);
-    }
-
-    var center = new L.LatLng(lat, lng);
-    map.panTo(center);
-
-    check_for_locale(center);
-    resize_listener(center);
-}
-
-function show_user_marker(lat, lng) {
-    var ll = new L.LatLng(lat, lng);
-
-    if (user_marker != null) {
-        map.removeLayer(user_marker);
-        user_marker = null;
-    }
-
-    user_marker = new L.Marker(ll, { draggable: true });
-    map.addLayer(user_marker);
-
-    user_marker.on('dragend', function() {
-        ll = user_marker.getLatLng();
-        geocode(ll)
-    });
-}
-
-function geocode(query) {
-    if (typeof(query) == 'string') {
-        gr = { 'address': query };
-    } else {
-        gr = { 'location': new google.maps.LatLng(query.lat, query.lng) };
-    }
-    geocoder.geocode(gr, handle_geocode);
-}
-
-function handle_geocode(results, status) {
-    alt_addresses(results);
-
-    lat = results[0].geometry.location.lat();
-    lng = results[0].geometry.location.lng();
-    
-    last_location = [lat, lng];
-    
-    normalized_address = results[0].formatted_address;
-    $('#location-form #address').val(normalized_address);
-    
-    process_location(lat, lng);
-    save_last_location(last_location);
-}
-
-function geolocate() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(geolocation_success, geolocation_error);
-    } else {
-        use_default_location();
-
-        $('#resultinfo').html("Your browser does not support automatically determining your location so we're showing you 24 Sussex Drive, Ottawa."); // @todo Replace "Example Place"
-
-        geolocate_supported = false;
-    }
-}
-
-function geolocation_success(position) {
-    process_location(position.coords.latitude, position.coords.longitude)
-    ll = new L.LatLng(position.coords.latitude, position.coords.longitude);
-
-    geocode(ll);
-    check_for_locale(ll);
-    hide_search()
-}
-
-function geolocation_error() {
-    use_default_location();
-
-    $('#resultinfo').html("Your browser does not support automatically determining your location so we're showing you 24 Sussex Drive, Ottawa."); // @todo Replace "Example Place"
-}
-
-function process_location(lat, lng) {
-    $('#resultinfo').html(
-        'Latitude: ' + lat + '<br />' +
-        'Longitude: ' + lng + '<br />'
-    );
-
-    init_map(lat, lng);
-    show_user_marker(lat, lng);
-    get_boundaries(lat, lng);
-}
-
-function save_last_location(location) {
-    store.set('last_location', location);
-}
-
-function get_last_location() {
-    last_location = store.get('last_location');
-    return last_location;
-}
-
-function clear_last_location() {
-    store.remove('last_location');
-}
-
-function check_saved_location() {
-    last_location = get_last_location();
-    if (last_location) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-function check_for_locale(center) {
-    var temp = new L.LatLngBounds(center, center);
-
-    if (!bounding_box.contains(temp) && window.location.hash == "#demo") {
-        show_outside();
-        outside = true;
-    } else {
-        hide_outside();
-        outside = false;
-    }
-}
-
-function alt_addresses(results) {
-    $('#alt-addresses').html('');
-
-    keep = new Array();
-
-    $.each(results, function(i,val) {
-        if (i==0) return; // skip the first result
-
-        for (var t in val.types) {
-            if (val.types[t] == 'street_address' || val.types[t] == 'intersection') {
-                keep.push(val.formatted_address);
-                break;
-            }
+        // Try to display a boundary from the same set.
+        if (boundary) {
+            boundary = _.find(response.objects, function (object) {
+                return object.set_name == boundary.set_name;
+            });
         }
-    });
-
-    if (keep.length <= 1) {
-        $('#did-you-mean')
-            .addClass('disabled-link')
-            .unbind();
-    } else {
-        $('#did-you-mean')
-            .removeClass('disabled-link')
-            .click(function(e) { 
-                    e.stopPropagation(); 
-                    toggle_alt_addresses(); 
-                    });
-
-        for (var i in keep) {
-            $('#alt-addresses').append('<a href="javascript:geocode(\'' + keep[i] + '\');">' + keep[i] + '</a><br />');
-        }
-    }
-}
-
-// Use boundary service to lookup what areas the location falls within
-function get_boundaries(lat, lng) {
-    var table_html = '<h3>This location is within:</h3><table id="boundaries" border="0" cellpadding="0" cellspacing="0">';
-    var query_url = '/boundaries/?limit=100&contains=' + lat + ',' + lng + '';
-
-    displayed_kind = null;
-    for_display = null;
-
-    if (displayed_polygon != null) {
-        // Hide old polygon
-        displayed_kind = boundaries[displayed_slug].set_name;
-        map.removeLayer(displayed_polygon);
-        displayed_polygon = null;
-        displayed_slug = null;
-    }
-
-    // Clear old boundaries
-    boundaries.length = 0;
-
-    $.getJSON(query_url, function(data) {
-        $.each(data.objects, function(i, obj) {
-            obj.slug = obj.url.replace(/\//g, '-'); // HACK, because the original code used a slug in HTML IDs
-            boundaries[obj.slug] = obj;
-            table_html += '<tr id="' + obj.slug + '"><td>' + obj.set_name + '</td><td><strong><a href="javascript:display_boundary(\'' + obj.slug + '\');">' + obj.name + '</a></strong></td></td>';
-
-            // Try to display a new polygon of the same kind as the last shown
-            if (displayed_kind != null && obj.set_name == displayed_kind) {
-                for_display = obj; 
-            }
-        });
-        table_html += '</table>';
-        $('#area-lookup').html(table_html);
-
-        if (for_display != null) {
-            display_boundary(for_display.slug, true);
+        if (boundary) {
+            display(boundary.url, false);
         }
     });
 }
 
-var shapeCache = {};
-function getShape(url, callback) {
-    if (typeof(shapeCache[url]) !== 'undefined') {
-        callback(shapeCache[url]);
-    }
-    else {
-        $.getJSON(url + 'simple_shape', function(data) {
-            shapeCache[url] = data;
-            callback(data);
-        });
-    }
-}
+/**
+ * Displays a boundary.
+ * @param string url the unique url of the boundary to display
+ * @param boolean fitBounds whether to set a map view that contains the boundary
+ *   with the maximum zoom level possible
+ */
+function display(url, fitBounds) {
+    removeBoundary();
 
-function display_boundary(slug, no_fit) {
-    // Clear old polygons
-    if (displayed_polygon != null) {
-        map.removeLayer(displayed_polygon);
-        displayed_polygon = null;
-        displayed_slug = null;
-
-        $("#boundaries .selected").removeClass("selected");
-    }
-
-    getShape(boundaries[slug].url, function(shape) {
-        // Construct new polygons
-        var coords = shape.coordinates;
+    $.getJSON('http://boundaries.opennorth.ca' + url + 'simple_shape?callback=?', function (response) {
+        var latlngs = [];
         var paths = [];
-        var bounds = null;
-
-        $.each(coords, function(i, n){
-            $.each(n, function(j, o){
+        $.each(response.coordinates, function (j, lines) {
+            $.each(lines, function (k, points) {
                 var path = [];
-
-                $.each(o, function(k,p){
-                    var ll = new L.LatLng(p[1], p[0]);
-                    path.push(ll);
-
-                    if (bounds === null) {
-                        bounds = new L.LatLngBounds(ll, ll);
-                    } else {
-                        bounds.extend(ll);
-                    }
+                $.each(points, function (m, point) {
+                    var latlng = new L.LatLng(point[1], point[0]);
+                    latlngs.push(latlng);
+                    path.push(latlng);
                 });
-
                 paths.push(path);
             });
         });
 
-        displayed_polygon = new L.Polygon(paths, {
-            color: "#244f79",
-            opacity: 0.8,
-            weight: 3,
-            fill: true,
-            fillColor: "#244f79",
-            fillOpacity: 0.2
-        });
+        $('a[data-url="' + url + '"]').addClass('selected');
+        shape = new L.Polygon(paths);
+        map.addLayer(shape);
 
-        displayed_slug = slug;
-        map.addLayer(displayed_polygon);
-
-        $("#boundaries #" + slug).addClass("selected");
-
-        if (!no_fit) {
-            map.fitBounds(bounds);
+        if (fitBounds) {
+            map.fitBounds(new L.LatLngBounds(latlngs));
         }
+
+        boundary = boundaries[url];
     });
 }
 
-function show_search() {
-    $('#not-where-i-am').hide();
-    if (geolocate_supported) { $('#use-current-location').fadeIn(); }
-    $('#did-you-mean').fadeIn();
-    $('#location-form').slideDown();
+/**
+ * Removes any displayed boundary.
+ * @note Doesn't reset +boundary+
+ */
+function removeBoundary() {
+    if (shape) {
+        map.removeLayer(shape);
+        shape = undefined;
+        $('#boundaries .selected').removeClass('selected');
+    }
 }
 
-function hide_search() {
-    $('#not-where-i-am').show();
-    $('#use-current-location').hide()
-    $('#location-form').slideUp();
-}
+jQuery(function ($) {
+    var geocoder = new google.maps.Geocoder();
+    var latlng = new L.LatLng(45.444369, -75.693832); // 24 Sussex Drive, Ottawa
 
-function switch_page(page_id) {
-    $(".page-content").hide()
-    $("#" + page_id + "-page").show()
-    window.location.hash = page_id
+    // Create the marker. Moving the marker calls the API.
+    marker = new L.Marker(latlng, {draggable: true});
+    marker.on('dragend', function () {
+        process(marker.getLatLng());
+    });
 
-    if (window.location.hash == "#demo") {
-        if (outside) {
-            show_outside();
-        }
+    // Create the map. Geolocation calls the API.
+    map = new L.Map('map_canvas', {
+        center: latlng,
+        zoom: 13,
+        layers: [
+            new L.TileLayer('http://{s}.tile.cloudmade.com/266d579a42a943a78166a0a732729463/51080/256/{z}/{x}/{y}.png', {
+                attribution: '© 2011 <a href="http://cloudmade.com/">CloudMade</a> – Map data <a href="http://creativecommons.org/licenses/by-sa/2.0/">CCBYSA</a> 2011 <a href="http://openstreetmap.org/">OpenStreetMap.org</a> contributors – <a href="http://cloudmade.com/about/api-terms-and-conditions">Terms of Use</a>'
+            })
+        ],
+        maxZoom: 17
+    });
+    map.addLayer(marker);
+    map.locateAndSetView(13);
+    map.on('locationfound', function (event) {
+        process(event.latlng);
+    });
 
-        resize_end_trigger(); 
+    // http://stackoverflow.com/questions/2996431/javascript-detect-when-a-window-is-resized
+    $(window).resize(function () {
+        if (this.resizeTo) {
+            clearTimeout(this.resizeTo);
+        };
+        this.resizeTo = setTimeout(function () {
+            $(this).trigger('resizeend');
+        }, 500);
+    });
+    // Keep the marker visible on resize.
+    $(window).bind('resizeend', function () {
+        map.panTo(marker.getLatLng());
+    });
 
-        if (!map) {
-            if (check_saved_location()) {
-                last_location = store.get('last_location');
-                geocode(new L.LatLng(last_location[0], last_location[1]));
-            } else {
-                geolocate();
+    // Geocode an address and call the API.
+    $('#location-form').submit(function (event) {
+        geocoder.geocode({address: $('#address').val()}, function (results, status) {
+            $('#addresses').empty();
+            if (status == google.maps.GeocoderStatus.OK) {
+                // Display the list of addresses.
+                $.each(results, function (i, result) {
+                    var location = result.geometry.location;
+                    $('#addresses').append('<a href="#" data-latitude="' + location.lat() + '" data-longitude="' + location.lng() + '">' + result.formatted_address + '</a>');
+                });
+
+                var location = results[0].geometry.location;
+                process(new L.LatLng(location.lat(), location.lng()));
             }
-        }
-    } else {
-        hide_outside();
-        if (page_id === 'api') {
-            loadJSONExamples();
-        }
-    }
-}
-
-
-function show_outside() {
-    $('#outside').fadeIn(500);
-}
-
-function hide_outside() {
-    $('#outside').fadeOut(250);
-}
-
-/* DOM EVENT HANDLERS */
-function resize_listener(center) {
-    $(this).bind('resize_end', function(){ 
-        if (map) {
-            map.panTo(center);
-        }
+        });
+        event.preventDefault();
     });
-}
 
-function resize_end_trigger() {
-    $(window).resize(function() {
-        if (this.resizeto) { 
-            clearTimeout(this.resizeto) 
-            };
-
-        this.resizeto = setTimeout(function() { 
-            $(this).trigger('resize_end'); 
-            }, 500);
+    // Call the API if the user clicks on an address.
+    $('#addresses a').live('click', function (event) {
+        var $this = $(this);
+        process(new L.LatLng($this.attr('data-latitude'), $this.attr('data-longitude')));
+        event.preventDefault();
     });
-}
 
-function not_where_i_am() {
-    show_search();
-}
+    // Display a boundary if user clicks on a boundary name.
+    $('#boundaries a').live('click', function (event) {
+        var $this = $(this);
+        display($this.attr('data-url'), true);
+        event.preventDefault();
+    });
+});
 
-function use_current_location() {
-    geolocate();
-}
-
-function use_default_location() {
-    process_location(45.444369,-75.693832); // @todo Replace coordinates.
-}
-
-function toggle_alt_addresses() {
-    alt_adds_div = $('#alt-addresses');
-    if (alt_adds_div.is(':hidden')) {
-        show_alt_addresses();
-    } else if (alt_adds_div.is(':visible')) {
-        hide_alt_addresses();
-    }
-}
-
-function show_alt_addresses() {
-    $('#alt-addresses').slideDown(250);
-    $('#did-you-mean').addClass('highlight');
-}
-
-function hide_alt_addresses() {
-    $('#alt-addresses').hide();
-    $('#did-you-mean.highlight').removeClass('highlight');
-}
-
-function search_focused() {
-    if(this.value == 'Enter an address or drag the pin on the map') {
-        $(this).val("");
-    }
-}
-
-function address_search() {
-    geocode($("#location-form #address").val());
-
-    return false;
-}
-
+/**
+ * In API docs, loads and displays JSON for <pre class="loadjson" data-url="/resource/">
+ * Depends on the formatJSON global function, provided by boundaryservice/jsonformatter.js
+ */
 function loadJSONExamples() {
     $('pre.loadjson').each(function() {
         var $el = $(this);
@@ -429,22 +185,3 @@ function loadJSONExamples() {
         }
     });
 }
-
-$(document).ready(function() {
-    // Setup handlers
-    $('body').click(hide_alt_addresses);
-    $('#not-where-i-am').click(not_where_i_am);
-    $('#use-current-location').click(use_current_location);
-    $('#use-default-location').click(use_default_location);
-    $('#did-you-mean').click(function(e) { e.stopPropagation(); toggle_alt_addresses(); });
-    $('#location-form input[type=text]').focus(search_focused);
-    $('#location-form').submit(address_search)
-
-    if (window.location.hash != "") {
-        switch_page(window.location.hash.substring(1));
-    } else {
-        switch_page("demo");
-    }
-});
-
-

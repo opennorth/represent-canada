@@ -1,58 +1,58 @@
 {% extends 'base.html' %}
-
 {% load compress %}
 
-{% block title %}{{ settings.EXAMPLE_SCOPE }} Boundaries{% endblock %}
+{% block title %}Represent, by Open North{% endblock %}
 
 {% block head %}
 {% compress css %}
-<link rel="stylesheet" href="{{ STATIC_URL }}css/less.css" type="text/css" charset="utf-8"/>
-<link rel="stylesheet" href="{{ STATIC_URL }}css/demo.css" type="text/css" charset="utf-8"/>
-<link rel="stylesheet" href="{{ STATIC_URL }}leaflet/leaflet.css" type="text/css" charset="utf-8"/>
+<link rel="stylesheet" href="{{ STATIC_URL }}css/less.css">
+<link rel="stylesheet" href="{{ STATIC_URL }}leaflet/leaflet.css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/demo.css">
 {% endcompress %}
 <style type="text/css">
     {% include "boundaryservice/jsonformatter.css" %}
 </style>
+<!--[if lte IE 8]><link rel="stylesheet" href="{{ STATIC_URL }}leaflet.ie.css"><![endif]-->
 {% endblock %}
 
 {% block content %}
-<div id="outside">Outside {{ settings.EXAMPLE_SCOPE }}? <a href="javascript:void(0)" id="use-default-location">Jump to {{ settings.EXAMPLE_PLACE }}</a> or drag the pin on the map!</div>
 <div id="wrap">
-    <div id="page-links">
-        <a href="javascript:switch_page('demo')">Demo</a>&nbsp;&nbsp;
-        <a href="javascript:switch_page('api')">API</a>&nbsp;&nbsp;
-        <a href="javascript:switch_page('src')">Source</a>&nbsp;&nbsp;
-        <a href="javascript:switch_page('about')">About</a>&nbsp;&nbsp;
-    </div>
+  <h1 id="page-title">Represent, by Open North</h1>
+  <div class="page-content">
 
-    <h1 id="page-title">{{ settings.EXAMPLE_SCOPE }} Boundaries</h1>
+<div id="form-wrapper">
+  <form id="location-form">
+    <input type="text" id="address" name="address" placeholder="Enter an address or drag the pin on the map">
+    <input type="submit">
+    <p>Outside {{ settings.EXAMPLE_SCOPE }}? <a href="javascript:void(0)" id="use-default-location">Jump to {{ settings.EXAMPLE_PLACE }}</a> or drag the pin on the map!</p>
+  </form>
+  <div id="addresses"></div>
+</div>
+<div id="georesults" class="clearfix">
+  <div id="map_canvas"></div>
+</div>
 
-    <div id="demo-page" class="page-content">
-        {% include '_demo.html' %}
-    </div>
+<table id="boundaries" border="0" cellpadding="0" cellspacing="0">
+</table>
 
-    <div id="api-page" class="page-content">
-        {% include '_api.html' %} 
-    </div>
+<h3>About</h3>
 
-    <div id="src-page" class="page-content">
-        {% include '_src.html' %} 
-    </div>
+<p>Represent is <a href="https://github.com/opennorth/canada-boundaryservice">open source</a> under the <a href="https://raw.github.com/opennorth/canada-boundaryservice/master/MIT-LICENSE.txt">MIT license</a>.</p>
 
-    <div id="about-page" class="page-content">
-        {% include '_about.html' %}  
-    </div>
+<p>The digital boundary files for this project are available under different licenses. Please consult the <a href="">API</a> for information on data sources.</p>
+
+  </div>
 </div>
 {% endblock %}
+
 {% block foot %}
 <script src="//maps.google.com/maps/api/js?sensor=true"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-
 <script type="text/javascript">
     {% include "boundaryservice/jsonformatter.js" %}
 </script>
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 {% compress js %}
+<script src="{{ STATIC_URL }}js/underscore-min.js"></script>
 <script src="{{ STATIC_URL }}leaflet/leaflet.js"></script>
 <script src="{{ STATIC_URL }}js/store.js"></script>
 <script src="{{ STATIC_URL }}js/json.js"></script>
