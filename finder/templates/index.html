@@ -1,48 +1,107 @@
 {% extends 'base.html' %}
 {% load compress %}
 
-{% block title %}Represent, by Open North{% endblock %}
+{% block title %}Represent | elected officials and electoral districts database{% endblock %}
 
 {% block head %}
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css">
 {% compress css %}
-<link rel="stylesheet" href="{{ STATIC_URL }}css/less.css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
 <link rel="stylesheet" href="{{ STATIC_URL }}leaflet/leaflet.css">
 <link rel="stylesheet" href="{{ STATIC_URL }}css/demo.css">
 {% endcompress %}
-<style type="text/css">
-    {% include "boundaryservice/jsonformatter.css" %}
-</style>
 <!--[if lte IE 8]><link rel="stylesheet" href="{{ STATIC_URL }}leaflet.ie.css"><![endif]-->
 {% endblock %}
 
 {% block content %}
-<div id="wrap">
-  <h1 id="page-title">Represent, by Open North</h1>
-  <div class="page-content">
-
-<div id="form-wrapper">
-  <form id="location-form">
-    <input type="text" id="address" name="address" placeholder="Enter an address or drag the pin on the map">
-    <input type="submit">
-    <p>Outside {{ settings.EXAMPLE_SCOPE }}? <a href="javascript:void(0)" id="use-default-location">Jump to {{ settings.EXAMPLE_PLACE }}</a> or drag the pin on the map!</p>
-  </form>
-  <div id="addresses"></div>
-</div>
-<div id="georesults" class="clearfix">
-  <div id="map_canvas"></div>
-</div>
-
-<table id="boundaries" border="0" cellpadding="0" cellspacing="0">
-</table>
-
-<h3>About</h3>
-
-<p>Represent is <a href="https://github.com/opennorth/canada-boundaryservice">open source</a> under the <a href="https://raw.github.com/opennorth/canada-boundaryservice/master/MIT-LICENSE.txt">MIT license</a>.</p>
-
-<p>The digital boundary files for this project are available under different licenses. Please consult the <a href="">API</a> for information on data sources.</p>
-
+<header class="container">
+  <div class="hero-unit">
+    <h1>Represent, by Open North</h1>
+    <p>The open database of Canadian elected representatives and administrative boundaries</p>
   </div>
+</header>
+<div class="container">
+  <p id="summary">Represent is a <strong>database and web service</strong> that maps <strong>postal codes and points</strong> to current administrative boundaries and elected representatives at the federal, provincial and municipals levels of government in Canada.</p>
+  <div class="well">
+    <input type="text" id="address" name="address" placeholder="Enter an address or drag the pin on the map">
+    <a href="#" id="submit" class="btn large primary">Submit</a>
+  </div>
+  <div class="row">
+    <div class="span8">
+      <div id="map"></div>
+    </div>
+    <div class="span8">
+      <select id="addresses"></select>
+      <table id="boundaries"></table>
+    </div>
 </div>
+<footer class="container">
+  <h2>Coverage</h2>
+  <p>Represent is an open database of:</p>
+  <div class="row">
+    <div class="span8">
+      <ul>
+        <li>Members of Parliament (MP)</li></li>
+        <li>Members of the Legislative Assembly (MLA)</li>
+        <li>Members of the Provincial Parliament (MPP)</li>
+        <li>Members of the National Assembly (MNA)</li>
+        <li>mayors and city councillors</li>
+      </ul>
+    </div>
+    <div class="span8">
+      <ul>
+        <li>Federal electoral districts</li>
+        <li>Provincial electoral districts</li>
+        <li>Census subdivisions</li>
+        <li>Municipal boundaries</li>
+        <li>Ward and borough boundaries</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span8">
+      <p>It has both representatives and boundaries for:</p>
+      <ul>
+        <li>Canada</li>
+        <li>Alberta</li>
+        <li>British Columbia</li>
+        <li>Manitoba</li>
+        <li>New Brunswick</li>
+        <li>Newfoundland and Labrador</li>
+        <li>Nova Scotia</li>
+        <li>Ontario</li>
+        <li>Prince Edward Island</li>
+        <li>Québec</li>
+        <li>Saskatchewan</li>
+      </ul>
+    </div>
+    <div class="span8">
+      <p>It has boundaries, but not representatives, for:</p>
+      <ul>
+        <li>Calgary</li>
+        <li>Charlottetown</li>
+        <li>Edmonton</li>
+        <li>Mississauga</li>
+        <li>Montreal</li>
+        <li>Ottawa</li>
+        <li>Stratford, PE</li>
+        <li>Summerside</li>
+        <li>Toronto</li>
+        <li>Windsor</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Contributing</h2>
+  <p>TODO link to scrapers</p>
+
+  <h2>License</h2>
+  <p>Represent is <a href="https://github.com/opennorth/canada-boundaryservice">open source</a> under the <a href="https://raw.github.com/opennorth/canada-boundaryservice/master/MIT-LICENSE.txt">MIT license</a>. The digital boundary files are available under various licenses. Please consult the <a href="/api/">API</a> for information on data sources.</p>
+
+  <h2>Credits</h2>
+  <p>TODO</p>
+</footer>
 {% endblock %}
 
 {% block foot %}
@@ -51,9 +110,6 @@
 {% compress js %}
 <script src="{{ STATIC_URL }}js/underscore-min.js"></script>
 <script src="{{ STATIC_URL }}leaflet/leaflet.js"></script>
-<script src="{{ STATIC_URL }}js/store.js"></script>
-<script src="{{ STATIC_URL }}js/json.js"></script>
-<script src="{{ STATIC_URL }}js/finder.js"></script>
-<script src="{{ STATIC_URL }}js/jsonformatter.js"></script>{# Provided by boundaryservice app #}
+<script src="{{ STATIC_URL }}js/index.js"></script>
 {% endcompress %}
 {% endblock %}

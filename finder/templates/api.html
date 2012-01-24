@@ -1,6 +1,24 @@
+{% extends 'base.html' %}
+{% load compress %}
+
+{% block title %}Represent API{% endblock %}
+
+{% block head %}
+{% compress css %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/demo.css">
+<style type="text/css">
+    {% include "boundaryservice/jsonformatter.css" %}
+</style>
+{% endcompress %}
+<!--[if lte IE 8]><link rel="stylesheet" href="{{ STATIC_URL }}leaflet.ie.css"><![endif]-->
+{% endblock %}
+
+{% block content %}
+<div class="container">
 <h2 id="introduction">Introduction</h2>
 
-<p>PROJNAME provides a RESTful JSON API to a wealth of information of Canadian political districts and elected representatives.</p>
+<p>Represent provides a RESTful JSON API to a wealth of information of Canadian political districts and elected representatives.</p>
 
 <p>The API offers five resources: <a href="#boundary_sets">boundary sets</a>, <a href="#boundaries">boundaries</a>,
     <a href="#postcodes">postal codes</a>, <a href="#representative_sets">representative sets</a>, and
@@ -225,3 +243,13 @@ field on the appropriate boundary set resource, make a copy on Scraperwiki, edit
     </tr>
     </tbody>
 </table>
+</div>
+{% endblock %}
+
+{% block foot %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+{% compress js %}
+<script src="{{ STATIC_URL }}js/jsonformatter.js"></script>
+<script src="{{ STATIC_URL }}js/api.js"></script>
+{% endcompress %}
+{% endblock %}
