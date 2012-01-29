@@ -15,7 +15,7 @@ p {
   line-height: 1.5em;
 }
 
-h2,h3 {
+h2, h3 {
   margin: .5em 0;
 }
 
@@ -119,7 +119,7 @@ pre {
   color: white;
 }
 
-#api h1 {
+#api h1, #home h2 {
   margin-top: 0;
   padding-top: 40px;
 }
@@ -134,18 +134,10 @@ pre .key {
   color: #660E7A;
 }
 pre .structure {
-  color: #570707;
+  color: #B58110;
 }
 pre .value {
   color: #038C35;
-}
-
-#apibrowser .aside {
-  color: #AAAAAA;
-}
-#apibrowser .aside a {
-  color: #AAAAAA;
-  text-decoration: underline;
 }
 
 .clear {
@@ -154,6 +146,7 @@ pre .value {
 
 footer.footer {
   background-color: #EEEEEE;
+  padding-bottom: 20px;
 }
 footer.footer p {
   font-size: 90%;
