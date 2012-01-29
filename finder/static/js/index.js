@@ -19,7 +19,7 @@ function processLatLng(latlng) {
     processLatLngCallback(latlng);
   }
   else {
-    $.getJSON('http://boundaries.opennorth.ca/boundaries/?contains=' + latlng.lat + ',' + latlng.lng + '&callback=?', function (response) {
+    $.getJSON('/boundaries/?contains=' + latlng.lat + ',' + latlng.lng, function (response) {
       latlngCache[key] = response;
       processLatLngCallback(latlng);
     });
@@ -72,7 +72,7 @@ function displayBoundary(url, fitBounds) {
     displayBoundaryCallback(url, fitBounds);
   }
   else {
-    $.getJSON('http://boundaries.opennorth.ca' + url + 'simple_shape?callback=?', function (response) {
+    $.getJSON(url + 'simple_shape', function (response) {
       shapeCache[url] = response;
       displayBoundaryCallback(url, fitBounds);
     });
