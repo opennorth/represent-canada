@@ -78,7 +78,8 @@ function processLatLngCallback(latlng) {
 function displayRep(boundaryURL, data, $row) {
   _.each(data.objects, function(rep) {
     $row.find('td.boundary-name').append('<br>' + rep.elected_office + ': ' +
-        '<a href="' + boundaryURL + 'representatives/?elected_office=' + rep.elected_office + '&format=apibrowser">' +
+        '<a href="' + boundaryURL + 'representatives/?' +
+        $.param({ elected_office: rep.elected_office, format: 'apibrowser'}) + '">' +
         rep.name + '</a>');
   });
 }
