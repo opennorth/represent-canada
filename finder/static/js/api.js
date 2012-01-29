@@ -4,12 +4,13 @@ jQuery(function ($) {
     var $this = $(this);
     if ($this.is(':empty')) {
       var url = $this.data('url');
-      $this.append('<div class="url">' + url + '</div>');
+      $this.append('<div class="url"><code>' + url + '</code></div>');
       $.ajax({
         url: url + (url.indexOf('?') === -1 ? '?' : '&') + 'pretty=1',
         dataType: 'text',
         success: function (data) {
           $this.append(formatJSON(data.replace(/[?&]pretty=1/g, '')));
+          $('body').scrollSpy('refresh');
         }
       });
     }

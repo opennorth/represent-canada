@@ -3,48 +3,40 @@
 
 {% block title %}Represent API{% endblock %}
 
-{% block head %}
-{% compress css %}
-<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
-<link rel="stylesheet" href="{{ STATIC_URL }}css/demo.css">
-<style type="text/css">
-    {% include "boundaryservice/jsonformatter.css" %}
-</style>
-{% endcompress %}
-<!--[if lte IE 8]><link rel="stylesheet" href="{{ STATIC_URL }}leaflet.ie.css"><![endif]-->
+{% block topbar_nav %}
+{% include "api-nav.include.html" with nav_active='introduction' apidoc_url='' %}
 {% endblock %}
 
 {% block content %}
-<div class="container">
-<h2 id="introduction">Introduction</h2>
+
+<div class="container" id="api">
+<h1 id="introduction">The Represent API</h1>
 
 <p>Represent provides a RESTful JSON API to a wealth of information of Canadian political districts and elected representatives.</p>
 
-<p>The API offers five resources: <a href="#boundary_sets">boundary sets</a>, <a href="#boundaries">boundaries</a>,
-    <a href="#postcodes">postal codes</a>, <a href="#representative_sets">representative sets</a>, and
-    <a href="#representatives">representatives</a>.</p>
+<p>The API offers five resources: <a href="#boundaryset">boundary sets</a>, <a href="#boundary">boundaries</a>,
+    <a href="#postcode">postal codes</a>, <a href="#representativeset">representative sets</a>, and
+    <a href="#representative">representatives</a>.</p>
 
-<h2 id="basics">Basics</h2>
+<h1 id="basics">Basics</h1>
 
-<p>The base URL for all requests is <code>http://boundaries.opennorth.ca</code></p>
+<p>The base URL for all requests is <code>http://represent.opennorth.ca</code></p>
 
-<h3>Formats</h3>
+<h2>Formats</h2>
 
 <p>All resources are available in JSON. For geospatial resources, this means GeoJSON; geo resources are additionally available in KML and Well-Known Text, by appending <code>format=kml</code> or <code>format=wkt</code> parameters. A user-friendly HTML representation of a JSON response is available by appending <code>format=apibrowser</code>.</p>
 
 <p>For client-side cross-domain requests, we support JSONP. Just add a <code>callback</code> parameter to your query string.</p>
 
-<h3>Filtering</h3>
+<h2>Filtering</h2>
 
 <p>Filtering lists of resources is done via query-string parameters. Each resource will list the fields you can filter on. So, to find representatives named Rodney, you'd access <code>/representatives/?first_name=Rodney</code>. You can also perform a variety of substring queries by appending <code>__querytype</code> to your parameter name, where <code>querytype</code> is one of <code>iexact</code>, <code>contains</code>, <code>icontains</code>, <code>startswith</code>, <code>istartswith</code>, <code>endswith</code>, <code>iendswith</code>, and <code>isnull</code>. In each case, a starting <code>i</code> indicates case-insensitivity. Example: <code>/representatives/?last_name__istartswith=m</code></p>
 
-<h3>Rate limits</h3>
+<h2>Rate limits</h2>
 
 <p>TODO</p>
 
-<h2 id="resources">Resources</h2>
-
-<h3 id="boundary_sets">Boundary Sets</h3>
+<h1 id="boundaryset">Boundary Sets</h1>
 
 <p>URL: <code>/boundary-sets/</code></p>
 
@@ -54,13 +46,13 @@
 
 <p><strong>Filterable fields:</strong> <code>name</code>, <code>domain</code>.</p>
 
-<h3 id="boundaries">Boundaries</h3>
+<h1 id="boundary">Boundaries</h1>
 
 <p>URL: <code>/boundaries/</code></p>
 
 <p>A boundary is a single district.</p>
 
-<pre class="loadjson" data-url="/boundaries/federal-electoral-districts/outremont/"></pre>
+<pre class="loadjson" data-url="/boundaries/nova-scotia-electoral-districts/cape-breton-north/"></pre>
 
 <p>The <code>external_id</code> field (which is not necessarily present on every resource) is an ID number used for this district in our source data.</p>
 
@@ -68,19 +60,19 @@
 
 <p><strong>Filterable fields:</strong> <code>name</code>, <code>external_id</code>.</p>
 
-<h4>Spatial filters</h4>
+<h3>Spatial filters</h3>
 
 <p>Access all the districts that include a given point at <code>/boundaries/?contains=[latitude],[longitude]</code></p>
 
 <pre class="loadjson" data-url="/boundaries/?contains=45.524,-73.596"></pre>
 
-<p>Boundaries that intersect or touch another boundary can be accessed via <code>/boundaries/?intersects=federal-electoral-districts/outremont</code> or <code>/boundaries/?touches=federal-electoral-districts/outremont</code>. (What we mean by &#8220;intersects&#8221; is, in the specific definitions used by PostGIS, &ldquo;covers or overlaps.&rdquo;)</p>
+<p>Boundaries that intersect or touch another boundary can be accessed via <code>/boundaries/?intersects=alberta-electoral-districts/highwood</code> or <code>/boundaries/?touches=alberta-electoral-districts/highwood</code>. (What we mean by &#8220;intersects&#8221; is, in the specific definitions used by PostGIS, &ldquo;covers or overlaps.&rdquo;)</p>
 
-<h4 id="spatial_fields">Spatial fields</h4>
+<h3 id="spatial_fields">Spatial fields</h3>
 
 <p>To access spatial fields, follow the links provided in the <code>shape_url</code>, <code>simple_shape_url</code>, and <code>centroid_url</code> keys. The <code>simple_shape</code> is the district&#8217;s shape, simplified to a tolerance of 0.002; this&#8217;ll usually look just fine if you&#8217;re displaying a map, and be quicker to load. Spatial fields additionally support the <code>kml</code> and <code>wkt</code> formats.</p>
 
-<h3 id="postcodes">Postal codes</h3>
+<h1 id="postcode">Postal codes</h1>
 
 <p>URL: <code>/postcodes/A0A0A0/</code> (note that we don't provide access to a list of postcode resources, just individual-postcode URLs)</p>
 
@@ -95,7 +87,7 @@ cases be inaccurate</b>.</p>
 <p>When an explicit list of which postal codes correspond to which districts has been made available, we include that data
 in a field named <code>boundaries_concordance</code>.</p>
 
-<h3 id="representative_sets">Representative sets</h3>
+<h1 id="representativeset">Representative sets</h1>
 
 <p>URL: <code>/representative-sets/</code></p>
 
@@ -103,7 +95,7 @@ in a field named <code>boundaries_concordance</code>.</p>
 
 <pre class="loadjson" data-url="/representative-sets/ontario-legislature/"></pre>
 
-<h3 id="representatives">Representatives</h3>
+<h1 id="representative">Representatives</h1>
 
 <p>URL: <code>/representatives/</code></p>
 
@@ -111,23 +103,23 @@ in a field named <code>boundaries_concordance</code>.</p>
 
 <pre class="loadjson" data-url="/representatives/house-of-commons/?last_name=Harper"></pre>
 
-Note that this API does not provide stable URLs for individual representatives.
+<p>Note that this API does not provide stable URLs for individual representatives.</p>
 
 <p><strong>Filterable fields:</strong> <code>name</code>, <code>first_name</code>, <code>last_name</code>, <code>district_name</code>, <code>elected_office</code>, <code>party_name</code>.</p>
 
-<h4>Spatial filters</h4>
+<h3>Spatial filters</h3>
 
 <p>Access all the representatives for a given point with <code>/representatives/?point=[latitude],[longitude]</code>. This is a shortcut: you could get the same results by first querying the Boundaries resource with a <code>contains</code> filter, and then using the boundaries returned to query the Representatives resource with a <code>districts</code> filter.</p>
 
 <pre class="loadjson" data-url="/representatives/?point=45.524,-73.596"></pre>
 
-<h4>Fields</h4>
+<h3>Fields</h3>
 
 <p>Only those fields labelled required below are guaranteed to be present in results. If you&rsquo;d like to use fields we&rsquo;re
 not currently returning for a particular jurisdiction, update our scrapers! Find the scraper via the <code>scraperwiki_url</code>
 field on the appropriate boundary set resource, make a copy on Scraperwiki, edit your copy till it works, then send us an e-mail.</p>
 
-<table>
+<table class="zebra-striped">
     <thead>
     <tr>
         <th>Field name</th>
@@ -213,7 +205,7 @@ field on the appropriate boundary set resource, make a copy on Scraperwiki, edit
     <tr>
         
         <td>district_id</td>
-        <td></td>
+        <td>No</td>
         <td>24013</td>
         <td>If there&#39;s a number or other ID provided alongside the district name.</td>
     </tr>
@@ -226,30 +218,22 @@ field on the appropriate boundary set resource, make a copy on Scraperwiki, edit
     <tr>
         <td>offices</td>
         <td>No</td>
-        <td>[ {&quot;postal&quot;: &quot;10 North Pole, H0H 0H0&quot;, &quot;tel&quot;: &quot;555-555-5555&quot;,
+        <td><code>[ {&quot;postal&quot;: &quot;10 North Pole, H0H 0H0&quot;, &quot;tel&quot;: &quot;555-555-5555&quot;,
             &quot;type&quot;: &quot;constituency&quot;}, {&quot;tel&quot;: &quot;444-444-4444&quot;, &quot;type&quot;: &quot;legislature&quot;}
-            ]</td>
+            ]</code></td>
         <td>A JSON array with basic contact information for the representative&quot;s offices. It should be an
-            array of JSON objects (hashes), with the optional keys: &quot;postal&quot; (mailing address), &quot;tel&quot;
-            (telephone), &quot;fax&quot; (telephone), &quot;type&quot; (what kind of office is this? e.g. constituency vs.
+            array of JSON objects (hashes), with the optional keys: <code>postal</code> (mailing address), <code>tel</code>
+            (telephone), <code>fax</code> (telephone), <code>type</code> (what kind of office is this? e.g. constituency vs.
             legislature).</td>
     </tr>
     <tr>
         <td>extra</td>
-        <td></td>
-        <td>{ &#39;hair_colour&#39;: &#39;brown&#39; }
+        <td>No</td>
+        <td><code>{ &#39;hair_colour&#39;: &#39;brown&#39; }</code></td>
         <td>A JSON object with any extra data you think is worth collecting that doesn&#39;t fit in other
             fields.</td>
     </tr>
     </tbody>
 </table>
 </div>
-{% endblock %}
-
-{% block foot %}
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-{% compress js %}
-<script src="{{ STATIC_URL }}js/jsonformatter.js"></script>
-<script src="{{ STATIC_URL }}js/api.js"></script>
-{% endcompress %}
 {% endblock %}
