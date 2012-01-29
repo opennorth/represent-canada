@@ -1,5 +1,4 @@
 import os
-import django
 
 SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 
@@ -85,13 +84,6 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.eggs.Loader',
 )
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.core.context_processors.media',
-    'django.core.context_processors.static',
-    'django.contrib.auth.context_processors.auth',
-    'finder.views.settings_processor',
-)
-
 MIDDLEWARE_CLASSES = (
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -120,10 +112,12 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'south',
     'compressor',
-    'boundaryservice',
+    'boundaries',
     'finder',
-    'repapi',
+    'representatives',
+    'postcodes',
 )
 
 # A sample logging configuration. The only tangible logging

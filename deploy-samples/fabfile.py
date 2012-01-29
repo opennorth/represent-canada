@@ -4,14 +4,14 @@ import os
 
 def prod():
     """Select the prod environment for future commands."""
-    env.hosts = ['boundaries.opennorth.ca']
+    env.hosts = ['represent.opennorth.ca']
     env.user = 'deployer'
     env.python = '/home/deployer/.virtualenvs/repdb/bin/python'
-    env.base_dir = '/home/deployer/repdb' # base_dir should contain canada-boundaryservice
+    env.base_dir = '/home/deployer/repdb' # base_dir should contain represent-canada
     _env_init()
     
 def _env_init():
-    env.django_dir = os.path.join(env.base_dir, 'canada-boundaryservice')
+    env.django_dir = os.path.join(env.base_dir, 'represent-canada')
     env.pip = env.python.replace('bin/python', 'bin/pip')
     
 def deploy(ref='master'):
@@ -41,10 +41,12 @@ def reload_code():
         run('kill -HUP `cat gunicorn.pid`')
 
 def update_requirements():
+    """Update Python dependencies"""
     with cd(env.django_dir):
         run(env.pip + ' install -r requirements.txt')
 
 def syncdb():
+    """Update database tables"""
     with cd(env.django_dir):
         run(env.python + ' manage.py syncdb --noinput')
         

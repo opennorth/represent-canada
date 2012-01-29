@@ -3,5 +3,8 @@ psycopg2>=2.4.1
 django_compressor==1.1
 geopy>=0.94.1
 python-memcached
--e git+http://github.com/rhymeswithcycle/django-boundaryservice.git#egg=django-boundaryservice
--e git+http://github.com/rhymeswithcycle/repapi.git#egg=repapi
+Fabric
+South
+-e git+http://github.com/rhymeswithcycle/represent-boundaries.git#egg=represent-boundaries
+-e git+http://github.com/rhymeswithcycle/represent-reps.git#egg=represent-reps
+-e git+http://github.com/rhymeswithcycle/represent-postcodes.git#egg=represent-postcodes
