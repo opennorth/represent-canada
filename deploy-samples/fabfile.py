@@ -49,8 +49,16 @@ def syncdb():
     """Update database tables"""
     with cd(env.django_dir):
         run(env.python + ' manage.py syncdb --noinput')
+        run(env.python + ' manage.py migrate')
         
 def update_statics():
     """Tell Django staticfiles to update said files."""
     with cd(env.django_dir):
         run(env.python + ' manage.py collectstatic --noinput')
+
+def update_shapes():
+    """Pull our shapes repository and load the shapefiles."""
+    with cd(os.path.join(env.base_dir, 'repdb-shapes')):
+        run('git pull')
+    with cd(env.django_dir):
+        run(env.python + ' manage.py loadshapefiles')
