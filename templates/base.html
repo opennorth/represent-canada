@@ -1,3 +1,4 @@
+{% load compress %}
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
@@ -10,12 +11,21 @@
   <meta name="description" content="The open database of Canadian elected representatives and administrative boundaries at the federal, provincial and municipal levels.">
   <meta name="author" content="Open North">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="{{ STATIC_URL }}css/reset.css" type="text/css" charset="utf-8">
+  {% compress css %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/reset.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}leaflet/leaflet.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/demo.css">
+  {% endcompress %}
+    <!--[if lte IE 8]><link rel="stylesheet" href="{{ STATIC_URL }}leaflet.ie.css"><![endif]-->
   {% block head %}{% endblock %}
   <script src="{{ STATIC_URL }}js/modernizr-2.0.6.min.js"></script>
 </head>
 <body>
   {% block content %}{% endblock %}
-  {% block foot %}{% endblock %}
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  {% block foot %}
+
+  {% endblock %}
 </body>
 </html>
