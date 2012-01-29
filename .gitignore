@@ -3,7 +3,7 @@
 .DS_Store
 build
 venv
-settings_database.py
+settings.py
 /static
 /fabfile.py
 /data

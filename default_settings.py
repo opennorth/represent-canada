@@ -1,10 +1,8 @@
 import os
 
-SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+# Default Django settings for Represent.
 
-# Django settings for project.
-
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -20,7 +18,9 @@ MANAGERS = ADMINS
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'America/Montreal'
+
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -28,11 +28,11 @@ LANGUAGE_CODE = 'en-us'
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
-USE_I18N = True
+USE_I18N = False
 
 # If you set this to False, Django will not format dates, numbers and
 # calendars according to the current locale
-USE_L10N = True
+USE_L10N = False
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
@@ -110,8 +110,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.gis',
     'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    'django_extensions',
     'south',
     'compressor',
     'boundaries',
@@ -120,11 +119,7 @@ INSTALLED_APPS = (
     'postcodes',
 )
 
-# A sample logging configuration. The only tangible logging
-# performed by this configuration is to send an email to
-# the site admins on every HTTP 500 error.
-# See http://docs.djangoproject.com/en/dev/topics/logging for
-# more details on how to customize your logging configuration.
+# A sample logging configuration.
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -132,18 +127,28 @@ LOGGING = {
         'mail_admins': {
             'level': 'ERROR',
             'class': 'django.utils.log.AdminEmailHandler'
-        }
-    },
+        },
+        'console':{
+            'level':'DEBUG',
+            'class':'logging.StreamHandler',
+            },
+        },
     'loggers': {
         'django.request': {
             'handlers': ['mail_admins'],
             'level': 'ERROR',
             'propagate': True,
-        },
+            },
+        'django': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            },
+        'boundaries': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            }
     }
 }
-
-COMPRESS_ENABLED = False 
 
 COMPRESS_ROOT = STATIC_ROOT
 
@@ -152,8 +157,3 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
     }
 }
-
-try:
-    from settings_override import *
-except ImportError:
-    pass
