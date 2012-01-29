@@ -11,6 +11,7 @@
   <meta name="description" content="The open database of Canadian elected representatives and administrative boundaries at the federal, provincial and municipal levels.">
   <meta name="author" content="Open North">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="http://opennorth.ca/favicon.ico">
   {% compress css %}
     <link rel="stylesheet" href="{{ STATIC_URL }}css/reset.css" type="text/css" charset="utf-8">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
@@ -22,9 +23,29 @@
   <script src="{{ STATIC_URL }}js/modernizr-2.0.6.min.js"></script>
 </head>
 <body>
+{% block topbar_full %}
+<div class="topbar" data-scrollspy="scrollspy">
+    <div class="fill">
+        <div class="container">
+            <a class="brand" href="/">Represent</a>
+            <ul class="nav">
+                {% block topbar_nav %}
+                    <li><a href="/">Home</a></li>
+                {% endblock topbar_nav %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock topbar_full %}
   {% block content %}{% endblock %}
+{% block foot %}
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  {% block foot %}
+{% compress js %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/underscore-min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap-scrollspy.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jsonformatter.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/api.js"></script>
+{% endcompress %}
 
   {% endblock %}
 </body>
