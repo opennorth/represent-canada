@@ -7,6 +7,13 @@
 <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css">
 {% endblock %}
 
+{% block topbar_nav %}
+<li class="active"><a href="#demo">Demo</a></li>
+<li><a href="#coverage">Coverage</a></li>
+<li><a href="#contributing">Contributing</a></li>
+<li><a href="/api/">API</a></li>
+{% endblock %}
+
 {% block content %}
 <header class="container">
   <div class="hero-unit">
@@ -17,7 +24,7 @@
 </header>
 <div class="container">
   <p id="summary">Represent, by <a href="http://opennorth.ca/">Open North</a>, is a <strong>database and web service</strong> that maps <strong>postal codes and points</strong> to current administrative boundaries and elected representatives at the federal, provincial and municipal levels of government in Canada.</p>
-  <div class="well">
+  <div id="demo" class="well">
     <input type="text" id="address" name="address" placeholder="Enter an address or drag the pin on the map">
     <a href="#" id="submit" class="btn large primary">Submit</a>
   </div>
@@ -30,80 +37,58 @@
       <table id="boundaries"></table>
     </div>
 </div>
-<footer class="container">
-  <h2>Coverage</h2>
-  <p>Represent is an open database of:</p>
+<div class="container">
+  <div id="coverage">
+      <h2>Coverage</h2>
+
+      <p>Represent is an open database of:</p>
   <div class="row">
-    <div class="span8">
-      <ul>
-        <li>Members of Parliament (MP)</li></li>
-        <li>Members of the Legislative Assembly (MLA)</li>
-        <li>Members of the Provincial Parliament (MPP)</li>
-        <li>Members of the National Assembly (MNA)</li>
-        <li>mayors and city councillors</li>
-      </ul>
-    </div>
-    <div class="span8">
-      <ul>
-        <li>Federal electoral districts</li>
-        <li>Provincial electoral districts</li>
-        <li>Census subdivisions</li>
-        <li>Municipal boundaries</li>
-        <li>Ward and borough boundaries</li>
-      </ul>
-    </div>
+      <div class="span8">
+          <ul>
+            <li>Members of Parliament (MP)</li></li>
+            <li>Members of the Legislative Assembly (MLA)</li>
+            <li>Members of the Provincial Parliament (MPP)</li>
+            <li>Members of the National Assembly (MNA)</li>
+            <li>mayors and city councillors</li>
+          </ul>
+      </div>
+      <div class="span8 rightcol">
+          <ul>
+            <li>Federal electoral districts</li>
+            <li>Provincial electoral districts</li>
+            <li>Census subdivisions</li>
+            <li>Municipal boundaries</li>
+            <li>Ward and borough boundaries</li>
+          </ul>
+      </div>
+  </div>
+        <p>It includes the following types of districts (an <span class="label success">R</span> means representative data is also available):</p>
+
+        <ul id="boundary-sets">
+          {% for set in boundary_sets %}
+              <li class="span8"><a href="/boundaries/{{ set.slug }}/?format=apibrowser">{{ set.name }}</a>
+              {% if set.reps %}<span class="label success"><a href="/representatives/{{ set.reps }}/?format=apibrowser">R</a></span>{% endif %}
+              </li>
+          {% endfor %}
+        </ul>
+        
+        <div class="clear"></div>
   </div>
 
-  <div class="row">
-    <div class="span8">
-      <p>It has both representatives and boundaries for:</p>
-      <ul>
-        <li>Canada</li>
-        <li>Alberta</li>
-        <li>British Columbia</li>
-        <li>Manitoba</li>
-        <li>New Brunswick</li>
-        <li>Newfoundland and Labrador</li>
-        <li>Nova Scotia</li>
-        <li>Ontario</li>
-        <li>Prince Edward Island</li>
-        <li>Québec</li>
-        <li>Saskatchewan</li>
-      </ul>
-    </div>
-    <div class="span8">
-      <p>It has boundaries, but not representatives, for:</p>
-      <ul>
-        <li>Calgary</li>
-        <li>Charlottetown</li>
-        <li>Edmonton</li>
-        <li>Mississauga</li>
-        <li>Montreal</li>
-        <li>Ottawa</li>
-        <li>Stratford, PE</li>
-        <li>Summerside</li>
-        <li>Toronto</li>
-        <li>Windsor</li>
-      </ul>
-    </div>
-  </div>
-
-  <h2>Contributing</h2>
+  <h2 id="contributing">Contributing</h2>
   <p>TODO link to scrapers</p>
 
-  <h2>License</h2>
   <p>Represent is <a href="https://github.com/opennorth/represent-canada">open source</a> under the <a href="https://raw.github.com/opennorth/represent-canada/master/MIT-LICENSE.txt">MIT license</a>. The digital boundary files are available under various licenses. Please consult the <a href="/api/">API</a> for information on data sources.</p>
 
-  <h2>Credits</h2>
-  <p>TODO</p>
-</footer>
+  <p>Credits TODO</p>
+</div>
 {% endblock %}
 
 {% block foot %}
 <script src="//maps.google.com/maps/api/js?sensor=true"></script>
+{{ block.super }}
 {% compress js %}
-<script src="{{ STATIC_URL }}js/underscore-min.js"></script>
-<script src="{{ STATIC_URL }}leaflet/leaflet.js"></script>
-<script src="{{ STATIC_URL }}js/index.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}leaflet/leaflet.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/index.js"></script>
 {% endcompress %}
 {% endblock %}
