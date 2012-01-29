@@ -4,6 +4,7 @@ img::selection    {background: transparent;}
 img::-moz-selection {background: transparent;}
 
 body {
+  padding-top: 40px; // accomodates topbar
   font-size: 16px;
   line-height: 1.5em;
   -webkit-tap-highlight-color: rgb(255,255,158);
@@ -12,6 +13,10 @@ body {
 p {
   font-size: 16px;
   line-height: 1.5em;
+}
+
+h2,h3 {
+  margin: .5em 0;
 }
 
 header {
@@ -81,6 +86,85 @@ pre {
   width: 100%;
   overflow: auto;
   padding: 10px;
+  white-space: pre;
+  word-wrap: normal;
+}
+
+#boundary-sets li {
+  float: left;
+  height: 20px;
+}
+
+#coverage ul.span8 {
+  float: left;
+}
+#coverage div.rightcol {
+  margin-left: 0;
+}
+#coverage p {
+  clear: both;
+}
+
+#coverage ul {
+  width: 100%;
+}
+
+#coverage li a {
+  color: #404040;
+}
+#coverage li a:hover {
+  color: #0069D6;
+}
+#coverage .label a {
+  color: white;
+}
+
+#api h1 {
+  margin-top: 0;
+  padding-top: 40px;
+}
+
+pre div.url {
+  margin-bottom: 5px;
+  padding-bottom: 7px;
+  border-bottom: 1px dotted #CCCCCC;
+}
+
+pre .key {
+  color: #660E7A;
+}
+pre .structure {
+  color: #570707;
+}
+pre .value {
+  color: #038C35;
+}
+
+#apibrowser .aside {
+  color: #AAAAAA;
+}
+#apibrowser .aside a {
+  color: #AAAAAA;
+  text-decoration: underline;
+}
+
+.clear {
+  clear: both;
+}
+
+footer.footer {
+  background-color: #EEEEEE;
+}
+footer.footer p {
+  font-size: 90%;
+  color: #777777;
+}
+footer.footer a {
+  color: #555555;
+  text-decoration: underline;
+}
+footer.footer a:hover {
+  color: #0069D6;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -89,6 +173,9 @@ pre {
   }
   p {
     font-size: 13px;
+  }
+  .topbar .container {
+      width: 95%;
   }
   .container {
     width: 700px; /* 12 columns */
@@ -117,12 +204,16 @@ pre {
 @media only screen and (min-width: 480px) and (max-width: 767px) {
   body {
     font-size: 13px;
+    padding-top: 0;
   }
   p {
     font-size: 13px;
   }
   .container {
     width: 460px; /* 8 columns */
+  }
+  .topbar {
+    display: none;
   }
   header img {
     width: 60px;
@@ -152,17 +243,24 @@ pre {
   .leaflet-control-attribution {
     display: none;
   }
+  #coverage div.rightcol {
+    margin-left: 20px;
+  }
 }
 
 @media only screen and (max-width: 480px) {
   body {
     font-size: 12px;
+    padding-top: 0;
   }
   p {
     font-size: 12px;
   }
   .container {
     width: 280px; /* 5 columns */
+  }
+  .topbar {
+    display: none;
   }
   header img {
     display: none;
@@ -191,6 +289,9 @@ pre {
   }
   .leaflet-control-attribution {
     display: none;
+  }
+  #coverage div.rightcol {
+    margin-left: 20px;
   }
 }
 
