@@ -1,4 +1,10 @@
-The Canada Boundary Service aggregates regional boundary data (from shapefiles) and republishes this data via a RESTful JSON API.
+[Represent](http://represent.opennorth.ca) is the open database of Canadian elected representatives and electoral districts. It provides a RESTful API to boundary, representative, and postcode resources.
+
+This repository contains a master Django project, documentation, and a demo app. Code for the individual components of the API is in separate packages, which this project depends on:
+
+* [represent-boundaries](http://github.com/rhymeswithcycle/represent-boundaries)
+* [represent-reps](http://github.com/rhymeswithcycle/represent-reps)
+* [represent-postcodes](http://github.com/rhymeswithcycle/represent-postcodes)
 
 # Getting Started
 
@@ -25,31 +31,28 @@ It may be worthwhile to [create a template database](http://www.bigfastblog.com/
 
 Lastly, configure the `DATABASES` Django setting and and create the database tables.
 
-    cp settings_database.py.example settings_database.py
-    vi settings_database.py
+    cp settings.py.example settings.py
+    $EDITOR settings.py
     python manage.py syncdb
+    python syncdb migrate
+
+You can launch a development server with:
+
+    python manage.py runserver
 
 # Adding Data
 
-Because the licenses for the digital boundary files are unclear, this data is currently held in a private repository, which is represented here as a submodule at `data/shapefiles`. The `tmp/definitions.py` file includes URLs to these files if publicly available and is identical to the `definitions.py` file used in the private repository. Please contact [james@opennorth.ca](mailto:james@opennorth.ca) to contribute new shapefiles.
+Because the licenses for the digital boundary files are unclear, shape data is currently held in a private repository. If you have access to this repository, symlink it in to the project directory:
 
-If you have access to the private repository, the command is:
+    mkdir data
+    ln -s /all-my-shapes-are-here/ data/shapefiles
 
-    git submodule update --init
+To load data into the API, see the documentation for the boundaries, representatives, and postcodes packages.
 
-# Upstream Changes
+# International Use
 
-Canada Boundary Service is a fork of [Blank Boundary Service](https://github.com/opennorth/blank-boundaryservice). To pull in upstream changes, first add an upstream endpoint:
-
-    git remote add upstream git://github.com/opennorth/blank-boundaryservice.git
-
-Now, you can pull in upstream changes ([as documented by GitHub](http://help.github.com/fork-a-repo/)):
-
-    git fetch upstream
-    git merge upstream/master
-
-Additional documentation is available from the [Blank Boundary Service README](https://github.com/opennorth/blank-boundaryservice#readme).
+Apart from the postcode component, which is optional and simple to rewrite, we've tried to avoid any Canada-specific code in this project. We hope reusing our code isn't too difficult, and would love to hear about international project using this code.
 
 # Contact
 
-Please contact [james@opennorth.ca](mailto:james@opennorth.ca) for all questions or comments. Please submit feature requests, bug fixes, etc. [through GitHub](https://github.com/opennorth/canada-boundaryservice/issues).
+Please contact [represent@opennorth.ca](mailto:represent@opennorth.ca) for all questions or comments. Please submit feature requests, bug fixes, etc. [through GitHub](https://github.com/opennorth/represent-canada/issues).
