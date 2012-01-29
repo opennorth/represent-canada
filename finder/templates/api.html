@@ -12,7 +12,7 @@
 <div class="container" id="api">
 <h1 id="introduction">The Represent API</h1>
 
-<p>Represent provides a RESTful JSON API to a wealth of information of Canadian political districts and elected representatives.</p>
+<p>Represent provides a RESTful JSON API to a wealth of information about Canadian political districts and elected representatives.</p>
 
 <p>The API offers five resources: <a href="#boundaryset">boundary sets</a>, <a href="#boundary">boundaries</a>,
     <a href="#postcode">postal codes</a>, <a href="#representativeset">representative sets</a>, and
@@ -34,7 +34,7 @@
 
 <h2>Rate limits</h2>
 
-<p>TODO</p>
+<p>If you make more than 60 requests per minute, you may receive HTTP 503 Service Unavailable responses.</p>
 
 <h1 id="boundaryset">Boundary Sets</h1>
 
@@ -115,9 +115,7 @@ in a field named <code>boundaries_concordance</code>.</p>
 
 <h3>Fields</h3>
 
-<p>Only those fields labelled required below are guaranteed to be present in results. If you&rsquo;d like to use fields we&rsquo;re
-not currently returning for a particular jurisdiction, update our scrapers! Find the scraper via the <code>scraperwiki_url</code>
-field on the appropriate boundary set resource, make a copy on Scraperwiki, edit your copy till it works, then send us an e-mail.</p>
+<p>Only those fields labelled required below are guaranteed to be present in results.</p>
 
 <table class="zebra-striped">
     <thead>
@@ -235,5 +233,14 @@ field on the appropriate boundary set resource, make a copy on Scraperwiki, edit
     </tr>
     </tbody>
 </table>
+
+<h3 id="contribute-scraper">Contributing</h3>
+
+<p>All representative data comes from scrapers. If you&rsquo;d like to use fields we&rsquo;re
+not currently returning for a particular jurisdiction, or if you&rsquo;d just like to help out, update our scrapers!</p>
+
+<p>Find the scraper via the <code>scraperwiki_url</code>
+field on the appropriate boundary set resource, make a copy on <a href="http://www.scraperwiki.com/">Scraperwiki</a>, edit your copy till it works, then e-mail <a href="mailto:represent@opennorth.ca">represent@opennorth.ca</a>.</p>
+<p>If we don&rsquo;t yet have a scraper for a particular jurisdiction, you might want to use one of our existing ones as an example. Use the list of fields above as a reference.</p>
 </div>
 {% endblock %}
