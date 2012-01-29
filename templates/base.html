@@ -22,7 +22,7 @@
   {% block head %}{% endblock %}
   <script src="{{ STATIC_URL }}js/modernizr-2.0.6.min.js"></script>
 </head>
-<body>
+<body id="{% block page_id %}default{% endblock %}">
 {% block topbar_full %}
 <div class="topbar" data-scrollspy="scrollspy">
     <div class="fill">
@@ -38,7 +38,16 @@
 </div>
 {% endblock topbar_full %}
   {% block content %}{% endblock %}
-{% block foot %}
+{% block footer_full %}
+<footer class="footer">
+    <div class="container">
+        {% block footer %}
+            <p>This is <a href="/">Represent</a>, the open database of Canadian elected representatives and electoral districts. Contact <a href="mailto:represent@opennorth.ca">represent@opennorth.ca</a> with any problems.</p>
+        {% endblock %}
+    </div>
+</footer>
+{% endblock footer_full %}
+{% block js %}
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 {% compress js %}
 <script type="text/javascript" src="{{ STATIC_URL }}js/underscore-min.js"></script>
@@ -46,7 +55,6 @@
 <script type="text/javascript" src="{{ STATIC_URL }}js/jsonformatter.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/api.js"></script>
 {% endcompress %}
-
-  {% endblock %}
+{% endblock js%}
 </body>
 </html>
