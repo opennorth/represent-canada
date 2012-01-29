@@ -1,4 +1,4 @@
-var latlngCache = [], boundaryCache = [], shapeCache = [];
+var latlngCache = [], boundaryCache = [], shapeCache = [], repCache = {};
 var map, marker, shape, boundary; // the displayed boundary
 
 /**
@@ -27,7 +27,7 @@ function processLatLng(latlng) {
 }
 
 var boundaryListRowTemplate = _.template('<tr><td><%= boundary_set_name %></td>' +
-    '<td><a href="#" class="display-shape" data-url="<%= url %>"><%= name %></a>' +
+    '<td class="boundary-name"><a href="#" class="display-shape" data-url="<%= url %>"><%= name %></a>' +
     ' &nbsp;<span class="label"><a href="<%= url %>?format=apibrowser">API</a></span></td></tr>');
 
 /**
@@ -45,6 +45,17 @@ function processLatLngCallback(latlng) {
     boundaryCache[object.url] = object;
     var $row = $(boundaryListRowTemplate(object));
     $('#boundaries').append($row);
+
+    // And add representative info
+    if (repCache[object.url]) {
+      displayRep(object.url, repCache[object.url], $row);
+    }
+    else {
+      $.getJSON(object.url + 'representatives/', function(data) {
+        repCache[object.url] = data;
+        displayRep(object.url, data, $row);
+      });
+    }
   });
 
   // Try to display a boundary from the same set.
@@ -56,6 +67,20 @@ function processLatLngCallback(latlng) {
   if (boundary) {
     displayBoundary(boundary.url, false);
   }
+}
+
+/**
+ * Appends the names of representatives to a boundary name.
+ * @param boundaryURL the URL of the corresponding boundary
+ * @param data Parsed JSON from a districts/representatives/ call
+ * @param $row jQuery object for the <tr> containing the boundary name
+ */
+function displayRep(boundaryURL, data, $row) {
+  _.each(data.objects, function(rep) {
+    $row.find('td.boundary-name').append('<br>' + rep.elected_office + ': ' +
+        '<a href="' + boundaryURL + 'representatives/?elected_office=' + rep.elected_office + '&format=apibrowser">' +
+        rep.name + '</a>');
+  });
 }
 
 /**

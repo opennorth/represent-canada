@@ -109,10 +109,10 @@ pre {
   width: 100%;
 }
 
-#coverage li a {
+#coverage li > a {
   color: #404040;
 }
-#coverage li a:hover {
+#coverage li > a:hover {
   color: #0069D6;
 }
 .label a {
