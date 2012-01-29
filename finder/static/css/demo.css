@@ -115,7 +115,7 @@ pre {
 #coverage li a:hover {
   color: #0069D6;
 }
-#coverage .label a {
+.label a {
   color: white;
 }
 

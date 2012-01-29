@@ -26,6 +26,10 @@ function processLatLng(latlng) {
   }
 }
 
+var boundaryListRowTemplate = _.template('<tr><td><%= boundary_set_name %></td>' +
+    '<td><a href="#" class="display-shape" data-url="<%= url %>"><%= name %></a>' +
+    ' &nbsp;<span class="label"><a href="<%= url %>?format=apibrowser">API</a></span></td></tr>');
+
 /**
  * Displays the boundaries that contain the given point.
  * @param L.LatLng latlng
@@ -36,12 +40,12 @@ function processLatLngCallback(latlng) {
   var key = latlng.toString();
 
   // Display the boundaries.
-  var html = '';
+  $('#boundaries tr').remove();
   $.each(latlngCache[key].objects, function (i, object) {
     boundaryCache[object.url] = object;
-    html += '<tr><td>' + object.boundary_set_name + '</td><td><a href="#" data-url="' + object.url + '">' + object.name + '</a></td></tr>';
+    var $row = $(boundaryListRowTemplate(object));
+    $('#boundaries').append($row);
   });
-  $('#boundaries').html(html);
 
   // Try to display a boundary from the same set.
   if (boundary) {
@@ -200,7 +204,7 @@ jQuery(function ($) {
   });
 
   // Display a boundary if user clicks on a boundary name.
-  $('#boundaries a').live('click', function (event) {
+  $('#boundaries a.display-shape').live('click', function (event) {
     var $this = $(this);
     displayBoundary($this.data('url'), true);
     event.preventDefault();
