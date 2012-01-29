@@ -16,12 +16,13 @@
 {% block content %}
 <header class="container">
   <div class="hero-unit">
-    <h1>Represent, by Open North</h1>
-    <p>The open database of Canadian elected representatives and administrative boundaries</p>
+    <a href="http://opennorth.ca/"><img id="header-logo" src="{{ STATIC_URL }}img/opennorth_logo.png" alt="Open North"></a>
+    <h1>Represent</h1>
+    <p>The open database of Canadian elected representatives and electoral districts</p>
   </div>
 </header>
 <div class="container">
-  <p id="summary">Represent is a <strong>database and web service</strong> that maps <strong>postal codes and points</strong> to current administrative boundaries and elected representatives at the federal, provincial and municipals levels of government in Canada.</p>
+  <p id="summary">Represent, by <a href="http://opennorth.ca/">Open North</a>, is a <strong>database and web service</strong> that maps <strong>postal codes and points</strong> to current administrative boundaries and elected representatives at the federal, provincial and municipal levels of government in Canada.</p>
   <div class="well">
     <input type="text" id="address" name="address" placeholder="Enter an address or drag the pin on the map">
     <a href="#" id="submit" class="btn large primary">Submit</a>
@@ -97,7 +98,7 @@
   <p>TODO link to scrapers</p>
 
   <h2>License</h2>
-  <p>Represent is <a href="https://github.com/opennorth/canada-boundaryservice">open source</a> under the <a href="https://raw.github.com/opennorth/canada-boundaryservice/master/MIT-LICENSE.txt">MIT license</a>. The digital boundary files are available under various licenses. Please consult the <a href="/api/">API</a> for information on data sources.</p>
+  <p>Represent is <a href="https://github.com/opennorth/represent-canada">open source</a> under the <a href="https://raw.github.com/opennorth/represent-canada/master/MIT-LICENSE.txt">MIT license</a>. The digital boundary files are available under various licenses. Please consult the <a href="/api/">API</a> for information on data sources.</p>
 
   <h2>Credits</h2>
   <p>TODO</p>

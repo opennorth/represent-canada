@@ -17,6 +17,11 @@ p {
 header {
   padding-top: 1em;
 }
+header img {
+  float: left;
+  padding-right: 20px;
+  width: 90px;
+}
 .hero-unit {
   padding: 30px 60px;
   margin-bottom: 1em;
@@ -119,6 +124,10 @@ pre {
   .container {
     width: 460px; /* 8 columns */
   }
+  header img {
+    width: 60px;
+    padding-top: 10px;
+  }
   .hero-unit {
     padding: 1.231em 2.462em;
   }
@@ -154,6 +163,9 @@ pre {
   }
   .container {
     width: 280px; /* 5 columns */
+  }
+  header img {
+    display: none;
   }
   .hero-unit {
     padding: 0.833em 1.667em;
