@@ -50,6 +50,10 @@ input {
   width: 360px;
   height: 26px;
 }
+input,
+select {
+  color: #404040;
+}
 
 #map {
   width: 100%;
