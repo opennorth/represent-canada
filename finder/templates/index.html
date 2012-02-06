@@ -79,19 +79,32 @@
                 <div class="clear"></div>
             </div>
 
+            <h2>Usage</h2>
+
+            <p>Represent establishes a foundation upon which other projects may be built - a necessary piece of infrastructure which we hope will enable useful and innovative features and products. Please consult the <a href="{% url apidoc %}">API</a> for documentation on how to use this web service.</p>
+
             <h2 id="contributing">Contributing</h2>
 
             <p>Represent was built by volunteers. <strong>You can help make it better.</strong></p>
 
-            <p>If you&rsquo;ve got digital boundary files (&ldquo;shapefiles&rdquo;) for districts we don&rsquo;t have, please <a href="mailto:represent@opennorth.ca">let us know</a>.</p>
+            <ul>
+                <li><a href="https://github.com/opennorth/represent-canada/issues/17">Ask provincial Municipal Affairs ministries</a> for municipal elected officials in Excel format</li>
+                <li><a href="https://github.com/opennorth/represent-canada/issues/13">Ask municipalities</a> to provide their ward boundaries under an open license</li>
+                <li>Add to our <a href="http://www.scraperwiki.com/tags/cdnpoli/">list of scrapers</a> to get the elected officials for
+more cities (<a href="https://github.com/opennorth/represent-canada/issues/7">find out more</a>)</li>
+                <li><a href="http://opennorth.ca/donate/">Donate to Open North</a> so a staff member can improve and maintain this
+service part-time</li>
+            </ul>
 
-            <p>Our representative data comes from a gaggle of <a href="http://www.scraperwiki.com/tags/cdnpoli/">web scrapers</a>. If you can write code in Python, Ruby, PHP, or JavaScript, you can add a new scraper or improve our existing ones. <a href="{% url apidoc %}#contribute-scraper">Learn how.</a></p>
+            <p>That's our top four, but there are many more ways in which you can help. Please <a href="mailto:represent@opennorth.ca">contact us</a> if you're interested.</p>
 
-            <p>Represent is <a href="https://github.com/opennorth/represent-canada">open source</a> under the <a href="https://raw.github.com/opennorth/represent-canada/master/MIT-LICENSE.txt">MIT license</a>. The digital boundary files are available under various licenses. Please consult the <a href="{% url apidoc %}">API</a> for information on data sources.</p>
+            <h2>License</h2>
 
-            <p>Represent was built by <a href="http://michaelmulley.com/">Michael Mulley</a> and <a href="http://slashpoundbang.com/">James McKinney</a>. We took inspiration and code from the Chicago Tribune&rsquo;s <a href="https://github.com/newsapps/django-boundaryservice">Boundary Service</a>.</p>
+            <p>Represent is free to use and <a href="https://github.com/opennorth/represent-canada">open source</a> under the <a href="https://raw.github.com/opennorth/represent-canada/master/MIT-LICENSE.txt">MIT license</a>. The digital boundary files are available under various licenses. Please consult the <a href="{% url apidoc %}">API</a> for information on data sources.</p>
 
-            <p>Important contributions were made by Aran Rasmussen, Kent Mewhort, Amir Pakdel, Camilo Lopez, Rory Geoghegan, Trevor Knight, and Carmine Casciato.</p>
+            <h2>Authors</h2>
+
+            <p>Represent was built by <a href="http://michaelmulley.com/">Michael Mulley</a> and <a href="http://opennorth.ca/team/">James McKinney</a>, with important contributions by Aran Rasmussen, Kent Mewhort, Amir Pakdel, Camilo Lopez, Rory Geoghegan, Trevor Knight and Carmine Casciato. We took inspiration and code from the Chicago Tribune&rsquo;s <a href="https://github.com/newsapps/django-boundaryservice">Boundary Service</a>.</p>
         </div>
     </div>
 {% endblock %}
