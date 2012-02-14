@@ -14,39 +14,41 @@
 
 <p>Represent provides a RESTful JSON API to a wealth of information about Canadian political districts and elected representatives.</p>
 
-<p>The API offers five resources: <a href="#boundaryset">boundary sets</a>, <a href="#boundary">boundaries</a>,
-    <a href="#postcode">postal codes</a>, <a href="#representativeset">representative sets</a>, and
-    <a href="#representative">representatives</a>.</p>
+<p>The API offers five resources: <a href="#boundaryset">boundary sets</a>, <a href="#boundary">boundaries</a>, <a href="#postcode">postal codes</a>, <a href="#representativeset">representative sets</a>, and <a href="#representative">representatives</a>.</p>
 
 <h1 id="basics">Basics</h1>
 
 <p>The base URL for all requests is <code>http://represent.opennorth.ca</code></p>
 
-<h2>Formats</h2>
+<h2>Output formats</h2>
 
-<p>All resources are available in JSON. For geospatial resources, this means GeoJSON; geo resources are additionally available in KML and Well-Known Text, by appending <code>format=kml</code> or <code>format=wkt</code> parameters. A user-friendly HTML representation of a JSON response is available by appending <code>format=apibrowser</code>.</p>
+<p>All resources output JSON. Geospatial resources output GeoJSON. You may instead request KML or Well-Known Text by adding <code>format=kml</code> or <code>format=wkt</code> to the query string. You may access a user-friendly HTML representation of a JSON response by adding <code>format=apibrowser</code> to the query string.</p>
 
-<p>For client-side cross-domain requests, we support JSONP. Just add a <code>callback</code> parameter to your query string.</p>
+<p>For client-side cross-domain requests, we support JSONP. Just add a <code>callback</code> parameter to the query string.</p>
 
-<h2>Filtering</h2>
+<h2>Filtering resources</h2>
 
-<p>Filtering lists of resources is done via query-string parameters. Each resource will list the fields you can filter on. So, to find representatives named Rodney, you'd access <code>/representatives/?first_name=Rodney</code>. You can also perform a variety of substring queries by appending <code>__querytype</code> to your parameter name, where <code>querytype</code> is one of <code>iexact</code>, <code>contains</code>, <code>icontains</code>, <code>startswith</code>, <code>istartswith</code>, <code>endswith</code>, <code>iendswith</code>, and <code>isnull</code>. In each case, a starting <code>i</code> indicates case-insensitivity. Example: <code>/representatives/?last_name__istartswith=m</code></p>
+<p>You may filter lists of resources using query string parameters. Each resource lists the fields you can filter on. For example, to find representatives named &ldquo;Rodney,&rdquo; send a request to <code>/representatives/?first_name=Rodney</code>. You can perform a variety of substring queries by appending <code>__querytype</code> to the parameter name, where <code>querytype</code> is one of <code>iexact</code>, <code>contains</code>, <code>icontains</code>, <code>startswith</code>, <code>istartswith</code>, <code>endswith</code>, <code>iendswith</code>, and <code>isnull</code>. A leading <code>i</code> indicates a case-insensitive match. For example, to find representatives whose last name starts with &ldquo;M&rdquo; or &ldquo;m&rdquo;, send a request to <code>/representatives/?last_name__istartswith=m</code></p>.
+
+<h2>Bulk downloads</h2>
+
+<p>The digital boundary files are available under various licenses. Please consult the <a href="#boundaryset">boundary sets</a> documentation for information on the boundary files. To download all representatives, send a request to <code>/representatives/?limit=2000</code>.</p>
 
 <h2>Rate limits</h2>
 
 <p>If you make more than 60 requests per minute, you may receive HTTP 503 Service Unavailable responses. If you expect to exceed this rate limit, please contact <a href="mailto:represent@opennorth.ca">represent@opennorth.ca</a>.</p>
 
-<h2>Changes</h2>
+<h2>API &amp; data changes</h2>
 
-<p>If you use this API, you should subscribe to our <a href="http://groups.google.com/group/represent-canada/">mailing list</a> to stay abreast of any changes.</p>
+<p>If you use this API, subscribe to our <a href="http://groups.google.com/group/represent-canada/">mailing list</a> to stay abreast of any changes.</p>
 
 <h2>Attribution</h2>
 
-<p>Providing attribution isn&rsquo;t a required condition of using this service. But, in the interest of spreading the word and encouraging further projects using this data, we&rsquo;d be pretty happy if you put something like <code>District and politician data from &lt;a href=&quot;http://represent.opennorth.ca/&quot;&gt;Represent&lt;/a&gt;</code> on your site.</p>
+<p>Attribution is not required, but, in the interest of spreading the word and encouraging use of this web service, please consider adding something like <code>District and politician data from &lt;a href=&quot;http://represent.opennorth.ca/&quot;&gt;Represent&lt;/a&gt;</code>.</p>
 
 <h2>API wrappers</h2>
 
-<p>If you're written an API wrapper, please contact <a href="mailto:represent@opennorth.ca">represent@opennorth.ca</a> to have it listed here.</p>
+<p>If you've written an API wrapper, please contact <a href="mailto:represent@opennorth.ca">represent@opennorth.ca</a> to have it listed here.</p>
 
 <ul>
     <li><a href="https://github.com/sprice/represent">Node.js</a></li>
@@ -70,44 +72,44 @@
 
 <pre class="loadjson" data-url="/boundaries/nova-scotia-electoral-districts/cape-breton-north/"></pre>
 
-<p>The <code>external_id</code> field (which is not necessarily present on every resource) is an ID number used for this district in our source data.</p>
+<p>The <code>external_id</code> field (which is not necessarily present on every resource) is an ID number used for this district in the source data.</p>
 
-<p>The <code>metadata</code> field provides the full list of attributes from our source shapefile. This is presented unmodified, so it might be out-of-date or erroneous.</p>
+<p>The <code>metadata</code> field contains all attributes from the source data. This is unmodified and may be out-of-date or erroneous.</p>
 
 <p><strong>Filterable fields:</strong> <code>name</code>, <code>external_id</code>.</p>
 
 <h3>Spatial filters</h3>
 
-<p>Access all the districts that include a given point at <code>/boundaries/?contains=[latitude],[longitude]</code></p>
+<p>Access all the districts that include a given point at <code>/boundaries/?contains=[latitude],[longitude]</code>. Boundaries that intersect or touch another boundary can be accessed via <code>/boundaries/?intersects=alberta-electoral-districts/highwood</code> or <code>/boundaries/?touches=alberta-electoral-districts/highwood</code>. (What we mean by &ldquo;intersects&rdquo; is, in the specific definitions used by PostGIS, &ldquo;covers or overlaps.&rdquo;)</p>
 
 <pre class="loadjson" data-url="/boundaries/?contains=45.524,-73.596"></pre>
 
-<p>Boundaries that intersect or touch another boundary can be accessed via <code>/boundaries/?intersects=alberta-electoral-districts/highwood</code> or <code>/boundaries/?touches=alberta-electoral-districts/highwood</code>. (What we mean by &#8220;intersects&#8221; is, in the specific definitions used by PostGIS, &ldquo;covers or overlaps.&rdquo;)</p>
+<h3 id="spatial_fields">Spatial data</h3>
 
-<h3 id="spatial_fields">Spatial fields</h3>
+<p>To access spatial data, follow the links provided in the <code>shape_url</code>, <code>simple_shape_url</code>, and <code>centroid_url</code> keys. The <code>simple_shape</code> is the district&#8217;s shape, simplified to a tolerance of 0.002; this&#8217;ll usually look fine on maps and be quicker to load.</p>
 
-<p>To access spatial fields, follow the links provided in the <code>shape_url</code>, <code>simple_shape_url</code>, and <code>centroid_url</code> keys. The <code>simple_shape</code> is the district&#8217;s shape, simplified to a tolerance of 0.002; this&#8217;ll usually look just fine if you&#8217;re displaying a map, and be quicker to load. Spatial fields additionally support the <code>kml</code> and <code>wkt</code> formats.</p>
+<h3 id="spatial_formats">Spatial formats</h3>
+
+<p>Spatial resources output GeoJSON. You may instead request KML or Well-Known Text by adding <code>format=kml</code> or <code>format=wkt</code> to the query string.</p>
 
 <h1 id="postcode">Postal codes</h1>
 
-<p>URL: <code>/postcodes/A0A0A0/</code> (note that we don't provide access to a list of postcode resources, just individual-postcode URLs)</p>
+<p>URL: <code>/postcodes/A0A0A0/</code></p>
 
-<p>A Canadian postal code. URLs should include the code in uppercase with no space.</p>
+<p>A Canadian postal code. URLs should include the code in uppercase with no spaces. NB: We don't provide a URL for a list of all postal codes.</p>
 
 <pre class="loadjson" data-url="/postcodes/L5G4L3/"></pre>
 
 <p>The <code>boundaries_centroid</code> field is a list of boundaries that contain the point in the <code>centroid</code> field. (That point comes from geocoder.ca data.) Because a centroid is a single point,
-whereas a postal code is a shape (or a collection of points), the list of boundaries based on the centroid <b>will in some
-cases be inaccurate</b>.</p>
+whereas a postal code is a shape (or a collection of points), the list of boundaries based on the centroid <b>will in some cases be inaccurate</b>.</p>
 
-<p>When an explicit list of which postal codes correspond to which districts has been made available, we include that data
-in a field named <code>boundaries_concordance</code>.</p>
+<p>When a government has made available a file linking postal codes to boundaries, there will be a <code>boundaries_concordance</code> field, which will be a list of boundaries linked to that postal code.</p>
 
 <h1 id="representativeset">Representative sets</h1>
 
 <p>URL: <code>/representative-sets/</code></p>
 
-<p>A representative set is a political body to which people are elected&mdash;for example, the House of Commons or the Toronto City Council.</p>
+<p>A representative set is a political body to which people are elected; for example, the House of Commons or Toronto City Council.</p>
 
 <pre class="loadjson" data-url="/representative-sets/ontario-legislature/"></pre>
 
@@ -115,23 +117,21 @@ in a field named <code>boundaries_concordance</code>.</p>
 
 <p>URL: <code>/representatives/</code></p>
 
-<p>A representative is an elected official.</p>
+<p>A representative is an elected official. NB: We don't provide a URL for each individual representative.</p>
 
 <pre class="loadjson" data-url="/representatives/house-of-commons/?last_name=Harper"></pre>
-
-<p>Note that this API does not provide stable URLs for individual representatives.</p>
 
 <p><strong>Filterable fields:</strong> <code>name</code>, <code>first_name</code>, <code>last_name</code>, <code>district_name</code>, <code>elected_office</code>, <code>party_name</code>.</p>
 
 <h3>Spatial filters</h3>
 
-<p>Access all the representatives for a given point with <code>/representatives/?point=[latitude],[longitude]</code>. This is a shortcut: you could get the same results by first querying the Boundaries resource with a <code>contains</code> filter, and then using the boundaries returned to query the Representatives resource with a <code>districts</code> filter.</p>
+<p>Access all the representatives for a given point at <code>/representatives/?point=[latitude],[longitude]</code>. This is a shortcut: you can get the same results by first querying the <a href="#boundary">boundaries</a> resource with a <code>contains</code> filter, and then using the boundaries returned to query the representatives resource with a <code>districts</code> filter.</p>
 
 <pre class="loadjson" data-url="/representatives/?point=45.524,-73.596"></pre>
 
 <h3 id="fields">Fields</h3>
 
-<p>Only those fields labelled required below are guaranteed to be present in results.</p>
+<p>Only those fields labelled &ldquo;required&rdquo; below are guaranteed to be present in results.</p>
 
 <table class="zebra-striped">
     <thead>
@@ -252,11 +252,9 @@ in a field named <code>boundaries_concordance</code>.</p>
 
 <h3 id="contribute-scraper">Contributing</h3>
 
-<p>All representative data comes from scrapers. If you&rsquo;d like to use fields we&rsquo;re
-not currently returning for a particular jurisdiction, or if you&rsquo;d just like to help out, update our scrapers!</p>
+<p>All representative data comes from scrapers. If you&rsquo;d like to use fields we&rsquo;re not currently returning for a particular jurisdiction, or if you&rsquo;d just like to help out, update our scrapers!</p>
 
-<p>Find the scraper via the <code>scraperwiki_url</code>
-field on the appropriate boundary set resource, make a copy on <a href="http://www.scraperwiki.com/">Scraperwiki</a>, edit your copy till it works, then e-mail <a href="mailto:represent@opennorth.ca">represent@opennorth.ca</a>.</p>
+<p>Find the scraper via the <code>scraperwiki_url</code> field on the appropriate <a href="#boundaryset">boundary set</a> resource, make a copy on <a href="http://www.scraperwiki.com/">Scraperwiki</a>, edit your copy till it works, then e-mail <a href="mailto:represent@opennorth.ca">represent@opennorth.ca</a>.</p>
 <p>If we don&rsquo;t yet have a scraper for a particular jurisdiction, you might want to use one of our existing ones as an example. Use the list of fields above as a reference.</p>
 </div>
 {% endblock %}
