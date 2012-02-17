@@ -22,9 +22,9 @@
 
 <h2>Output formats</h2>
 
-<p>All resources output JSON. Geospatial resources output GeoJSON. You may instead request KML or Well-Known Text by adding <code>format=kml</code> or <code>format=wkt</code> to the query string. You may access a user-friendly HTML representation of a JSON response by adding <code>format=apibrowser</code> to the query string.</p>
+<p>All resources output JSON. You may access a user-friendly HTML representation of a JSON response by adding <code>format=apibrowser</code> to the query string. Geospatial resources output GeoJSON. You may instead request KML or Well-Known Text by adding <code>format=kml</code> or <code>format=wkt</code> to the query string.</p>
 
-<p>For client-side cross-domain requests, we support JSONP. Just add a <code>callback</code> parameter to the query string.</p>
+<p>We support JSONP for client-side cross-domain requests. Just add a <code>callback</code> parameter to the query string.</p>
 
 <h2>Filtering resources</h2>
 
@@ -90,20 +90,22 @@
 
 <h3 id="spatial_formats">Spatial formats</h3>
 
-<p>Spatial resources output GeoJSON. You may instead request KML or Well-Known Text by adding <code>format=kml</code> or <code>format=wkt</code> to the query string.</p>
+<p>Geospatial resources output GeoJSON. You may instead request KML or Well-Known Text by adding <code>format=kml</code> or <code>format=wkt</code> to the query string.</p>
 
 <h1 id="postcode">Postal codes</h1>
 
 <p>URL: <code>/postcodes/A0A0A0/</code></p>
 
-<p>A Canadian postal code. URLs should include the code in uppercase with no spaces. NB: We don't provide a URL for a list of all postal codes.</p>
+<p>A Canadian postal code. URLs should include the code in uppercase with no spaces.</p>
+
+<p><strong>Note:</strong> We don't provide a URL for a list of all postal codes.</p>
 
 <pre class="loadjson" data-url="/postcodes/L5G4L3/"></pre>
 
 <p>The <code>boundaries_centroid</code> field is a list of boundaries that contain the point in the <code>centroid</code> field. (That point comes from geocoder.ca data.) Because a centroid is a single point,
-whereas a postal code is a shape (or a collection of points), the list of boundaries based on the centroid <b>will in some cases be inaccurate</b>.</p>
+whereas a postal code is a shape (or a collection of points), the list of boundaries based on the centroid <strong>will in some cases be inaccurate</strong>.</p>
 
-<p>When a government has made available a file linking postal codes to boundaries, there will be a <code>boundaries_concordance</code> field, which will be a list of boundaries linked to that postal code.</p>
+<p>When a government has made available a file linking postal codes to boundaries, there will be a <code>boundaries_concordance</code> field, which will be a list of boundaries linked to that postal code according to the government file.</p>
 
 <h1 id="representativeset">Representative sets</h1>
 
@@ -117,7 +119,9 @@ whereas a postal code is a shape (or a collection of points), the list of bounda
 
 <p>URL: <code>/representatives/</code></p>
 
-<p>A representative is an elected official. NB: We don't provide a URL for each individual representative.</p>
+<p>A representative is an elected official.</p>
+
+<p><strong>Note:</strong> We don't provide a URL for each individual representative.</p>
 
 <pre class="loadjson" data-url="/representatives/house-of-commons/?last_name=Harper"></pre>
 

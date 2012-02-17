@@ -10,13 +10,29 @@ body {
   -webkit-tap-highlight-color: rgb(255,255,158);
   -webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
 }
-p {
+p,
+ul {
   font-size: 16px;
   line-height: 1.5em;
 }
+p {
+  margin: 0.75em 0;
+}
 
-h2, h3 {
-  margin: .5em 0;
+#api h1 {
+  border-top: 0.25em solid #ccc;
+  margin: 0.375em 0 0;
+  padding-top: 0.375em;
+  font-size: 32px;
+  line-height: 1em;
+}
+#api #introduction {
+  border: none;
+  margin-top: 0.625em;
+}
+h2 {
+  margin-top: 1em;
+  line-height: 1em;
 }
 
 header {
@@ -28,17 +44,14 @@ header img {
   width: 90px;
 }
 .hero-unit {
-  padding: 30px 60px;
-  margin-bottom: 1em;
+  background: transparent;
+  padding: 1em 0;
+  margin-bottom: 0;
 }
 .hero-unit p {
+  margin: 0;
   font-size: 1.25em;
   line-height: 1.5em;
-}
-
-#summary {
-  text-align: center;
-  margin-bottom: 1em;
 }
 
 .well {
@@ -123,11 +136,6 @@ pre {
   color: white;
 }
 
-#api h1, #home h2 {
-  margin-top: 0;
-  padding-top: 40px;
-}
-
 pre div.url {
   margin-bottom: 5px;
   padding-bottom: 7px;
@@ -168,7 +176,8 @@ footer.footer a:hover {
   body {
     font-size: 13px;
   }
-  p {
+  p,
+  ul {
     font-size: 13px;
   }
   .topbar .container {
@@ -203,7 +212,8 @@ footer.footer a:hover {
     font-size: 13px;
     padding-top: 0;
   }
-  p {
+  p,
+  ul {
     font-size: 13px;
   }
   .container {
@@ -250,7 +260,8 @@ footer.footer a:hover {
     font-size: 12px;
     padding-top: 0;
   }
-  p {
+  p,
+  ul {
     font-size: 12px;
   }
   .container {
