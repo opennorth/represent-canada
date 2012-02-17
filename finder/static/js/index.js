@@ -1,3 +1,4 @@
+var geocoder = new google.maps.Geocoder();
 var latlngCache = [], boundaryCache = [], shapeCache = [], repCache = {};
 var map, marker, shape, boundary; // the displayed boundary
 
@@ -154,8 +155,26 @@ function removeBoundary() {
   }
 }
 
+function processAddress() {
+  $('#addresses').hide().empty();
+  geocoder.geocode({address: $('#address').val()}, function (results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      if (results.length > 1) {
+        // Display the list of addresses.
+        $.each(results, function (i, result) {
+          var location = result.geometry.location;
+          $('#addresses').append('<option data-latitude="' + location.lat() + '" data-longitude="' + location.lng() + '">' + result.formatted_address + '</option>');
+        });
+        $('#addresses').show();
+      }
+
+      var location = results[0].geometry.location;
+      processLatLng(new L.LatLng(location.lat(), location.lng()));
+    }
+  });
+}
+
 jQuery(function ($) {
-  var geocoder = new google.maps.Geocoder();
   var latlng = new L.LatLng(45.444369, -75.693832); // 24 Sussex Drive, Ottawa
 
   // Create the marker.
@@ -186,8 +205,17 @@ jQuery(function ($) {
   });
 
   map.addLayer(marker);
-  map.locateAndSetView(13);
   map.attributionControl.setPrefix('');
+
+  // Perform the first geolocation.
+  var address = store.get('address');
+  if (address) {
+    $('#address').val(address);
+    processAddress();
+  }
+  else {
+    map.locateAndSetView(13);
+  }
 
   // http://stackoverflow.com/questions/2996431/javascript-detect-when-a-window-is-resized
   $(window).resize(function () {
@@ -205,20 +233,8 @@ jQuery(function ($) {
 
   // Geocode an address and call the API.
   $('#submit').click(function (event) {
-    geocoder.geocode({address: $('#address').val()}, function (results, status) {
-      $('#addresses').empty();
-      if (status == google.maps.GeocoderStatus.OK) {
-        // Display the list of addresses.
-        $.each(results, function (i, result) {
-          var location = result.geometry.location;
-          $('#addresses').append('<option data-latitude="' + location.lat() + '" data-longitude="' + location.lng() + '">' + result.formatted_address + '</option>');
-        });
-        $('#addresses').show();
-
-        var location = results[0].geometry.location;
-        processLatLng(new L.LatLng(location.lat(), location.lng()));
-      }
-    });
+    store.set('address', $('#address').val());
+    processAddress();
     event.preventDefault();
   });
 

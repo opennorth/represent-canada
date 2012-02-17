@@ -121,6 +121,7 @@ service part-time</li>
 L_ROOT_URL = "{{ STATIC_URL|escapejs }}leaflet/";
 </script>
 {% compress js %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/store.min.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}leaflet/leaflet.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/index.js"></script>
 {% endcompress %}
