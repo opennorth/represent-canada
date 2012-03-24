@@ -102,10 +102,20 @@
 
 <pre class="loadjson" data-url="/postcodes/L5G4L3/"></pre>
 
-<p>The <code>boundaries_centroid</code> field is a list of boundaries that contain the point in the <code>centroid</code> field. (That point comes from geocoder.ca data.) Because a centroid is a single point,
+<h2>Boundaries for a postcode</h2>
+
+<pre class="loadjson" data-url="/postcodes/L5G4L3/boundaries/"></pre>
+
+<p>The <code>boundaries_centroid</code> field is a list of boundaries that contain the postcal code&rsquo;s center point, or <code>centroid</code>. (That point comes from geocoder.ca data.) Because a centroid is a single point,
 whereas a postal code is a shape (or a collection of points), the list of boundaries based on the centroid <strong>will in some cases be inaccurate</strong>.</p>
 
 <p>When a government has made available a file linking postal codes to boundaries, there will be a <code>boundaries_concordance</code> field, which will be a list of boundaries linked to that postal code according to the government file.</p>
+
+<h2>Representatives for a postcode</h2>
+
+<p>URL: <code>/postcodes/A0A0A0/representatives/</code></p>
+
+<p>Divided into <code>representatives_centroid</code> and <code>representatives_concordance</code> lists, as with boundaries.</p>
 
 <h1 id="representativeset">Representative sets</h1>
 
