@@ -12,12 +12,9 @@
         <h1 style="margin-top: 20px">Represent API: <a href="/api/#{{ resource_name|lower }}">{{ title.capitalize }}</a></h1>
         <pre>{{ json }}</pre>
     </div>
+    <p>The raw JSON of this resource is at <a href="{{ json_url }}">{{ json_url }}</a>.</p>
 {% endblock %}
 
-{% block footer %}
-        <p>The raw JSON of this resource is at <a href="{{ json_url }}">{{ json_url }}</a>.</p>
-    {{ block.super }}
-{% endblock %}
 {% block js %}
 {{ block.super }}
 <script type="text/javascript">

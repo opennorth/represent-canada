@@ -3,112 +3,103 @@
 
 {% block title %}Represent | elected officials and electoral districts database{% endblock %}
 
-{% block page_id %}home{% endblock %}
-
-{% block head %}
-<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css">
-{% endblock %}
-
-{% block topbar_nav %}
-<li class="active"><a href="#demo">Demo</a></li>
-<li><a href="#coverage">Coverage</a></li>
-<li><a href="#contributing">Contributing</a></li>
-<li><a href="/api/">API</a></li>
-{% endblock %}
-
 {% block content %}
 <header class="container">
-    <div class="hero-unit">
-        <a href="http://opennorth.ca/"><img id="header-logo" src="{{ STATIC_URL }}img/opennorth_logo.png" alt="Open North"></a>
-        <h1>Represent</h1>
-        <p>The open database of Canadian elected representatives and electoral districts</p>
-    </div>
+  <h1>
+    Represent, by
+    <a href="http://opennorth.ca/"><img src="{{ STATIC_URL }}img/opennorth_logo.png" alt="" width="90" height="90"></a>
+    <a href="http://opennorth.ca/">Open North</a>
+  </h1>
 </header>
-    <div class="container">
-        <p>Represent, by <a href="http://opennorth.ca/">Open North</a>, is a <strong>database and web service</strong> that maps <strong>postal codes and points</strong> to current administrative boundaries and elected representatives at the federal, provincial and municipal levels of government in Canada.</p>
 
-        <div id="demo" class="well">
-            <input type="text" id="address" name="address" placeholder="Enter an address or drag the pin on the map">
-            <a href="#" id="submit" class="btn large primary">Submit</a>
-        </div>
-        <div class="row">
-            <div class="span8">
-                <div id="map"></div>
-            </div>
-            <div class="span8">
-                <select id="addresses"></select>
-                <table id="boundaries"></table>
-            </div>
-        </div>
-        <div class="container">
-            <div id="coverage">
-                <h2>Coverage</h2>
+<div class="container">
+  <div id="form" class="form-inline">
+    <h2>Enter a Canadian address or postal code to find your elected representatives</h2>
+    <input type="text" name="address" id="address" class="span6" placeholder="Address or postal code">
+    <a href="#" id="submit" class="btn large primary">
+      <i class="icon-search"></i>
+      Find
+    </a>
+  </div>
 
-                <p>Represent is an open database of:</p>
+  <div id="notice" class="alert alert-info">
+    Use our <b>free API</b> and open-source code in your projects!
+    <a href="{% url apidoc %}">Get started.</a>
+  </div>
 
-                <div class="row">
-                    <div class="span8">
-                        <ul>
-                            <li>Members of Parliament (MP)</li>
-                            <li>Members of the Legislative Assembly (MLA)</li>
-                            <li>Members of the Provincial Parliament (MPP)</li>
-                            <li>Members of the National Assembly (MNA)</li>
-                            <li>mayors and city councillors</li>
-                        </ul>
-                    </div>
-                    <div class="span8 rightcol">
-                        <ul>
-                            <li>Federal electoral districts</li>
-                            <li>Provincial electoral districts</li>
-                            <li>Census subdivisions</li>
-                            <li>Municipal boundaries</li>
-                            <li>Ward and borough boundaries</li>
-                        </ul>
-                    </div>
-                </div>
-                <p>It includes the following types of districts (an <span class="label success">R</span> means representative data is also available):</p>
-
-                <ul id="boundary-sets">
-                    {% for set in boundary_sets %}
-                        <li class="span8"><a href="/boundaries/{{ set.slug }}/?format=apibrowser">{{ set.name }}</a>
-                            {% if set.reps %}<span class="label success"><a href="/representatives/{{ set.reps }}/?format=apibrowser">R</a></span>{% endif %}
-                        </li>
-                    {% endfor %}
-                </ul>
-
-                <div class="clear"></div>
-            </div>
-
-            <h2>Usage and API</h2>
-
-            <p>Represent establishes a foundation upon which other projects may be built - a necessary piece of infrastructure which we hope will enable useful and innovative features and products. Please consult the <a href="{% url apidoc %}">API documentation</a> on how to use this web service and subscribe to our <a href="http://groups.google.com/group/represent-canada/">mailing list</a> to stay up-to-date on API and data changes.</p>
-
-            <h2 id="contributing">Contributing</h2>
-
-            <p>Represent was built by volunteers. <strong>You can help make it better.</strong></p>
-
-            <ul>
-                <li>Add to our <a href="http://www.scraperwiki.com/tags/cdnpoli/">list of scrapers</a> to get the elected officials for more cities (<a href="https://github.com/opennorth/represent-canada/issues/7">find out more</a>)</li>
-                <li><a href="https://github.com/opennorth/represent-canada/issues/17">Ask provincial Municipal Affairs ministries</a> for municipal elected officials in Excel format</li>
-                <li><a href="https://github.com/opennorth/represent-canada/issues/13">Ask municipalities</a> to provide their ward boundaries under an open license</li>
-                <li><a href="http://opennorth.ca/donate/">Donate to Open North</a> so a staff member can improve and maintain this service part-time</li>
-            </ul>
-
-            <p>That's our top four, and there are many more ways in which you can help. <a href="mailto:represent@opennorth.ca">Contact us</a> if you're interested or <a href="http://groups.google.com/group/represent-canada/">join our mailing list</a>.</p>
-
-            <h2>License</h2>
-
-            <p>Represent is free to use and <a href="https://github.com/opennorth/represent-canada">open source</a> under the <a href="https://raw.github.com/opennorth/represent-canada/master/MIT-LICENSE.txt">MIT license</a>. The digital boundary files are available under various licenses. Please consult the <a href="{% url apidoc %}">API</a> for information on the boundary files.</p>
-
-            <h2>Authors</h2>
-
-            <p>Represent was built by <a href="http://michaelmulley.com/">Michael Mulley</a> and <a href="http://opennorth.ca/team/">James McKinney</a>, with important contributions from Arlo Breault, Carmine Casciato, Andrew Dyck, Rory Geoghegan, Trevor Knight, Matthew Leon, Camilo Lopez, Dylan McCall, Kent Mewhort, Amir Pakdel, Kamil Politowicz and Aran Rasmussen. We took inspiration and code from the Chicago Tribune&rsquo;s <a href="https://github.com/newsapps/django-boundaryservice">Boundary Service</a>.</p>
-
-            <h2>Contact</h2>
-
-            <p>For questions, comments or corrections, please contact <a href="mailto:represent@opennorth.ca">represent@opennorth.ca</a>.</p>
-        </div>
+  <div class="row">
+    <div class="span6">
+      <div id="map"></div>
     </div>
+    <div class="span6">
+      <select id="addresses"></select>
+      <table id="boundaries"></table>
+    </div>
+  </div>
+
+  <hr class="soften">
+
+  <div id="coverage">
+    <h2>Geographic Coverage</h2>
+
+    {% for category, boundary_sets in categories %}
+      {% if boundary_sets %}
+        <h3>{{ category }}</h3>
+        <ul>
+          {% for boundary_set in boundary_sets %}
+            <li>
+              <a href="/boundaries/{{ boundary_set.slug }}/?format=apibrowser">{{ boundary_set.name }}</a>
+              {% if boundary_set.representative_set %}
+                with members of <a href="/representatives/{{ boundary_set.representative_set.slug }}/?format=apibrowser">{{ boundary_set.representative_set.name }}</a>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <hr class="soften">
+
+  <div id="grid">
+    <div class="row">
+      <div class="span3">
+        <h2>Free API</h2>
+        <p>Read the <a href="{% url apidoc %}">documentation</a>.</p>
+      </div>
+      <div class="span3">
+        <h2>Open-source</h2>
+        <p>Built for and by the open-government community via <a href="https://github.com/opennorth/represent-canada">GitHub</a>.</p>
+      </div>
+      <div class="span3">
+        <h2>Stay up-to-date</h2>
+        <p>Subscribe to our <a href="http://groups.google.com/group/represent-canada/">low-volume mailing list</a> to be notified of API changes.</p>
+      </div>
+      <div class="span3">
+        <h2>Contact us</h2>
+        <p><a href="mailto:represent@opennorth.ca">represent@opennorth.ca</a></p>
+      </div>
+    </div>
+
+    <hr class="soften">
+
+    <div class="row">
+      <div class="span2">
+        <h2>Authors</h2>
+        <p><a href="http://michaelmulley.com/">Michael Mulley</a> and <a href="http://opennorth.ca/team/">James McKinney</a></p>
+      </div>
+      <div class="span5">
+        <h2>Scrapers</h2>
+        <p>Arlo Breault, Carmine Casciato, Andrew Dyck, Rory Geoghegan, Trevor Knight, Matthew Leon, Camilo Lopez, Dylan McCall, Amir Pakdel and Kamil Politowicz.</p>
+      </div>
+      <div class="span5">
+        <h2>Special thanks</h2>
+        <p>Kent Mewhort for legal information, Aran Rasmussen for general help, and the Chicago Tribune&rsquo;s <a href="https://github.com/newsapps/django-boundaryservice">Boundary Service</a> for code and inspiration.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
 {% endblock %}
 
 {% block js %}
