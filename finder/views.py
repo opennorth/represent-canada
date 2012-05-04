@@ -6,26 +6,25 @@ from boundaries.models import BoundarySet
 
 try:
   from representatives.models import RepresentativeSet
-  USE_REPS = True
 except ImportError:
-  USE_REPS = False
+  pass
 
 def index(request):
   domain_to_category_map = {
-    'Canada'                   : 'Federal',
-    'British Columbia'         : 'Provincial',
-    'Alberta'                  : 'Provincial',
-    'Saskatchewan'             : 'Provincial',
-    'Manitoba'                 : 'Provincial',
-    'Ontario'                  : 'Provincial',
-    u'Québec'                  : 'Provincial',
-    'New Brunswick'            : 'Provincial',
-    'Prince Edward Island'     : 'Provincial',
-    'Nova Scotia'              : 'Provincial',
-    'Newfoundland and Labrador': 'Provincial',
-    'Yukon'                    : 'Territorial',
-    'Northwest Territories'    : 'Territorial',
-    'Nuvavut'                  : 'Territorial',
+    u'Canada'                   : 'Federal',
+    u'British Columbia'         : 'Provincial',
+    u'Alberta'                  : 'Provincial',
+    u'Saskatchewan'             : 'Provincial',
+    u'Manitoba'                 : 'Provincial',
+    u'Ontario'                  : 'Provincial',
+    u'Québec'                   : 'Provincial',
+    u'New Brunswick'            : 'Provincial',
+    u'Prince Edward Island'     : 'Provincial',
+    u'Nova Scotia'              : 'Provincial',
+    u'Newfoundland and Labrador': 'Provincial',
+    u'Yukon'                    : 'Territorial',
+    u'Northwest Territories'    : 'Territorial',
+    u'Nuvavut'                  : 'Territorial',
   }
 
   boundary_sets = list(BoundarySet.objects.all().order_by('name').values('slug', 'name', 'domain'))

@@ -52,7 +52,7 @@ header a:hover {
 }
 
 #coverage h2 {
-  font-size: 2.25em;
+  font-size: 1.6em;
   line-height: 1.5em;
   font-weight: 300;
   text-align: center;
@@ -131,7 +131,7 @@ pre {
   white-space: pre;
   word-wrap: normal;
 }
-pre div.url {
+pre .url {
   margin-bottom: 5px;
   padding-bottom: 7px;
   border-bottom: 1px dotted #CCCCCC;
@@ -149,12 +149,16 @@ pre .value {
 /*** Responsive ***************************************************************/
 
 @media (min-width: 768px) and (max-width: 979px) {
-  body,
-  form,
-  label,
-  p,
-  ul {
-    font-size: 13px;
+  header h1 {
+    font-size: 3em;
+  }
+  #form h2,
+  #coverage h2 {
+    font-size: 1.3em;
+  }
+  #coverage h3,
+  #grid h2 {
+    font-size: 1em;
   }
   #map {
     height: 255px;
@@ -165,16 +169,18 @@ pre .value {
 }
 
 @media (min-width: 480px) and (max-width: 767px) {
-  body,
-  form,
-  label,
-  p,
-  ul {
-    font-size: 13px;
+  header h1 {
+    font-size: 1.75em;
   }
   header img {
-    width: 60px;
-    padding-top: 10px;
+    width: 45px;
+    height: 45px;
+  }
+  #form h2,
+  #coverage h2,
+  #coverage h3,
+  #grid h2 {
+    font-size: 1em;
   }
   #map {
     height: 230px;
@@ -182,30 +188,30 @@ pre .value {
   .leaflet-control-attribution {
     display: none;
   }
-  #coverage div.rightcol {
-    margin-left: 20px;
-  }
 }
 
 @media (max-width: 480px) {
-  body,
-  form,
-  label,
-  p,
-  ul {
-    font-size: 12px;
+  header {
+    padding: 1em 0 0 0;
+  }
+  header h1 {
+    font-size: 1.5em;
   }
   header img {
-    display: none;
+    width: 40px;
+    height: 40px;
+  }
+  #form h2,
+  #coverage h2,
+  #coverage h3,
+  #grid h2 {
+    font-size: 1em;
   }
   #map {
     height: 210px;
   }
   .leaflet-control-attribution {
     display: none;
-  }
-  #coverage div.rightcol {
-    margin-left: 20px;
   }
 }
 
