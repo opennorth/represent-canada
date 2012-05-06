@@ -30,31 +30,4 @@ jQuery(function ($) {
   });
 
   $('#apibrowser pre').html(formatJSON($('#apibrowser pre').text()));
-
-/*
-  var $modal = $('#modal');
-
-  function processModal(url) {
-    $modal.find('h3').text(url);
-    $.ajax({
-      url: url + (url.indexOf('?') === -1 ? '?' : '&') + 'pretty=1',
-      dataType: 'text',
-      success: function (data) {
-        var json = formatJSON(data.replace(/[?&]pretty=1/g, ''));
-        $modal.find('pre').html(json.replace(/[?&]format=apibrowser/g, ''));
-        $('a[href^="/"]').click(function (e) {
-          processModal($(this).attr('href'));
-          e.preventDefault();
-        });
-        $modal.modal('show');
-      }
-    });
-  }
-
-  $('#api button').click(function () {
-    processModal($(this).parent().contents().last().text());
-  });
-
-  $modal.modal({show: false});
-*/
 });

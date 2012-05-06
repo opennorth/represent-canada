@@ -24,6 +24,19 @@
 </head>
 <body>
 {% block content %}{% endblock %}
+
+<footer>
+  <div class="container">
+    <ul class="unstyled">
+      <li class="opennorth"><a href="http://opennorth.ca/">Open North</a></li>
+      <li class="citizenbudget"><a href="http://citizenbudget.com/">Citizen Budget</a></li>
+      <li class="restonet"><a href="http://resto-net.ca/">Resto-Net</a></li>
+      <li class="mamairie"><a href="http://mamairie.ca/">Ma Mairie</a></li>
+      <li class="patinermontreal"><a href="http://patinermontreal.ca/">Patiner Montreal</a></li>
+    </ul>
+  </div>
+</footer>
+
 {% block js %}
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 {% compress js %}
@@ -33,6 +46,7 @@
 <script type="text/javascript" src="{{ STATIC_URL }}js/api.js"></script>
 {% endcompress %}
 {% endblock js %}
+
 <script type="text/javascript">
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-28751926-1']);
