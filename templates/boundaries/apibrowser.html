@@ -1,27 +1,18 @@
-{% extends "base.html" %}
-
-{% block topbar_nav %}
-    {% url apidoc as apidoc_url %}
-    {% include "api-nav.include.html" %}
-{% endblock %}
+{% extends 'base.html' %}
 
 {% block title %}{{ title.capitalize }} | Represent API{% endblock %}
 
 {% block content %}
-    <div class="container" id="apibrowser">
-        <h1 style="margin-top: 20px">Represent API: <a href="/api/#{{ resource_name|lower }}">{{ title.capitalize }}</a></h1>
-        <pre>{{ json }}</pre>
-    </div>
-    <p>The raw JSON of this resource is at <a href="{{ json_url }}">{{ json_url }}</a>.</p>
-{% endblock %}
+<div class="container" id="apibrowser">
 
-{% block js %}
-{{ block.super }}
-<script type="text/javascript">
-    $(function() {
-        $("#apibrowser pre").html(
-            formatJSON($("#apibrowser pre").text())
-        ).prepend('<div class="url"><code>{{ json_url|escapejs }}</code></div>');
-    });
-</script>
+<ul class="breadcrumb">
+  <li><a href="/">Home</a> <span class="divider">/</span></li>
+  <li><a href="{% url apidoc %}">Represent API</a> <span class="divider">/</span></li>
+  <li class="active"><a href="/api/#{{ resource_name|lower }}">{{ title.capitalize }}</a></li>
+</ul>
+
+<p>The JSON response for <code>{{ json_url }}</code>. <a href="{{ json_url }}">Get raw JSON</a>.</p>
+
+<pre>{{ json }}</pre>
+</div>
 {% endblock %}

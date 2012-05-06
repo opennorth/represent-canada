@@ -3,264 +3,283 @@
 
 {% block title %}Represent API{% endblock %}
 
-{% block topbar_nav %}
-{% include "api-nav.include.html" with nav_active='introduction' apidoc_url='' %}
-{% endblock %}
-
 {% block content %}
-
 <div class="container" id="api">
-<h1 id="introduction">The Represent API</h1>
 
-<p>Represent provides a RESTful JSON API to a wealth of information about Canadian political districts and elected representatives.</p>
-
-<p>The API offers five resources: <a href="#boundaryset">boundary sets</a>, <a href="#boundary">boundaries</a>, <a href="#postcode">postal codes</a>, <a href="#representativeset">representative sets</a>, and <a href="#representative">representatives</a>.</p>
-
-<h1 id="basics">Basics</h1>
-
-<p>The base URL for all requests is <code>http://represent.opennorth.ca</code></p>
-
-<h2>Output formats</h2>
-
-<p>All resources output JSON. You may access a user-friendly HTML representation of a JSON response by adding <code>format=apibrowser</code> to the query string. Geospatial resources output GeoJSON. You may instead request KML or Well-Known Text by adding <code>format=kml</code> or <code>format=wkt</code> to the query string.</p>
-
-<p>We support JSONP for client-side cross-domain requests. Just add a <code>callback</code> parameter to the query string.</p>
-
-<h2>Filtering resources</h2>
-
-<p>You may filter lists of resources using query string parameters. Each resource lists the fields you can filter on. For example, to find representatives named &ldquo;Rodney,&rdquo; send a request to <code>/representatives/?first_name=Rodney</code>. You can perform a variety of substring queries by appending <code>__querytype</code> to the parameter name, where <code>querytype</code> is one of <code>iexact</code>, <code>contains</code>, <code>icontains</code>, <code>startswith</code>, <code>istartswith</code>, <code>endswith</code>, <code>iendswith</code>, and <code>isnull</code>. A leading <code>i</code> indicates a case-insensitive match. For example, to find representatives whose last name starts with &ldquo;M&rdquo; or &ldquo;m&rdquo;, send a request to <code>/representatives/?last_name__istartswith=m</code>.</p>
-
-<h2>Bulk downloads</h2>
-
-<p>The digital boundary files are available under various licenses. Please consult the <a href="#boundaryset">boundary sets</a> documentation for information on the boundary files. To download all representatives, send a request to <code>/representatives/?limit=2000</code>.</p>
-
-<h2>Rate limits</h2>
-
-<p>If you make more than 60 requests per minute, you may receive HTTP 503 Service Unavailable responses. If you expect to exceed this rate limit, please contact <a href="mailto:represent@opennorth.ca">represent@opennorth.ca</a>.</p>
-
-<h2>API changes</h2>
-
-<p>If you use this API, <a href="http://groups.google.com/group/represent-canada/">subscribe to our mailing list</a> to stay abreast of any changes.</p>
-
-<h2>Attribution</h2>
-
-<p>Attribution is not required, but, in the interest of spreading the word and encouraging use of this web service, please consider adding something like <code>District and politician data from &lt;a href=&quot;http://represent.opennorth.ca/&quot;&gt;Represent&lt;/a&gt;</code>.</p>
-
-<h2>API wrappers</h2>
-
-<p>If you&rsquo;ve written an API wrapper, please contact <a href="mailto:represent@opennorth.ca">represent@opennorth.ca</a> to have it listed here.</p>
-
-<ul>
-    <li><a href="https://github.com/sprice/represent">Node.js</a></li>
+<ul class="breadcrumb">
+  <li><a href="/">Home</a> <span class="divider">/</span></li>
+  <li class="active">Represent API</li>
 </ul>
 
-<h1 id="boundaryset">Boundary Sets</h1>
+<p>Represent provides a REST API to a wealth of information about Canadian elected officials and electoral districts.</p>
 
-<p>URL: <code>/boundary-sets/</code></p>
+<div class="subnav">
+  <ul class="nav nav-pills">
+    <li><a href="#basics">Basics</a></li>
+    <li><a href="#boundaryset">Boundary sets</a></li>
+    <li><a href="#boundary">Boundaries</a></li>
+    <li><a href="#postcode">Postal codes</a></li>
+    <li><a href="#representativeset">Representative sets</a></li>
+    <li><a href="#representative">Representatives</a></li>
+  </ul>
+</div>
+<br>
 
-<p>A boundary set is a group of districts, like BC electoral districts or Toronto wards.</p>
+<section id="basics">
+  <h2>Basics</h2>
 
-<pre class="loadjson" data-url="/boundary-sets/federal-electoral-districts/"></pre>
+  <p>The base URL for all requests is <code>http://represent.opennorth.ca</code>.</p>
 
-<p><strong>Filterable fields:</strong> <code>name</code>, <code>domain</code>.</p>
+  <div class="alert alert-info">
+    <strong>Heads up!</strong> Subscribe to our <a href="http://groups.google.com/group/represent-canada/">low-volume mailing list</a> to be notified of API changes.
+  </div>
 
-<h1 id="boundary">Boundaries</h1>
+  <h3>Search the database</h3>
 
-<p>URL: <code>/boundaries/</code></p>
+  <p>You can filter resources with query string parameters. For example, to find representatives named &ldquo;Rodney,&rdquo; send a request to <code>/representatives/?first_name=Rodney</code>. Each resource below lists the fields you can filter on.</p>
 
-<p>A boundary is a single district.</p>
+  <p>You can perform substring queries by appending <code>__querytype</code> to the parameter name, where <code>querytype</code> is one of <code>iexact</code>, <code>contains</code>, <code>icontains</code>, <code>startswith</code>, <code>istartswith</code>, <code>endswith</code>, <code>iendswith</code> or <code>isnull</code>. A leading <code>i</code> makes the match case-insensitive. For example, to find representatives whose last name starts with &ldquo;M&rdquo; or &ldquo;m&rdquo;, send a request to <code>/representatives/?last_name__istartswith=m</code>.</p>
 
-<pre class="loadjson" data-url="/boundaries/nova-scotia-electoral-districts/cape-breton-north/"></pre>
+  <h3>Control the output</h3>
 
-<p>The <code>external_id</code> field (which is not necessarily present on every resource) is an ID number used for this district in the source data.</p>
+  <p>All resources output JSON. For a user-friendly HTML version of the JSON response, add <code>format=apibrowser</code> to the query string. Add <code>pretty=1</code> to just indent the raw JSON. We support JSONP for client-side cross-domain requests – just add a <code>callback</code> parameter to the query string.</p>
 
-<p>The <code>metadata</code> field contains all attributes from the source data. This is unmodified and may be out-of-date or erroneous.</p>
+  <p>Lists of resources are paginated. Under the <code>meta</code> field, the <code>next</code> field links to the next page, and <code>previous</code> links to the previous page (if available). <code>total_count</code> is the total number of items in the list. You can control the number of items returned by adding a <code>limit</code> parameter to the query string, and the start offset by adding an <code>offset</code> parameter.</p>
 
-<p><strong>Filterable fields:</strong> <code>name</code>, <code>external_id</code>.</p>
+  <h3>Bulk downloads</h3>
+  <p>To download all representatives, send a request to <a href="http://represent.opennorth.ca/representatives/?limit=5000">http://represent.opennorth.ca/representatives/?limit=5000</a> (~800kB).</p>
+  <!-- @todo Add link to boundary files -->
 
-<h3>Spatial filters</h3>
+  <h3>Rate limits</h3>
+  <p>If you make more than 60 requests per minute, you may receive a HTTP 503 Service Unavailable error. Please contact <a href="mailto:represent@opennorth.ca">represent@opennorth.ca</a> if you expect high usage.</p>
 
-<p>Access all the districts that include a given point at <code>/boundaries/?contains=[latitude],[longitude]</code>. Boundaries that intersect or touch another boundary can be accessed via <code>/boundaries/?intersects=alberta-electoral-districts/highwood</code> or <code>/boundaries/?touches=alberta-electoral-districts/highwood</code>. (What we mean by &ldquo;intersects&rdquo; is, in the specific definitions used by PostGIS, &ldquo;covers or overlaps.&rdquo;)</p>
+  <h3>Client libraries</h3>
+  <p>We have a <a href="https://github.com/sprice/represent">Node.js client library</a>. If you&rsquo;ve written a client library, contact <a href="mailto:represent@opennorth.ca">represent@opennorth.ca</a> to have it listed here.</p>
 
-<pre class="loadjson" data-url="/boundaries/?contains=45.524,-73.596"></pre>
+  <h3>Attribution</h3>
+  <p>Not required, but consider adding: <code>District and politician data from &lt;a href=&quot;http://represent.opennorth.ca/&quot;&gt;Represent&lt;/a&gt;</code></p>
 
-<h3 id="spatial_fields">Spatial data</h3>
+  <h3 id="contributing">Contributing</h3>
+  <p>All our representative data comes from scrapers. If you&rsquo;d like to improve our representative data, update our scrapers! Find the link to the scraper in the <code>scraperwiki_url</code> field of the <a href="#representativeset">representative set</a> resource, make a copy of the scraper on ScraperWiki, edit your copy, then email <a href="mailto:represent@opennorth.ca">represent@opennorth.ca</a>. If you&rsquo;d like to add a new representative set, use an existing scraper as an example.</p>
+</section>
 
-<p>To access spatial data, follow the links provided in the <code>shape_url</code>, <code>simple_shape_url</code>, and <code>centroid_url</code> keys. The <code>simple_shape</code> is the district&#8217;s shape, simplified to a tolerance of 0.002; this&#8217;ll usually look fine on maps and be quicker to load.</p>
+<section id="boundaryset">
+  <h2>Boundary Sets</h2>
+  <p>A boundary set is a group of districts, like BC electoral districts or Toronto wards. Discover what boundary sets are available and get details on their source.</p>
 
-<h3 id="spatial_formats">Spatial formats</h3>
+  <dl>
+    <dt>Get all boundary sets</dt>
+    <dd><a href="/boundary-sets/?format=apibrowser">/boundary-sets/</a> <span>Click to view JSON</span></dd>
+    <dt>Get one boundary set</dt>
+    <dd><a href="/boundary-sets/federal-electoral-districts/?format=apibrowser">/boundary-sets/federal-electoral-districts/</a></dd>
+    <dt>Find boundary sets by <code>name</code> or <code>domain</code></dt>
+    <dd><a href="/boundary-sets/?domain=Canada&format=apibrowser">/boundary-sets/?domain=Canada</a></dd>
+  </dl>
+</section>
 
-<p>Geospatial resources output GeoJSON. You may instead request KML or Well-Known Text by adding <code>format=kml</code> or <code>format=wkt</code> to the query string.</p>
+<section id="boundary">
+  <h2>Boundaries</h2>
+  <p>A boundary is a single district.</p>
 
-<h1 id="postcode">Postal codes</h1>
+  <p>The <code>external_id</code> field (which is not always present) is a numerical ID used in the source shapefile to identify districts. The <code>metadata</code> field contains all attributes from the source shapefile; it is unmodified and may be out-of-date or erroneous.</p>
 
-<p>URL: <code>/postcodes/A0A0A0/</code></p>
+  <p>To access spatial data, follow the links in the <code>simple_shape_url</code>, <code>shape_url</code> and <code>centroid_url</code> fields. <code>simple_shape</code> is the district&#8217;s shape simplified to a tolerance of 0.002, which looks fine and loads faster. The default output is GeoJSON. You may request KML or Well-Known Text by adding <code>format=kml</code> or <code>format=wkt</code> to the query string.</p>
 
-<p>A Canadian postal code. URLs should include the code in uppercase with no spaces.</p>
+  <dl>
+    <dt>Get all boundaries</dt>
+    <dd><a href="/boundaries/?format=apibrowser">/boundaries/</a> <span>Click to view JSON</span></dd>
+    <dt>Get the boundaries for one boundary set</dt>
+    <dd><a href="/boundaries/toronto-wards/?format=apibrowser">/boundaries/toronto-wards/</a></dd>
+    <dt>Get the boundaries for multiple boundary sets (comma-separated)</dt>
+    <dd><a href="/boundaries/?sets=toronto-wards,ottawa-wards&format=apibrowser">/boundaries/?sets=toronto-wards,ottawa-wards</a></dd>
+    <dt>Get one boundary</dt>
+    <dd><a href="/boundaries/nova-scotia-electoral-districts/cape-breton-north/?format=apibrowser">/boundaries/nova-scotia-electoral-districts/cape-breton-north/</a></dd>
+    <dt>Get the representatives for one boundary</dt>
+    <dd><a href="/boundaries/toronto-wards/etobicoke-north-1/representatives/?format=apibrowser">/boundaries/toronto-wards/etobicoke-north-1/representatives/</a></dd>
+    <dt>Find boundaries by latitude and longitude</dt>
+    <dd><a href="/boundaries/?contains=45.524,-73.596&format=apibrowser">/boundaries/?contains=45.524,-73.596</a></dd>
+    <dt>Find boundaries by <code>name</code> or <code>external_id</code></dt>
+    <dd><a href="/boundaries/?name=Niagara Falls&format=apibrowser">/boundaries/?name=Niagara Falls</a></dd>
+    <dt>Find boundaries that touch</dt>
+    <dd><a href="/boundaries/?touches=alberta-electoral-districts/highwood&format=apibrowser">/boundaries/?touches=alberta-electoral-districts/highwood</a></dd>
+    <dt>Find boundaries that intersect (&ldquo;covers or overlaps&rdquo; in PostGIS lingo)</dt>
+    <dd><a href="/boundaries/?intersects=alberta-electoral-districts/highwood&format=apibrowser">/boundaries/?intersects=alberta-electoral-districts/highwood</a></dd>
+  </dl>
+</section>
 
-<p><strong>Note:</strong> We don't provide a URL for a list of all postal codes.</p>
+<section id="postcode">
+  <h2>Postal codes</h2>
+  <p>A Canadian postal code. URLs should include the code in uppercase with no spaces.</p>
 
-<pre class="loadjson" data-url="/postcodes/L5G4L3/"></pre>
+  <p>The <code>boundaries_centroid</code> field lists boundaries that contain the postal code&rsquo;s center point (centroid), provided by <a href="http://geocoder.ca/">Geocoder.ca</a>. A centroid is a point,
+  but a postal code is a shape (a set of points), so the list of boundaries in <code>boundaries_centroid</code> <strong>will sometimes be inaccurate</strong>.</p>
 
-<p>The <code>boundaries_centroid</code> field is a list of boundaries that contain the postcal code&rsquo;s center point, or <code>centroid</code>. (That point comes from geocoder.ca data.) Because a centroid is a single point,
-whereas a postal code is a shape (or a collection of points), the list of boundaries based on the centroid <strong>will in some cases be inaccurate</strong>.</p>
+  <p>The <code>boundaries_concordance</code> field lists boundaries linked to the postal code according to official government data. Postal codes can cross electoral districts, therefore the <code>boundaries_concordance</code> field may list, for example, multiple Ontario electoral districts for a single postal code like K0A 1K0.</p>
 
-<p>When a government has made available a file linking postal codes to boundaries, there will be a <code>boundaries_concordance</code> field, which will be a list of boundaries linked to that postal code according to the government file. Note that sometimes postal codes cross political boundaries, and so sometimes this call will return, for example, multiple provincial ridings for a single postcode.</p>
+  <p>The response also has <code>representatives_centroid</code> and <code>representatives_concordance</code> fields.</p>
 
-<p>This resource also provides <code>representatives_centroid</code> and <code>representatives_concordance</code> lists.</p>
+  <p>In most cases, the <code>city</code>, <code>province</code> and <code>centroid</code> fields will be non-empty.</p>
 
-<h1 id="representativeset">Representative sets</h1>
+  <dl>
+    <dt>Find boundaries and representatives by postal code</dt>
+    <dd><a href="/postcodes/L5G4L3/?format=apibrowser">/postcodes/L5G4L3/</a> <span>Click to view JSON</span></dd>
+  </dl>
+</section>
 
-<p>URL: <code>/representative-sets/</code></p>
+<section id="representativeset">
+  <h2>Representative sets</h2>
+  <p>A representative set is a group of elected officials, like the House of Commons or Toronto City Council. Discover what representative sets are available and get the URL to their scraper on ScraperWiki.</p>
 
-<p>A representative set is a political body to which people are elected; for example, the House of Commons or Toronto City Council.</p>
+  <dl>
+    <dt>Get all representative sets</dt>
+    <dd><a href="/representative-sets/?format=apibrowser">/representative-sets/</a> <span>Click to view JSON</span></dd>
+    <dt>Get one representative set</dt>
+    <dd><a href="/representative-sets/ontario-legislature/?format=apibrowser">/representative-sets/ontario-legislature/</a></dd>
+  </dl>
+</section>
 
-<pre class="loadjson" data-url="/representative-sets/ontario-legislature/"></pre>
+<section id="representative">
+  <h2>Representatives</h2>
+  <p>A representative is an elected official.</p>
 
-<h1 id="representative">Representatives</h1>
+  <dl>
+    <dt>Get all representatives</dt>
+    <dd><a href="/representatives/?format=apibrowser">/representatives/</a> <span>Click to view JSON</span></dd>
+    <dt>Find representatives by latitude and longitude</dt>
+    <dd><a href="/representatives/?point=45.524,-73.596&format=apibrowser">/representatives/?point=45.524,-73.596</a></dd>
+    <dt>Find representatives by boundary (comma-separated)</dt>
+    <dd><a href="/representatives/?districts=edmonton-wards/ward-1,edmonton-wards/ward-2,edmonton-wards/ward-3&format=apibrowser">/representatives/?districts=edmonton-wards/ward-1,edmonton-wards/ward-2,edmonton-wards/ward-3</a></dd>
+    <dt>Find representatives by <code>name</code>, <code>first_name</code>, <code>last_name</code>, <code>district_name</code>, <code>elected_office</code> or <code>party_name</code></dt>
+    <dd><a href="/representatives/house-of-commons/?last_name=Harper&format=apibrowser">/representatives/house-of-commons/?last_name=Harper</a></dd>
+  </dl>
 
-<p>URL: <code>/representatives/</code></p>
+  <p id="fields">Only the &ldquo;required&rdquo; fields below are always present in the response. You can improve the data we provide by <a href="#contributing">updating our scrapers</a>.</p>
 
-<p>A representative is an elected official.</p>
-
-<p><strong>Note:</strong> We don't provide a URL for each individual representative.</p>
-
-<pre class="loadjson" data-url="/representatives/house-of-commons/?last_name=Harper"></pre>
-
-<p><strong>Filterable fields:</strong> <code>name</code>, <code>first_name</code>, <code>last_name</code>, <code>district_name</code>, <code>elected_office</code>, <code>party_name</code>.</p>
-
-<h3>Spatial filters</h3>
-
-<p>Access all the representatives for a given point at <code>/representatives/?point=[latitude],[longitude]</code>. This is a shortcut: you can get the same results by first querying the <a href="#boundary">boundaries</a> resource with a <code>contains</code> filter, and then using the boundaries returned to query the representatives resource with a <code>districts</code> filter.</p>
-
-<pre class="loadjson" data-url="/representatives/?point=45.524,-73.596"></pre>
-
-<h3 id="fields">Fields</h3>
-
-<p>Only those fields labelled &ldquo;required&rdquo; below are guaranteed to be present in results.</p>
-
-<table class="table table-striped">
+  <table class="table table-striped">
     <thead>
     <tr>
-        <th>Field name</th>
-        <th>Required?</th>
-        <th>Example</th>
-        <th style="width: 40%">Notes</th>
+      <th>Field name</th>
+      <th>Required?</th>
+      <th>Example</th>
+      <th style="width: 40%">Notes</th>
     </tr>
     </thead>
     <tbody>
     <tr>
-        <td>name</td>
-        <td>Yes</td>
-        <td>Stephen Harper</td>
-        <td></td>
+      <td>name</td>
+      <td>Yes</td>
+      <td>Stephen Harper</td>
+      <td></td>
     </tr>
     <tr>
-        
-        <td>district_name</td>
-        <td>Yes</td>
-        <td>Calgary Southwest</td>
-        <td></td>
+      
+      <td>district_name</td>
+      <td>Yes</td>
+      <td>Calgary Southwest</td>
+      <td></td>
     </tr>
     <tr>
-        
-        <td>elected_office</td>
-        <td>Yes</td>
-        <td>&quot;MP&quot;, &quot;MLA&quot;, &quot;City councillor&quot;, &quot;Mayor&quot;, &quot;Alderman&quot;
-        <td>Will be the same for everyone at provincial level</td>
+      
+      <td>elected_office</td>
+      <td>Yes</td>
+      <td>MP, MLA, Mayor, Councillor, Alderman
+      <td>Will be the same for all representatives at the federal and provincial levels</td>
     </tr>
     <tr>
-        
-        <td>source_url</td>
-        <td>Yes</td>
-        <td>The URL at which the data is scraped</td>
-        <td>May be the same as <code>url</code> below</td>
+      
+      <td>source_url</td>
+      <td>Yes</td>
+      <td>The URL at which the data is scraped</td>
+      <td>May be the same as <code>url</code> below</td>
     </tr>
     <tr>
-        
-        <td>first_name</td>
-        <td>No</td>
-        <td>Stephen</td>
-        <td>If you're writing a scraper, don&#39;t parse out first_name and last_name yourself. Only include this field if they&#39;re
-            separated in the source document.</td>
+      
+      <td>first_name</td>
+      <td></td>
+      <td>Stephen</td>
+      <td>If you're writing a scraper, only set this field if the first name appears separately in the source. Don&#39;t parse it out yourself.</td>
     </tr>
     <tr>
-        <td>last_name</td>
-        <td>No</td>
-        <td>Harper</td>
-        <td></td>
+      <td>last_name</td>
+      <td></td>
+      <td>Harper</td>
+      <td>If you're writing a scraper, only set this field if the last name appears separately in the source. Don&#39;t parse it out yourself.</td>
     </tr>
     <tr>
-        <td>party_name</td>
-        <td>No</td>
-        <td>Conservative</td>
-        <td></td>
+      <td>party_name</td>
+      <td></td>
+      <td>Conservative</td>
+      <td></td>
     </tr>
     <tr>
-        <td>email</td>
-        <td>No</td>
-        <td>example@example.com</td>
-        <td></td>
+      <td>email</td>
+      <td></td>
+      <td>example@example.com</td>
+      <td></td>
     </tr>
     <tr>
-        <td>url</td>
-        <td>No</td>
-        <td>http://legislature.ca/stephen-harper</td>
-        <td>This should generally be the URL to the politician&#39;s bio on the official legislature site.</td>
+      <td>url</td>
+      <td></td>
+      <td>http://legislature.ca/stephen-harper</td>
+      <td>This should generally be the URL to the representative&#39;s page on the official legislature site</td>
     </tr>
     <tr>
-        
-        <td>photo_url</td>
-        <td>No</td>
-        <td>http://legislature.ca/stephen-harper.jpg</td>
-        <td></td>
+      
+      <td>photo_url</td>
+      <td></td>
+      <td>http://legislature.ca/stephen-harper.jpg</td>
+      <td></td>
     </tr>
     <tr>
-        
-        <td>personal_url</td>
-        <td>No</td>
-        <td>http://stephenharper.blogspot.com/</td>
-        <td>A site run by the representative that&#39;s not part of the official legislature site.</td>
+      
+      <td>personal_url</td>
+      <td></td>
+      <td>http://stephenharper.blogspot.com/</td>
+      <td>A site run by the representative that&#39;s not on the official legislature site</td>
     </tr>
     <tr>
-        
-        <td>district_id</td>
-        <td>No</td>
-        <td>24013</td>
-        <td>If there&#39;s a number or other ID provided alongside the district name.</td>
+      
+      <td>district_id</td>
+      <td></td>
+      <td>24013</td>
+      <td>If there&#39;s an ID provided alongside the district name</td>
     </tr>
     <tr>
-        <td>gender</td>
-        <td>No</td>
-        <td>M/F</td>
-        <td></td>
+      <td>gender</td>
+      <td></td>
+      <td>M, F</td>
+      <td></td>
     </tr>
     <tr>
-        <td>offices</td>
-        <td>No</td>
-        <td><code>[ {&quot;postal&quot;: &quot;10 North Pole, H0H 0H0&quot;, &quot;tel&quot;: &quot;555-555-5555&quot;,
-            &quot;type&quot;: &quot;constituency&quot;}, {&quot;tel&quot;: &quot;444-444-4444&quot;, &quot;type&quot;: &quot;legislature&quot;}
-            ]</code></td>
-        <td>A JSON array with basic contact information for the representative&quot;s offices. It should be an
-            array of JSON objects (hashes), with the optional keys: <code>postal</code> (mailing address), <code>tel</code>
-            (telephone), <code>fax</code> (telephone), <code>type</code> (what kind of office is this? e.g. constituency vs.
-            legislature).</td>
+      <td>offices</td>
+      <td></td>
+      <td><code>[ {&quot;postal&quot;: &quot;10 North Pole, H0H 0H0&quot;, &quot;tel&quot;: &quot;555-555-5555&quot;,
+        &quot;type&quot;: &quot;constituency&quot;}, {&quot;tel&quot;: &quot;444-444-4444&quot;, &quot;type&quot;: &quot;legislature&quot;}
+        ]</code></td>
+      <td>A JSON array with basic contact information for the representative&#39;s offices. It should be an
+        array of JSON objects (hashes), with the optional keys: <code>postal</code> (mailing address), <code>tel</code>
+        (telephone), <code>fax</code> (telephone), <code>type</code> (what kind of office this is, e.g. constituency or
+        legislature).</td>
     </tr>
     <tr>
-        <td>extra</td>
-        <td>No</td>
-        <td><code>{ &#39;hair_colour&#39;: &#39;brown&#39; }</code></td>
-        <td>A JSON object with any extra data you think is worth collecting that doesn&#39;t fit in other
-            fields.</td>
+      <td>extra</td>
+      <td></td>
+      <td><code>{ &#39;hair_colour&#39;: &#39;brown&#39; }</code></td>
+      <td>A JSON object with any extra data you think is worth collecting that doesn&#39;t fit in other
+        fields</td>
     </tr>
     </tbody>
-</table>
+  </table>
+</section>
+</div>
 
-<h3 id="contribute-scraper">Contributing</h3>
-
-<p>All representative data comes from scrapers. If you&rsquo;d like to use fields we&rsquo;re not currently returning for a particular jurisdiction, or if you&rsquo;d just like to help out, update our scrapers!</p>
-
-<p>Find the scraper via the <code>scraperwiki_url</code> field on the appropriate <a href="#boundaryset">boundary set</a> resource, make a copy on <a href="http://www.scraperwiki.com/">Scraperwiki</a>, edit your copy till it works, then e-mail <a href="mailto:represent@opennorth.ca">represent@opennorth.ca</a>.</p>
-<p>If we don&rsquo;t yet have a scraper for a particular jurisdiction, you might want to use one of our existing ones as an example. Use the list of fields above as a reference.</p>
+<div class="modal fade" id="modal">
+  <div class="modal-header">
+    <button class="close" data-dismiss="modal">×</button>
+    <h3></h3>
+  </div>
+  <div class="modal-body">
+    <pre></pre>
+  </div>
 </div>
 {% endblock %}
