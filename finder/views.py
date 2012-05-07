@@ -76,7 +76,7 @@ def index(request):
     # Add remaining representative sets to the default level of government.
     'representative_sets': {'Municipal': no_boundary_set},
     # Source for "most comprehensive" claim: http://www.azavea.com/products/cicero/about/availability/
-    'progress': round(total / 31612897.0 * 100),
+    'progress': int(total / 31612897.0 * 100),
   }))
 
 def api(request):
