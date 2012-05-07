@@ -72,7 +72,7 @@ def index(request):
     categories[domain_to_category_map.get(boundary_set['domain'], 'Municipal')].append(boundary_set)
 
   return render_to_response('index.html', RequestContext(request, {
-    'categories': categories.iteritems(),
+    'categories': dict(categories), # @wtf Django templates can't iterate defaultdict
     # Add remaining representative sets to the default level of government.
     'representative_sets': {'Municipal': no_boundary_set},
     # Source for "most comprehensive" claim: http://www.azavea.com/products/cicero/about/availability/

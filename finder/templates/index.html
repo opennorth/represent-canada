@@ -44,7 +44,7 @@
 
     <p>Represent includes Members of Parliament, all members of provincial legislatures, and municipal elected officials representing <strong id="progress">{{ progress }}%</strong> of the Canadian population, making it the <strong>most comprehensive</strong> database of its kind. <a href="http://opennorth.ca/donate/">Help us get to 100%.</a></p>
 
-    {% for category, boundary_sets in categories %}
+    {% for category, boundary_sets in categories.iteritems %}
       {% if boundary_sets %}
         <h3>{{ category }}</h3>
         <ul>
@@ -59,13 +59,17 @@
               {% endif %}
             </li>
           {% endfor %}
-          {% if representative_sets.category %}
-            {% for x in representative_sets.category %}
-              <li>
-                <a href="/representatives/{{ x.slug }}/?format=apibrowser">{{ x.name }}</a>
-              </li>
-            {% endfor %}
-          {% endif %}
+
+          {# @wtf Django templates can't perform a dynamic key lookup #}
+          {% for key, list in representative_sets.iteritems %}
+            {% ifequal key category %}
+              {% for x in list %}
+                <li>
+                  <a href="/representatives/{{ x.slug }}/?format=apibrowser">{{ x.name }}</a>
+                </li>
+              {% endfor %}
+            {% endifequal %}
+          {% endfor %}
         </ul>
       {% endif %}
     {% endfor %}
