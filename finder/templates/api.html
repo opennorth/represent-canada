@@ -6,16 +6,18 @@
 {% block content %}
 <div class="container" id="api">
 
-<nav>
-  <ul class="breadcrumb">
-    <li><a href="/">Home</a> <span class="divider">/</span></li>
-    <li class="active">Represent API</li>
-  </ul>
-</nav>
+<header>
+  <nav>
+    <ul class="breadcrumb">
+      <li><a href="/">Home</a> <span class="divider">/</span></li>
+      <li class="active">Represent API</li>
+    </ul>
+  </nav>
+</header>
 
 <p>Represent provides a REST API to a wealth of information about Canadian elected officials and electoral districts.</p>
 
-<div class="subnav">
+<nav class="subnav">
   <ul class="nav nav-pills">
     <li><a href="#basics">Basics</a></li>
     <li><a href="#boundaryset">Boundary sets</a></li>
@@ -24,8 +26,7 @@
     <li><a href="#representativeset">Representative sets</a></li>
     <li><a href="#representative">Representatives</a></li>
   </ul>
-</div>
-<br>
+</nav>
 
 <section id="basics">
   <h2>Basics</h2>
@@ -273,15 +274,5 @@
     </tbody>
   </table>
 </section>
-</div>
-
-<div class="modal fade" id="modal">
-  <div class="modal-header">
-    <button class="close" data-dismiss="modal">×</button>
-    <h3></h3>
-  </div>
-  <div class="modal-body">
-    <pre></pre>
-  </div>
 </div>
 {% endblock %}

@@ -4,15 +4,15 @@
 {% block title %}Represent | elected officials and electoral districts database{% endblock %}
 
 {% block content %}
-<header class="container">
-  <h1>
-    Represent, by
-    <a href="http://opennorth.ca/"><img src="{{ STATIC_URL }}img/opennorth_logo.png" alt="" width="90" height="90"></a>
-    <a href="http://opennorth.ca/">Open North</a>
-  </h1>
-</header>
+<div class="container" id="index">
+  <header>
+    <h1>
+      Represent, by
+      <a href="http://opennorth.ca/"><img src="{{ STATIC_URL }}img/opennorth_logo.png" alt="" width="90" height="90"></a>
+      <a href="http://opennorth.ca/">Open North</a>
+    </h1>
+  </header>
 
-<div class="container">
   <div id="form" class="form-inline">
     <h2>Enter a Canadian address or postal code to find your elected representatives</h2>
     <input type="text" name="address" id="address" class="span4" placeholder="Address or postal code">
@@ -39,8 +39,10 @@
 
   <hr class="soften">
 
-  <div id="coverage">
-    <h2>Geographic Coverage</h2>
+  <section id="coverage">
+    <h2>The most comprehensive database of Canadian elected officials</h2>
+
+    <p>Represent includes Members of Parliament, all members of provincial legislatures, and municipal elected officials representing <strong id="progress">{{ progress }}%</strong> of the Canadian population, making it the <strong>most comprehensive</strong> database of its kind. <a href="http://opennorth.ca/donate/">Help us get to 100%.</a></p>
 
     {% for category, boundary_sets in categories %}
       {% if boundary_sets %}
@@ -49,56 +51,79 @@
           {% for boundary_set in boundary_sets %}
             <li>
               <a href="/boundaries/{{ boundary_set.slug }}/?format=apibrowser">{{ boundary_set.name }}</a>
-              {% if boundary_set.representative_set %}
-                with members of <a href="/representatives/{{ boundary_set.representative_set.slug }}/?format=apibrowser">{{ boundary_set.representative_set.name }}</a>
+              {% if boundary_set.representative_sets %}
+                with members of
+                {% for x in boundary_set.representative_sets %}
+                  <a href="/representatives/{{ x.slug }}/?format=apibrowser">{{ x.name }}</a>{% if not forloop.last %},{% endif %}
+                {% endfor %}
               {% endif %}
             </li>
           {% endfor %}
+          {% if representative_sets.category %}
+            {% for x in representative_sets.category %}
+              <li>
+                <a href="/representatives/{{ x.slug }}/?format=apibrowser">{{ x.name }}</a>
+              </li>
+            {% endfor %}
+          {% endif %}
         </ul>
       {% endif %}
     {% endfor %}
+  </section>
+
+  <hr class="soften">
+
+  <div class="row grid">
+    <div class="span3">
+      <h2>Free API</h2>
+      <p>Read the <a href="{% url apidoc %}">documentation</a>.</p>
+    </div>
+    <div class="span3">
+      <h2>Open-source</h2>
+      <p>Built for and by the open-government community via <a href="https://github.com/opennorth/represent-canada">GitHub</a>.</p>
+    </div>
+    <div class="span3">
+      <h2>Stay up-to-date</h2>
+      <p>Subscribe to our <a href="http://groups.google.com/group/represent-canada/">low-volume mailing list</a> to be notified of API changes.</p>
+    </div>
+    <div class="span3">
+      <h2>Contact us</h2>
+      <p><a href="mailto:represent@opennorth.ca">represent@opennorth.ca</a></p>
+    </div>
   </div>
 
   <hr class="soften">
 
-  <div id="grid">
-    <div class="row">
-      <div class="span3">
-        <h2>Free API</h2>
-        <p>Read the <a href="{% url apidoc %}">documentation</a>.</p>
-      </div>
-      <div class="span3">
-        <h2>Open-source</h2>
-        <p>Built for and by the open-government community via <a href="https://github.com/opennorth/represent-canada">GitHub</a>.</p>
-      </div>
-      <div class="span3">
-        <h2>Stay up-to-date</h2>
-        <p>Subscribe to our <a href="http://groups.google.com/group/represent-canada/">low-volume mailing list</a> to be notified of API changes.</p>
-      </div>
-      <div class="span3">
-        <h2>Contact us</h2>
-        <p><a href="mailto:represent@opennorth.ca">represent@opennorth.ca</a></p>
-      </div>
+  <section id="users">
+    <h2>Groups that use and rely on Represent</h2>
+
+    <ul class="unstyled">
+      <li><a href="http://citizensconnected.com/"><img src="/static/img/citizensconnected.png" width="111" height="35" alt="Citizens Connected"></a></li>
+      <li><a href="http://davidsuzuki.org/"><img src="/static/img/davidsuzuki.png" width="124" height="50" alt="David Suzuki Foundation"></a></li>
+      <li><a href="http://citizenbridge.org/"><img src="/static/img/citizenbridge.png" width="162" height="50" alt="Citizen Bridge"></a></li>
+      <li><a href="http://makethemworkforyou.com/"><img src="/static/img/makethemworkforyou.png" width="86" height="50" alt="Make Them Work For You Ltd"></a></li>
+      <li><a href="http://nextparliament.ca/"><img src="/static/img/nextparliament.png" width="38" height="30" alt="Next Parliament"></a></li>
+    </ul>
+
+    <p>From running advocacy campaigns to making legislative information more accessible, organizations <a href="{%url apidoc %}">use our API</a> to match postal codes and addresses to electoral districts and elected official contact information.</p>
+  </section>
+
+  <hr class="soften">
+
+  <div class="row grid">
+    <div class="span2">
+      <h2>Authors</h2>
+      <p><a href="http://michaelmulley.com/">Michael Mulley</a> and <a href="http://opennorth.ca/team/">James McKinney</a></p>
     </div>
-
-    <hr class="soften">
-
-    <div class="row">
-      <div class="span2">
-        <h2>Authors</h2>
-        <p><a href="http://michaelmulley.com/">Michael Mulley</a> and <a href="http://opennorth.ca/team/">James McKinney</a></p>
-      </div>
-      <div class="span5">
-        <h2>Scrapers</h2>
-        <p>Arlo Breault, Carmine Casciato, Andrew Dyck, Rory Geoghegan, Trevor Knight, Matthew Leon, Camilo Lopez, Dylan McCall, Amir Pakdel and Kamil Politowicz.</p>
-      </div>
-      <div class="span5">
-        <h2>Special thanks</h2>
-        <p>Kent Mewhort for legal information, Aran Rasmussen for general help, and the Chicago Tribune&rsquo;s <a href="https://github.com/newsapps/django-boundaryservice">Boundary Service</a> for code and inspiration.</p>
-      </div>
+    <div class="span5">
+      <h2>Scrapers</h2>
+      <p>Arlo Breault, Carmine Casciato, Andrew Dyck, Rory Geoghegan, Trevor Knight, Matthew Leon, Camilo Lopez, Dylan McCall, Amir Pakdel and Kamil Politowicz.</p>
+    </div>
+    <div class="span5">
+      <h2>Special thanks</h2>
+      <p>Kent Mewhort for legal information, Aran Rasmussen for general help, and the Chicago Tribune&rsquo;s <a href="https://github.com/newsapps/django-boundaryservice">Boundary Service</a> for code and inspiration.</p>
     </div>
   </div>
-
 </div>
 {% endblock %}
 
