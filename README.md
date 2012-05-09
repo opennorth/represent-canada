@@ -1,4 +1,4 @@
-[Represent](http://represent.opennorth.ca) is the open database of Canadian elected representatives and electoral districts. It provides a [RESTful API](http://represent.opennorth.ca/api/) to boundary, representative, and postcode resources.
+[Represent](http://represent.opennorth.ca) is the open database of Canadian elected officials and electoral districts. It provides a [REST API](http://represent.opennorth.ca/api/) to boundary, representative, and postcode resources.
 
 This repository contains a master Django project, documentation, and a demo app. Code for the individual components of the API is in separate packages, which this project depends on:
 
@@ -44,12 +44,12 @@ You can launch a development server with:
 
 # Adding Data
 
-Because the licenses for the digital boundary files are unclear, shape data is currently held in a private repository. If you have access to this repository, symlink it in to the project directory:
+[Download the data](https://github.com/opennorth/represent-canada-data), and then symlink `represent-canada-data` into the project directory:
 
     mkdir data
-    ln -s /all-my-shapes-are-here/ data/shapefiles
+    ln -s /path/to/represent-canada-data/ data/shapefiles
 
-To load data into the API, see the documentation for the boundaries, representatives, and postcodes packages.
+To load the data into the API, see the documentation for the boundaries, representatives, and postcodes packages.
 
 # International Use
 
@@ -57,4 +57,4 @@ Apart from the postcode component, which is optional and simple to rewrite, we'v
 
 # Contact
 
-Please contact [represent@opennorth.ca](mailto:represent@opennorth.ca) for all questions or comments. Please submit feature requests, bug fixes, etc. [through GitHub](https://github.com/opennorth/represent-canada/issues).
+Please use [GitHub Issues](http://github.com/opennorth/represent-canada/issues) for bug reports, feature requests, etc. You may also contact [represent@opennorth.ca](mailto:represent@opennorth.ca).
