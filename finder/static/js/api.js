@@ -29,5 +29,12 @@ jQuery(function ($) {
     }
   });
 
+  $('.subnav').localScroll({
+    axis : 'y',
+    duration : 500,
+    easing : 'easeInOutExpo',
+    hash : true
+  });
+
   $('#apibrowser pre').html(formatJSON($('#apibrowser pre').text()));
 });
