@@ -1,5 +1,5 @@
 # coding: utf-8
-from django.shortcuts import render_to_response
+from coffin.shortcuts import render_to_response
 from django.template import RequestContext
 from collections import defaultdict
 from boundaries.models import BoundarySet
@@ -72,7 +72,7 @@ def index(request):
     categories[domain_to_category_map.get(boundary_set['domain'], 'Municipal')].append(boundary_set)
 
   return render_to_response('index.html', RequestContext(request, {
-    'categories': dict(categories), # @wtf Django templates can't iterate defaultdict
+    'categories': categories,
     # Add remaining representative sets to the default level of government.
     'representative_sets': {'Municipal': no_boundary_set},
     # Source for "most comprehensive" claim: http://www.azavea.com/products/cicero/about/availability/

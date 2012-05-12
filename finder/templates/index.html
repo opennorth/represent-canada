@@ -44,7 +44,7 @@
 
     <p>Represent includes all Members of Parliament, all members of provincial legislatures, and municipal elected officials for <strong id="progress">{{ progress }}%</strong> of the Canadian population, making it the <strong>most comprehensive</strong> database of its kind. <a href="http://opennorth.ca/donate/">Help us get to 100%.</a></p>
 
-    {% for category, boundary_sets in categories.iteritems %}
+    {% for category, boundary_sets in categories.iteritems() %}
       {% if boundary_sets %}
         <h3>{{ category }}</h3>
         <ul>
@@ -54,22 +54,19 @@
               {% if boundary_set.representative_sets %}
                 with members of
                 {% for x in boundary_set.representative_sets %}
-                  <a href="/representatives/{{ x.slug }}/?format=apibrowser">{{ x.name }}</a>{% if not forloop.last %},{% endif %}
+                  <a href="/representatives/{{ x.slug }}/?format=apibrowser">{{ x.name }}</a>{% if not loop.last %},{% endif %}
                 {% endfor %}
               {% endif %}
             </li>
           {% endfor %}
 
-          {# @wtf Django templates can't perform a dynamic key lookup #}
-          {% for key, list in representative_sets.iteritems %}
-            {% ifequal key category %}
-              {% for x in list %}
-                <li>
-                  <a href="/representatives/{{ x.slug }}/?format=apibrowser">{{ x.name }}</a>
-                </li>
-              {% endfor %}
-            {% endifequal %}
-          {% endfor %}
+          {% if representative_sets.get(category) %}
+            {% for x in representative_sets[category] %}
+              <li>
+                <a href="/representatives/{{ x.slug }}/?format=apibrowser">{{ x.name }}</a>
+              </li>
+            {% endfor %}
+          {% endif %}
         </ul>
       {% endif %}
     {% endfor %}
@@ -133,7 +130,7 @@
 
 {% block js %}
 <script src="//maps.google.com/maps/api/js?sensor=true"></script>
-{{ block.super }}
+{{ super() }}
 <script type="text/javascript">
 {# https://github.com/CloudMade/Leaflet/issues/323 #}
 L_ROOT_URL = "{{ STATIC_URL|escapejs }}leaflet/";
