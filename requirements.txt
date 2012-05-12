@@ -4,6 +4,7 @@ django_compressor==1.1
 geopy>=0.94.1
 Jinja2
 Coffin
+Pygments
 python-memcached
 Fabric
 South
