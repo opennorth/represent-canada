@@ -1,6 +1,34 @@
 var geocoder = new google.maps.Geocoder();
-var latlngCache = [], boundaryCache = [], shapeCache = [], repCache = {};
+var latlngCache = [],
+    boundaryCache = [],
+    shapeCache = [],
+    representativeCache = {};
 var map, marker, shape, boundary; // the displayed boundary
+
+var boundaryTemplate = _.template('<div class="row boundary">' +
+      '<div class="span6">' +
+        '<h3>' +
+          '<a href="#" class="shape" data-url="<%= url %>"><%= name %></a> ' +
+          '<small><%= boundary_set_name %></small> ' +
+          '<a class="label" href="<%= url %>?format=apibrowser">JSON</a> ' +
+        '</h3>' +
+      '</div>' +
+    '</div>'),
+   representativeTemplate = _.template('<div class="span1">' +
+      '<% if (photo_url) { %><img src="<%= photo_url %>" width="60"><% } else { %>&nbsp;<% } %>' +
+    '</div>' +
+    '<div class="span5">' +
+      '<h4>' +
+        '<% if (url) { %><a href="<%= url %>"><%= name %></a><% } else { %><%= name %><% } %> ' +
+        '<a class="label" href="<%= related.boundary_url %>representatives/?elected_office=<%= elected_office %>&format=apibrowser">JSON</a> ' +
+      '</h4>' +
+      '<p>' +
+        '<% if (party_name) { %><%= party_name %><% } %> ' +
+        '<%= elected_office %> at <%= representative_set_name %>' +
+        '<% if (email) { %><br><a href="mailto:<%= email %>"><%= email %></a><% } %>' +
+        '<% if (personal_url) { %><br><a href="<%= personal_url %>"><%= personal_url %></a><% } %>' +
+      '</p> ' +
+    '</div>');
 
 /**
  * Calls the API and displays the boundaries that contain the given point.
@@ -20,16 +48,12 @@ function processLatLng(latlng) {
     processLatLngCallback(latlng);
   }
   else {
-    $.getJSON('/boundaries/?contains=' + latlng.lat + ',' + latlng.lng, function (response) {
+    $.getJSON('http://represent.opennorth.ca/boundaries/?contains=' + latlng.lat + ',' + latlng.lng + '&callback=?', function (response) {
       latlngCache[key] = response;
       processLatLngCallback(latlng);
     });
   }
 }
-
-var boundaryListRowTemplate = _.template('<tr><td><%= boundary_set_name %></td>' +
-    '<td class="boundary-name"><a href="#" class="display-shape" data-url="<%= url %>"><%= name %></a>' +
-    ' &nbsp;<span class="label"><a href="<%= url %>?format=apibrowser">API</a></span></td></tr>');
 
 /**
  * Displays the boundaries that contain the given point.
@@ -41,20 +65,20 @@ function processLatLngCallback(latlng) {
   var key = latlng.toString();
 
   // Display the boundaries.
-  $('#boundaries tr').remove();
+  $('#boundaries').empty();
   $.each(latlngCache[key].objects, function (i, object) {
     boundaryCache[object.url] = object;
-    var $row = $(boundaryListRowTemplate(object));
+    var $row = $(boundaryTemplate(object));
     $('#boundaries').append($row);
 
     // And add representative info
-    if (repCache[object.url]) {
-      displayRep(object.url, repCache[object.url], $row);
+    if (object.url in representativeCache) {
+      displayRepresentative(object.url, $row);
     }
     else {
-      $.getJSON(object.url + 'representatives/', function(data) {
-        repCache[object.url] = data;
-        displayRep(object.url, data, $row);
+      $.getJSON('http://represent.opennorth.ca' + object.url + 'representatives/' + '?callback=?', function (response) {
+        representativeCache[object.url] = response;
+        displayRepresentative(object.url, $row);
       });
     }
   });
@@ -71,23 +95,19 @@ function processLatLngCallback(latlng) {
 }
 
 /**
- * Appends the names of representatives to a boundary name.
- * @param boundaryURL the URL of the corresponding boundary
- * @param data Parsed JSON from a districts/representatives/ call
- * @param $row jQuery object for the <tr> containing the boundary name
+ * Appends information on representatives to a boundary DOM node.
+ * @param string url the unique URL of the corresponding boundary
+ * @param $row jQuery object of the boundary DOM node
  */
-function displayRep(boundaryURL, data, $row) {
-  _.each(data.objects, function(rep) {
-    $row.find('td.boundary-name').append('<br>' + rep.elected_office + ': ' +
-        '<a href="' + boundaryURL + 'representatives/?' +
-        $.param({ elected_office: rep.elected_office, format: 'apibrowser'}) + '">' +
-        rep.name + '</a>');
+function displayRepresentative(url, $row) {
+  _.each(representativeCache[url].objects, function (object) {
+    $row.append($(representativeTemplate(object)));
   });
 }
 
 /**
  * Calls the API and displays a boundary polygon.
- * @param string url the unique url of the boundary to display
+ * @param string url the unique URL of the boundary to display
  * @param boolean fitBounds whether to set a map view that contains the boundary
  *   with the maximum zoom level possible
  */
@@ -99,7 +119,7 @@ function displayBoundary(url, fitBounds) {
     displayBoundaryCallback(url, fitBounds);
   }
   else {
-    $.getJSON(url + 'simple_shape', function (response) {
+    $.getJSON('http://represent.opennorth.ca' + url + 'simple_shape' + '?callback=?', function (response) {
       shapeCache[url] = response;
       displayBoundaryCallback(url, fitBounds);
     });
@@ -108,7 +128,7 @@ function displayBoundary(url, fitBounds) {
 
 /**
  * Displays a boundary polygon.
- * @param string url the unique url of the boundary to display
+ * @param string url the unique URL of the boundary to display
  * @param boolean fitBounds whether to set a map view that contains the boundary
  *   with the maximum zoom level possible
  * @note expects the API to have already been called
@@ -131,7 +151,7 @@ function displayBoundaryCallback(url, fitBounds) {
   });
 
   // Opposite of removeBoundary()
-  $('a[data-url="' + url + '"]').parents('tr').addClass('selected');
+  $('a[data-url="' + url + '"]').parents('.boundary').addClass('selected');
   shape = new L.Polygon(paths);
   map.addLayer(shape);
 
@@ -162,14 +182,12 @@ function processAddress() {
       if (results.length > 1) {
         // Display the list of addresses.
         $.each(results, function (i, result) {
-          var location = result.geometry.location;
-          $('#addresses').append('<option data-latitude="' + location.lat() + '" data-longitude="' + location.lng() + '">' + result.formatted_address + '</option>');
+          $('#addresses').append('<option data-latitude="' + result.geometry.location.lat() + '" data-longitude="' + result.geometry.location.lng() + '">' + result.formatted_address + '</option>');
         });
         $('#addresses').show();
       }
 
-      var location = results[0].geometry.location;
-      processLatLng(new L.LatLng(location.lat(), location.lng()));
+      processLatLng(new L.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng()));
     }
   });
 }
@@ -247,7 +265,7 @@ jQuery(function ($) {
     });
 
     // Display a boundary if user clicks on a boundary name.
-    $('#boundaries a.display-shape').live('click', function (event) {
+    $('.shape').live('click', function (event) {
       var $this = $(this);
       displayBoundary($this.data('url'), true);
       event.preventDefault();

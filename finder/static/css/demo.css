@@ -147,29 +147,32 @@ hr.soften {
   border: 0;
 }
 
-
-
-#map {
-  width: 100%;
-  height: 345px;
+h4 {
+  font-size: 16px;
+  line-height: 1.5em;
 }
+
 #addresses {
   width: 100%;
   display: none;
 }
-#boundaries {
+.boundary {
+  padding: 0.5em 0;
+  border-bottom: 1px solid #eee;
+}
+.boundary {
+  font-size: 13px;
+}
+.boundary p {
+  font-size: 13px;
+}
+#boundaries .selected {
+  background-color: #ff9;
+}
+#map {
   width: 100%;
-}
-#boundaries tr:nth-child(even) {
-  background: #eee;
-}
-#boundaries tr.selected {
-  background: #ccc;
-}
-#boundaries td {
-  width: 48%;
-  padding: 10px 1%;
-  border: none;
+  height: 345px;
+  margin-top: 1em;
 }
 
 /* API -----------------------------------------------------------------------*/
