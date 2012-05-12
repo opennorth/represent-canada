@@ -48,7 +48,7 @@ function processLatLng(latlng) {
     processLatLngCallback(latlng);
   }
   else {
-    $.getJSON('http://represent.opennorth.ca/boundaries/?contains=' + latlng.lat + ',' + latlng.lng + '&callback=?', function (response) {
+    $.getJSON('/boundaries/?contains=' + latlng.lat + ',' + latlng.lng, function (response) {
       latlngCache[key] = response;
       processLatLngCallback(latlng);
     });
@@ -76,7 +76,7 @@ function processLatLngCallback(latlng) {
       displayRepresentative(object.url, $row);
     }
     else {
-      $.getJSON('http://represent.opennorth.ca' + object.url + 'representatives/' + '?callback=?', function (response) {
+      $.getJSON(object.url + 'representatives/', function (response) {
         representativeCache[object.url] = response;
         displayRepresentative(object.url, $row);
       });
@@ -119,7 +119,7 @@ function displayBoundary(url, fitBounds) {
     displayBoundaryCallback(url, fitBounds);
   }
   else {
-    $.getJSON('http://represent.opennorth.ca' + url + 'simple_shape' + '?callback=?', function (response) {
+    $.getJSON(url + 'simple_shape', function (response) {
       shapeCache[url] = response;
       displayBoundaryCallback(url, fitBounds);
     });
