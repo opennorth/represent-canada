@@ -175,80 +175,82 @@ function processAddress() {
 }
 
 jQuery(function ($) {
-  var latlng = new L.LatLng(45.444369, -75.693832); // 24 Sussex Drive, Ottawa
+  if ($('#map').length) {
+    var latlng = new L.LatLng(45.444369, -75.693832); // 24 Sussex Drive, Ottawa
 
-  // Create the marker.
-  marker = new L.Marker(latlng, {draggable: true});
+    // Create the marker.
+    marker = new L.Marker(latlng, {draggable: true});
 
-  // Moving the marker calls the API.
-  marker.on('dragend', function () {
-    $('#addresses').hide();
-    processLatLng(marker.getLatLng());
-  });
+    // Moving the marker calls the API.
+    marker.on('dragend', function () {
+      $('#addresses').hide();
+      processLatLng(marker.getLatLng());
+    });
 
-  // Create the map.
-  map = new L.Map('map', {
-    center: latlng,
-    zoom: 13,
-    layers: [
-      new L.TileLayer('http://{s}.tile.cloudmade.com/266d579a42a943a78166a0a732729463/51080/256/{z}/{x}/{y}.png', {
-        attribution: '© 2011 <a href="http://cloudmade.com/">CloudMade</a> – Map data <a href="http://creativecommons.org/licenses/by-sa/2.0/">CCBYSA</a> 2011 <a href="http://openstreetmap.org/">OpenStreetMap.org</a> – <a href="http://cloudmade.com/about/api-terms-and-conditions">Terms of Use</a>'
-      })
-    ],
-    maxZoom: 17
-  });
+    // Create the map.
+    map = new L.Map('map', {
+      center: latlng,
+      zoom: 13,
+      layers: [
+        new L.TileLayer('http://{s}.tile.cloudmade.com/266d579a42a943a78166a0a732729463/51080/256/{z}/{x}/{y}.png', {
+          attribution: '© 2011 <a href="http://cloudmade.com/">CloudMade</a> – Map data <a href="http://creativecommons.org/licenses/by-sa/2.0/">CCBYSA</a> 2011 <a href="http://openstreetmap.org/">OpenStreetMap.org</a> – <a href="http://cloudmade.com/about/api-terms-and-conditions">Terms of Use</a>'
+        })
+      ],
+      maxZoom: 17
+    });
 
-  // Geolocation calls the API.
-  map.on('locationfound', function (event) {
-    $('#addresses').hide();
-    processLatLng(event.latlng);
-  });
+    // Geolocation calls the API.
+    map.on('locationfound', function (event) {
+      $('#addresses').hide();
+      processLatLng(event.latlng);
+    });
 
-  map.addLayer(marker);
-  map.attributionControl.setPrefix('');
+    map.addLayer(marker);
+    map.attributionControl.setPrefix('');
 
-  // Perform the first geolocation.
-  var address = store.get('address');
-  if (address) {
-    $('#address').val(address);
-    processAddress();
+    // Perform the first geolocation.
+    var address = store.get('address');
+    if (address) {
+      $('#address').val(address);
+      processAddress();
+    }
+    else {
+      map.locateAndSetView(13);
+    }
+
+    // http://stackoverflow.com/questions/2996431/javascript-detect-when-a-window-is-resized
+    $(window).resize(function () {
+      if (this.resizeTo) {
+        clearTimeout(this.resizeTo);
+      };
+      this.resizeTo = setTimeout(function () {
+        $(this).trigger('resizeend');
+      }, 500);
+    });
+    // Keep the marker visible on resize.
+    $(window).bind('resizeend', function () {
+      map.panTo(marker.getLatLng());
+    });
+
+    // Geocode an address and call the API.
+    $('#submit').click(function (event) {
+      store.set('address', $('#address').val());
+      processAddress();
+      event.preventDefault();
+    });
+
+    // Call the API if the user clicks on an address.
+    $('#addresses').live('change', function (event) {
+      var $this = $(this).find(':selected');
+      processLatLng(new L.LatLng($this.data('latitude'), $this.data('longitude')));
+      event.preventDefault();
+    });
+
+    // Display a boundary if user clicks on a boundary name.
+    $('#boundaries a.display-shape').live('click', function (event) {
+      var $this = $(this);
+      displayBoundary($this.data('url'), true);
+      event.preventDefault();
+    });
   }
-  else {
-    map.locateAndSetView(13);
-  }
-
-  // http://stackoverflow.com/questions/2996431/javascript-detect-when-a-window-is-resized
-  $(window).resize(function () {
-    if (this.resizeTo) {
-      clearTimeout(this.resizeTo);
-    };
-    this.resizeTo = setTimeout(function () {
-      $(this).trigger('resizeend');
-    }, 500);
-  });
-  // Keep the marker visible on resize.
-  $(window).bind('resizeend', function () {
-    map.panTo(marker.getLatLng());
-  });
-
-  // Geocode an address and call the API.
-  $('#submit').click(function (event) {
-    store.set('address', $('#address').val());
-    processAddress();
-    event.preventDefault();
-  });
-
-  // Call the API if the user clicks on an address.
-  $('#addresses').live('change', function (event) {
-    var $this = $(this).find(':selected');
-    processLatLng(new L.LatLng($this.data('latitude'), $this.data('longitude')));
-    event.preventDefault();
-  });
-
-  // Display a boundary if user clicks on a boundary name.
-  $('#boundaries a.display-shape').live('click', function (event) {
-    var $this = $(this);
-    displayBoundary($this.data('url'), true);
-    event.preventDefault();
-  });
 });
