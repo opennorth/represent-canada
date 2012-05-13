@@ -93,6 +93,10 @@ function processLatLngCallback(latlng) {
       return object.boundary_set_name == boundary.boundary_set_name;
     });
   }
+  // Otherwise, default to first boundary, if any.
+  else if (latlngCache[key].objects.length) {
+    boundary = latlngCache[key].objects[0];
+  }
   if (boundary) {
     displayBoundary(boundary.url, false);
   }
