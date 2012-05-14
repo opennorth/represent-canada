@@ -39,6 +39,7 @@ footer {
 }
 footer ul {
   margin: 1px 0 0;
+  font-size: 13px;
 }
 footer li:first-child {
   font-weight: bold;
