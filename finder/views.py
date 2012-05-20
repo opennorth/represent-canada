@@ -74,6 +74,7 @@ def index(request):
     boundary_set['representative_sets'] = by_boundary_set.get(boundary_set['slug'], [])
     categories[domain_to_category_map.get(boundary_set['domain'], 'Municipal')].append(boundary_set)
 
+  # @todo display the total number of representatives and boundaries in the database
   return render_to_response('index.html', RequestContext(request, {
     'categories': categories,
     # Add remaining representative sets to the default level of government.
