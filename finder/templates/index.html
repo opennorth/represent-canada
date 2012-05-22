@@ -13,14 +13,14 @@
     </h1>
   </header>
 
-  <div id="form" class="form-inline">
+  <form id="form" class="form-inline">
     <h2>Enter a Canadian address or postal code to find your elected representatives</h2>
     <input type="text" name="address" id="address" class="span4" placeholder="Address or postal code">
-    <a href="#" id="submit" class="btn large primary">
+    <button id="submit" class="btn large primary">
       <i class="icon-search"></i>
       Find
-    </a>
-  </div>
+    </button>
+  </form>
 
   <div id="notice" class="alert alert-info">
     Use our <b><a href="{% url apidoc %}">free API</a></b> and open-source code in your own projects!

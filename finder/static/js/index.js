@@ -15,11 +15,11 @@ var boundaryTemplate = _.template('<div class="row boundary">' +
       '</div>' +
     '</div>'),
    representativeTemplate = _.template('<div class="span1">' +
-      '<% if (photo_url) { %>
-        <img src="<%= photo_url %>" width="60">
-      <% } else { %>
-        <img src="http://placehold.it/60x80" width="60" height="80">
-      <% } %>' +
+      '<% if (photo_url) { %>' +
+        '<img src="<%= photo_url %>" width="60">' +
+      '<% } else { %>' +
+        '<img src="http://placehold.it/60x80" width="60" height="80">' +
+      '<% } %>' +
     '</div>' +
     '<div class="span5">' +
       '<h4>' +
