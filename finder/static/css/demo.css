@@ -164,6 +164,10 @@ h4 {
 .boundary {
   font-size: 13px;
 }
+.boundary .span1 {
+  clear: left;
+  margin-bottom: 1em;
+}
 .boundary p {
   font-size: 13px;
 }
