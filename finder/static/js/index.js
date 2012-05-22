@@ -29,7 +29,7 @@ var boundaryTemplate = _.template('<div class="row boundary">' +
       '<p>' +
         '<% if (party_name) { %><%= party_name %><% } %> ' +
         '<%= elected_office %>' +
-        '<% if (typeof representative_set_name !== "undefined") %> at <%= representative_set_name %><% } %>' +
+        '<% if (typeof representative_set_name !== "undefined") { %> at <%= representative_set_name %><% } %>' +
         '<% if (email) { %><br><a href="mailto:<%= email %>"><%= email %></a><% } %>' +
         '<% if (personal_url) { %><br><a href="<%= personal_url %>"><%= personal_url %></a><% } %>' +
       '</p> ' +
