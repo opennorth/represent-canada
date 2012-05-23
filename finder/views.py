@@ -51,7 +51,8 @@ def index(request):
     'Windsor City Council'          : 210891,
     # Population totals are done by each script.
     'Municipal officials of Alberta': 1056096,
-    u'Élus municipaux du Québec'    : 1292650, # source is MAMROT
+    'Municipal officials of British Columbia': 3311861,
+    u'Élus municipaux du Québec': 1292650, # source is MAMROT
   }
 
   boundary_sets = list(BoundarySet.objects.all().order_by('name').values('slug', 'name', 'domain'))
