@@ -111,7 +111,7 @@ function processLatLngCallback(latlng) {
 function displayRepresentative(url, $row) {
   _.each(representativeCache[url].objects, function (object) {
     // @todo hack for representative sets that aren't true "sets"
-    if (_.include(['Élus municipaux du Québec', 'Municipal officials of Alberta'], object.representative_set_name)) {
+    if (_.include(['Élus municipaux du Québec', 'Municipal officials of Alberta', 'Municipal officials of British Columbia'], object.representative_set_name)) {
       delete object.representative_set_name;
     }
     $row.append($(representativeTemplate(object)));
