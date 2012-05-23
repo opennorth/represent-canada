@@ -28,30 +28,30 @@ def index(request):
     u'Nuvavut'                  : 'Territorial',
   }
 
-  # http://www12.statcan.ca/census-recensement/2006/dp-pd/hlt/97-550/Index.cfm?TPL=P1C&Page=RETR&LANG=Eng&T=307&S=3&O=D&RPP=699
+  # http://www12.statcan.gc.ca/census-recensement/2011/dp-pd/hlt-fst/pd-pl/Table-Tableau.cfm?LANG=Eng&TABID=1&T=301&SR=1&RPP=200&S=3&O=D&CMA=0&PR=0#C2
   populations = {
-    'Brampton City Council'         : 433806,
-    'Caledon City Council'          : 57050,
-    'Calgary City Council'          : 988193,
-    'Charlottetown City Council'    : 32174,
-    'Edmonton City Council'         : 730372,
-    'Kitchener City Council'        : 204668,
-    'London City Council'           : 352395,
-    'Mississauga City Council'      : 668549,
-    'Conseil municipal de Montréal' : 1620693,
-    'Ottawa City Council'           : 812129,
-    'Oakville Town Council'         : 165613,
-    'Conseil municipal de Québec'   : 491142,
-    'Regina City Council'           : 179246,
-    'Saskatoon City Council'        : 202340,
-    'Stratford Town Council'        : 7083,
-    'Summerside City Council'       : 14500,
-    'Toronto City Council'          : 2503281,
-    'Vancouver City Council'        : 578041,
-    'Windsor City Council'          : 216473,
+    'Brampton City Council'         : 523911,
+    'Caledon City Council'          : 59460,
+    'Calgary City Council'          : 1096833,
+    'Charlottetown City Council'    : 34562,
+    'Edmonton City Council'         : 812201,
+    'Kitchener City Council'        : 219153,
+    'London City Council'           : 366151,
+    'Mississauga City Council'      : 713443,
+    'Conseil municipal de Montréal' : 1649519,
+    'Ottawa City Council'           : 883391,
+    'Oakville Town Council'         : 182520,
+    'Conseil municipal de Québec'   : 516622,
+    'Regina City Council'           : 193100,
+    'Saskatoon City Council'        : 222189,
+    'Stratford Town Council'        : 8574,
+    'Summerside City Council'       : 14751,
+    'Toronto City Council'          : 2615060,
+    'Vancouver City Council'        : 603502,
+    'Windsor City Council'          : 210891,
     # Population totals are done by each script.
-    'Municipal officials of Alberta': 937142,
-    u'Élus municipaux du Québec'    : 1292650,
+    'Municipal officials of Alberta': 1056096,
+    u'Élus municipaux du Québec'    : 1292650, # @todo Update to 2011
   }
 
   boundary_sets = list(BoundarySet.objects.all().order_by('name').values('slug', 'name', 'domain'))
@@ -83,7 +83,7 @@ def index(request):
     # Add remaining representative sets to the default level of government.
     'representative_sets': {'Municipal': no_boundary_set},
     # Source for "most comprehensive" claim: http://www.azavea.com/products/cicero/about/availability/
-    'progress': int(total / 31612897.0 * 100),
+    'progress': int(total / 33476688.0 * 100),
   }))
 
 def api(request):

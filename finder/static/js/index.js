@@ -18,7 +18,7 @@ var boundaryTemplate = _.template('<div class="row boundary">' +
       '<% if (photo_url) { %>' +
         '<img src="<%= photo_url %>" width="60">' +
       '<% } else { %>' +
-        '<img src="http://placehold.it/60x80" width="60" height="80">' +
+        '<img src="http://placehold.it/60x40" width="60" height="40">' +
       '<% } %>' +
     '</div>' +
     '<div class="span5">' +
