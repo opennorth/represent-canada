@@ -35,6 +35,8 @@ def index(request):
     'Calgary City Council'          : 1096833,
     'Charlottetown City Council'    : 34562,
     'Edmonton City Council'         : 812201,
+    'Guelph City Council'           : 121688,
+    'Halifax City Council'          : 390096,
     'Kitchener City Council'        : 219153,
     'London City Council'           : 366151,
     'Mississauga City Council'      : 713443,
@@ -49,6 +51,7 @@ def index(request):
     'Toronto City Council'          : 2615060,
     'Vancouver City Council'        : 603502,
     'Windsor City Council'          : 210891,
+    'Winnipeg City Council'         : 663617,
     # Population totals are done by each script.
     'Municipal officials of Alberta': 1056096,
     'Municipal officials of British Columbia': 3311861,
