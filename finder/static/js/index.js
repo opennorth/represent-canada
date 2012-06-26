@@ -190,7 +190,7 @@ function removeBoundary() {
 
 function processAddress() {
   $('#addresses').hide().empty();
-  geocoder.geocode({address: $('#address').val()}, function (results, status) {
+  geocoder.geocode({address: $('#address').val(), region: 'ca'}, function (results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
       if (results.length > 1) {
         // Display the list of addresses.
