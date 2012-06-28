@@ -15,7 +15,7 @@
   </header>
 
   <section id="coverage">
-    <p>The following boundary and representative sets are available through the <a href="{% url apidoc %}">Represent API</a>:</p>
+    <p>The following boundary and representative sets are available through the <a href="{% url apidoc %}">Represent API</a>. Click to see the JSON response for each API call.</p>
 
     {% for category, boundary_sets in categories.iteritems() %}
       {% if boundary_sets %}
