@@ -4,7 +4,7 @@
 {% block title %}Represent | elected officials and electoral districts database{% endblock %}
 
 {% block content %}
-<div class="container" id="index">
+<div class="container pretty" id="index">
   <header>
     <h1>
       Represent, by
@@ -23,6 +23,7 @@
   </form>
 
   <div id="notice" class="alert alert-info">
+    <strong>Developers:</strong>
     Use our <b><a href="{% url apidoc %}">free API</a></b> and open-source code in your own projects!
     <a href="{% url apidoc %}">Get started.</a>
   </div>
@@ -46,32 +47,10 @@
 
     <p>Represent includes all Members of Parliament, all members of provincial legislatures, and municipal elected officials for <strong id="progress">{{ progress }}%</strong> of the Canadian population, making it the <strong>most comprehensive</strong> database of its kind. <a href="http://opennorth.ca/donate/">Help us get to 100%.</a></p>
 
-    {% for category, boundary_sets in categories.iteritems() %}
-      {% if boundary_sets %}
-        <h3>{{ category }}</h3>
-        <ul>
-          {% for boundary_set in boundary_sets %}
-            <li>
-              <a href="/boundaries/{{ boundary_set.slug }}/?format=apibrowser">{{ boundary_set.name }}</a>
-              {% if boundary_set.representative_sets %}
-                with members of
-                {% for x in boundary_set.representative_sets %}
-                  <a href="/representatives/{{ x.slug }}/?format=apibrowser">{{ x.name }}</a>{% if not loop.last %},{% endif %}
-                {% endfor %}
-              {% endif %}
-            </li>
-          {% endfor %}
-
-          {% if representative_sets.get(category) %}
-            {% for x in representative_sets[category] %}
-              <li>
-                <a href="/representatives/{{ x.slug }}/?format=apibrowser">{{ x.name }}</a>
-              </li>
-            {% endfor %}
-          {% endif %}
-        </ul>
-      {% endif %}
-    {% endfor %}
+    <div id="notice" class="alert alert-info">
+      <strong>Developers:</strong>
+      Consult the <a href="{% url datasummary %}">list of boundary and representative sets</a> available, along with sample responses of API calls.
+    </div>
   </section>
 
   <hr class="soften">

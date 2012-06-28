@@ -10,24 +10,6 @@ except ImportError:
   pass
 
 def index(request):
-  # @todo Can we put this logic in the model, without making it Canada-specific?
-  domain_to_category_map = {
-    u'Canada'                   : 'Federal',
-    u'British Columbia'         : 'Provincial',
-    u'Alberta'                  : 'Provincial',
-    u'Saskatchewan'             : 'Provincial',
-    u'Manitoba'                 : 'Provincial',
-    u'Ontario'                  : 'Provincial',
-    u'Québec'                   : 'Provincial',
-    u'New Brunswick'            : 'Provincial',
-    u'Prince Edward Island'     : 'Provincial',
-    u'Nova Scotia'              : 'Provincial',
-    u'Newfoundland and Labrador': 'Provincial',
-    u'Yukon'                    : 'Territorial',
-    u'Northwest Territories'    : 'Territorial',
-    u'Nuvavut'                  : 'Territorial',
-  }
-
   # http://www12.statcan.gc.ca/census-recensement/2011/dp-pd/hlt-fst/pd-pl/Table-Tableau.cfm?LANG=Eng&TABID=1&T=301&SR=1&RPP=200&S=3&O=D&CMA=0&PR=0#C2
   populations = {
     'Brampton City Council'           : 523911,
@@ -63,12 +45,43 @@ def index(request):
     u'Élus municipaux du Québec': 1292650, # source is MAMROT
   }
 
+  representative_sets = list(RepresentativeSet.objects.all().values('slug', 'name', 'boundary_set'))
+
+  total = 0
+  for x in representative_sets:
+    if populations.get(x['name']):
+      total += populations[x['name']]
+
+  # @todo display the total number of representatives and boundaries in the database
+  return render_to_response('index.html', RequestContext(request, {
+    # Source for "most comprehensive" claim: http://www.azavea.com/products/cicero/about/availability/
+    'progress': int(total / 33476688.0 * 100),
+  }))
+
+def data(request):
+  # @todo Can we put this logic in the model, without making it Canada-specific?
+  domain_to_category_map = {
+    u'Canada'                   : 'Federal',
+    u'British Columbia'         : 'Provincial',
+    u'Alberta'                  : 'Provincial',
+    u'Saskatchewan'             : 'Provincial',
+    u'Manitoba'                 : 'Provincial',
+    u'Ontario'                  : 'Provincial',
+    u'Québec'                   : 'Provincial',
+    u'New Brunswick'            : 'Provincial',
+    u'Prince Edward Island'     : 'Provincial',
+    u'Nova Scotia'              : 'Provincial',
+    u'Newfoundland and Labrador': 'Provincial',
+    u'Yukon'                    : 'Territorial',
+    u'Northwest Territories'    : 'Territorial',
+    u'Nuvavut'                  : 'Territorial',
+  }
+
   boundary_sets = list(BoundarySet.objects.all().order_by('name').values('slug', 'name', 'domain'))
   representative_sets = list(RepresentativeSet.objects.all().values('slug', 'name', 'boundary_set'))
 
   # Partition representative sets into those that are associated to a boundary
   # set and those that are not.
-  total = 0
   by_boundary_set = defaultdict(list)
   no_boundary_set = []
   for x in representative_sets:
@@ -76,8 +89,6 @@ def index(request):
       by_boundary_set[x['boundary_set']].append(x)
     else:
       no_boundary_set.append(x)
-    if populations.get(x['name']):
-      total += populations[x['name']]
 
   # Associate boundary sets to representative sets and group them by level of
   # government. @todo Couldn't we use Django associations?
@@ -86,13 +97,10 @@ def index(request):
     boundary_set['representative_sets'] = by_boundary_set.get(boundary_set['slug'], [])
     categories[domain_to_category_map.get(boundary_set['domain'], 'Municipal')].append(boundary_set)
 
-  # @todo display the total number of representatives and boundaries in the database
-  return render_to_response('index.html', RequestContext(request, {
+  return render_to_response('data.html', RequestContext(request, {
     'categories': categories,
     # Add remaining representative sets to the default level of government.
     'representative_sets': {'Municipal': no_boundary_set},
-    # Source for "most comprehensive" claim: http://www.azavea.com/products/cicero/about/availability/
-    'progress': int(total / 33476688.0 * 100),
   }))
 
 def api(request):

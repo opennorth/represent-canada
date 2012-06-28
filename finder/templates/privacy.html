@@ -3,35 +3,36 @@
 {% block title %}Privacy | Represent API{% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container pretty">
+  <header>
+    <nav>
+      <ul class="breadcrumb">
+        <li><a href="/">Home</a> <span class="divider">/</span></li>
+        <li><a href="{% url apidoc %}">Represent API</a> <span class="divider">/</span></li>
+        <li class="active">Privacy Policy</li>
+      </ul>
+    </nav>
+  </header>
 
-<header>
-  <nav>
-    <ul class="breadcrumb">
-      <li><a href="/">Home</a> <span class="divider">/</span></li>
-      <li><a href="{% url apidoc %}">Represent API</a> <span class="divider">/</span></li>
-      <li class="active">Privacy Policy</li>
+  <section>
+    <p>May 12, 2012</p>
+
+    <p>We care about your privacy. If you have any questions about this policy, feel free to contact us at <a href="mailto:represent@opennorth.ca">represent@opennorth.ca</a>.</p>
+
+    <h2>Information we collect</h2>
+
+    <ul>
+      <li><strong>Log information</strong> - When you use this site, our servers automatically record information that your browser sends whenever you visit a website. These server logs may include information such as your web request, Internet Protocol address, browser type, browser language, and the date and time of your request. We use server logs to track usage trends and to maintain, protect, and improve our services.</li>
+      <li><strong>User communications</strong> - When you send email or other communication to us, we may retain it in order to process your inquiries, respond to your requests, and improve our services.</li>
     </ul>
-  </nav>
-</header>
 
-<p>May 12, 2012</p>
+    <h2>Information security</h2>
 
-<p>We care about your privacy. If you have any questions about this policy, feel free to contact us at <a href="mailto:represent@opennorth.ca">represent@opennorth.ca</a>.</p>
+    <p>We do not share or sell any information that may potentially identify individuals, such as IP addresses.</p>
 
-<h2>Information we collect</h2>
+    <h2>Changes to this policy</h2>
 
-<ul>
-  <li><strong>Log information</strong> - When you use this site, our servers automatically record information that your browser sends whenever you visit a website. These server logs may include information such as your web request, Internet Protocol address, browser type, browser language, and the date and time of your request. We use server logs to track usage trends and to maintain, protect, and improve our services.</li>
-  <li><strong>User communications</strong> - When you send email or other communication to us, we may retain it in order to process your inquiries, respond to your requests, and improve our services.</li>
-</ul>
-
-<h2>Information security</h2>
-
-<p>We do not share or sell any information that may potentially identify individuals, such as IP addresses.</p>
-
-<h2>Changes to this policy</h2>
-
-<p>Please note that this privacy policy may change from time to time. We will post any policy changes on this page.</p>
+    <p>Please note that this privacy policy may change from time to time. We will post any policy changes on this page.</p>
+  </section>
 </div>
 {% endblock %}

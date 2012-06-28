@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Data Summary | Represent API{% endblock %}
+
+{% block content %}
+<div class="container pretty">
+  <header>
+    <nav>
+      <ul class="breadcrumb">
+        <li><a href="/">Home</a> <span class="divider">/</span></li>
+        <li><a href="{% url apidoc %}">Represent API</a> <span class="divider">/</span></li>
+        <li class="active">Data Summary</li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="coverage">
+    <p>The following boundary and representative sets are available through the <a href="{% url apidoc %}">Represent API</a>:</p>
+
+    {% for category, boundary_sets in categories.iteritems() %}
+      {% if boundary_sets %}
+        <h2>{{ category }}</h2>
+        <ul>
+          {% for boundary_set in boundary_sets %}
+            <li>
+              <a href="/boundaries/{{ boundary_set.slug }}/?format=apibrowser">{{ boundary_set.name }}</a>
+              {% if boundary_set.representative_sets %}
+                with members of
+                {% for x in boundary_set.representative_sets %}
+                  <a href="/representatives/{{ x.slug }}/?format=apibrowser">{{ x.name }}</a>{% if not loop.last %},{% endif %}
+                {% endfor %}
+              {% endif %}
+            </li>
+          {% endfor %}
+
+          {% if representative_sets.get(category) %}
+            {% for x in representative_sets[category] %}
+              <li>
+                <a href="/representatives/{{ x.slug }}/?format=apibrowser">{{ x.name }}</a>
+              </li>
+            {% endfor %}
+          {% endif %}
+        </ul>
+      {% endif %}
+    {% endfor %}
+  </section>
+</div>
+{% endblock %}

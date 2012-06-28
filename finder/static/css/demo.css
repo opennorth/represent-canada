@@ -18,7 +18,7 @@ body,
 form,
 label,
 p,
-ul,
+li,
 dt {
   font-size: 16px;
   line-height: 1.5em;
@@ -39,6 +39,8 @@ footer {
 }
 footer ul {
   margin: 1px 0 0;
+}
+footer li {
   font-size: 13px;
 }
 footer li:first-child {
@@ -71,12 +73,12 @@ footer a:hover {
 #index header {
   padding: 1em 0;
 }
-#index header h1 {
+.pretty header h1 {
   font-size: 3.75em;
   text-align: center;
 }
-#index header a,
-#index header a:hover {
+.pretty header a,
+.pretty header a:hover {
   color: inherit;
   text-decoration: none;
 }
@@ -96,13 +98,15 @@ footer a:hover {
   text-align: center;
 }
 
-#index section h2 {
+.pretty section h2 {
   font-size: 1.6em;
   line-height: 1.5em;
   font-weight: 300;
+}
+#index section h2 {
   text-align: center;
 }
-#index section h3 {
+.pretty section h3 {
   font-size: 1.375em;
   line-height: 1.5em;
   font-weight: 300;
@@ -110,7 +114,7 @@ footer a:hover {
 #index section p {
   text-align: center;
 }
-#index section ul {
+#coverage ul {
   font-size: 13px;
 }
 .progress {
@@ -365,14 +369,14 @@ pre .value {
 /* Responsive ----------------------------------------------------------------*/
 
 @media (min-width: 768px) and (max-width: 979px) {
-  #index header h1 {
+  .pretty header h1 {
     font-size: 3em;
   }
   #form h2,
-  #index section h2 {
+  .pretty section h2 {
     font-size: 1.3em;
   }
-  #index section h3,
+  .pretty section h3,
   .grid h2 {
     font-size: 1em;
   }
@@ -385,16 +389,16 @@ pre .value {
 }
 
 @media (min-width: 480px) and (max-width: 767px) {
-  #index header h1 {
+  .pretty header h1 {
     font-size: 1.75em;
   }
-  #index header img {
+  .pretty header img {
     width: 45px;
     height: 45px;
   }
   #form h2,
-  #index section h2,
-  #index section h3,
+  .pretty section h2,
+  .pretty section h3,
   .grid h2 {
     font-size: 1em;
   }
@@ -407,19 +411,19 @@ pre .value {
 }
 
 @media (max-width: 480px) {
-  #index header {
+  .pretty header {
     padding-bottom: 0;
   }
-  #index header h1 {
+  .pretty header h1 {
     font-size: 1.5em;
   }
-  #index header img {
+  .pretty header img {
     width: 40px;
     height: 40px;
   }
   #form h2,
-  #index section h2,
-  #index section h3,
+  .pretty section h2,
+  .pretty section h3,
   .grid h2 {
     font-size: 1em;
   }
