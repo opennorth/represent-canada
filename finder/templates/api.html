@@ -122,7 +122,11 @@
 
   <p>The <code>boundaries_concordance</code> field lists boundaries linked to the postal code according to official government data. Postal codes can cross electoral districts, therefore the <code>boundaries_concordance</code> field may list, for example, multiple Ontario electoral districts for a single postal code like K0A 1K0.</p>
 
-  <p>The response also has <code>representatives_centroid</code> and <code>representatives_concordance</code> fields.</p>
+  <p class="alert alert-danger">If you are searching for a specific boundary, you must check both <code>boundaries_centroid</code> and <code>boundaries_concordance</code>.</p>
+
+  <p>The response also has <code>representatives_centroid</code> and <code>representatives_concordance</code> fields that behave similarly.</p>
+
+  <p class="alert alert-danger">If you are searching for a specific representative, you must check both <code>representatives_centroid</code> and <code>representatives_concordance</code>.</p>
 
   <p>In most cases, the <code>city</code>, <code>province</code> and <code>centroid</code> fields will be non-empty.</p>
 
