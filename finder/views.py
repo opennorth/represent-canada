@@ -64,23 +64,34 @@ def index(request):
     'Wood Buffalo City Council'                : 51496,
     'Vancouver City Council'                   : 603502,
 
-    # Population totals are done by each script.
+    # https://scraperwiki.com/docs/api?name=alberta_municipal_affairs#sqlite
+    # SELECT * FROM swvariables;
     'Municipal officials of Alberta': 1056096,
+    # https://scraperwiki.com/docs/api?name=civicinfo_bc#sqlite
+    # SELECT * FROM swvariables;
     'Municipal officials of British Columbia': 3311861,
+    # https://scraperwiki.com/docs/api?name=alberta_municipal_affairs#sqlite
+    # SELECT SUM(population) FROM municipalities;
     u'Élus municipaux du Québec': 1292650, # source is MAMROT
   }
 
   representative_sets = list(RepresentativeSet.objects.all().values('slug', 'name', 'boundary_set'))
 
-  total = 0
+
+  bounded = 0
+  for k, v in populations.iteritems():
+    bounded += v
+
+  represented = 0
   for x in representative_sets:
     if populations.get(x['name']):
-      total += populations[x['name']]
+      represented += populations[x['name']]
 
   # @todo display the total number of representatives and boundaries in the database
   return render_to_response('index.html', RequestContext(request, {
+    'boundary_progress': int(bounded / 33476688.0 * 100),
     # Source for "most comprehensive" claim: http://www.azavea.com/products/cicero/about/availability/
-    'progress': int(total / 33476688.0 * 100),
+    'representative_progress': int(represented / 33476688.0 * 100),
   }))
 
 def data(request):
