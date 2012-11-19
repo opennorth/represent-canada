@@ -6,11 +6,18 @@ def prod():
     """Select the prod environment for future commands."""
     env.hosts = ['represent.opennorth.ca']
     env.user = 'deployer'
-    env.python = '/home/deployer/.virtualenvs/repdb/bin/python'
-    env.base_dir = '/home/deployer/repdb' # base_dir should contain represent-canada
+    _env_init()
+
+def dev():
+    """Select the dev environment for future commands."""
+    env.hosts = ['represent-dev.opennorth.ca']
+    env.user = 'represent-dev'
     _env_init()
     
 def _env_init():
+    env.home_dir = '/home/' + env.user
+    env.python = os.path.join(env.home_dir, '.virtualenvs', 'repdb', 'bin', 'python')
+    env.base_dir = os.path.join(env.home_dir, 'repdb')
     env.django_dir = os.path.join(env.base_dir, 'represent-canada')
     env.pip = env.python.replace('bin/python', 'bin/pip')
     
@@ -56,9 +63,9 @@ def update_statics():
     with cd(env.django_dir):
         run(env.python + ' manage.py collectstatic --noinput')
 
-def update_shapes():
+def update_shapes(args=''):
     """Pull our shapes repository and load the shapefiles."""
     with cd(os.path.join(env.base_dir, 'repdb-shapes')):
         run('git pull')
     with cd(env.django_dir):
-        run(env.python + ' manage.py loadshapefiles')
+        run(env.python + ' manage.py loadshapefiles ' + args)
