@@ -6,6 +6,10 @@ This repository contains a master Django project, documentation, and a demo app.
 * [represent-reps](http://github.com/rhymeswithcycle/represent-reps)
 * [represent-postcodes](http://github.com/rhymeswithcycle/represent-postcodes)
 
+While the Canada site doesn't currently use it, there's a plugin project to provide colourful district map tiles:
+
+* [represent-maps](http://github.com/tauberer/represent-maps)
+
 # Getting Started
 
 The following instructions are to setup your own instance of Represent. If you just want access to data, [please read our API documentation](http://represent.opennorth.ca/api/).
