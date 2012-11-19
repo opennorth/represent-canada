@@ -95,6 +95,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
     #'django.middleware.cache.FetchFromCacheMiddleware',
 )
 
@@ -114,6 +115,7 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     'django.contrib.staticfiles',
     'django.contrib.gis',
+    'django.contrib.messages',
     'django.contrib.admin',
     'django_extensions',
     'south',
