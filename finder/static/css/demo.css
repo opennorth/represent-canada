@@ -127,8 +127,8 @@ footer a:hover {
   text-align: center;
 }
 #users li {
-  display: inline;
-  padding: 0 20px;
+  display: inline-block;
+  padding: 5px 20px;
 }
 #progress {
   color: #57a957;
