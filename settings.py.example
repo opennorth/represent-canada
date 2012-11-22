@@ -27,3 +27,32 @@ MANAGERS = ADMINS
 #        'LOCATION': '127.0.0.1:11211',
 #    }
 #}
+
+# Uncomment to enable the API throttle.
+# The throttle also requires that caching be configured above.
+# BOUNDARIES_THROTTLE = 'boundaries.throttle.AnonRateThrottle'
+# BOUNDARIES_DEFAULT_THROTTLE_RATES = {
+#     'anon': (60, 60)
+# }
+
+# If you're enabling the throttle and are behind a reverse proxy,
+# you may need something like the following line, depending on
+# which HTTP header the user's IP is in.
+# BOUNDARIES_THROTTLE_IP_HEADER = 'X_REAL_IP'
+
+# To enable Sentry logging, ensure the raven package is installed,
+# and uncomment and edit:
+#
+# INSTALLED_APPS.append('raven.contrib.django')
+# RAVEN_CONFIG = {
+#    'dsn': 'RAVEN DSN'
+# }
+# LOGGING['handlers']['sentry'] = {
+#     'level': 'WARNING',
+#     'class': 'raven.contrib.django.handlers.SentryHandler'
+# }
+# LOGGING['root'] = {
+#     'level': 'WARNING',
+#     'handlers': ['sentry']
+# }
+# del LOGGING['loggers']['django.request']
