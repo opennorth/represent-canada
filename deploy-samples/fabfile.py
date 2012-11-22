@@ -69,3 +69,8 @@ def update_shapes(args=''):
         run('git pull')
     with cd(env.django_dir):
         run(env.python + ' manage.py loadshapefiles ' + args)
+
+def update_reps():
+    """Update all Representative data from ScraperWiki."""
+    with cd(env.django_dir):
+        run(env.python + ' manage.py updaterepresentatives')
