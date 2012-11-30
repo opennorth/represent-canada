@@ -40,7 +40,7 @@ Lastly, configure the `DATABASES` Django setting and and create the database tab
     cp settings.py.example settings.py
     $EDITOR settings.py
     python manage.py syncdb
-    python syncdb migrate
+    python manage.py migrate
 
 You can launch a development server with:
 
