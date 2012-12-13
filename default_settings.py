@@ -5,9 +5,7 @@ import os
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
-)
+ADMINS = []
 
 MANAGERS = ADMINS
 
@@ -120,6 +118,8 @@ INSTALLED_APPS = [
     'representatives',
     'postcodes',
 ]
+
+REPRESENTATIVES_ENABLE_CANDIDATES = True
 
 # A sample logging configuration.
 LOGGING = {
