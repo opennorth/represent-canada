@@ -5,7 +5,7 @@ import os
 def prod():
     """Select the prod environment for future commands."""
     env.hosts = ['represent.opennorth.ca']
-    env.user = 'deployer'
+    env.user = 'represent'
     _env_init()
 
 def dev():
@@ -20,6 +20,7 @@ def _env_init():
     env.base_dir = os.path.join(env.home_dir, 'repdb')
     env.django_dir = os.path.join(env.base_dir, 'represent-canada')
     env.pip = env.python.replace('bin/python', 'bin/pip')
+    env.data_dir = os.path.join(env.django_dir, 'data')
     
 def deploy(ref='master'):
     """Perform all the steps in a standard deployment"""
@@ -63,10 +64,25 @@ def update_statics():
     with cd(env.django_dir):
         run(env.python + ' manage.py collectstatic --noinput')
 
+def _recursive_pull(base_dir):
+    """Traverse a directory tree to find and pull all git repos."""
+    with cd(base_dir):
+        dirs = [
+            d.strip()[:-1] for d in
+            run('ls -aFL1').split('\n')
+            if d.strip().endswith('/') and d.strip() not in ('./', '../')
+        ]
+        if '.git' in dirs:
+            # This is a git repo, update it
+            run('git pull')
+        else:
+            # Continue exploring
+            for dir in dirs:
+                _recursive_pull(os.path.join(base_dir, dir))
+
 def update_shapes(args=''):
     """Pull our shapes repository and load the shapefiles."""
-    with cd(os.path.join(env.base_dir, 'repdb-shapes')):
-        run('git pull')
+    _recursive_pull(env.data_dir)
     with cd(env.django_dir):
         run(env.python + ' manage.py loadshapefiles ' + args)
 
