@@ -1,6 +1,6 @@
 # Copy this file to settings.py and modify relevant settings.
 
-from default_settings import *
+from represent.default_settings import *
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -39,6 +39,9 @@ MANAGERS = ADMINS
 # you may need something like the following line, depending on
 # which HTTP header the user's IP is in.
 # BOUNDARIES_THROTTLE_IP_HEADER = 'X_REAL_IP'
+
+# Make this unique, and don't share it with anybody.
+SECRET_KEY = '+t(q+ljogaj(+7m@kueu-g881gb8xp_oaz)$iabxjp8a1@2#u!'
 
 # To enable Sentry logging, ensure the raven package is installed,
 # and uncomment and edit:
