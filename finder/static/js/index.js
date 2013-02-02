@@ -200,7 +200,10 @@ function processAddress() {
         $('#addresses').show();
       }
 
-      processLatLng(new L.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng()));
+      var lat = results[0].geometry.location.lat(),
+          lng = results[0].geometry.location.lng();
+      window.location.hash = lat + ' ' + lng;
+      processLatLng(new L.LatLng(lat, lng));
     }
   });
 }
@@ -240,7 +243,13 @@ jQuery(function ($) {
     map.attributionControl.setPrefix('');
 
     // Perform the first geolocation.
-    var address = store.get('address');
+    var address,
+        index = window.location.href.indexOf('#');
+    if (index == -1) {
+      address = store.get('address');
+    } else {
+      address = window.location.href.substr(index + 1);
+    }
     if (address) {
       $('#address').val(address);
       processAddress();
