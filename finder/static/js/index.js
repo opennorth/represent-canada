@@ -81,7 +81,7 @@ function processLatLngCallback(latlng) {
       displayRepresentative(object.url, $row);
     }
     else {
-      $.getJSON(object.url + 'representatives/', function (response) {
+      $.getJSON(object.url + 'representatives/?limit=0', function (response) {
         representativeCache[object.url] = response;
         displayRepresentative(object.url, $row);
       });
