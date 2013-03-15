@@ -21,6 +21,11 @@ ADMINS = (
 )
 MANAGERS = ADMINS
 
+# You can put acceptable values for the Host header here,
+# to protect against certain potential attacks:
+# https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
+# ALLOWED_HOSTS = ['.opennorth.ca']
+
 #CACHES = {
 #    'default': {
 #        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',

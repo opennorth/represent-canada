@@ -20,6 +20,11 @@ TIME_ZONE = 'America/Montreal'
 
 SITE_ROOT = os.path.realpath(os.path.join(os.path.dirname(__file__), '..'))
 
+# Represent's current functionality isn't a good fit for fake-Host-header
+# attacks, so this shouldn't be a security risk. You may want to include
+# a real ALLOWED_HOSTS setting in settings.py, though.
+ALLOWED_HOSTS = ['*']
+
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
