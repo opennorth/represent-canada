@@ -22,9 +22,11 @@
     <li><a href="#basics">Basics</a></li>
     <li><a href="#boundaryset">Boundary sets</a></li>
     <li><a href="#boundary">Boundaries</a></li>
-    <li><a href="#postcode">Postal codes</a></li>
-    <li><a href="#representativeset">Representative sets</a></li>
+    <li><a href="#postcode">Postcodes</a></li>
+    <li><a href="#representativeset">Rep sets</a></li>
     <li><a href="#representative">Representatives</a></li>
+    <li><a href="#election">Elections</a></li>
+    <li><a href="#candidate">Candidates</a></li>
   </ul>
 </nav>
 <br>
@@ -284,6 +286,29 @@
     </tr>
     </tbody>
   </table>
+</section>
+<section id="election">
+  <h2>Elections</h2>
+  <p>An election is an event with a date, tied to a set of candidates. It works exactly like a representative set.</p>
+  <p class="alert alert-danger">We currently make no effort to include all or even most Canadian elections here. This is a list of only those elections where we&rsquo;ve collected candidate data for Represent.</p>
+
+  <dl>
+    <dt>Get all elections</dt>
+    <dd><a href="/elections/?format=apibrowser">/elections/</a> <span>Click to view JSON</span></dd>
+  </dl>
+</section>
+<section id="candidate">
+  <h2>Candidate</h2>
+  <p>A candidate is someone running for elected office.</p>
+  <p class="alert alert-danger">Our lists of candidates are often not comprehensive. While we obtain our representative data from official websites, our candidate data is often provisional and obtained from parties. As such, independent and small-party candidates are particularly likely to be missing.</p>
+  <p>The candidate resource functions just like the <a href="#representative">representative</a> resource. See the <a href="#representative">examples</a> there for sample queries.</p>
+
+  <dl>
+    <dt>Get all candidates</dt>
+    <dd><a href="/candidates/?format=apibrowser">/candidates/</a> <span>Click to view JSON</span></dd>
+    <dt>Find candidates by latitude and longitude</dt>
+    <dd><a href="/candidates/?point=48.4328,-123.3347&amp;format=apibrowser">/representatives/?point=48.4328,-123.3347</a></dd>
+  </dl>
 </section>
 </div>
 {% endblock %}
