@@ -8,14 +8,14 @@
     <nav>
       <ul class="breadcrumb">
         <li><a href="/">Home</a> <span class="divider">/</span></li>
-        <li><a href="{% url apidoc %}">Represent API</a> <span class="divider">/</span></li>
+        <li><a href="{% url "apidoc" %}">Represent API</a> <span class="divider">/</span></li>
         <li class="active">Data Summary</li>
       </ul>
     </nav>
   </header>
 
   <section id="coverage">
-    <p>The following boundary and representative sets are available through the <a href="{% url apidoc %}">Represent API</a>. Click to see the JSON response for each API call.</p>
+    <p>The following boundary and representative sets are available through the <a href="{% url "apidoc" %}">Represent API</a>. Click to see the JSON response for each API call.</p>
 
     {% for category, boundary_sets in categories.iteritems() %}
       {% if boundary_sets %}

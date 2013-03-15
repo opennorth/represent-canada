@@ -9,13 +9,13 @@
   <nav>
     <ul class="breadcrumb">
       <li><a href="/">Home</a> <span class="divider">/</span></li>
-      <li><a href="{% url apidoc %}">Represent API</a> <span class="divider">/</span></li>
+      <li><a href="{% url "apidoc" %}">Represent API</a> <span class="divider">/</span></li>
       <li class="active"><a href="/api/#{{ resource_name|lower }}">{{ title.capitalize }}</a></li>
     </ul>
   </nav>
 </header>
 
-<p>This is the JSON response for the <code>{{ json_url }}</code> API call. Get the <a href="{{ json_url }}">raw JSON</a> or read the <a href="{% url apidoc %}">API documentation</a>.</p>
+<p>This is the JSON response for the <code>{{ json_url }}</code> API call. Get the <a href="{{ json_url }}">raw JSON</a> or read the <a href="{% url "apidoc" %}">API documentation</a>.</p>
 
 <pre>{{ json }}</pre>
 </div>

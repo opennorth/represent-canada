@@ -1,4 +1,4 @@
-django==1.4.2
+django>=1.5,<=1.6
 psycopg2>=2.4.1
 django_compressor==1.1
 geopy>=0.94.1

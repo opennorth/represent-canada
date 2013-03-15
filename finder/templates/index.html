@@ -24,8 +24,8 @@
 
   <div id="notice" class="alert alert-info">
     <strong>Developers:</strong>
-    Use our <b><a href="{% url apidoc %}">free API</a></b> and open-source code in your own projects!
-    <a href="{% url apidoc %}">Get started.</a>
+    Use our <b><a href="{% url "apidoc" %}">free API</a></b> and open-source code in your own projects!
+    <a href="{% url "apidoc" %}">Get started.</a>
   </div>
 
   <div class="row">
@@ -49,7 +49,7 @@
 
     <div id="notice" class="alert alert-info">
       <strong>Developers:</strong>
-      Consult the <a href="{% url datasummary %}">list of boundary and representative sets</a> available, along with sample responses of API calls.
+      Consult the <a href="{% url "datasummary" %}">list of boundary and representative sets</a> available, along with sample responses of API calls.
     </div>
   </section>
 
@@ -58,7 +58,7 @@
   <div class="row grid">
     <div class="span3">
       <h2>Free API</h2>
-      <p>Read the <a href="{% url apidoc %}">documentation</a>.</p>
+      <p>Read the <a href="{% url "apidoc" %}">documentation</a>.</p>
     </div>
     <div class="span3">
       <h2>Open-source</h2>
@@ -90,7 +90,7 @@
       <li><a href="http://www.fairvote.ca/"><img src="{{ STATIC_URL }}img/fairvote.png" height="50" alt="Fair Vote Canada"></a></li>
     </ul>
 
-    <p>From running advocacy campaigns to making legislative information more accessible, organizations <a href="{%url apidoc %}">use our API</a> to match postal codes and addresses to electoral districts and elected official contact information.</p>
+    <p>From running advocacy campaigns to making legislative information more accessible, organizations <a href="{% url "apidoc" %}">use our API</a> to match postal codes and addresses to electoral districts and elected official contact information.</p>
   </section>
 
   <hr class="soften">
