@@ -27,6 +27,11 @@ p {
   margin-bottom: 1em;
 }
 
+/* Fix Bootstrap bug */
+.subnav .nav li:first-child li a, .subnav .nav li:first-child li a:hover {
+  padding-left: 15px;
+}
+
 /* Footer --------------------------------------------------------------------*/
 
 footer {
