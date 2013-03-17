@@ -20,11 +20,21 @@
 <nav class="subnav container">
   <ul class="nav nav-pills">
     <li><a href="#basics">Basics</a></li>
-    <li><a href="#boundaryset">Boundary sets</a></li>
-    <li><a href="#boundary">Boundaries</a></li>
-    <li><a href="#postcode">Postcodes</a></li>
-    <li><a href="#representativeset">Rep sets</a></li>
-    <li><a href="#representative">Representatives</a></li>
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">Boundaries</a> <b class="caret"></b>
+      <ul class="dropdown-menu">
+        <li><a href="#boundaryset">Boundary sets</a></li>
+        <li><a href="#boundary">Boundaries</a></li>
+      </ul>
+    </li>
+    <li><a href="#postcode">Postal codes</a></li>
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">Representatives</a> <b class="caret"></b>
+      <ul class="dropdown-menu">
+        <li><a href="#representativeset">Representative sets</a></li>
+        <li><a href="#representative">Representatives</a></li>
+      </ul>
+    </li>
     <li><a href="#election">Elections</a></li>
     <li><a href="#candidate">Candidates</a></li>
   </ul>
@@ -81,7 +91,7 @@
     <dt>Get one boundary set</dt>
     <dd><a href="/boundary-sets/federal-electoral-districts/?format=apibrowser">/boundary-sets/federal-electoral-districts/</a></dd>
     <dt>Find boundary sets by <code>name</code> or <code>domain</code></dt>
-    <dd><a href="/boundary-sets/?domain=Canada&format=apibrowser">/boundary-sets/?domain=Canada</a></dd>
+    <dd><a href="/boundary-sets/?domain=Canada&amp;format=apibrowser">/boundary-sets/?domain=Canada</a></dd>
   </dl>
 </section>
 
@@ -99,19 +109,19 @@
     <dt>Get the boundaries for one boundary set</dt>
     <dd><a href="/boundaries/toronto-wards/?format=apibrowser">/boundaries/toronto-wards/</a></dd>
     <dt>Get the boundaries for multiple boundary sets (comma-separated)</dt>
-    <dd><a href="/boundaries/?sets=toronto-wards,ottawa-wards&format=apibrowser">/boundaries/?sets=toronto-wards,ottawa-wards</a></dd>
+    <dd><a href="/boundaries/?sets=toronto-wards,ottawa-wards&amp;format=apibrowser">/boundaries/?sets=toronto-wards,ottawa-wards</a></dd>
     <dt>Get one boundary</dt>
     <dd><a href="/boundaries/nova-scotia-electoral-districts/cape-breton-north/?format=apibrowser">/boundaries/nova-scotia-electoral-districts/cape-breton-north/</a></dd>
     <dt>Get the representatives for one boundary</dt>
     <dd><a href="/boundaries/toronto-wards/etobicoke-north-1/representatives/?format=apibrowser">/boundaries/toronto-wards/etobicoke-north-1/representatives/</a></dd>
     <dt>Find boundaries by latitude and longitude</dt>
-    <dd><a href="/boundaries/?contains=45.524,-73.596&format=apibrowser">/boundaries/?contains=45.524,-73.596</a></dd>
+    <dd><a href="/boundaries/?contains=45.524,-73.596&amp;format=apibrowser">/boundaries/?contains=45.524,-73.596</a></dd>
     <dt>Find boundaries by <code>name</code> or <code>external_id</code></dt>
-    <dd><a href="/boundaries/?name=Niagara Falls&format=apibrowser">/boundaries/?name=Niagara Falls</a></dd>
+    <dd><a href="/boundaries/?name=Niagara Falls&amp;format=apibrowser">/boundaries/?name=Niagara Falls</a></dd>
     <dt>Find boundaries that touch</dt>
-    <dd><a href="/boundaries/?touches=alberta-electoral-districts/highwood&format=apibrowser">/boundaries/?touches=alberta-electoral-districts/highwood</a></dd>
+    <dd><a href="/boundaries/?touches=alberta-electoral-districts/highwood&amp;format=apibrowser">/boundaries/?touches=alberta-electoral-districts/highwood</a></dd>
     <dt>Find boundaries that intersect (&ldquo;covers or overlaps&rdquo; in PostGIS lingo)</dt>
-    <dd><a href="/boundaries/?intersects=alberta-electoral-districts/highwood&format=apibrowser">/boundaries/?intersects=alberta-electoral-districts/highwood</a></dd>
+    <dd><a href="/boundaries/?intersects=alberta-electoral-districts/highwood&amp;format=apibrowser">/boundaries/?intersects=alberta-electoral-districts/highwood</a></dd>
   </dl>
 </section>
 
@@ -128,15 +138,15 @@
 
   <p>The response also has <code>representatives_centroid</code> and <code>representatives_concordance</code> fields that behave similarly.</p>
 
-  <p class="alert alert-danger">If you are searching for a specific representative, you must check both <code>representatives_centroid</code> and <code>representatives_concordance</code>.</p>
+  <p class="alert alert-danger">If you are searching for a specific representative, check both <code>representatives_centroid</code> and <code>representatives_concordance</code>.</p>
 
   <p>In most cases, the <code>city</code>, <code>province</code> and <code>centroid</code> fields will be non-empty.</p>
 
   <dl>
     <dt>Find boundaries and representatives by postal code</dt>
     <dd><a href="/postcodes/L5G4L3/?format=apibrowser">/postcodes/L5G4L3/</a> <span>Click to view JSON</span></dd>
-    <dt>Find boundaries and representatives, limiting results to a particular boundary set</dt>
-    <dd><a href="/postcodes/L5G4L3/?format=apibrowser&amp;sets=federal-electoral-districts">/postcodes/L5G4L3/?sets=federal-electoral-districts</a></dd>
+    <dt>Find boundaries and representatives by postal code, limiting results to a particular boundary set</dt>
+    <dd><a href="/postcodes/L5G4L3/?sets=federal-electoral-districts&amp;format=apibrowser">/postcodes/L5G4L3/?sets=federal-electoral-districts</a></dd>
   </dl>
 </section>
 
@@ -162,11 +172,11 @@
     <dt>Get the representatives for one representative set</dt>
     <dd><a href="/representatives/house-of-commons/?format=apibrowser">/representatives/house-of-commons/</a></dd>
     <dt>Find representatives by latitude and longitude</dt>
-    <dd><a href="/representatives/?point=45.524,-73.596&format=apibrowser">/representatives/?point=45.524,-73.596</a></dd>
+    <dd><a href="/representatives/?point=45.524,-73.596&amp;format=apibrowser">/representatives/?point=45.524,-73.596</a></dd>
     <dt>Find representatives by boundary (comma-separated)</dt>
-    <dd><a href="/representatives/?districts=edmonton-wards/ward-1,edmonton-wards/ward-2,edmonton-wards/ward-3&format=apibrowser">/representatives/?districts=edmonton-wards/ward-1,edmonton-wards/ward-2,edmonton-wards/ward-3</a></dd>
+    <dd><a href="/representatives/?districts=edmonton-wards/ward-1,edmonton-wards/ward-2,edmonton-wards/ward-3&amp;format=apibrowser">/representatives/?districts=edmonton-wards/ward-1,edmonton-wards/ward-2,edmonton-wards/ward-3</a></dd>
     <dt>Find representatives by <code>name</code>, <code>first_name</code>, <code>last_name</code>, <code>gender</code>, <code>district_name</code>, <code>elected_office</code> or <code>party_name</code></dt>
-    <dd><a href="/representatives/house-of-commons/?last_name=Harper&format=apibrowser">/representatives/house-of-commons/?last_name=Harper</a></dd>
+    <dd><a href="/representatives/house-of-commons/?last_name=Harper&amp;format=apibrowser">/representatives/house-of-commons/?last_name=Harper</a></dd>
   </dl>
 
   <p id="fields">Only the &ldquo;required&rdquo; fields below are always present in the response. You can improve the data we provide by <a href="#contributing">updating our scrapers</a>.</p>
@@ -287,21 +297,24 @@
     </tbody>
   </table>
 </section>
+
 <section id="election">
   <h2>Elections</h2>
-  <p>An election is an event with a date, tied to a set of candidates. It works exactly like a representative set.</p>
-  <p class="alert alert-danger">We currently make no effort to include all or even most Canadian elections here. This is a list of only those elections where we&rsquo;ve collected candidate data for Represent.</p>
+  <p>An election is an event with a date, tied to a group of electoral candidates.</p>
+  <p>This resource behaves like the <a href="#representativeset">representative sets</a> resource; see that resource for additional example queries.</p>
+  <p class="alert alert-danger">Do not rely on this endpoint for an authoritative list of elections in Canada.</p>
 
   <dl>
     <dt>Get all elections</dt>
     <dd><a href="/elections/?format=apibrowser">/elections/</a> <span>Click to view JSON</span></dd>
   </dl>
 </section>
+
 <section id="candidate">
-  <h2>Candidate</h2>
-  <p>A candidate is someone running for elected office.</p>
-  <p class="alert alert-danger">Our lists of candidates are often not comprehensive. While we obtain our representative data from official websites, our candidate data is often provisional and obtained from parties. As such, independent and small-party candidates are particularly likely to be missing.</p>
-  <p>The candidate resource functions just like the <a href="#representative">representative</a> resource. See the <a href="#representative">examples</a> there for sample queries.</p>
+  <h2>Candidates</h2>
+  <p>A candidate is a person running for office in an election.</p>
+  <p>This resource behaves like the <a href="#representative">representative</a> resource; see that resource for additional example queries.</p>
+  <p class="alert alert-danger">Candidate lists may be incomplete or incorrect, given the frequency of changes and the unreliability of sources. Independent and small-party candidates are especially likely to be missing.</p>
 
   <dl>
     <dt>Get all candidates</dt>
