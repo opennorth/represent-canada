@@ -1,6 +1,6 @@
 # Copy this file to settings.py and modify relevant settings.
 
-from represent.default_settings import *
+from default_settings import *
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
