@@ -30,7 +30,7 @@
         <li><a href="#boundary">Boundaries</a></li>
       </ul>
     </li>
-    <li><a href="#postcode">Postal codes</a></li>
+    <li><a href="#postcode">Postal codes<sup>OM</sup></a></li>
     <li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" href="#">
         Representatives
@@ -69,7 +69,7 @@
   <p>Lists of resources are paginated. Under the <code>meta</code> field, the <code>next</code> field links to the next page, and <code>previous</code> links to the previous page (if available). <code>total_count</code> is the total number of items in the list. You can control the number of items returned by adding a <code>limit</code> parameter to the query string, and the start offset by adding an <code>offset</code> parameter.</p>
 
   <h3>Bulk downloads</h3>
-  <p>To download all representatives, send a request to <a href="http://represent.opennorth.ca/representatives/?limit=1000">http://represent.opennorth.ca/representatives/?limit=1000</a> and follow the <code>next</code> link in <code>meta</code> section until you reach the end. We host the digital boundary files and postal code concordances which we have permission to distribute on <a href="https://github.com/opennorth/represent-canada-data">GitHub</a>.</p>
+  <p>To download all representatives, send a request to <a href="http://represent.opennorth.ca/representatives/?limit=1000">http://represent.opennorth.ca/representatives/?limit=1000</a> and follow the <code>next</code> link in <code>meta</code> section until you reach the end. We host the digital boundary files and postal code<sup>OM</sup> concordances which we have permission to distribute on <a href="https://github.com/opennorth/represent-canada-data">GitHub</a>.</p>
 
   <h3>Rate limits</h3>
   <p>If you make more than 60 requests per minute, you may receive a HTTP 503 Service Unavailable error. Please contact <a href="mailto:represent@opennorth.ca">represent@opennorth.ca</a> if you expect high usage.</p>
@@ -132,13 +132,12 @@
 </section>
 
 <section id="postcode">
-  <h2>Postal codes</h2>
-  <p>A Canadian postal code. URLs should include the code in uppercase with no spaces.</p>
+  <h2>Postal codes<sup>OM</sup></h2>
+  <p>A Canadian postal code<sup>OM</sup>. URLs should include the code in uppercase with no spaces.</p>
 
-  <p>The <code>boundaries_centroid</code> field lists boundaries that contain the postal code&rsquo;s center point (centroid), provided by <a href="http://geocoder.ca/">Geocoder.ca</a>. A centroid is a point,
-  but a postal code is a shape (a set of points), so the list of boundaries in <code>boundaries_centroid</code> <strong>will sometimes be inaccurate</strong>.</p>
+  <p>The <code>boundaries_centroid</code> field lists boundaries that contain the postal code<sup>OM</sup>&rsquo;s center point (centroid), provided by <a href="http://geocoder.ca/">Geocoder.ca</a>. A centroid is a point, but a postal code<sup>OM</sup> is a shape (a set of points), so the list of boundaries in <code>boundaries_centroid</code> <strong>will sometimes be inaccurate</strong>.</p>
 
-  <p>The <code>boundaries_concordance</code> field lists boundaries linked to the postal code according to official government data. Postal codes can cross electoral districts, therefore the <code>boundaries_concordance</code> field may list, for example, multiple Ontario electoral districts for a single postal code like K0A 1K0.</p>
+  <p>The <code>boundaries_concordance</code> field lists boundaries linked to the postal code<sup>OM</sup> according to official government data. Postal codes<sup>OM</sup> can cross electoral districts, therefore the <code>boundaries_concordance</code> field may list, for example, multiple Ontario electoral districts for a single postal code<sup>OM</sup> like K0A 1K0.</p>
 
   <p class="alert alert-danger">If you are searching for a specific boundary, you must check both <code>boundaries_centroid</code> and <code>boundaries_concordance</code>.</p>
 
@@ -149,9 +148,9 @@
   <p>In most cases, the <code>city</code>, <code>province</code> and <code>centroid</code> fields will be non-empty.</p>
 
   <dl>
-    <dt>Find boundaries and representatives by postal code</dt>
+    <dt>Find boundaries and representatives by postal code<sup>OM</sup></dt>
     <dd><a href="/postcodes/L5G4L3/?format=apibrowser">/postcodes/L5G4L3/</a> <span>Click to view JSON</span></dd>
-    <dt>Find boundaries and representatives by postal code, limiting results to a particular boundary set</dt>
+    <dt>Find boundaries and representatives by postal code<sup>OM</sup>, limiting results to a particular boundary set</dt>
     <dd><a href="/postcodes/L5G4L3/?sets=federal-electoral-districts&amp;format=apibrowser">/postcodes/L5G4L3/?sets=federal-electoral-districts</a></dd>
   </dl>
 </section>
@@ -330,4 +329,6 @@
   </dl>
 </section>
 </div>
+
+<p>Postal Code<sup>OM</sup> is an official mark of Canada Post Corporation.</p>
 {% endblock %}

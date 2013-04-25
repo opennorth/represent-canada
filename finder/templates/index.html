@@ -14,7 +14,7 @@
   </header>
 
   <form id="form" class="form-inline">
-    <h2>Enter a Canadian address or postal code to find your elected representatives</h2>
+    <h2>Enter a Canadian address or postal code<sup>OM</sup> to find your elected representatives</h2>
     <input type="text" name="address" id="address" class="span4" placeholder="Address or postal code">
     <button id="submit" class="btn large primary">
       <i class="icon-search"></i>
@@ -90,7 +90,7 @@
       <li><a href="http://www.fairvote.ca/"><img src="{{ STATIC_URL }}img/fairvote.png" height="50" alt="Fair Vote Canada"></a></li>
     </ul>
 
-    <p>From running advocacy campaigns to making legislative information more accessible, organizations <a href="{% url "apidoc" %}">use our API</a> to match postal codes and addresses to electoral districts and elected official contact information.</p>
+    <p>From running advocacy campaigns to making legislative information more accessible, organizations <a href="{% url "apidoc" %}">use our API</a> to match postal codes<sup>OM</sup> and addresses to electoral districts and elected official contact information.</p>
   </section>
 
   <hr class="soften">
@@ -109,5 +109,9 @@
       <p>Kent Mewhort for legal information, Aran Rasmussen for general help, and the Chicago Tribune&rsquo;s <a href="https://github.com/newsapps/django-boundaryservice">Boundary Service</a> for code and inspiration.</p>
     </div>
   </div>
+
+  <footer>
+    <p>Postal Code<sup>OM</sup> is an official mark of Canada Post Corporation.</p>
+  </footer>
 </div>
 {% endblock %}
