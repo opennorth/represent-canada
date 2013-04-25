@@ -133,11 +133,11 @@
 
 <section id="postcode">
   <h2>Postal codes<sup>OM</sup></h2>
-  <p>A Canadian postal code<sup>OM</sup>. URLs should include the code in uppercase with no spaces.</p>
+  <p>A Canadian postal code. URLs should include the code in uppercase with no spaces.</p>
 
-  <p>The <code>boundaries_centroid</code> field lists boundaries that contain the postal code<sup>OM</sup>&rsquo;s center point (centroid), provided by <a href="http://geocoder.ca/">Geocoder.ca</a>. A centroid is a point, but a postal code<sup>OM</sup> is a shape (a set of points), so the list of boundaries in <code>boundaries_centroid</code> <strong>will sometimes be inaccurate</strong>.</p>
+  <p>The <code>boundaries_centroid</code> field lists boundaries that contain the postal code&rsquo;s center point (centroid), provided by <a href="http://geocoder.ca/">Geocoder.ca</a>. A centroid is a point, but a postal code is a shape (a set of points), so the list of boundaries in <code>boundaries_centroid</code> <strong>will sometimes be inaccurate</strong>.</p>
 
-  <p>The <code>boundaries_concordance</code> field lists boundaries linked to the postal code<sup>OM</sup> according to official government data. Postal codes<sup>OM</sup> can cross electoral districts, therefore the <code>boundaries_concordance</code> field may list, for example, multiple Ontario electoral districts for a single postal code<sup>OM</sup> like K0A 1K0.</p>
+  <p>The <code>boundaries_concordance</code> field lists boundaries linked to the postal code according to official government data. Postal codes can cross electoral districts, therefore the <code>boundaries_concordance</code> field may list, for example, multiple Ontario electoral districts for a single postal code like K0A 1K0.</p>
 
   <p class="alert alert-danger">If you are searching for a specific boundary, you must check both <code>boundaries_centroid</code> and <code>boundaries_concordance</code>.</p>
 
@@ -148,9 +148,9 @@
   <p>In most cases, the <code>city</code>, <code>province</code> and <code>centroid</code> fields will be non-empty.</p>
 
   <dl>
-    <dt>Find boundaries and representatives by postal code<sup>OM</sup></dt>
+    <dt>Find boundaries and representatives by postal code</dt>
     <dd><a href="/postcodes/L5G4L3/?format=apibrowser">/postcodes/L5G4L3/</a> <span>Click to view JSON</span></dd>
-    <dt>Find boundaries and representatives by postal code<sup>OM</sup>, limiting results to a particular boundary set</dt>
+    <dt>Find boundaries and representatives by postal code, limiting results to a particular boundary set</dt>
     <dd><a href="/postcodes/L5G4L3/?sets=federal-electoral-districts&amp;format=apibrowser">/postcodes/L5G4L3/?sets=federal-electoral-districts</a></dd>
   </dl>
 </section>
@@ -328,7 +328,7 @@
     <dd><a href="/candidates/?point=48.4328,-123.3347&amp;format=apibrowser">/candidates/?point=48.4328,-123.3347</a></dd>
   </dl>
 </section>
-</div>
 
 <p>Postal Code<sup>OM</sup> is an official mark of Canada Post Corporation.</p>
+</div>
 {% endblock %}
