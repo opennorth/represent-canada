@@ -49,6 +49,7 @@ def index(request):
     'Kitchener City Council'                       : 219153,
     'London City Council'                          : 366151,
     'Markham City Council'                         : 261573,
+    'Milton Town Council'                          : 84362,
     'Mississauga City Council'                     : 713443,
     'Moncton City Council'                         : 64128,
     'Newmarket Town Council'                       : 79978,
