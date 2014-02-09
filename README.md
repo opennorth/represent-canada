@@ -14,28 +14,20 @@ While the Canada site doesn't currently use it, there's a plugin project to prov
 
 The following instructions are to setup your own instance of Represent. If you just want access to data, [please read our API documentation](http://represent.opennorth.ca/api/).
 
-First, install the requirements. This assumes you already have Python 2.7.
+Follow the instructions in the [Python Quick Start Guide](https://github.com/opennorth/opennorth.ca/wiki/Python-Quick-Start%3A-OS-X) to install Homebrew, Python, virtualenv, GDAL and PostGIS.
 
-    sudo easy_install pip
-    sudo pip install virtualenv
-    virtualenv venv
-    source venv/bin/activate
+Create a database using the PostGIS template:
+
+    createdb -h localhost boundaryservice -T template_postgis
+
+Install the project:
+
+    mkvirtualenv represent
+    git clone git://github.com/opennorth/represent-canada.git
+    cd represent-canada
     pip install -r requirements.txt
 
-Next, create a PostgreSQL database, as the Boundary Service depends on PostGIS.
-
-    DB=EXAMPLE_DB_NAME
-    createdb -h localhost $DB
-    createlang -h localhost plpgsql $DB
-
-To spatially-enable the database, you must load PostGIS definitions files. You can use `locate` (Linux) or `mdfind` (OS X) to find these files.
-
-    psql -h localhost -d $DB -f postgis.sql
-    psql -h localhost -d $DB -f spatial_ref_sys.sql
-
-It may be worthwhile to [create a template database](http://www.bigfastblog.com/landsliding-into-postgis-with-kml-files) if you will be creating many PostGIS databases.
-
-Lastly, configure the `DATABASES` Django setting and and create the database tables.
+Configure the `DATABASES` Django setting and and create the database tables:
 
     cp settings.py.example settings.py
     $EDITOR settings.py
