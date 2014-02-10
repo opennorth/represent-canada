@@ -1,4 +1,3 @@
-{% load compress %}
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
@@ -43,7 +42,6 @@
 {# https://github.com/CloudMade/Leaflet/issues/323 #}
 L_ROOT_URL = "{{ STATIC_URL|escapejs }}leaflet/";
 </script>
-{% compress js %}
 <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.easing.1.3.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.localscroll-1.2.7-min.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.scrollTo-1.4.2-min.js"></script>
@@ -54,7 +52,6 @@ L_ROOT_URL = "{{ STATIC_URL|escapejs }}leaflet/";
 <script type="text/javascript" src="{{ STATIC_URL }}js/jsonformatter.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/index.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/api.js"></script>
-{% endcompress %}
 {% endblock js %}
 
 <script type="text/javascript">
