@@ -29,7 +29,9 @@ def index(request):
   for x in boundary_sets:
     if population_by_boundary_set.get(x['name']):
       bounded += population_by_boundary_set[x['name']]
-    # bounded += v # @todo add aggregated?
+
+  for k, v in aggregations.iteritems():
+    bounded += v
 
   representative_sets = list(RepresentativeSet.objects.all().values('name'))
   represented = 0
