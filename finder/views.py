@@ -27,8 +27,8 @@ def index(request):
   boundary_sets = list(BoundarySet.objects.all().values('name'))
   bounded = 0
   for x in boundary_sets:
-    # if population_by_boundary_set.get(x['name']): # @todo uncomment
-    bounded += population_by_boundary_set[x['name']]
+    if population_by_boundary_set.get(x['name']):
+      bounded += population_by_boundary_set[x['name']]
     # bounded += v # @todo add aggregated?
 
   representative_sets = list(RepresentativeSet.objects.all().values('name'))
@@ -37,8 +37,8 @@ def index(request):
     if aggregations.get(x['name']):
       represented += aggregations[x['name']]
     else:
-      # if population_by_representative_set.get(x['name']): # @todo uncomment
-      represented += population_by_representative_set[x['name']]
+      if population_by_representative_set.get(x['name']):
+        represented += population_by_representative_set[x['name']]
 
   return render_to_response('index.html', RequestContext(request, {
     'boundary_progress': int(bounded / 33476688.0 * 100),
