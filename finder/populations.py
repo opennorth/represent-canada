@@ -1,6 +1,6 @@
 # coding: utf-8
 
-# @note Run invoke populations from represent-canada-data to regenerate.
+# @note Run invoke populations from represent-canada-data and scrapers-ca to regenerate.
 
 population_by_boundary_set = {
   u"Portugal Cove South wards": 160,
