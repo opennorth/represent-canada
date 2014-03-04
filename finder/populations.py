@@ -2609,7 +2609,7 @@ population_by_representative_set = {
   u"Conseil municipal de Baie-D'Urfé": 3850,
   u"Conseil municipal de Sainte-Anne-de-Bellevue": 5073,
   u"Conseil municipal de Senneville": 920,
-  u"Conseil municipal de Dollard-Des Ormeaux": 49637,
+  u"Conseil municipal de Dollard-Des-Ormeaux": 49637,
   u"Conseil municipal de La Prairie": 23357,
   u"Conseil municipal de Candiac": 19876,
   u"Conseil municipal de Delson": 7462,
