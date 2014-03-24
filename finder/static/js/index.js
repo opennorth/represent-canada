@@ -248,9 +248,10 @@ jQuery(function ($) {
     if (index == -1) {
       address = store.get('address');
     } else {
-      address = unescape(window.location.href.substr(index + 1));
+      address = window.location.href.substr(index + 1);
     }
     if (address) {
+      address = unescape(address);
       $('#address').val(address);
       processAddress();
     }
