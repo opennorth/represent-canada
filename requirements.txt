@@ -9,6 +9,7 @@ python-memcached
 Fabric
 South
 django-extensions
+Unidecode==0.04.14
 -e git+http://github.com/rhymeswithcycle/represent-boundaries.git#egg=represent-boundaries
 -e git+http://github.com/rhymeswithcycle/represent-reps.git#egg=represent-reps
 -e git+http://github.com/rhymeswithcycle/represent-postcodes.git#egg=represent-postcodes
