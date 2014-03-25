@@ -16,9 +16,9 @@ def dev():
     
 def _env_init():
     env.home_dir = '/home/' + env.user
-    env.python = os.path.join(env.home_dir, '.virtualenvs', 'repdb', 'bin', 'python')
-    env.base_dir = os.path.join(env.home_dir, 'repdb')
-    env.django_dir = os.path.join(env.base_dir, 'represent-canada')
+    env.python = os.path.join(env.home_dir, '.virtualenvs', 'app', 'bin', 'python')
+    env.base_dir = os.path.join(env.home_dir)
+    env.django_dir = os.path.join(env.base_dir, 'app')
     env.pip = env.python.replace('bin/python', 'bin/pip')
     env.data_dir = os.path.join(env.django_dir, 'data')
     
