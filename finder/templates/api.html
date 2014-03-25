@@ -186,106 +186,91 @@
     <dd><a href="/representatives/house-of-commons/?last_name=Harper&amp;format=apibrowser">/representatives/house-of-commons/?last_name=Harper</a></dd>
   </dl>
 
-  <p id="fields">Only the &ldquo;required&rdquo; fields below are always present in the response. You can improve the data we provide by <a href="#contributing">updating our scrapers</a>.</p>
+  <p id="fields">Only the <strong>bold</strong> fields below are always present in the response. You can improve the data we provide by <a href="#contributing">updating our scrapers</a>.</p>
 
   <table class="table table-striped">
     <thead>
     <tr>
       <th>Field name</th>
-      <th>Required?</th>
       <th>Example</th>
       <th style="width: 40%">Notes</th>
     </tr>
     </thead>
     <tbody>
     <tr>
-      <td>name</td>
-      <td>Yes</td>
+      <td><strong>name</strong></td>
       <td>Stephen Harper</td>
       <td></td>
     </tr>
     <tr>
       
-      <td>district_name</td>
-      <td>Yes</td>
+      <td><strong>district_name</strong></td>
       <td>Calgary Southwest</td>
       <td></td>
     </tr>
     <tr>
       
-      <td>elected_office</td>
-      <td>Yes</td>
+      <td><strong>elected_office</strong></td>
       <td>MP, MLA, Mayor, Councillor, Alderman
       <td>Will be the same for all representatives at the federal and provincial levels</td>
     </tr>
     <tr>
       
-      <td>source_url</td>
-      <td>Yes</td>
+      <td><strong>source_url</strong></td>
       <td>The URL at which the data is scraped</td>
       <td>May be the same as <code>url</code> below</td>
     </tr>
     <tr>
       
       <td>first_name</td>
-      <td></td>
       <td>Stephen</td>
       <td>If you're writing a scraper, only set this field if the first name appears separately in the source. Don&#39;t parse it out yourself.</td>
     </tr>
     <tr>
       <td>last_name</td>
-      <td></td>
       <td>Harper</td>
       <td>If you're writing a scraper, only set this field if the last name appears separately in the source. Don&#39;t parse it out yourself.</td>
     </tr>
     <tr>
       <td>party_name</td>
-      <td></td>
       <td>Conservative</td>
       <td></td>
     </tr>
     <tr>
       <td>email</td>
-      <td></td>
       <td>example@example.com</td>
       <td></td>
     </tr>
     <tr>
       <td>url</td>
-      <td></td>
       <td>http://legislature.ca/stephen-harper</td>
       <td>This should generally be the URL to the representative&#39;s page on the official legislature site</td>
     </tr>
     <tr>
       
       <td>photo_url</td>
-      <td></td>
       <td>http://legislature.ca/stephen-harper.jpg</td>
       <td></td>
     </tr>
     <tr>
       
       <td>personal_url</td>
-      <td></td>
       <td>http://stephenharper.blogspot.com/</td>
       <td>A site run by the representative that&#39;s not on the official legislature site</td>
     </tr>
     <tr>
       
       <td>district_id</td>
-      <td></td>
       <td>24013</td>
       <td>If there&#39;s an ID provided alongside the district name</td>
     </tr>
     <tr>
       <td>gender</td>
-      <td></td>
       <td>M, F</td>
       <td></td>
     </tr>
     <tr>
       <td>offices</td>
-      <td></td>
       <td><code>[ {&quot;postal&quot;: &quot;10 North Pole, H0H 0H0&quot;, &quot;tel&quot;: &quot;555-555-5555&quot;,
         &quot;type&quot;: &quot;constituency&quot;}, {&quot;tel&quot;: &quot;444-444-4444&quot;, &quot;type&quot;: &quot;legislature&quot;}
         ]</code></td>
@@ -296,7 +281,6 @@
     </tr>
     <tr>
       <td>extra</td>
-      <td></td>
       <td><code>{ &#39;hair_colour&#39;: &#39;brown&#39; }</code></td>
       <td>A JSON object with any extra data you think is worth collecting that doesn&#39;t fit in other
         fields</td>
