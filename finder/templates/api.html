@@ -57,18 +57,18 @@
   </div>
 
   <h3>Paginate</h3>
-  <p>Results are paginated 20 per page, by default. Set the number of results per page by adding a <code>limit</code> query parameter. Paginate manually using the <code>offset</code> query parameter or, under the <code>meta</code> field, use the <code>next</code> and <code>previous</code> links to navigate to the next and previous pages (if any). Under the <code>meta</code> field, <code>total_count</code> is the number of results.</p>
+  <p>Results are paginated 20 per page by default. Set the number of results per page by adding a <code>limit</code> query parameter. Paginate manually using the <code>offset</code> query parameter or, under the <code>meta</code> field, use the <code>next</code> and <code>previous</code> links to navigate to the next and previous pages (if any). Under the <code>meta</code> field, <code>total_count</code> is the number of results.</p>
 
   <h3>Filter results</h3>
-  <p>Filter results with query parameters. To find representatives whose first name is “Rodney”, for example, request <code>/representatives/?first_name=Rodney</code>. Each endppoint below lists its filter fields.</p>
+  <p>Filter results with query parameters. To find representatives whose first name is “Rodney”, for example, request <code>/representatives/?first_name=Rodney</code>. Each endpoint below lists its filter fields.</p>
 
-  <p>Perform substring queries by appending <code>__querytype</code> to the parameter name, where <code>querytype</code> is one of <code>iexact</code>, <code>contains</code>, <code>icontains</code>, <code>startswith</code>, <code>istartswith</code>, <code>endswith</code>, <code>iendswith</code> or <code>isnull</code>. A leading <code>i</code> makes the match case-insensitive. For example, to find representatives whose last name starts with “M” or “m”, request <code>/representatives/?last_name__istartswith=m</code>.</p>
+  <p>Perform substring searches by appending <code>__querytype</code> to the parameter name, where <code>querytype</code> is one of <code>iexact</code>, <code>contains</code>, <code>icontains</code>, <code>startswith</code>, <code>istartswith</code>, <code>endswith</code>, <code>iendswith</code> or <code>isnull</code>. A leading <code>i</code> makes the match case-insensitive. For example, to find representatives whose last name starts with “M” or “m”, request <code>/representatives/?last_name__istartswith=m</code>.</p>
 
   <h3>Download in bulk</h3>
-  <p>To download all representatives, send a request to <a href="http://represent.opennorth.ca/representatives/?limit=1000">http://represent.opennorth.ca/representatives/?limit=1000</a> and follow the <code>next</code> link in the <code>meta</code> section until you reach the end. We host the original digital boundary files and postal code concordances on <a href="https://github.com/opennorth/represent-canada-data">GitHub</a>.</p>
+  <p>To download all representatives, send a request to <a href="http://represent.opennorth.ca/representatives/?limit=1000">http://represent.opennorth.ca/representatives/?limit=1000</a> and follow the <code>next</code> link in the <code>meta</code> section until you reach the end. We host the shapefiles and postal code concordances on <a href="https://github.com/opennorth/represent-canada-data">GitHub</a>.</p>
 
   <h3>Rate limits</h3>
-  <p>If you make more than 60 requests per minute, you may receive a HTTP 503 Service Unavailable error. <a href="mailto:represent@opennorth.ca">Contact us</a> if you expect high usage.</p>
+  <p>If you make over 60 requests per minute, you may see a HTTP 503 Service Unavailable error. <a href="mailto:represent@opennorth.ca">Contact us</a> if you expect high usage.</p>
 
   <h3>Debugging</h3>
   <p>For a browsable, HTML version of the JSON response, add a <code>format=apibrowser</code> query parameter. Add <code>pretty=1</code> to just indent the raw JSON.</p>
@@ -312,7 +312,9 @@
   <h2>Electoral candidates</h2>
   <p>This endpoint behaves like the <a href="#representative">/representatives/</a> endpoint. See its documentation for more examples.</p>
 
-  <p>Candidate lists may be incomplete or incorrect, as this information changes frequently. If you would like to add candidates to Represent, <a href="mailto:represent@opennorth.ca">contact us</a>.</p>
+  <p>Candidate lists may be incomplete or incorrect, as this information changes frequently.</p>
+
+  <p>If you would like to add candidates to Represent, <a href="mailto:represent@opennorth.ca">contact us</a>.</p>
 
   <dl>
     <dt>Get one page of candidates</dt>
