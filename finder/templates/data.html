@@ -8,7 +8,7 @@
 {% block content %}
 <div class="jumbotron bg-primary" id="header">
   <div class="container-fluid">
-    <h1>{% trans "Download elected officials' contact information as a spreadsheet." %}</h1>
+    <h1 class="solo">{% trans "Download elected officials' contact information as a spreadsheet." %}</h1>
   </div>
 </div>
 
@@ -22,7 +22,7 @@
   </div>
 </div>
 
-<div class="container-fluid banner" id="back">
+<div class="container-fluid banner banner-default" id="back">
   <p>{% trans "Do even more with Represent." %}</p>
   <div>
     <a class="btn btn-lg" role="button" href="{% url "index" %}">{% trans "Find out more" %}</a>

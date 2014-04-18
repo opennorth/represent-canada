@@ -3,6 +3,23 @@ abbr[title] {
   border-bottom: none;
 }
 
+pre {
+  overflow: auto;
+  font-size: 13px;
+  font-family: monospace;
+  white-space: pre;
+  word-wrap: normal;
+}
+pre .key {
+  color: #660E7A;
+}
+pre .structure {
+  color: #B58110;
+}
+pre .value {
+  color: #038C35;
+}
+
 .bg-primary {
   color: #fff;
   background-color: #158cba;
@@ -33,16 +50,16 @@ abbr[title] {
   padding-right: 15px;
 }
 
-.navbar {
+#navbar {
   margin-top: 20px;
   border: none; /* remove border */
 }
-.navbar-nav { /* remove top and bottom margin */
+.navbar .navbar-nav { /* remove top and bottom margin */
   margin-top: 0;
   margin-bottom: 0;
   font-size: 18px; /* normalize font sizes */
 }
-.navbar-brand {
+.navbar .navbar-brand {
   padding-top: 0; /* remove top padding */
   font-weight: 500;
 }
@@ -56,6 +73,10 @@ abbr[title] {
 .navbar .nav > li > a:hover,
 .navbar .nav > li > a:focus { /* change color */
   background-color: #f9f9f9;
+}
+#sub-navbar-collapse {
+  margin-left: -15px;
+  padding-left: 0;
 }
 @media (max-width: 479px) {
   .container-fluid {
@@ -92,8 +113,7 @@ abbr[title] {
     font-size: 36px;
   }
 }
-#data .jumbotron h1,
-#government .jumbotron h1 {
+.jumbotron h1.solo {
   margin-bottom: 0;
 }
 
@@ -221,25 +241,30 @@ div div .row {
   padding-bottom: 30px;
   text-align: center;
 }
+#api .banner {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
 .banner p {
   margin-bottom: 0;
   font-size: 18px;
 }
 
-#newsletter,
-#back {
+.banner-default {
   background-color: #fef9e7;
 }
-#newsletter p,
-#back p {
+#api .banner-default {
+  color: #fff;
+  background-color: #2ecc71;
+}
+.banner-default p {
   font-size: 24px;
   font-weight: 300;
 }
 #newsletter span {
   margin-right: 30px;
 }
-#newsletter .btn,
-#back .btn {
+.banner-default .btn {
   font-size: 14px;
   font-weight: 500;
   text-transform: uppercase;
@@ -247,10 +272,8 @@ div div .row {
   color: #fff;
   background-color: #ff4136;
 }
-#newsletter .btn:hover,
-#newsletter .btn:focus,
-#back .btn:hover,
-#back .btn:focus {
+.banner-default .btn:hover,
+.banner-default .btn:focus {
   color: #ff4136;
   background-color: transparent;
 }
@@ -276,11 +299,63 @@ p#government {
 #back img {
   margin: 20px 15px 0;
 }
-#api,
+
+#api .banner h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+#boundary h3 {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #fff;
+  background-color: #bdc3c7;
+  text-align: center;
+}
+
+#api dl {
+  margin-bottom: 0;
+}
+#api dt {
+  margin-top: 20px;
+}
+#api dd {
+  min-height: 20px;
+  padding: 9px;
+  background-color: #f5f5f5;
+  border: 1px solid #e3e3e3;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+#api dd span {
+  font-size: 13px;
+  color: #999;
+}
+#api table {
+  margin-bottom: 40px;f
+}
+#api table code {
+  white-space: normal;
+}
+#fields {
+  margin-top: 40px;
+}
+
+
 #apibrowser,
 #instructions,
-#privacy {
+#privacy,
+#api section .container-fluid {
   font-size: 18px;
+}
+#privacy,
+#api section .container-fluid {
+  margin-bottom: 40px;
+}
+#api #representative .container-fluid {
+  margin-bottom: 0;
 }
 #fields {
   margin-bottom: 10px;

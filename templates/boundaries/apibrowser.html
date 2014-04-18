@@ -4,6 +4,12 @@
 {% block title %}{{ title.capitalize }} | Represent API{% endblock %}
 
 {% block content %}
+<div class="jumbotron bg-primary" id="header">
+  <div class="container-fluid">
+    <h1 class="solo">API Browser</h1>
+  </div>
+</div>
+
 <div class="container-fluid" id="apibrowser">
   <p>This is the JSON response for the <code>{{ json_url }}</code> API call. Get the <a href="{{ json_url }}">raw JSON</a> or read the <a href="{% url "apidoc" %}">API reference</a>.</p>
 
@@ -12,5 +18,6 @@
 {% endblock %}
 
 {% block js %}
+<script src="{% static "js/jsonformatter.js" %}"></script>
 <script src="{% static "js/api.js" %}"></script>
 {% endblock %}

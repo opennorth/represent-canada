@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-18 11:47-0400\n"
+"POT-Creation-Date: 2014-04-18 12:27-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -132,7 +132,7 @@ msgid ""
 "create your own with the columns below. You may omit or leave columns blank. "
 "The most important are in <strong>bold</strong>."
 msgstr ""
-"Téléchargez notre <a href=\"%(spreadsheet_url)s\">formulaire</a> ou créez "
+"Téléchargez notre <a href=\"%(spreadsheet_url)s\">modèle de tableau</a> ou créez "
 "votre propre tableau avec les colonnes ci-dessous. Vous pouvez omettre "
 "certaines informations. Les plus importantes sont en <strong>gras</strong>."
 
@@ -146,7 +146,7 @@ msgstr "(si votre municipalité est divisée en districts)"
 
 #: templates/government.html:23
 msgid "District ID"
-msgstr "District ID"
+msgstr "Identifiant du district"
 
 #: templates/government.html:23
 msgid "(if your wards have identifiers as well as names)"
@@ -193,6 +193,10 @@ msgstr "(un lien au profil du représentant sur le site web de la municipalité)
 #: templates/government.html:31
 msgid "Photo URL"
 msgstr "URL d’une photo"
+
+#: templates/government.html:31
+msgid "(a link to a photo of the elected official)"
+msgstr "(un lien pour une photo du représentant)"
 
 #: templates/government.html:32
 msgid "Personal URL"
@@ -247,7 +251,7 @@ msgid ""
 "Save the spreadsheet in the CSV file format. Microsoft Excel and other "
 "programs can do this."
 msgstr ""
-"Sauvegardez le formulaire en format CSV. Il est possible de le faire sur "
+"Sauvegardez le tableau en format CSV. Il est possible de le faire sur "
 "Microsoft Excel ou sur d’autres programmes."
 
 #: templates/government.html:44
@@ -264,7 +268,7 @@ msgid ""
 "spreadsheet, and we'll quickly add the information to Represent."
 msgstr ""
 "<a href=\"mailto:represent@opennorth.ca\">Envoyez-nous</a> le lien au "
-"formulaire par courriel, et nous ajouterons rapidement l’information à "
+"tableau par courriel, et nous ajouterons rapidement l’information à "
 "Represent. "
 
 #: templates/government.html:48
@@ -272,7 +276,7 @@ msgid ""
 "Now, all you have to do is update the spreadsheet when information changes. "
 "We'll automatically import those changes."
 msgstr ""
-"Il suffit maintenant de mettre les informations à jour dans le formulaire. "
+"Il suffit maintenant de mettre les informations à jour dans le tableau. "
 "Ces mises à jour seront automatiquement importées."
 
 #: templates/government.html:49
@@ -305,8 +309,8 @@ msgid ""
 "Find the elected officials and electoral districts for any Canadian address "
 "or postal code, at all levels of government"
 msgstr ""
-"Identifiez représentants élus et  districts électoraux à partir d’une "
-"adresse ou d’un code postal au Canada, pour tous les paliers gouvernementaux"
+"Identifiez élus et districts électoraux à partir d’une adresse ou d’un code "
+"postal au Canada, pour chaque palier gouvernemental"
 
 #: templates/index.html:13
 msgid "Use the free API"

@@ -21,7 +21,7 @@
 </head>
 <body {% block bodyattributes %}{% endblock %}>
 
-<nav class="navbar" role="navigation">
+<nav class="navbar" role="navigation" id="navbar">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <img src="{% static "img/open-north-symbol.png" %}" width="50" height="50" alt="">
-        Represent <span class="hidden-xxs">Civic Information</span> API
+        Represent <span class="hidden-sm hidden-xxs">Civic Information</span> API
       </span>
     </div>
     <div class="collapse navbar-collapse" id="navbar-collapse">
@@ -50,9 +50,11 @@
 
 {% block content %}{% endblock %}
 
+{% block footer %}
 <div class="container-fluid banner" id="footer">
   <p>{% trans 'A project of <a href="http://www.opennorth.ca/">Open North</a>, a nonprofit that builds digital tools for government transparency and civic participation.' %}</p>
 </div>
+{% endblock %}
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>

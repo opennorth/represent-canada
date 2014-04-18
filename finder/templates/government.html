@@ -8,7 +8,7 @@
 {% block content %}
 <div class="jumbotron bg-primary" id="header">
   <div class="container-fluid">
-    <h1>{% trans "Adding your elected officials to Represent is easy." %}</h1>
+    <h1 class="solo">{% trans "Adding your elected officials to Represent is easy." %}</h1>
   </div>
 </div>
 
@@ -28,7 +28,7 @@
         <li>{% trans "Party name" %}</li>
         <li><strong>{% trans "Email" %}</strong></li>
         <li>{% trans "URL" %} {% trans "(a link to the elected official's profile on your municipal website)" %}</li>
-        <li><strong>{% trans "Photo URL" %}</strong></li>
+        <li><strong>{% trans "Photo URL" %}</strong> {% trans "(a link to a photo of the elected official)" %}</li>
         <li>{% trans "Personal URL" %} {% trans "(a link to the elected official's own website)" %}</li>
         <li>{% trans "Office type" %} {% trans "(<code>Legislature</code>, <code>Constituency</code> or <code>Residence</code> for example)" %}</li>
         <li>{% trans "Address line 1" %}</li>

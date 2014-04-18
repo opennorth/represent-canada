@@ -1,60 +1,34 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block title %}API Reference | Represent Elected Officials and Electoral Districts API for Canada{% endblock %}
+{% block bodyattributes %}id="api"{% endblock %}
 
 {% block content %}
-<div class="container-fluid" id="api">
+<div class="jumbotron bg-primary" id="header">
+  <div class="container-fluid">
+    <h1 class="solo">API Reference</h1>
+  </div>
+</div>
 
-  <p>Represent gives developers access to the largest database of electoral districts and elected official contact information in Canada.</p>
-
-  <nav class="subnav container">
-    <ul class="nav nav-pills">
-      <li><a href="#basics">Basics</a></li>
-      <li><a href="#postcode">Postal codes</a></li>
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-          Boundaries
-          <b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu">
-          <li><a href="#boundaryset">Boundary sets</a></li>
-          <li><a href="#boundary">Boundaries</a></li>
-        </ul>
-      </li>
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-          Representatives
-          <b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu">
-          <li><a href="#representativeset">Representative sets</a></li>
-          <li><a href="#representative">Representatives</a></li>
-        </ul>
-      </li>
-      <li><a href="#election">Elections</a></li>
-      <li><a href="#candidate">Candidates</a></li>
-    </ul>
-  </nav>
-
-  <section id="basics">
+<section id="basics">
+  <div class="container-fluid banner banner-default">
     <h2>Basics</h2>
+  </div>
 
+  <div class="container-fluid">
     <p>The base URL is <code>http://represent.opennorth.ca</code>. All endpoints output JSON.</p>
 
-    <div class="alert alert-info">
-      <strong>Heads up!</strong> Subscribe to our <a href="http://groups.google.com/group/represent-canada/">low-volume mailing list</a> to be notified of API changes.
-    </div>
-
     <h3>Paginate</h3>
-    <p>Results are paginated 20 per page by default. Set the number of results per page by adding a <code>limit</code> query parameter. Paginate manually using the <code>offset</code> query parameter or, under the <code>meta</code> field, use the <code>next</code> and <code>previous</code> links to navigate to the next and previous pages (if any). Under the <code>meta</code> field, <code>total_count</code> is the number of results.</p>
+    <p>Results are paginated 20 per page by default. Set the number of results per page by adding a <code>limit</code> query parameter. Change pages using the <code>offset</code> query parameter or using the <code>next</code> and <code>previous</code> links under the <code>meta</code> field in the response to navigate to the next and previous pages (if any). Under the <code>meta</code> field, <code>total_count</code> is the number of results.</p>
 
     <h3>Filter results</h3>
-    <p>Filter results with query parameters. To find representatives whose first name is “Rodney”, for example, request <code>/representatives/?first_name=Rodney</code>. Each endpoint below lists its filter fields.</p>
+    <p>Filter results with query parameters. Each endpoint below lists the fields on which you can filter results. To filter for representatives whose first name is “Rodney”, for example, request <code>/representatives/?first_name=Rodney</code>.</p>
 
     <p>Perform substring searches by appending <code>__querytype</code> to the parameter name, where <code>querytype</code> is one of <code>iexact</code>, <code>contains</code>, <code>icontains</code>, <code>startswith</code>, <code>istartswith</code>, <code>endswith</code>, <code>iendswith</code> or <code>isnull</code>. A leading <code>i</code> makes the match case-insensitive. For example, to find representatives whose last name starts with “M” or “m”, request <code>/representatives/?last_name__istartswith=m</code>.</p>
 
     <h3>Download in bulk</h3>
-    <p>To download all representatives, send a request to <a href="http://represent.opennorth.ca/representatives/?limit=1000">http://represent.opennorth.ca/representatives/?limit=1000</a> and follow the <code>next</code> link in the <code>meta</code> section until you reach the end. We host the shapefiles and postal code concordances on <a href="https://github.com/opennorth/represent-canada-data">GitHub</a>.</p>
+    <p>To download all representatives, send a request to <a href="http://represent.opennorth.ca/representatives/?limit=1000">http://represent.opennorth.ca/representatives/?limit=1000</a> and follow the <code>next</code> link under the <code>meta</code> field until you reach the end. We host the shapefiles and postal code concordances on <a href="https://github.com/opennorth/represent-canada-data">GitHub</a>.</p>
 
     <h3>Rate limits</h3>
     <p>Represent is free up to 60 requests per minute (86,400 queries/day). If you need to make more queries, <a href="mailto:represent@opennorth.ca">contact us</a>; otherwise, you may get HTTP 503 errors.</p>
@@ -76,15 +50,20 @@
     </ul>
 
     <p><a href="{% url "privacy" %}">Privacy policy</a></p>
-  </section>
+  </div>
+</section>
 
-  <section id="postcode">
+<section id="postcode">
+  <div class="container-fluid banner banner-default">
     <h2>Postal codes</h2>
-    <p>URLs should include the postal code in uppercase letters with no spaces.</p>
+  </div>
+
+  <div class="container-fluid">
+    <p>URLs must include the postal code in uppercase letters with no spaces.</p>
 
     <p>The <code>boundaries_centroid</code> field lists boundaries that contain the postal code&rsquo;s center point (centroid). A centroid is a point, but a postal code can be a line or polygon, so the list of boundaries in <code>boundaries_centroid</code> <strong>will sometimes be inaccurate</strong>.</p>
 
-    <p>The <code>boundaries_concordance</code> field lists boundaries linked to the postal code according to official government data. Postal codes can cross electoral districts, therefore <code>boundaries_concordance</code> may list multiple Ontario provincial districts for a single postal code like K0A 1K0, for example.</p>
+    <p>The <code>boundaries_concordance</code> field lists boundaries linked to the postal code according to official government data. Postal codes can cross boundaries, therefore <code>boundaries_concordance</code> may list many Ontario provincial districts for a postal code like K0A 1K0.</p>
 
     <p>The response has <code>representatives_centroid</code> and <code>representatives_concordance</code> fields that behave similarly.</p>
 
@@ -100,10 +79,15 @@
       <dt>Find boundaries and representatives by postal code, limiting results to a specific boundary set</dt>
       <dd><a href="/postcodes/L5G4L3/?sets=federal-electoral-districts&amp;format=apibrowser">/postcodes/L5G4L3/?sets=federal-electoral-districts</a></dd>
     </dl>
-  </section>
+  </div>
+</section>
 
-  <section id="boundaryset">
+<section id="boundaryset">
+  <div class="container-fluid banner banner-default">
     <h2>Boundary sets</h2>
+  </div>
+
+  <div class="container-fluid">
     <p>A boundary set is a group of electoral districts, like BC provincial districts or Toronto wards.</p>
 
     <p>Do we not have a set of boundaries that you need? <a href="mailto:represent@opennorth.ca">Contact us</a> so that we can make it a priority.</p>
@@ -116,15 +100,15 @@
       <dt>Filter boundary sets by <code>name</code> or <code>domain</code></dt>
       <dd><a href="/boundary-sets/?domain=Canada&amp;format=apibrowser">/boundary-sets/?domain=Canada</a></dd>
     </dl>
-  </section>
+  </div>
+</section>
 
-  <section id="boundary">
+<section id="boundary">
+  <div class="container-fluid banner banner-default">
     <h2>Boundaries</h2>
+  </div>
 
-    <p>If you want to draw boundaries, we recommend the <code>simple_shape</code> endpoint, which simplifies the shape to a tolerance of 0.002, looks fine and loads fast.</p>
-
-    <p>The default geospatial output format is GeoJSON. Add a <code>format=kml</code> or <code>format=wkt</code> query parameter to get KML or Well-Known Text instead.</p>
-
+  <div class="container-fluid">
     <p>The <code>external_id</code> field (not always present) is the boundary's machine identifier. The <code>metadata</code> field contains all attributes from the source shapefile; it is unmodified and may be out-of-date or erroneous.</p>
 
     <dl>
@@ -134,35 +118,50 @@
       <dd><a href="/boundaries/toronto-wards/?format=apibrowser">/boundaries/toronto-wards/</a></dd>
       <dt>Get one page of boundaries from multiple boundary sets (comma-separated)</dt>
       <dd><a href="/boundaries/?sets=toronto-wards,ottawa-wards&amp;format=apibrowser">/boundaries/?sets=toronto-wards,ottawa-wards</a></dd>
-      <dt>Get all simple shapes from a boundary set</dt>
-      <dd><a href="/boundaries/toronto-wards/simple_shape?format=apibrowser">/boundaries/toronto-wards/simple_shape</a></dd>
-      <dt>Get all original shapes from a boundary set</dt>
-      <dd><a href="/boundaries/toronto-wards/shape?format=apibrowser">/boundaries/toronto-wards/shape</a></dd>
-      <dt>Get all centroids from a boundary set</dt>
-      <dd><a href="/boundaries/toronto-wards/centroid?format=apibrowser">/boundaries/toronto-wards/centroid</a></dd>
       <dt>Get one boundary</dt>
       <dd><a href="/boundaries/nova-scotia-electoral-districts/cape-breton-centre/?format=apibrowser">/boundaries/nova-scotia-electoral-districts/cape-breton-centre/</a></dd>
-      <dt>Get one boundary's simple shape</dt>
-      <dd><a href="/boundaries/nova-scotia-electoral-districts/cape-breton-centre/simple_shape?format=apibrowser">/boundaries/nova-scotia-electoral-districts/cape-breton-centre/simple_shape</a></dd>
-      <dt>Get one boundary's original shape</dt>
-      <dd><a href="/boundaries/nova-scotia-electoral-districts/cape-breton-centre/shape?format=apibrowser">/boundaries/nova-scotia-electoral-districts/cape-breton-centre/shape</a></dd>
-      <dt>Get one boundary's centroid</dt>
-      <dd><a href="/boundaries/nova-scotia-electoral-districts/cape-breton-centre/centroid?format=apibrowser">/boundaries/nova-scotia-electoral-districts/cape-breton-centre/centroid</a></dd>
-      <dt>Get the representatives for one boundary</dt>
-      <dd><a href="/boundaries/toronto-wards/etobicoke-north-1/representatives/?format=apibrowser">/boundaries/toronto-wards/etobicoke-north-1/representatives/</a></dd>
+      <dt>Filter boundaries by <code>name</code> or <code>external_id</code></dt>
+      <dd><a href="/boundaries/?name=Niagara Falls&amp;format=apibrowser">/boundaries/?name=Niagara Falls</a></dd>
+    </dl>
+
+    <h3>Geospatial queries</h3>
+
+    <dl>
       <dt>Find boundaries by latitude and longitude</dt>
       <dd><a href="/boundaries/?contains=45.524,-73.596&amp;format=apibrowser">/boundaries/?contains=45.524,-73.596</a></dd>
       <dt>Find boundaries that touch</dt>
       <dd><a href="/boundaries/?touches=alberta-electoral-districts/highwood&amp;format=apibrowser">/boundaries/?touches=alberta-electoral-districts/highwood</a></dd>
       <dt>Find boundaries that intersect (&ldquo;covers or overlaps&rdquo; in PostGIS lingo)</dt>
       <dd><a href="/boundaries/?intersects=alberta-electoral-districts/highwood&amp;format=apibrowser">/boundaries/?intersects=alberta-electoral-districts/highwood</a></dd>
-      <dt>Filter boundaries by <code>name</code> or <code>external_id</code></dt>
-      <dd><a href="/boundaries/?name=Niagara Falls&amp;format=apibrowser">/boundaries/?name=Niagara Falls</a></dd>
     </dl>
-  </section>
 
-  <section id="representativeset">
+    <h3>Drawing boundaries</h3>
+
+    <p>We recommend the <code>simple_shape</code> endpoint, which simplifies the shape to a tolerance of 0.002, looks fine and loads fast. The default geospatial output format is GeoJSON. Add a <code>format=kml</code> or <code>format=wkt</code> query parameter to get KML or Well-Known Text.</p>
+
+    <dl>
+      <dt>Get all simple shapes from a boundary set</dt>
+      <dd><a href="/boundaries/toronto-wards/simple_shape?format=apibrowser">/boundaries/toronto-wards/simple_shape</a></dd>
+      <dt>Get all original shapes from a boundary set</dt>
+      <dd><a href="/boundaries/toronto-wards/shape?format=apibrowser">/boundaries/toronto-wards/shape</a></dd>
+      <dt>Get all centroids from a boundary set</dt>
+      <dd><a href="/boundaries/toronto-wards/centroid?format=apibrowser">/boundaries/toronto-wards/centroid</a></dd>
+      <dt>Get one boundary's simple shape</dt>
+      <dd><a href="/boundaries/nova-scotia-electoral-districts/cape-breton-centre/simple_shape?format=apibrowser">/boundaries/nova-scotia-electoral-districts/cape-breton-centre/simple_shape</a></dd>
+      <dt>Get one boundary's original shape</dt>
+      <dd><a href="/boundaries/nova-scotia-electoral-districts/cape-breton-centre/shape?format=apibrowser">/boundaries/nova-scotia-electoral-districts/cape-breton-centre/shape</a></dd>
+      <dt>Get one boundary's centroid</dt>
+      <dd><a href="/boundaries/nova-scotia-electoral-districts/cape-breton-centre/centroid?format=apibrowser">/boundaries/nova-scotia-electoral-districts/cape-breton-centre/centroid</a></dd>
+    </dl>
+  </div>
+</section>
+
+<section id="representativeset">
+  <div class="container-fluid banner banner-default">
     <h2>Representative sets</h2>
+  </div>
+
+  <div class="container-fluid">
     <p>A representative set is a group of elected officials, like the House of Commons or Toronto City Council.</p>
 
     <p>Do we not have a set of representatives that you need? <a href="mailto:represent@opennorth.ca">Contact us</a> so that we can make it a priority.</p>
@@ -173,11 +172,15 @@
       <dt>Get one representative set</dt>
       <dd><a href="/representative-sets/ontario-legislature/?format=apibrowser">/representative-sets/ontario-legislature/</a></dd>
     </dl>
-  </section>
+  </div>
+</section>
 
-  <section id="representative">
+<section id="representative">
+  <div class="container-fluid banner banner-default">
     <h2>Representatives</h2>
+  </div>
 
+  <div class="container-fluid">
     <dl>
       <dt>Get one page of representatives</dt>
       <dd><a href="/representatives/?format=apibrowser">/representatives/</a> <span>Click to view JSON</span></dd>
@@ -185,7 +188,9 @@
       <dd><a href="/representatives/house-of-commons/?format=apibrowser">/representatives/house-of-commons/</a></dd>
       <dt>Find representatives by latitude and longitude</dt>
       <dd><a href="/representatives/?point=45.524,-73.596&amp;format=apibrowser">/representatives/?point=45.524,-73.596</a></dd>
-      <dt>Find representatives by boundary (comma-separated)</dt>
+      <dt>Get the representatives for one boundary</dt>
+      <dd><a href="/boundaries/toronto-wards/etobicoke-north-1/representatives/?format=apibrowser">/boundaries/toronto-wards/etobicoke-north-1/representatives/</a></dd>
+      <dt>Get the representatives for multiple boundaries (comma-separated)</dt>
       <dd><a href="/representatives/?districts=calgary-wards/ward-1,calgary-wards/ward-2,calgary-wards/ward-3&amp;format=apibrowser">/representatives/?districts=calgary-wards/ward-1,calgary-wards/ward-2,calgary-wards/ward-3</a></dd>
       <dt>Filter representatives by <code>name</code>, <code>first_name</code>, <code>last_name</code>, <code>gender</code>, <code>district_name</code>, <code>elected_office</code> or <code>party_name</code></dt>
       <dd><a href="/representatives/house-of-commons/?last_name=Harper&amp;format=apibrowser">/representatives/house-of-commons/?last_name=Harper</a></dd>
@@ -198,7 +203,7 @@
       <tr>
         <th>Field</th>
         <th>Example</th>
-        <th style="width: 40%">Notes</th>
+        <th>Notes</th>
       </tr>
       </thead>
       <tbody>
@@ -214,7 +219,7 @@
       </tr>
       <tr>
         <td><strong>elected_office</strong></td>
-        <td>MP, MLA, Mayor, Councillor, Alderman
+        <td>MP, MLA, Mayor, Councillor, Alderman</td>
         <td></td>
       </tr>
       <tr>
@@ -283,10 +288,15 @@
       </tr>
       </tbody>
     </table>
-  </section>
+  </div>
+</section>
 
-  <section id="election">
+<section id="election">
+  <div class="container-fluid banner banner-default">
     <h2>Elections</h2>
+  </div>
+
+  <div class="container-fluid">
     <p>This endpoint behaves like the <a href="#representativeset">/representative-sets/</a> endpoint. See its documentation for more examples.</p>
 
     <p>If you would like to add an election to Represent, <a href="mailto:represent@opennorth.ca">contact us</a>.</p>
@@ -295,10 +305,15 @@
       <dt>Get one page of elections</dt>
       <dd><a href="/elections/?format=apibrowser">/elections/</a> <span>Click to view JSON</span></dd>
     </dl>
-  </section>
+  </div>
+</section>
 
-  <section id="candidate">
+<section id="candidate">
+  <div class="container-fluid banner banner-default">
     <h2>Electoral candidates</h2>
+  </div>
+
+  <div class="container-fluid">
     <p>This endpoint behaves like the <a href="#representative">/representatives/</a> endpoint. See its documentation for more examples.</p>
 
     <p>Candidate lists may be incomplete or incorrect, as this information changes frequently.</p>
@@ -309,7 +324,6 @@
       <dt>Get one page of candidates</dt>
       <dd><a href="/candidates/?format=apibrowser">/candidates/</a> <span>Click to view JSON</span></dd>
     </dl>
-  </section>
-
-</div>
+  </div>
+</section>
 {% endblock %}
