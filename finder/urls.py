@@ -9,5 +9,5 @@ urlpatterns = patterns('',
     url(r'^demo/$', views.demo, name='demo'),
     url(r'^government/$', views.government, name='government'),
     url(r'^privacy/$', views.privacy, name='privacy'),
-    url(r'^$', views.index, name='index'),
+    url(r'^$', views.index),
 )
