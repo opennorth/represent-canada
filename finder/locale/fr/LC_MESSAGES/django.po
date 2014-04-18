@@ -52,7 +52,7 @@ msgid "Do even more with Represent."
 msgstr ""
 
 #: templates/data.html:28
-msgid "Find out more"
+msgid "Learn more"
 msgstr "En savoir plus"
 
 #: templates/data.html:29 templates/index.html:144
