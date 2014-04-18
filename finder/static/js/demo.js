@@ -5,11 +5,11 @@ var BASE_URL = 'https://represent.opennorth.ca',
     featureGroup,
     representativeTemplate = _.template( // @todo Replace this one underscore dependency.
       '<div class="col-xs-6 col-sm-3 col-lg-2 representative">' +
-        '<div class="avatar"><img src="<% if (photo_url) { %><%= photo_url %><% } else { %>img/silhouette.png<% } %>" alt=""></div> ' +
+        '<div class="avatar"><img src="<% if (photo_url) { %><%= photo_url %><% } else { %>/static/img/silhouette.png<% } %>" alt=""></div> ' +
         '<p><% if (party_name) { %><%= party_name %><% } %> ' + '<%= elected_office %> ' +
         '<strong><% if (url) { %><a href="<%= url %>"><%= name %></a><% } else { %><%= name %><% } %></strong></p> ' +
-        '<p class="district-name"><%= district_name %> <button type="button" class="btn btn-default btn-xs shape" data-url="<%= related.boundary_url %>">Map</button></p> ' +
-        '<p><% if (email) { %><a href="mailto:<%= email %>">Email <%= first_name %></a><% } %></p> ' +
+        '<p class="district-name"><%= district_name %> <button type="button" class="btn btn-default btn-xs shape" data-url="<%= related.boundary_url %>">' + gettext('Map') + '</button></p> ' +
+        '<p><% if (email) { %><a href="mailto:<%= email %>">' + gettext('Email') + ' <%= first_name %></a><% } %></p> ' +
       '</div>'
     );
 
@@ -103,7 +103,7 @@ function processLatLng(latlng) {
 
     $('#representatives').imagesLoaded().progress(function (instance, image) {
       if (!image.isLoaded) {
-        $(image.img).attr('src', 'img/silhouette.png');
+        $(image.img).attr('src', '/static/img/silhouette.png');
       }
     });
   });
@@ -113,10 +113,10 @@ function processAddress() {
   $('.alert').hide();
   $('#addresses').empty();
 
-  geocoder.geocode({address: $('#address').val(), region: 'ca'}, function (results, status) {
+  geocoder.geocode({address: $('#address').val(), region: 'ca', language: gettext('en')}, function (results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
       if (results.length > 1) {
-          $('#addresses').append('<option>Select your address</option>');
+          $('#addresses').append('<option>' + gettext('Select your address') + '</option>');
         $.each(results, function (i, result) {
           $('#addresses').append('<option data-latitude="' + result.geometry.location.lat() + '" data-longitude="' + result.geometry.location.lng() + '">' + result.formatted_address + '</option>');
         });

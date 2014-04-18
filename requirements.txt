@@ -1,15 +1,9 @@
 django>=1.5,<=1.6
 psycopg2>=2.4.1
-django_compressor==1.1
-geopy>=0.94.1
-Jinja2
-Coffin
-Pygments
-python-memcached
-Fabric
-South
+python-memcached # used in production settings.py
+South # used in represent-boundaries migrations
 django-extensions
-Unidecode==0.04.14
+Unidecode==0.04.14 # used by definition.py files
 -e git+http://github.com/rhymeswithcycle/represent-boundaries.git#egg=represent-boundaries
 -e git+http://github.com/rhymeswithcycle/represent-reps.git#egg=represent-reps
 -e git+http://github.com/rhymeswithcycle/represent-postcodes.git#egg=represent-postcodes

@@ -115,6 +115,10 @@
   color: #fff;
   background-color: #ff4136;
 }
+.alert-warning select,
+.alert-error select {
+  color: #333;
+}
 
 #map {
   visibility: hidden;

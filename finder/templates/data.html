@@ -1,48 +1,39 @@
 {% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
 
-{% block title %}Data Summary | Represent API{% endblock %}
+{% block title %}{% trans "CSV Downloads" %} | {% trans "Represent Elected Officials and Electoral Districts API for Canada" %}{% endblock %}
+{% block bodyattributes %}id="data"{% endblock %}
 
 {% block content %}
-<div class="container pretty">
-  <header>
-    <nav>
-      <ul class="breadcrumb">
-        <li><a href="/">Home</a> <span class="divider">/</span></li>
-        <li><a href="{% url "apidoc" %}">Represent API</a> <span class="divider">/</span></li>
-        <li class="active">Data Summary</li>
-      </ul>
-    </nav>
-  </header>
-
-  <section id="coverage">
-    <p>The following boundary and representative sets are available through the <a href="{% url "apidoc" %}">Represent API</a>. Click to see the JSON response for each API call.</p>
-
-    {% for category, boundary_sets in categories.iteritems() %}
-      {% if boundary_sets %}
-        <h2>{{ category }}</h2>
-        <ul>
-          {% for boundary_set in boundary_sets %}
-            <li>
-              <a href="/boundaries/{{ boundary_set.slug }}/?format=apibrowser">{{ boundary_set.name }}</a>
-              {% if boundary_set.representative_sets %}
-                with members of
-                {% for x in boundary_set.representative_sets %}
-                  <a href="/representatives/{{ x.slug }}/?format=apibrowser">{{ x.name }}</a>{% if not loop.last %},{% endif %}
-                {% endfor %}
-              {% endif %}
-            </li>
-          {% endfor %}
-
-          {% if representative_sets.get(category) %}
-            {% for x in representative_sets[category] %}
-              <li>
-                <a href="/representatives/{{ x.slug }}/?format=apibrowser">{{ x.name }}</a>
-              </li>
-            {% endfor %}
-          {% endif %}
-        </ul>
-      {% endif %}
-    {% endfor %}
-  </section>
+<div class="jumbotron bg-primary" id="header">
+  <div class="container-fluid">
+    <h1>{% trans "Download elected officials' contact information as a spreadsheet." %}</h1>
+  </div>
 </div>
+
+<div class="container-fluid" id="instructions">
+  <p>{% trans 'All downloads are available in the <abbr title="Comma-Separated Value" data-toggle="tooltip">CSV</abbr> file format. Click any link to download a CSV.' %}</p>
+
+  <p>{% trans 'Are we missing information that you need? <a href="mailto:represent@opennorth.ca">Contact us</a> so that we can make it a priority.' %}</p>
+
+  <div id="downloads">
+    <p id="loading"><img src="{% static "img/ajax-loader.gif" %}" width="16" height="16" alt=""> {% trans "Retrieving information…" %}</p>
+  </div>
+</div>
+
+<div class="container-fluid banner" id="back">
+  <p>{% trans "Do even more with Represent." %}</p>
+  <div>
+    <a class="btn btn-lg" role="button" href="{% url "index" %}">{% trans "Find out more" %}</a>
+    <a class="btn btn-lg" role="button" href="{% url "apidoc" %}">{% trans "Read the API reference" %}</a>
+    <span class="hidden-xxs"><a class="btn btn-lg" role="button" href="{% url "demo" %}">{% trans "Try the “Find Your Reps” app" %}</a></span>
+    <span class="visible-xxs"><a class="btn btn-lg" role="button" href="{% url "demo" %}">{% trans "Try the demo app" %}</a></span>
+  </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="{% url "django.views.i18n.javascript_catalog" %}"></script>
+<script src="{% static "js/data.js" %}"></script>
 {% endblock %}

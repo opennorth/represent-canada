@@ -1,23 +1,13 @@
-from django.conf.urls import patterns, include, url
-
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
-
+from django.conf.urls import patterns, url
 from finder import views
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'example.views.home', name='home'),
-    # url(r'^example/', include('example.example.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+    (r'^jsi18n/$', 'django.views.i18n.javascript_catalog', {'packages': ('finder')}),
+    url(r'^setlang/$', views.set_language, name='set_language'),
     url(r'^api/$', views.api, name='apidoc'),
-    url(r'^data/$', views.data, name='datasummary'),
+    url(r'^data/$', views.data, name='data'),
+    url(r'^demo/$', views.demo, name='demo'),
+    url(r'^government/$', views.government, name='government'),
     url(r'^privacy/$', views.privacy, name='privacy'),
-    url(r'^$', views.index),
+    url(r'^$', views.index, name='index'),
 )

@@ -1,119 +1,158 @@
 {% extends 'base.html' %}
-{% load compress %}
+{% load i18n %}
+{% load staticfiles %}
 
-{% block title %}Represent | elected officials and electoral districts database{% endblock %}
+{% block title %}{% trans "Represent Elected Officials and Electoral Districts API for Canada" %}{% endblock %}
 
 {% block content %}
-<div class="container pretty" id="index">
-  <header>
-    <h1>
-      Represent, by
-      <a href="http://opennorth.ca/"><img src="{{ STATIC_URL }}img/opennorth_logo.png" alt="" width="90" height="90"></a>
-      <a href="http://opennorth.ca/">Open North</a>
-    </h1>
-  </header>
-
-  <form id="form" class="form-inline">
-    <h2>Enter a Canadian address or postal code to find your elected representatives</h2>
-    <input type="text" name="address" id="address" class="span4" placeholder="Address or postal code">
-    <button id="submit" class="btn large primary">
-      <i class="icon-search"></i>
-      Find
-    </button>
-  </form>
-
-  <div id="notice" class="alert alert-info">
-    <strong>Developers:</strong>
-    Use our <b><a href="{% url "apidoc" %}">free API</a></b> and open-source code in your own projects!
-    <a href="{% url "apidoc" %}">Get started.</a>
+<div class="jumbotron bg-primary" id="header">
+  <div class="container-fluid">
+    <h1>{% trans "Find the elected officials and electoral districts for any Canadian address or postal code, at all levels of government" %}</h1>
+    <p>
+      <a class="btn btn-lg" role="button" href="{% url "demo" %}">{% trans "Try the demo app" %}</a>
+      <a class="btn btn-lg" role="button" href="{% url "apidoc" %}">{% trans "Use the free API" %}</a>
+      <a class="btn btn-lg" role="button" href="{% url "data" %}">{% trans "Download the data" %}</a>
+    </p>
   </div>
+</div>
 
+<div class="container-fluid" id="benefits">
   <div class="row">
-    <div class="span12">
-      <select id="addresses"></select>
+    <div class="col-sm-6">
+      <h1>{% trans "Connect your supporters with their political representatives." %}</h1>
+      <p>{% trans "Represent matches a supporter's postal code or geocoded address to the correct elected officials. It makes it easy for you to build “email your representative” advocacy campaigns. During elections, we can connect your activists to political candidates." %}</p>
+      <blockquote>
+        <img src="{% static "img/karl-hardin.jpg" %}" width="32" height="32" alt="" class="img-circle">
+        <p>
+          “{% trans "I used your municipal data as part of a successful letter writing campaign from constituents to their elected municipal politicians, which resulted in the passage of the most definitive resolution ever opposing oil tanker traffic expansion on B.C.'s coast." %}”
+          <cite>– Karl Hardin, Dogwood Initiative</cite>
+        </p>
+      </blockquote>
     </div>
-    <div class="span6">
-      <div id="boundaries">&nbsp;</div>
-    </div>
-    <div class="span6">
-      <div id="map">&nbsp;</div>
-    </div>
-  </div>
-
-  <hr class="soften">
-
-  <section id="coverage">
-    <h2>The most comprehensive database of Canadian elected officials</h2>
-
-    <p>Represent includes all Members of Parliament, all members of provincial legislatures, and municipal elected officials for <strong id="progress">{{ representative_progress }}%</strong> of the Canadian population, making it the <strong>most comprehensive</strong> database of its kind. It has all federal and provincial electoral boundaries, and municipal ward boundaries for <strong>{{ boundary_progress }}%</strong> of the population. <a href="http://opennorth.ca/donate/">Help us get to 100%.</a></p>
-
-    <div id="notice" class="alert alert-info">
-      <strong>Developers:</strong>
-      Consult the <a href="{% url "datasummary" %}">list of boundary and representative sets</a> available, along with sample responses of API calls.
-    </div>
-  </section>
-
-  <hr class="soften">
-
-  <div class="row grid">
-    <div class="span3">
-      <h2>Free API</h2>
-      <p>Read the <a href="{% url "apidoc" %}">documentation</a>.</p>
-    </div>
-    <div class="span3">
-      <h2>Open-source</h2>
-      <p>Built for and by the open-government community via <a href="https://github.com/opennorth/represent-canada">GitHub</a>.</p>
-    </div>
-    <div class="span3">
-      <h2>Stay up-to-date</h2>
-      <p>Subscribe to our <a href="http://groups.google.com/group/represent-canada/">mailing list</a> to be notified of API changes.</p>
-    </div>
-    <div class="span3">
-      <h2>Contact us</h2>
-      <p><a href="mailto:represent@opennorth.ca">represent@opennorth.ca</a></p>
+    <div class="col-sm-6">
+      <img src="{% static "img/lookup.jpg" %}" class="img-responsive img-rounded" alt="">
     </div>
   </div>
-
-  <hr class="soften">
-
-  <section id="users">
-    <h2>Groups that use and rely on Represent</h2>
-
-    <ul class="unstyled">
-      <li><a href="http://citizensconnected.com/"><img src="/static/img/citizensconnected.png" width="111" height="35" alt="Citizens Connected"></a></li>
-      <li><a href="http://davidsuzuki.org/"><img src="/static/img/davidsuzuki.png" width="124" height="50" alt="David Suzuki Foundation"></a></li>
-      <li><a href="http://civic.ca/"><img src="/static/img/civic.png" width="153" height="30" alt="Civic.ca"></a></li>
-      <li><a href="http://citizenbridge.org/"><img src="/static/img/citizenbridge.png" width="162" height="50" alt="Citizen Bridge"></a></li>
-      <li><a href="http://makethemworkforyou.com/"><img src="/static/img/makethemworkforyou.png" width="86" height="50" alt="Make Them Work For You Ltd"></a></li>
-      <li><a href="http://nextparliament.ca/"><img src="/static/img/nextparliament.png" width="38" height="30" alt="Next Parliament"></a></li>
-      <li><a href="http://www.taxfairness.ca/"><img src="{{ STATIC_URL }}img/taxfairness.png" height="50" alt="Canadians for Tax Fairness"></a></li>
-      <li><a href="http://www.fairvote.ca/"><img src="{{ STATIC_URL }}img/fairvote.png" height="50" alt="Fair Vote Canada"></a></li>
-    </ul>
-
-    <p>From running advocacy campaigns to making legislative information more accessible, organizations <a href="{% url "apidoc" %}">use our API</a> to match postal codes<sup>OM</sup> and addresses to electoral districts and elected official contact information.</p>
-  </section>
-
-  <hr class="soften">
-
-  <div class="row grid">
-    <div class="span2">
-      <h2>Authors</h2>
-      <p><a href="http://michaelmulley.com/">Michael Mulley</a> and <a href="http://opennorth.ca/team/">James McKinney</a></p>
+  <div class="row">
+    <div class="col-sm-6 col-sm-push-6">
+      <h1>{% trans "Provide relevant information based on your user's electoral district." %}</h1>
+      <p>{% trans "Collect a user's postal code or address, and use Represent to match it to an electoral district. By identifying their riding, you can invite supporters to take local actions or show readers stories from their local election race." %}</p>
+      <blockquote>
+        <img src="{% static "img/phillip-smith.png" %}" width="32" height="32" alt="" class="img-circle">
+        <p>
+          “{% trans "For our BC Election Guide, we used a few endpoints of the Represent API: the representative lookup by riding, the BC provincial riding boundaries and their simplified geometry (a time-consuming task, if not available), and the riding lookup by latitude and longitude." %}”
+          <cite>– Phillip Smith, The Tyee</cite>
+        </p>
+      </blockquote>
     </div>
-    <div class="span5">
-      <h2>Scrapers</h2>
-      <p>Arlo Breault, Carmine Casciato, Andrew Dyck, Rory Geoghegan, Trevor Knight, Matthew Leon, Camilo Lopez, Dylan McCall, Robin Millette, Amir Pakdel, Kamil Politowicz and James Wagner.</p>
-    </div>
-    <div class="span5">
-      <h2>Special thanks</h2>
-      <p>Kent Mewhort for legal information, Aran Rasmussen for general help, and the Chicago Tribune&rsquo;s <a href="https://github.com/newsapps/django-boundaryservice">Boundary Service</a> for code and inspiration.</p>
+    <div class="col-sm-6 col-sm-pull-6">
+      <img src="{% static "img/tyee.jpg" %}" class="img-responsive img-rounded" alt="">
     </div>
   </div>
-
-  <div class="row grid">
-    <div class="span12">
-      <p>Postal Code<sup>OM</sup> is an official mark of Canada Post Corporation.</p>
+  <div class="row">
+    <div class="col-sm-6">
+      <h1>{% trans "Map your potential voters, donors and volunteers to electoral ridings." %}</h1>
+      <p>{% trans "If your people database contains postal codes or addresses, use Represent to match people to their electoral districts. By mapping people geographically, you can better target canvassing, mobilize volunteers, and organize donation drives." %}</p>
+    </div>
+    <div class="col-sm-6">
+      <div class="row">
+        <div class="col-md-6 col-sm-12 col-xs-6">
+          <img src="{% static "img/toronto.jpg" %}" class="img-responsive img-circle" alt="">
+        </div>
+        <div class="col-md-6 hidden-sm col-xs-6">
+          <img src="{% static "img/montreal.jpg" %}" class="img-responsive img-circle" alt="">
+        </div>
+      </div>
     </div>
   </div>
+  <div class="row" id="users">
+    <div class="col-sm-12">
+      <h1>{% trans "Used by nonprofits across Canada." %}</h1>
+      <div>
+        <img src="{% static "img/logos/david-suzuki-foundation.png" %}" width="118" height="50" alt="{% trans "David Suzuki Foundation" %}" title="{% trans "David Suzuki Foundation" %}" data-toggle="tooltip">
+        <img src="{% static "img/logos/leadnow.png" %}" width="150" height="50" alt="{% trans "Leadnow" %}" title="{% trans "Leadnow" %}" data-toggle="tooltip">
+        <img src="{% static "img/logos/council-of-canadians.png" %}" width="125" height="50" alt="{% trans "Council of Canadians" %}" title="{% trans "Council of Canadians" %}" data-toggle="tooltip">
+        <img src="{% static "img/logos/oma.png" %}" width="125" height="50" alt="Ontario Medical Association" title="Ontario Medical Association" data-toggle="tooltip">
+        <img src="{% static "img/logos/rnao.png" %}" width="145" height="33" alt="Registered Nurses' Association of Ontario" title="Registered Nurses' Association of Ontario" data-toggle="tooltip">
+        <img src="{% static "img/logos/cupe.png" %}" width="125" height="33" alt="{% trans "Canadian Union of Public Employees" %}" title="{% trans "Canadian Union of Public Employees" %}" data-toggle="tooltip">
+        <img src="{% static "img/logos/psac.png" %}" width="98" height="50" alt="{% trans "Public Service Alliance of Canada" %}" title="{% trans "Public Service Alliance of Canada" %}" data-toggle="tooltip">
+        <img src="{% static "img/logos/nupge.png" %}" width="49" height="50" alt="National Union of Public and General Employees" title="National Union of Public and General Employees" data-toggle="tooltip">
+        <img src="{% static "img/logos/aupe.png" %}" width="154" height="50" alt="Alberta Union of Provincial Employees" title="Alberta Union of Provincial Employees" data-toggle="tooltip">
+        <img src="{% static "img/logos/environmental-defence.png" %}" width="51" height="50" alt="Environmental Defence" title="Environmental Defence" data-toggle="tooltip">
+        <img src="{% static "img/logos/tides-canada.png" %}" width="76" height="33" alt="Tides Canada" title="Tides Canada" data-toggle="tooltip">
+        <img src="{% static "img/logos/fair-vote-canada.png" %}" width="51" height="50" alt="{% trans "Fair Vote Canada" %}" title="{% trans "Fair Vote Canada" %}" data-toggle="tooltip">
+        <img src="{% static "img/logos/canadians-for-tax-fairness.png" %}" width="51" height="50" alt="{% trans "Canadians for Tax Fairness" %}" title="{% trans "Canadians for Tax Fairness" %}" data-toggle="tooltip">
+        <img src="{% static "img/logos/democracy-watch.png" %}" width="43" height="50" alt="{% trans "Democracy Watch" %}" title="{% trans "Democracy Watch" %}" data-toggle="tooltip">
+        <img src="{% static "img/logos/ocasi.png" %}" width="149" height="50" alt="Ontario Council of Agencies Serving Immigrants" title="Ontario Council of Agencies Serving Immigrants" data-toggle="tooltip">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="jumbotron bg-primary" id="coverage">
+  <div class="container-fluid">
+    <h1>{% trans "The most comprehensive source in Canada for:" %}</h1>
+    <div class="row">
+      <div class="col-sm-6">
+        <h2>{% trans "Elected officials" %}</h2>
+        <ul>
+          <li>{% trans "All Members of Parliament (MPs)" %}</li>
+          <li>{% trans 'All <abbr data-toggle="tooltip" title="Members of Legislative Assembly">MLAs</abbr>, <abbr data-toggle="tooltip" title="Members of Provincial Parliament (Ontario)">MPPs</abbr>, <abbr data-toggle="tooltip" title="Members of National Assembly (Quebec)">MNAs</abbr>, and <abbr data-toggle="tooltip" title="Members of House of Assembly (Newfoundland and Labrador)">MHAs</abbr>' %}</li>
+          <li>{% trans "Over 11,000 mayors and councillors" %}</li>
+        </ul>
+      </div>
+      <div class="col-sm-6">
+        <h2>{% trans "Electoral districts" %}</h2>
+        <ul>
+          <li>{% trans "All federal electoral districts" %}</li>
+          <li>{% trans "All provincial electoral districts" %}</li>
+          <li>{% trans "Over 8,000 municipal wards" %}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid" id="features">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="img-group">
+        <img src="{% static "img/drupal.png" %}" width="44" height="50" alt="Drupal" title="Drupal" data-toggle="tooltip">
+        <img src="{% static "img/wordpress.png" %}" width="50" height="50" alt="WordPress" title="WordPress" data-toggle="tooltip">
+        <img src="{% static "img/civicrm.png" %}" width="48" height="50" alt="CiviCRM" title="CiviCRM" data-toggle="tooltip" class="hidden-sm">
+      </div>
+      <p>{% trans 'Easily integrate Represent into your CMS, using our <a href="https://drupal.org/project/represent">Drupal</a> and <a href="http://wordpress.org/plugins/represent-api/">WordPress</a> plugins' %}</p>
+    </div>
+    <div class="col-sm-4">
+      <div class="img-group">
+        <img src="{% static "img/ruby.png" %}" width="50" height="50" alt="Ruby" title="Ruby" data-toggle="tooltip">
+        <img src="{% static "img/python.png" %}" width="50" height="50" alt="Python" title="Python" data-toggle="tooltip">
+        <img src="{% static "img/nodejs.png" %}" width="45" height="50" alt="Node.js" title="Node.js" data-toggle="tooltip" class="hidden-sm">
+      </div>
+      <p>{% trans 'Use the <a href="https://github.com/opennorth/govkit-ca#readme">Ruby</a>, <a href="https://github.com/ncadou/pyrepresent#readme">Python</a> or <a href="https://github.com/sprice/represent#readme">Node.js</a> API clients to quickly develop new apps' %}</p>
+    </div>
+    <div class="col-sm-4">
+      <div class="img-group">
+        <a href="https://github.com/opennorth/represent-canada"><img src="{% static "img/github.png" %}" width="50" height="50" alt=""></a>
+      </div>
+      <p>{% trans 'Represent is <a href="https://github.com/opennorth/represent-canada">open source</a> and makes its <a href="https://github.com/opennorth/represent-canada-data">source data</a> available where possible' %}</p>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid" id="getting-started">
+  <a class="btn btn-lg" role="button" href="{% url "apidoc" %}">{% trans "Read the API reference" %}</a>
+  <span class="hidden-xxs"><a class="btn btn-lg" role="button" href="{% url "demo" %}">{% trans "Try the “Find Your Reps” app" %}</a></span>
+  <span class="visible-xxs"><a class="btn btn-lg" role="button" href="{% url "demo" %}">{% trans "Try the demo app" %}</a></span>
+</div>
+
+{% url "government" as government_url %}
+<div class="container-fluid banner" id="newsletter">
+  <p>
+    <span>{% trans 'Join our <a href="https://groups.google.com/forum/#!forum/represent-canada">Developer Forum</a> to be notified of API changes' %}</span>
+    <a class="btn btn-lg" role="button" href="https://groups.google.com/forum/#!forum/represent-canada">{% trans "Join Group" %}</a>
+  </p>
+  <p id="government"><strong>{% trans "Government Officials and Open Data Managers:" %}</strong> {% blocktrans %}Find out how to <a href="{{ government_url }}">add your elected officials to Represent</a>.{% endblocktrans %}</p>
+  <p id="usage">{% blocktrans %}We are excited to see how Represent is being used. <a href="mailto:represent@opennorth.ca">Contact us</a> and show us what you've made!{% endblocktrans %}</p>
 </div>
 {% endblock %}

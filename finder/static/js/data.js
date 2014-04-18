@@ -2,19 +2,19 @@ $(function () {
   $.getJSON('http://represent.opennorth.ca/boundary-sets/?limit=0', function (data) {
     var boundary_sets = {}
       , key_map = {
-        'NL': 'Newfoundland and Labrador councils'
-      , 'PE': 'Prince Edward Island councils'
-      , 'NS': 'Nova Scotia councils'
-      , 'NB': 'New Brunswick councils'
-      , 'QC': 'Quebec councils'
-      , 'ON': 'Ontario councils'
-      , 'MB': 'Manitoba councils'
-      , 'SK': 'Saskatchewan councils'
-      , 'AB': 'Alberta councils'
-      , 'BC': 'British Columbia councils'
-      , 'YT': 'Yukon councils'
-      , 'NT': 'Northwest Territories councils'
-      , 'NU': 'Nunavut councils'
+        'NL': gettext('Newfoundland and Labrador councils')
+      , 'PE': gettext('Prince Edward Island councils')
+      , 'NS': gettext('Nova Scotia councils')
+      , 'NB': gettext('New Brunswick councils')
+      , 'QC': gettext('Quebec councils')
+      , 'ON': gettext('Ontario councils')
+      , 'MB': gettext('Manitoba councils')
+      , 'SK': gettext('Saskatchewan councils')
+      , 'AB': gettext('Alberta councils')
+      , 'BC': gettext('British Columbia councils')
+      , 'YT': gettext('Yukon councils')
+      , 'NT': gettext('Northwest Territories councils')
+      , 'NU': gettext('Nunavut councils')
       }, uncategorized_map = {
         '/representative-sets/house-of-commons/': 'Canada',
         '/representative-sets/grande-prairie-city-council/': 'AB',
@@ -23,14 +23,14 @@ $(function () {
         '/representative-sets/peel-regional-council/': 'ON',
         '/representative-sets/vancouver-city-council/': 'BC',
         '/representative-sets/victoria-city-council/': 'BC',
-      };
+      }, provinces_key = gettext('Provincial legislatures');
 
     $.each(data.objects, function (i, boundary_set) {
       boundary_sets[boundary_set.url] = boundary_set.domain.split(', ')[1];
     });
 
     $.getJSON('http://represent.opennorth.ca/representative-sets/?limit=0', function (data) {
-      var representative_sets = {'Canada': ['<li><a href="http://represent.opennorth.ca.s3.amazonaws.com/csv/complete.csv">All elected officials</a></li>']}
+      var representative_sets = {'Canada': ['<li><a href="http://represent.opennorth.ca.s3.amazonaws.com/csv/complete.csv">' + gettext('All elected officials') + '</a></li>']}
         , keys = []
         , key
         , i
@@ -44,10 +44,10 @@ $(function () {
         key = boundary_sets[representative_set.related.boundary_set_url];
         if (!key) {
           if (/Assembl/.test(representative_set.name)) {
-            key = 'Provincial legislatures';
+            key = provinces_key;
           }
           else {
-            key = uncategorized_map[representative_set.url] || 'Uncategorized';
+            key = uncategorized_map[representative_set.url] || gettext('Uncategorized');
           }
         }
         if (!representative_sets[key]) {
@@ -66,8 +66,8 @@ $(function () {
 
       keys.sort();
       keys.splice($.inArray('Canada', keys), 1);
-      keys.splice($.inArray('Provincial legislatures', keys), 1);
-      keys.unshift('Provincial legislatures');
+      keys.splice($.inArray(provinces_key, keys), 1);
+      keys.unshift(provinces_key);
       keys.unshift('Canada');
 
       for (i = 0, l = keys.length; i < l; i++) {

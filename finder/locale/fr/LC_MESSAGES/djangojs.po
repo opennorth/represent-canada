@@ -1,0 +1,99 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-04-18 11:59-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: static/js/data.js:5
+msgid "Newfoundland and Labrador councils"
+msgstr "Conseils municipaux de Terre-Neuve-et-Labrador"
+
+#: static/js/data.js:6
+msgid "Prince Edward Island councils"
+msgstr "Conseils municipaux de l'Île-du-Prince-Édouard"
+
+#: static/js/data.js:7
+msgid "Nova Scotia councils"
+msgstr "Conseils municipaux de la Nouvelle-Écosse"
+
+#: static/js/data.js:8
+msgid "New Brunswick councils"
+msgstr "Conseils municipaux du Nouveau-Brunswick"
+
+#: static/js/data.js:9
+msgid "Quebec councils"
+msgstr "Conseils municipaux du Québec"
+
+#: static/js/data.js:10
+msgid "Ontario councils"
+msgstr "Conseils municipaux de l'Ontario"
+
+#: static/js/data.js:11
+msgid "Manitoba councils"
+msgstr "Conseils municipaux du Manitoba"
+
+#: static/js/data.js:12
+msgid "Saskatchewan councils"
+msgstr "Conseils municipaux de la Saskatchewan"
+
+#: static/js/data.js:13
+msgid "Alberta councils"
+msgstr "Conseils municipaux de l'Alberta"
+
+#: static/js/data.js:14
+msgid "British Columbia councils"
+msgstr "Conseils municipaux de la Colombie-Britannique"
+
+#: static/js/data.js:15
+msgid "Yukon councils"
+msgstr "Conseils municipaux du Yukon"
+
+#: static/js/data.js:16
+msgid "Northwest Territories councils"
+msgstr "Conseils municipaux des Territoires du Nord-Ouest"
+
+#: static/js/data.js:17
+msgid "Nunavut councils"
+msgstr "Conseils municipaux du Nunavut"
+
+#: static/js/data.js:26
+msgid "Provincial legislatures"
+msgstr "Législatures provinciales"
+
+#: static/js/data.js:33
+msgid "All elected officials"
+msgstr "Tous les élus"
+
+#: static/js/data.js:50
+msgid "Uncategorized"
+msgstr "Autres"
+
+#: static/js/demo.js:11
+msgid "Map"
+msgstr "Carte"
+
+#: static/js/demo.js:12
+msgid "Email"
+msgstr "Contacter"
+
+#: static/js/demo.js:116
+msgid "en"
+msgstr "fr"
+
+#: static/js/demo.js:119
+msgid "Select your address"
+msgstr "Sélectionnez votre adresse"

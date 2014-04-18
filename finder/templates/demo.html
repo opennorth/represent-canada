@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+
+{% block title %}{% trans "Find Your Canadian Representatives with the Represent API" %}{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css">
+<link rel="stylesheet" href="{% static "css/demo.css" %}">
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron bg-primary" id="header">
+  <div class="container-fluid">
+    <h1>
+      {% blocktrans %}Find your <span class="hidden-xxs">representatives</span><span class="visible-xxs">reps</span>{% endblocktrans %}
+    </h1>
+    <form class="form-inline" role="form">
+      <label class="sr-only" for="address">{% trans "Enter an address or postal code" %}</label>
+      <input type="text" class="form-control input-lg" id="address" placeholder="{% trans "Enter an address or postal code" %}">
+      <button class="btn btn-lg btn-primary" id="submit">
+        <span class="glyphicon glyphicon-search"></span> {% trans "Find" %}
+      </button>
+    </form>
+  </div>
+</div>
+<div class="alert alert-warning" id="many-results">
+  {% trans "Which address is yours?" %} <select id="addresses"></select>
+</div>
+<div class="alert alert-danger" id="no-results">
+  {% trans "We couldn't find your address. Please try again." %}
+</div>
+<div class="alert alert-danger" id="unknown-error">
+  {% trans "Something went wrong. Please try again." %}
+</div>
+
+<div id="results">
+  <div id="map"></div>
+
+  <div class="container-fluid">
+    <div id="representatives"></div>
+  </div>
+</div>
+
+<div class="container-fluid banner" id="plugin">
+  <p>{% trans "Do you want a representative lookup form on your website?" %}</p>
+  <div>
+    <a class="btn btn-lg" role="button" href="/">{% trans "Use the Represent API" %}</a>
+    <span class="hidden-xxs"><a class="btn btn-lg" role="button" href="https://github.com/opennorth/jquery-findyourrep-ca#readme">{% trans "Use the jQuery Find-Your-Rep plugin" %}</a></span>
+    <span class="visible-xxs"><a class="btn btn-lg" role="button" href="https://github.com/opennorth/jquery-findyourrep-ca#readme">{% trans "Use the jQuery plugin" %}</a></span>
+  </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbbmKWi0kGZ37Ng9lIEOBQC8lo3fVGUvo&sensor=true"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+<script src="{% static "js/jquery.easing.1.3.js" %}"></script>
+<script src="{% static "js/jquery.scrollTo.min.js" %}"></script>
+<script src="{% static "js/imagesloaded.pkgd.min.js" %}"></script>
+<script src="{% url "django.views.i18n.javascript_catalog" %}"></script>
+<script src="{% static "js/demo.js" %}"></script>
+{% endblock %}
