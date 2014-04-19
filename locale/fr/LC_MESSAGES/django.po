@@ -103,10 +103,6 @@ msgstr ""
 msgid "Do you want a representative lookup form on your website?"
 msgstr ""
 
-#: finder/templates/demo.html:48
-msgid "Use the Represent API"
-msgstr ""
-
 #: finder/templates/demo.html:49
 msgid "Use the jQuery Find-Your-Rep plugin"
 msgstr ""
@@ -286,7 +282,7 @@ msgid ""
 "or postal code, at all levels of government"
 msgstr ""
 
-#: finder/templates/index.html:13
+#: finder/templates/index.html:13 finder/templates/demo.html:48
 msgid "Use the free API"
 msgstr ""
 

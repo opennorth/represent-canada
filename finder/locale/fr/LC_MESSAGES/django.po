@@ -105,10 +105,6 @@ msgstr ""
 "Voulez-vous un moteur de recherche pour les représentants sur votre sites "
 "web?"
 
-#: templates/demo.html:48
-msgid "Use the Represent API"
-msgstr "Utilisez l'API Represent"
-
 #: templates/demo.html:49
 msgid "Use the jQuery Find-Your-Rep plugin"
 msgstr "Utilisez le plugin jQuery “Find-Your-Rep”"
@@ -312,7 +308,7 @@ msgstr ""
 "Identifiez élus et districts électoraux à partir d’une adresse ou d’un code "
 "postal au Canada, pour chaque palier gouvernemental"
 
-#: templates/index.html:13
+#: templates/index.html:13 finder/templates/demo.html:48
 msgid "Use the free API"
 msgstr "Utilisez l’API"
 

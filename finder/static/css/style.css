@@ -186,6 +186,9 @@ div div .row {
   margin: 20px 15px 0;
 }
 
+#coverage {
+  margin-bottom: 60px;
+}
 #coverage h1 {
   margin-bottom: 40px; /* same spacing in header */
 }
@@ -208,6 +211,7 @@ div div .row {
 }
 #features .img-group {
   display: block;
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 #features p {
@@ -290,6 +294,10 @@ p#government {
   font-size: 18px;
 }
 
+ul#fields {
+  margin-bottom: 10px;
+}
+
 #back {
   margin-top: 70px;
 }
@@ -339,7 +347,7 @@ p#government {
 #api table code {
   white-space: normal;
 }
-#fields {
+p#fields {
   margin-top: 40px;
 }
 
@@ -355,8 +363,5 @@ p#government {
   margin-bottom: 40px;
 }
 #api #representative .container-fluid {
-  margin-bottom: 0;
-}
-#fields {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
