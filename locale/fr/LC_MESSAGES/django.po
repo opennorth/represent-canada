@@ -49,11 +49,11 @@ msgid "Retrieving information…"
 msgstr ""
 
 #: finder/templates/data.html:26
-msgid "Do even more with Represent."
+msgid "Do more with Represent."
 msgstr ""
 
 #: finder/templates/data.html:28
-msgid "Learn more"
+msgid "What is Represent?"
 msgstr ""
 
 #: finder/templates/data.html:29 finder/templates/index.html:144
