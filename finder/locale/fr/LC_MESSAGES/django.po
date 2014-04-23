@@ -24,24 +24,24 @@ msgstr "Téléchargements CSV"
 
 #: templates/data.html:5 templates/government.html:5 templates/index.html:5
 msgid "Represent Elected Officials and Electoral Districts API for Canada"
-msgstr ""
+msgstr "Represent: une API pour les représentants élus et les districts électoraux au Canada"
 
 #: templates/data.html:11
 msgid "Download elected officials' contact information as a spreadsheet."
-msgstr ""
+msgstr "Téléchargez les coordonnées des représentants élus."
 
 #: templates/data.html:16
 msgid ""
 "All downloads are available in the <abbr title=\"Comma-Separated Value\" "
 "data-toggle=\"tooltip\">CSV</abbr> file format. Click any link to download a "
 "CSV."
-msgstr ""
+msgstr "Tous les téléchargements sont disponibles en format <abbr title=\"Comma-Separated Value\" data-toggle=\"tooltip\">CSV</abbr>. Cliquez sur un lien afin de télécharger un CSV."
 
 #: templates/data.html:18
 msgid ""
 "Are we missing information that you need? <a href=\"mailto:"
 "represent@opennorth.ca\">Contact us</a> so that we can make it a priority."
-msgstr ""
+msgstr "Les informations dont vous avez besoin ne sont pas disponibles? <a href=\"mailto:represent@opennorth.ca\">Contactez-nous</a> et nous en ferons une priorité."
 
 #: templates/data.html:21
 msgid "Retrieving information…"
@@ -49,7 +49,7 @@ msgstr "Chargement en cours…"
 
 #: templates/data.html:26
 msgid "Do more with Represent."
-msgstr ""
+msgstr "Encore plus de possibilités avec Represent!"
 
 #: templates/data.html:28
 msgid "What is Represent?"
@@ -69,7 +69,7 @@ msgstr "Essayez le démo"
 
 #: templates/demo.html:5
 msgid "Find Your Canadian Representatives with the Represent API"
-msgstr ""
+msgstr "Trouvez vos représentants élus avec l'API Represent"
 
 #: templates/demo.html:16
 msgid ""
@@ -81,23 +81,23 @@ msgstr ""
 
 #: templates/demo.html:19 templates/demo.html.py:20
 msgid "Enter an address or postal code"
-msgstr "Entrez une adresse ou code postal"
+msgstr "Entrez une adresse ou un code postal"
 
 #: templates/demo.html:22
 msgid "Find"
-msgstr "Chercher"
+msgstr "Trouvez"
 
 #: templates/demo.html:28
 msgid "Which address is yours?"
-msgstr ""
+msgstr "Quelle adresse est la vôtre?"
 
 #: templates/demo.html:31
 msgid "We couldn't find your address. Please try again."
-msgstr ""
+msgstr "Nous ne pouvons trouver votre adresse. Veuillez réessayer."
 
 #: templates/demo.html:34
 msgid "Something went wrong. Please try again."
-msgstr ""
+msgstr "Une erreur a été commise de notre côté. Veuillez réessayer."
 
 #: templates/demo.html:46
 msgid "Do you want a representative lookup form on your website?"
@@ -115,7 +115,7 @@ msgstr "Utilisez le plugin jQuery"
 
 #: templates/government.html:5
 msgid "For Government"
-msgstr ""
+msgstr "Pour les gouvernements"
 
 #: templates/government.html:11
 msgid "Adding your elected officials to Represent is easy."
@@ -286,7 +286,7 @@ msgstr ""
 #: templates/government.html:53
 msgid ""
 "Thanks to the following municipalities for providing information as CSV!"
-msgstr ""
+msgstr "Merci à ces municipalités d'avoir fourni l'information en CSV!"
 
 #: templates/government.html:55
 msgid "City of Ottawa"
@@ -298,7 +298,7 @@ msgstr "Ville de Vancouver"
 
 #: templates/government.html:59
 msgid "Learn more about Represent"
-msgstr ""
+msgstr "Pour en savoir plus sur Represent"
 
 #: templates/index.html:10
 msgid ""

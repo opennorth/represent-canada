@@ -20,55 +20,55 @@ msgstr ""
 
 #: static/js/data.js:5
 msgid "Newfoundland and Labrador councils"
-msgstr "Conseils municipaux de Terre-Neuve-et-Labrador"
+msgstr "Conseils de Terre-Neuve-et-Labrador"
 
 #: static/js/data.js:6
 msgid "Prince Edward Island councils"
-msgstr "Conseils municipaux de l'Île-du-Prince-Édouard"
+msgstr "Conseils de l'Île-du-Prince-Édouard"
 
 #: static/js/data.js:7
 msgid "Nova Scotia councils"
-msgstr "Conseils municipaux de la Nouvelle-Écosse"
+msgstr "Conseils de la Nouvelle-Écosse"
 
 #: static/js/data.js:8
 msgid "New Brunswick councils"
-msgstr "Conseils municipaux du Nouveau-Brunswick"
+msgstr "Conseils du Nouveau-Brunswick"
 
 #: static/js/data.js:9
 msgid "Quebec councils"
-msgstr "Conseils municipaux du Québec"
+msgstr "Conseils du Québec"
 
 #: static/js/data.js:10
 msgid "Ontario councils"
-msgstr "Conseils municipaux de l'Ontario"
+msgstr "Conseils de l'Ontario"
 
 #: static/js/data.js:11
 msgid "Manitoba councils"
-msgstr "Conseils municipaux du Manitoba"
+msgstr "Conseils du Manitoba"
 
 #: static/js/data.js:12
 msgid "Saskatchewan councils"
-msgstr "Conseils municipaux de la Saskatchewan"
+msgstr "Conseils de la Saskatchewan"
 
 #: static/js/data.js:13
 msgid "Alberta councils"
-msgstr "Conseils municipaux de l'Alberta"
+msgstr "Conseils de l'Alberta"
 
 #: static/js/data.js:14
 msgid "British Columbia councils"
-msgstr "Conseils municipaux de la Colombie-Britannique"
+msgstr "Conseils de la Colombie-Britannique"
 
 #: static/js/data.js:15
 msgid "Yukon councils"
-msgstr "Conseils municipaux du Yukon"
+msgstr "Conseils du Yukon"
 
 #: static/js/data.js:16
 msgid "Northwest Territories councils"
-msgstr "Conseils municipaux des Territoires du Nord-Ouest"
+msgstr "Conseils des Territoires du Nord-Ouest"
 
 #: static/js/data.js:17
 msgid "Nunavut councils"
-msgstr "Conseils municipaux du Nunavut"
+msgstr "Conseils du Nunavut"
 
 #: static/js/data.js:26
 msgid "Provincial legislatures"
@@ -76,7 +76,7 @@ msgstr "Législatures provinciales"
 
 #: static/js/data.js:33
 msgid "All elected officials"
-msgstr "Tous les élus"
+msgstr "Tous les représentants élus"
 
 #: static/js/data.js:50
 msgid "Uncategorized"
