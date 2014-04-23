@@ -61,11 +61,11 @@ msgstr "Lire la référence API"
 
 #: templates/data.html:30 templates/index.html:145
 msgid "Try the “Find Your Reps” app"
-msgstr "Essayez le démo"
+msgstr "Essayer le démo"
 
 #: templates/data.html:31 templates/index.html:12 templates/index.html.py:146
 msgid "Try the demo app"
-msgstr "Essayez le démo"
+msgstr "Essayer le démo"
 
 #: templates/demo.html:5
 msgid "Find Your Canadian Representatives with the Represent API"
@@ -102,7 +102,7 @@ msgstr "Une erreur a été commise de notre côté. Veuillez réessayer."
 #: templates/demo.html:46
 msgid "Do you want a representative lookup form on your website?"
 msgstr ""
-"Voulez-vous un moteur de recherche pour les représentants sur votre sites "
+"Voulez-vous un moteur de recherche pour les représentants sur votre site "
 "web?"
 
 #: templates/demo.html:49
@@ -462,7 +462,7 @@ msgstr "Plus de 11 000 maires et conseillers municipaux"
 
 #: templates/index.html:105
 msgid "Electoral districts"
-msgstr "Districts électoraux"
+msgstr "Les districts électoraux"
 
 #: templates/index.html:107
 msgid "All federal electoral districts"
