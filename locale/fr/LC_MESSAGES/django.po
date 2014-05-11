@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-18 11:48-0400\n"
+"POT-Creation-Date: 2014-05-11 18:53-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -103,6 +103,10 @@ msgstr ""
 msgid "Do you want a representative lookup form on your website?"
 msgstr ""
 
+#: finder/templates/demo.html:48 finder/templates/index.html:13
+msgid "Use the free API"
+msgstr ""
+
 #: finder/templates/demo.html:49
 msgid "Use the jQuery Find-Your-Rep plugin"
 msgstr ""
@@ -163,6 +167,10 @@ msgstr ""
 msgid "Gender"
 msgstr ""
 
+#: finder/templates/government.html:27
+msgid "(<code>M</code> or <code>F</code> for example)"
+msgstr ""
+
 #: finder/templates/government.html:28
 msgid "Party name"
 msgstr ""
@@ -181,6 +189,10 @@ msgstr ""
 
 #: finder/templates/government.html:31
 msgid "Photo URL"
+msgstr ""
+
+#: finder/templates/government.html:31
+msgid "(a link to a photo of the elected official)"
 msgstr ""
 
 #: finder/templates/government.html:32
@@ -280,10 +292,6 @@ msgstr ""
 msgid ""
 "Find the elected officials and electoral districts for any Canadian address "
 "or postal code, at all levels of government"
-msgstr ""
-
-#: finder/templates/index.html:13 finder/templates/demo.html:48
-msgid "Use the free API"
 msgstr ""
 
 #: finder/templates/index.html:14
@@ -496,7 +504,7 @@ msgstr "en"
 msgid "FR"
 msgstr "EN"
 
-#: templates/base.html:54
+#: templates/base.html:55
 msgid ""
 "A project of <a href=\"http://www.opennorth.ca/\">Open North</a>, a "
 "nonprofit that builds digital tools for government transparency and civic "

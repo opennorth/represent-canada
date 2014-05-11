@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-18 12:27-0400\n"
+"POT-Creation-Date: 2014-05-11 18:53-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,9 @@ msgstr "Téléchargements CSV"
 
 #: templates/data.html:5 templates/government.html:5 templates/index.html:5
 msgid "Represent Elected Officials and Electoral Districts API for Canada"
-msgstr "Represent: une API pour les représentants élus et les districts électoraux au Canada"
+msgstr ""
+"Represent: une API pour les représentants élus et les districts électoraux "
+"au Canada"
 
 #: templates/data.html:11
 msgid "Download elected officials' contact information as a spreadsheet."
@@ -35,13 +37,19 @@ msgid ""
 "All downloads are available in the <abbr title=\"Comma-Separated Value\" "
 "data-toggle=\"tooltip\">CSV</abbr> file format. Click any link to download a "
 "CSV."
-msgstr "Tous les téléchargements sont disponibles en format <abbr title=\"Comma-Separated Value\" data-toggle=\"tooltip\">CSV</abbr>. Cliquez sur un lien afin de télécharger un CSV."
+msgstr ""
+"Tous les téléchargements sont disponibles en format <abbr title=\"Comma-"
+"Separated Value\" data-toggle=\"tooltip\">CSV</abbr>. Cliquez sur un lien "
+"afin de télécharger un CSV."
 
 #: templates/data.html:18
 msgid ""
 "Are we missing information that you need? <a href=\"mailto:"
 "represent@opennorth.ca\">Contact us</a> so that we can make it a priority."
-msgstr "Les informations dont vous avez besoin ne sont pas disponibles? <a href=\"mailto:represent@opennorth.ca\">Contactez-nous</a> et nous en ferons une priorité."
+msgstr ""
+"Les informations dont vous avez besoin ne sont pas disponibles? <a href="
+"\"mailto:represent@opennorth.ca\">Contactez-nous</a> et nous en ferons une "
+"priorité."
 
 #: templates/data.html:21
 msgid "Retrieving information…"
@@ -102,8 +110,11 @@ msgstr "Une erreur a été commise de notre côté. Veuillez réessayer."
 #: templates/demo.html:46
 msgid "Do you want a representative lookup form on your website?"
 msgstr ""
-"Voulez-vous un moteur de recherche pour les représentants sur votre site "
-"web?"
+"Voulez-vous un moteur de recherche pour les représentants sur votre site web?"
+
+#: templates/demo.html:48 templates/index.html:13
+msgid "Use the free API"
+msgstr "Utilisez l’API"
 
 #: templates/demo.html:49
 msgid "Use the jQuery Find-Your-Rep plugin"
@@ -128,8 +139,8 @@ msgid ""
 "create your own with the columns below. You may omit or leave columns blank. "
 "The most important are in <strong>bold</strong>."
 msgstr ""
-"Téléchargez notre <a href=\"%(spreadsheet_url)s\">modèle de tableau</a> ou créez "
-"votre propre tableau avec les colonnes ci-dessous. Vous pouvez omettre "
+"Téléchargez notre <a href=\"%(spreadsheet_url)s\">modèle de tableau</a> ou "
+"créez votre propre tableau avec les colonnes ci-dessous. Vous pouvez omettre "
 "certaines informations. Les plus importantes sont en <strong>gras</strong>."
 
 #: templates/government.html:22
@@ -169,6 +180,10 @@ msgstr "Nom"
 #: templates/government.html:27
 msgid "Gender"
 msgstr "Genre"
+
+#: templates/government.html:27
+msgid "(<code>M</code> or <code>F</code> for example)"
+msgstr "(<code>M</code> ou <code>F</code>, par exemple)"
 
 #: templates/government.html:28
 msgid "Party name"
@@ -272,8 +287,8 @@ msgid ""
 "Now, all you have to do is update the spreadsheet when information changes. "
 "We'll automatically import those changes."
 msgstr ""
-"Il suffit maintenant de mettre les informations à jour dans le tableau. "
-"Ces mises à jour seront automatiquement importées."
+"Il suffit maintenant de mettre les informations à jour dans le tableau. Ces "
+"mises à jour seront automatiquement importées."
 
 #: templates/government.html:49
 msgid ""
@@ -307,10 +322,6 @@ msgid ""
 msgstr ""
 "Identifiez élus et districts électoraux à partir d’une adresse ou d’un code "
 "postal au Canada, pour chaque palier gouvernemental"
-
-#: templates/index.html:13 finder/templates/demo.html:48
-msgid "Use the free API"
-msgstr "Utilisez l’API"
 
 #: templates/index.html:14
 msgid "Download the data"
