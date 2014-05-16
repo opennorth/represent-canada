@@ -1,5 +1,4 @@
-var BASE_URL = 'https://represent.opennorth.ca',
-    geocoder = new google.maps.Geocoder(),
+var geocoder = new google.maps.Geocoder(),
     map,
     marker,
     featureGroup,
@@ -31,14 +30,14 @@ function createCache(url) {
  * @param L.LatLng latlng
  */
 var getRepresentativesByLatLng = createCache(function (latlng) {
-  return BASE_URL + '/representatives/?limit=0&point=' + latlng.lat + ',' + latlng.lng;
+  return '/representatives/?limit=0&point=' + latlng.lat + ',' + latlng.lng;
 });
 
 /**
  * @param string path the boundary's path
  */
 var getBoundaryShape = createCache(function (path) {
-  return BASE_URL + path + 'simple_shape';
+  return path + 'simple_shape';
 });
 
 /**
