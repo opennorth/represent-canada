@@ -16,41 +16,29 @@ var BASE_URL = 'https://represent.opennorth.ca',
 /**
  * @see http://learn.jquery.com/code-organization/deferreds/examples/
  */
-function createCache(requestFunction) {
+function createCache(url) {
   var cache = {};
-  return function (arg, callback) {
+  return function (arg) {
     var key = arg.toString();
     if (!cache[key]) {
-      cache[key] = $.Deferred(function (defer) {
-        requestFunction(defer, arg);
-      }).promise();
+      cache[key] = $.ajax({dataType: 'json', url: url(arg)});
     }
-    return cache[key].done(callback);
+    return cache[key];
   };
 }
 
 /**
  * @param L.LatLng latlng
  */
-var getRepresentativesByLatLng = createCache(function (defer, latlng) {
-  $.ajax({
-    dataType: 'json',
-    url: BASE_URL + '/representatives/?limit=0&point=' + latlng.lat + ',' + latlng.lng,
-    success: defer.resolve,
-    error: defer.reject
-  });
+var getRepresentativesByLatLng = createCache(function (latlng) {
+  return BASE_URL + '/representatives/?limit=0&point=' + latlng.lat + ',' + latlng.lng;
 });
 
 /**
  * @param string path the boundary's path
  */
-var getBoundaryShape = createCache(function (defer, path) {
-  $.ajax({
-    dataType: 'json',
-    url: BASE_URL + path + 'simple_shape',
-    success: defer.resolve,
-    error: defer.reject
-  })
+var getBoundaryShape = createCache(function (path) {
+  return BASE_URL + path + 'simple_shape';
 });
 
 /**
@@ -63,7 +51,7 @@ function processLatLng(latlng) {
   marker.setLatLng(latlng);
   map.panTo(latlng);
 
-  getRepresentativesByLatLng(latlng, function (response) {
+  getRepresentativesByLatLng(latlng).then(function (response) {
     var $representatives = $('<div id="representatives"></div>');
     var $row;
     $.each(response.objects, function (i, object) {
@@ -162,7 +150,7 @@ $(function ($) {
     featureGroup.clearLayers();
     $.scrollTo('#map', {axis: 'y', duration: 600, easing: 'easeOutQuart', offset: -40});
 
-    getBoundaryShape($(this).data('url'), function (response) {
+    getBoundaryShape($(this).data('url')).then(function (response) {
       featureGroup.addLayer(L.geoJson(response));
       map.fitBounds(featureGroup.getBounds());
     });
