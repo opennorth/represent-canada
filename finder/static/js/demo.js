@@ -5,7 +5,7 @@ var BASE_URL = 'https://represent.opennorth.ca',
     featureGroup,
     representativeTemplate = _.template( // @todo Replace this one underscore dependency.
       '<div class="col-xs-6 col-sm-3 col-lg-2 representative">' +
-        '<div class="avatar"><img src="<% if (photo_url) { %><%= photo_url %><% } else { %>/static/img/silhouette.png<% } %>" alt=""></div> ' +
+        '<div class="avatar" style="background-image: url(<% if (photo_url) { %><%= photo_url %><% } else { %>/static/img/silhouette.png<% } %>)"></div> ' +
         '<p><% if (party_name) { %><%= party_name %><% } %> ' + '<%= elected_office %> ' +
         '<strong><% if (url) { %><a href="<%= url %>"><%= name %></a><% } else { %><%= name %><% } %></strong></p> ' +
         '<p class="district-name"><%= district_name %> <button type="button" class="btn btn-default btn-xs shape" data-url="<%= related.boundary_url %>">' + gettext('Map') + '</button></p> ' +

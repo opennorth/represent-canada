@@ -147,23 +147,16 @@
 /* http://stackoverflow.com/questions/5445491/height-equal-to-dynamic-width-css-fluid-layout */
 .avatar {
   overflow: hidden;
-  position: relative;
   width: 100%;
   height: 0;
   margin-bottom: 20px;
   padding-top: 100%;
-  border-radius: 50%;
+  border-radius: 100%;
   border: 3px solid #eee;
   background-color: #eee;
-}
-.avatar img {
-  position:  absolute;
-  top: -17%;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  height: auto;
+  background-position: 0% 17%;
+  background-repeat: no-repeat;
+  background-size: 100% auto; /* not same as cover */
 }
 
 #plugin {
