@@ -3,7 +3,7 @@ var geocoder = new google.maps.Geocoder(),
     marker,
     featureGroup,
     representativeTemplate = _.template( // @todo Replace this one underscore dependency.
-      '<div class="col-xs-6 col-sm-3 col-lg-2 representative">' +
+      '<div class="col-xs-6 col-sm-4 col-md-2 representative">' +
         '<div class="avatar" style="background-image: url(<% if (photo_url) { %><%= photo_url %><% } else { %>/static/img/silhouette.png<% } %>)"></div> ' +
         '<p><% if (party_name) { %><%= party_name %><% } %> ' + '<%= elected_office %> ' +
         '<strong><% if (url) { %><a href="<%= url %>"><%= name %></a><% } else { %><%= name %><% } %></strong></p> ' +
@@ -57,6 +57,12 @@ function processLatLng(latlng) {
       if (i % 6 == 0) {
         $row = $('<div class="row"></div>');
         $representatives.append($row);
+      }
+      else if (i % 3 == 0) {
+        $row.append('<div class="clearfix visible-sm"></div>')
+      }
+      else if (i % 2 == 0) {
+        $row.append('<div class="clearfix visible-xs"></div>')
       }
       var $representative = $(representativeTemplate(object));
       $row.append($representative);
