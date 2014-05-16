@@ -42,30 +42,6 @@ var getRepresentativesByLatLng = createCache(function (defer, latlng) {
 });
 
 /**
- * @param L.LatLng latlng
- */
-var getBoundariesByLatLng = createCache(function (defer, latlng) {
-  $.ajax({
-    dataType: 'json',
-    url: BASE_URL + '/boundaries/?contains=' + latlng.lat + ',' + latlng.lng,
-    success: defer.resolve,
-    error: defer.reject
-  });
-});
-
-/**
- * @param string path the boundary's path
- */
-var getBoundaryRepresentatives = createCache(function (defer, path) {
-  $.ajax({
-    dataType: 'json',
-    url: BASE_URL + path + 'representatives/?limit=0',
-    success: defer.resolve,
-    error: defer.reject
-  });
-})
-
-/**
  * @param string path the boundary's path
  */
 var getBoundaryShape = createCache(function (defer, path) {
@@ -87,7 +63,7 @@ function processLatLng(latlng) {
   marker.setLatLng(latlng);
   map.panTo(latlng);
 
-  getRepresentativesByLatLng(latlng).then(function (response) {
+  getRepresentativesByLatLng(latlng, function (response) {
     var $representatives = $('<div id="representatives"></div>');
     var $row;
     $.each(response.objects, function (i, object) {
