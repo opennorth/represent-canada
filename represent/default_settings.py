@@ -65,8 +65,8 @@ LOGGING = {
         'console': {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
-            },
         },
+    },
     'filters': {
          'require_debug_false': {
              '()': 'django.utils.log.RequireDebugFalse'
