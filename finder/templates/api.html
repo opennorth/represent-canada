@@ -95,10 +95,12 @@
 
     <dl>
       <dt>Find representatives and boundaries by postal code</dt>
-      <dd><a href="/postcodes/L5G4L3/?format=apibrowser">/postcodes/L5G4L3/</a> <span>Click to view JSON</span></dd>
+      <dd>
+        <a class="example" href="/postcodes/L5G4L3/?format=apibrowser">/postcodes/L5G4L3/</a> <span>Click to view JSON</span>
+      </dd>
       <dt>Find representatives and boundaries by postal code, limiting results to a specific boundary set</dt>
       <dd>
-        <a href="/postcodes/L5G4L3/?sets=federal-electoral-districts&amp;format=apibrowser">/postcodes/L5G4L3/?sets=federal-electoral-districts</a>
+        <a class="example" href="/postcodes/L5G4L3/?sets=federal-electoral-districts&amp;format=apibrowser">/postcodes/L5G4L3/?sets=federal-electoral-districts</a>
         <p>To see what boundary sets are available, consult the <a href="#boundaryset">boundary sets</a> endpoint.</p>
       </dd>
     </dl>
@@ -117,11 +119,17 @@
 
     <dl>
       <dt>Get one page of boundary sets</dt>
-      <dd><a href="/boundary-sets/?format=apibrowser">/boundary-sets/</a> <span>Click to view JSON</span></dd>
+      <dd>
+        <a class="example" href="/boundary-sets/?format=apibrowser">/boundary-sets/</a> <span>Click to view JSON</span>
+      </dd>
       <dt>Get one boundary set</dt>
-      <dd><a href="/boundary-sets/federal-electoral-districts/?format=apibrowser">/boundary-sets/federal-electoral-districts/</a></dd>
+      <dd>
+        <a class="example" href="/boundary-sets/federal-electoral-districts/?format=apibrowser">/boundary-sets/federal-electoral-districts/</a>
+      </dd>
       <dt>Filter boundary sets by <code>name</code> or <code>domain</code></dt>
-      <dd><a href="/boundary-sets/?domain=Canada&amp;format=apibrowser">/boundary-sets/?domain=Canada</a></dd>
+      <dd>
+        <a class="example" href="/boundary-sets/?domain=Canada&amp;format=apibrowser">/boundary-sets/?domain=Canada</a>
+      </dd>
     </dl>
   </div>
 </section>
@@ -136,32 +144,44 @@
 
     <dl>
       <dt>Get one page of boundaries</dt>
-      <dd><a href="/boundaries/?format=apibrowser">/boundaries/</a> <span>Click to view JSON</span></dd>
+      <dd>
+        <a class="example" href="/boundaries/?format=apibrowser">/boundaries/</a> <span>Click to view JSON</span>
+      </dd>
       <dt>Get one page of boundaries from a boundary set</dt>
       <dd>
-        <a href="/boundaries/toronto-wards/?format=apibrowser">/boundaries/toronto-wards/</a>
+        <a class="example" href="/boundaries/toronto-wards/?format=apibrowser">/boundaries/toronto-wards/</a>
         <p>To see what boundary sets are available, consult the <a href="#boundaryset">boundary sets</a> endpoint.</p>
       </dd>
       <dt>Get one page of boundaries from multiple boundary sets (comma-separated)</dt>
       <dd>
-        <a href="/boundaries/?sets=toronto-wards,ottawa-wards&amp;format=apibrowser">/boundaries/?sets=toronto-wards,ottawa-wards</a>
+        <a class="example" href="/boundaries/?sets=toronto-wards,ottawa-wards&amp;format=apibrowser">/boundaries/?sets=toronto-wards,ottawa-wards</a>
         <p>To see what boundary sets are available, consult the <a href="#boundaryset">boundary sets</a> endpoint.</p>
       </dd>
       <dt>Get one boundary</dt>
-      <dd><a href="/boundaries/nova-scotia-electoral-districts/cape-breton-centre/?format=apibrowser">/boundaries/nova-scotia-electoral-districts/cape-breton-centre/</a></dd>
+      <dd>
+        <a class="example" href="/boundaries/nova-scotia-electoral-districts/cape-breton-centre/?format=apibrowser">/boundaries/nova-scotia-electoral-districts/cape-breton-centre/</a>
+      </dd>
       <dt>Filter boundaries by <code>name</code> or <code>external_id</code></dt>
-      <dd><a href="/boundaries/?name=Niagara Falls&amp;format=apibrowser">/boundaries/?name=Niagara Falls</a></dd>
+      <dd>
+        <a class="example" href="/boundaries/?name=Niagara Falls&amp;format=apibrowser">/boundaries/?name=Niagara Falls</a>
+      </dd>
     </dl>
 
     <h3 id="boundary-geospatial">Geospatial queries</h3>
 
     <dl>
       <dt>Find boundaries by latitude and longitude</dt>
-      <dd><a href="/boundaries/?contains=45.524,-73.596&amp;format=apibrowser">/boundaries/?contains=45.524,-73.596</a></dd>
+      <dd>
+        <a class="example" href="/boundaries/?contains=45.524,-73.596&amp;format=apibrowser">/boundaries/?contains=45.524,-73.596</a>
+      </dd>
       <dt>Find boundaries that touch</dt>
-      <dd><a href="/boundaries/?touches=alberta-electoral-districts/highwood&amp;format=apibrowser">/boundaries/?touches=alberta-electoral-districts/highwood</a></dd>
+      <dd>
+        <a class="example" href="/boundaries/?touches=alberta-electoral-districts/highwood&amp;format=apibrowser">/boundaries/?touches=alberta-electoral-districts/highwood</a>
+      </dd>
       <dt>Find boundaries that intersect (&ldquo;covers or overlaps&rdquo; in PostGIS lingo)</dt>
-      <dd><a href="/boundaries/?intersects=alberta-electoral-districts/highwood&amp;format=apibrowser">/boundaries/?intersects=alberta-electoral-districts/highwood</a></dd>
+      <dd>
+        <a class="example" href="/boundaries/?intersects=alberta-electoral-districts/highwood&amp;format=apibrowser">/boundaries/?intersects=alberta-electoral-districts/highwood</a>
+      </dd>
     </dl>
 
     <h3 id="boundary-drawing">Drawing boundaries</h3>
@@ -170,17 +190,29 @@
 
     <dl>
       <dt>Get all simple shapes from a boundary set</dt>
-      <dd><a href="/boundaries/toronto-wards/simple_shape?format=apibrowser">/boundaries/toronto-wards/simple_shape</a></dd>
+      <dd>
+        <a class="example" href="/boundaries/toronto-wards/simple_shape?format=apibrowser">/boundaries/toronto-wards/simple_shape</a>
+      </dd>
       <dt>Get all original shapes from a boundary set</dt>
-      <dd><a href="/boundaries/toronto-wards/shape?format=apibrowser">/boundaries/toronto-wards/shape</a></dd>
+      <dd>
+        <a class="example" href="/boundaries/toronto-wards/shape?format=apibrowser">/boundaries/toronto-wards/shape</a>
+      </dd>
       <dt>Get all centroids from a boundary set</dt>
-      <dd><a href="/boundaries/toronto-wards/centroid?format=apibrowser">/boundaries/toronto-wards/centroid</a></dd>
+      <dd>
+        <a class="example" href="/boundaries/toronto-wards/centroid?format=apibrowser">/boundaries/toronto-wards/centroid</a>
+      </dd>
       <dt>Get one boundary's simple shape</dt>
-      <dd><a href="/boundaries/nova-scotia-electoral-districts/cape-breton-centre/simple_shape?format=apibrowser">/boundaries/nova-scotia-electoral-districts/cape-breton-centre/simple_shape</a></dd>
+      <dd>
+        <a class="example" href="/boundaries/nova-scotia-electoral-districts/cape-breton-centre/simple_shape?format=apibrowser">/boundaries/nova-scotia-electoral-districts/cape-breton-centre/simple_shape</a>
+      </dd>
       <dt>Get one boundary's original shape</dt>
-      <dd><a href="/boundaries/nova-scotia-electoral-districts/cape-breton-centre/shape?format=apibrowser">/boundaries/nova-scotia-electoral-districts/cape-breton-centre/shape</a></dd>
+      <dd>
+        <a class="example" href="/boundaries/nova-scotia-electoral-districts/cape-breton-centre/shape?format=apibrowser">/boundaries/nova-scotia-electoral-districts/cape-breton-centre/shape</a>
+      </dd>
       <dt>Get one boundary's centroid</dt>
-      <dd><a href="/boundaries/nova-scotia-electoral-districts/cape-breton-centre/centroid?format=apibrowser">/boundaries/nova-scotia-electoral-districts/cape-breton-centre/centroid</a></dd>
+      <dd>
+        <a class="example" href="/boundaries/nova-scotia-electoral-districts/cape-breton-centre/centroid?format=apibrowser">/boundaries/nova-scotia-electoral-districts/cape-breton-centre/centroid</a>
+      </dd>
     </dl>
   </div>
 </section>
@@ -197,9 +229,13 @@
 
     <dl>
       <dt>Get one page of representative sets</dt>
-      <dd><a href="/representative-sets/?format=apibrowser">/representative-sets/</a> <span>Click to view JSON</span></dd>
+      <dd>
+        <a class="example" href="/representative-sets/?format=apibrowser">/representative-sets/</a> <span>Click to view JSON</span>
+      </dd>
       <dt>Get one representative set</dt>
-      <dd><a href="/representative-sets/ontario-legislature/?format=apibrowser">/representative-sets/ontario-legislature/</a></dd>
+      <dd>
+        <a class="example" href="/representative-sets/ontario-legislature/?format=apibrowser">/representative-sets/ontario-legislature/</a>
+      </dd>
     </dl>
   </div>
 </section>
@@ -212,20 +248,30 @@
   <div class="container-fluid">
     <dl>
       <dt>Get one page of representatives</dt>
-      <dd><a href="/representatives/?format=apibrowser">/representatives/</a> <span>Click to view JSON</span></dd>
+      <dd>
+        <a class="example" href="/representatives/?format=apibrowser">/representatives/</a> <span>Click to view JSON</span>
+      </dd>
       <dt>Get one page of representatives from a representative set</dt>
       <dd>
-        <a href="/representatives/house-of-commons/?format=apibrowser">/representatives/house-of-commons/</a>
+        <a class="example" href="/representatives/house-of-commons/?format=apibrowser">/representatives/house-of-commons/</a>
         <p>To see what representative sets are available, consult the <a href="#representativeset">representative sets</a> endpoint.</p>
       </dd>
       <dt>Find representatives by latitude and longitude</dt>
-      <dd><a href="/representatives/?point=45.524,-73.596&amp;format=apibrowser">/representatives/?point=45.524,-73.596</a></dd>
+      <dd>
+        <a class="example" href="/representatives/?point=45.524,-73.596&amp;format=apibrowser">/representatives/?point=45.524,-73.596</a>
+      </dd>
       <dt>Get the representatives for one boundary</dt>
-      <dd><a href="/boundaries/toronto-wards/etobicoke-north-1/representatives/?format=apibrowser">/boundaries/toronto-wards/etobicoke-north-1/representatives/</a></dd>
+      <dd>
+        <a class="example" href="/boundaries/toronto-wards/etobicoke-north-1/representatives/?format=apibrowser">/boundaries/toronto-wards/etobicoke-north-1/representatives/</a>
+      </dd>
       <dt>Get the representatives for multiple boundaries (comma-separated)</dt>
-      <dd><a href="/representatives/?districts=calgary-wards/ward-1,calgary-wards/ward-2,calgary-wards/ward-3&amp;format=apibrowser">/representatives/?districts=calgary-wards/ward-1,calgary-wards/ward-2,calgary-wards/ward-3</a></dd>
+      <dd>
+        <a class="example" href="/representatives/?districts=calgary-wards/ward-1,calgary-wards/ward-2,calgary-wards/ward-3&amp;format=apibrowser">/representatives/?districts=calgary-wards/ward-1,calgary-wards/ward-2,calgary-wards/ward-3</a>
+      </dd>
       <dt>Filter representatives by <code>name</code>, <code>first_name</code>, <code>last_name</code>, <code>gender</code>, <code>district_name</code>, <code>elected_office</code> or <code>party_name</code></dt>
-      <dd><a href="/representatives/house-of-commons/?last_name=Harper&amp;format=apibrowser">/representatives/house-of-commons/?last_name=Harper</a></dd>
+      <dd>
+        <a class="example" href="/representatives/house-of-commons/?last_name=Harper&amp;format=apibrowser">/representatives/house-of-commons/?last_name=Harper</a>
+      </dd>
     </dl>
 
     <p id="fields">Only the <strong>bold</strong> fields are present in all responses:</p>
@@ -335,7 +381,9 @@
 
     <dl>
       <dt>Get one page of elections</dt>
-      <dd><a href="/elections/?format=apibrowser">/elections/</a> <span>Click to view JSON</span></dd>
+      <dd>
+        <a class="example" href="/elections/?format=apibrowser">/elections/</a> <span>Click to view JSON</span>
+      </dd>
     </dl>
   </div>
 </section>
@@ -354,7 +402,9 @@
 
     <dl>
       <dt>Get one page of candidates</dt>
-      <dd><a href="/candidates/?format=apibrowser">/candidates/</a> <span>Click to view JSON</span></dd>
+      <dd>
+        <a class="example" href="/candidates/?format=apibrowser">/candidates/</a> <span>Click to view JSON</span>
+      </dd>
     </dl>
   </div>
 </section>
