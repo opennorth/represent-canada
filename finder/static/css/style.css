@@ -328,7 +328,7 @@ ul#fields {
 #api dt {
   margin-top: 20px;
 }
-#api dd a {
+#api dd a.example {
   display: block;
   min-height: 20px;
   padding: 9px;
