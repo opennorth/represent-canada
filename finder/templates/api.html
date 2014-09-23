@@ -75,6 +75,8 @@
 
     <p>To see what boundary sets and representative sets are available, consult the <a href="#boundaryset">boundary sets</a> and <a href="#representativeset">representative sets</a> endpoints. Are we missing information that you need? <a href="mailto:represent@opennorth.ca">Contact us</a> so that we can make it a priority.</p>
 
+    <p class="alert alert-danger">Postal codes <strong>are inaccurate</strong>. For best results, geocode home addresses using the <a href="http://msdn.microsoft.com/en-us/library/ff701713.aspx">Bing</a>, <a href="https://developers.google.com/maps/documentation/geocoding/">Google</a>, <a href="http://developer.mapquest.com/web/tools/getting-started/platform/geocoding">MapQuest</a> or <a href="https://developer.yahoo.com/boss/geo/">Yahoo</a> geocoding APIs, and then submit a latitude and longitude to the <a href="#boundary-geospatial">boundaries</a> or <a href="#representative">representatives</a> endpoints.</p>
+
     <h3>Request</h3>
 
     <p>URLs must include the postal code in uppercase letters with no spaces.</p>
@@ -95,7 +97,10 @@
       <dt>Find representatives and boundaries by postal code</dt>
       <dd><a href="/postcodes/L5G4L3/?format=apibrowser">/postcodes/L5G4L3/</a> <span>Click to view JSON</span></dd>
       <dt>Find representatives and boundaries by postal code, limiting results to a specific boundary set</dt>
-      <dd><a href="/postcodes/L5G4L3/?sets=federal-electoral-districts&amp;format=apibrowser">/postcodes/L5G4L3/?sets=federal-electoral-districts</a></dd>
+      <dd>
+        <a href="/postcodes/L5G4L3/?sets=federal-electoral-districts&amp;format=apibrowser">/postcodes/L5G4L3/?sets=federal-electoral-districts</a>
+        <p>To see what boundary sets are available, consult the <a href="#boundaryset">boundary sets</a> endpoint.</p>
+      </dd>
     </dl>
   </div>
 </section>
@@ -133,16 +138,22 @@
       <dt>Get one page of boundaries</dt>
       <dd><a href="/boundaries/?format=apibrowser">/boundaries/</a> <span>Click to view JSON</span></dd>
       <dt>Get one page of boundaries from a boundary set</dt>
-      <dd><a href="/boundaries/toronto-wards/?format=apibrowser">/boundaries/toronto-wards/</a></dd>
+      <dd>
+        <a href="/boundaries/toronto-wards/?format=apibrowser">/boundaries/toronto-wards/</a>
+        <p>To see what boundary sets are available, consult the <a href="#boundaryset">boundary sets</a> endpoint.</p>
+      </dd>
       <dt>Get one page of boundaries from multiple boundary sets (comma-separated)</dt>
-      <dd><a href="/boundaries/?sets=toronto-wards,ottawa-wards&amp;format=apibrowser">/boundaries/?sets=toronto-wards,ottawa-wards</a></dd>
+      <dd>
+        <a href="/boundaries/?sets=toronto-wards,ottawa-wards&amp;format=apibrowser">/boundaries/?sets=toronto-wards,ottawa-wards</a>
+        <p>To see what boundary sets are available, consult the <a href="#boundaryset">boundary sets</a> endpoint.</p>
+      </dd>
       <dt>Get one boundary</dt>
       <dd><a href="/boundaries/nova-scotia-electoral-districts/cape-breton-centre/?format=apibrowser">/boundaries/nova-scotia-electoral-districts/cape-breton-centre/</a></dd>
       <dt>Filter boundaries by <code>name</code> or <code>external_id</code></dt>
       <dd><a href="/boundaries/?name=Niagara Falls&amp;format=apibrowser">/boundaries/?name=Niagara Falls</a></dd>
     </dl>
 
-    <h3>Geospatial queries</h3>
+    <h3 id="boundary-geospatial">Geospatial queries</h3>
 
     <dl>
       <dt>Find boundaries by latitude and longitude</dt>
@@ -153,7 +164,7 @@
       <dd><a href="/boundaries/?intersects=alberta-electoral-districts/highwood&amp;format=apibrowser">/boundaries/?intersects=alberta-electoral-districts/highwood</a></dd>
     </dl>
 
-    <h3>Drawing boundaries</h3>
+    <h3 id="boundary-drawing">Drawing boundaries</h3>
 
     <p>We recommend the <code>simple_shape</code> endpoint, which simplifies the shape to a tolerance of 0.002, looks fine and loads fast. The default geospatial output format is GeoJSON. Add a <code>format=kml</code> or <code>format=wkt</code> query parameter to get KML or Well-Known Text.</p>
 
@@ -203,7 +214,10 @@
       <dt>Get one page of representatives</dt>
       <dd><a href="/representatives/?format=apibrowser">/representatives/</a> <span>Click to view JSON</span></dd>
       <dt>Get one page of representatives from a representative set</dt>
-      <dd><a href="/representatives/house-of-commons/?format=apibrowser">/representatives/house-of-commons/</a></dd>
+      <dd>
+        <a href="/representatives/house-of-commons/?format=apibrowser">/representatives/house-of-commons/</a>
+        <p>To see what representative sets are available, consult the <a href="#representativeset">representative sets</a> endpoint.</p>
+      </dd>
       <dt>Find representatives by latitude and longitude</dt>
       <dd><a href="/representatives/?point=45.524,-73.596&amp;format=apibrowser">/representatives/?point=45.524,-73.596</a></dd>
       <dt>Get the representatives for one boundary</dt>
