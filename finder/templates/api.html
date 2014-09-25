@@ -35,7 +35,7 @@
     <p>Results are paginated 20 per page by default. Set the number of results per page by adding a <code>limit</code> query parameter. Change pages using the <code>offset</code> query parameter or using the <code>next</code> and <code>previous</code> links under the <code>meta</code> field in the response to navigate to the next and previous pages (if any). Under the <code>meta</code> field, <code>total_count</code> is the number of results.</p>
 
     <h3>Filter results</h3>
-    <p>Filter results with query parameters. Each endpoint below lists the fields on which you can filter results. To filter for representatives whose first name is “Rodney”, for example, request <code>/representatives/?first_name=Rodney</code>.</p>
+    <p>Filter results with query parameters. Each endpoint below lists the fields on which you can filter results. To filter for representatives whose first name is “Rodney”, for example, request <code>/representatives/?first_name=Rodney</code>. To filter for MPs whose first name is "Rodney", request <code>/representatives/house-of-commons/?last_name=Rodney</code>.</p>
 
     <p>Perform substring searches by appending <code>__querytype</code> to the parameter name, where <code>querytype</code> is one of <code>iexact</code>, <code>contains</code>, <code>icontains</code>, <code>startswith</code>, <code>istartswith</code>, <code>endswith</code>, <code>iendswith</code> or <code>isnull</code>. A leading <code>i</code> makes the match case-insensitive. For example, to find representatives whose last name starts with “M” or “m”, request <code>/representatives/?last_name__istartswith=m</code>.</p>
 
@@ -164,18 +164,26 @@
       <dd>
         <a class="example" href="/boundaries/nova-scotia-electoral-districts/cape-breton-centre/?format=apibrowser">/boundaries/nova-scotia-electoral-districts/cape-breton-centre/</a>
       </dd>
-      <dt>Filter boundaries by <code>name</code> or <code>external_id</code></dt>
+      <dt>Filter all boundaries by <code>name</code> or <code>external_id</code></dt>
       <dd>
-        <a class="example" href="/boundaries/?name=Niagara Falls&amp;format=apibrowser">/boundaries/?name=Niagara Falls</a>
+        <a class="example" href="/boundaries/?name=Niagara%20Falls&amp;format=apibrowser">/boundaries/?name=Niagara Falls</a>
+      </dd>
+      <dt>Filter a boundary set's boundaries by <code>name</code> or <code>external_id</code></dt>
+      <dd>
+        <a class="example" href="/boundaries/census-subdivisions/?name=Niagara%20Falls&amp;format=apibrowser">/boundaries/census-subdivisions/?name=Niagara Falls</a>
       </dd>
     </dl>
 
     <h3 id="boundary-geospatial">Geospatial queries</h3>
 
     <dl>
-      <dt>Find boundaries by latitude and longitude</dt>
+      <dt>Find all boundaries by latitude and longitude</dt>
       <dd>
         <a class="example" href="/boundaries/?contains=45.524,-73.596&amp;format=apibrowser">/boundaries/?contains=45.524,-73.596</a>
+      </dd>
+      <dt>Find a boundary set's boundaries by latitude and longitude</dt>
+      <dd>
+        <a class="example" href="/boundaries/montreal-boroughs/?contains=45.524,-73.596&amp;format=apibrowser">/boundaries/montreal-boroughs/?contains=45.524,-73.596</a>
       </dd>
       <dt>Find boundaries that touch</dt>
       <dd>
@@ -259,9 +267,13 @@
         <a class="example" href="/representatives/house-of-commons/?format=apibrowser">/representatives/house-of-commons/</a>
         <p>To see what representative sets are available, consult the <a href="#representativeset">representative sets</a> endpoint.</p>
       </dd>
-      <dt>Find representatives by latitude and longitude</dt>
+      <dt>Find all representatives by latitude and longitude</dt>
       <dd>
         <a class="example" href="/representatives/?point=45.524,-73.596&amp;format=apibrowser">/representatives/?point=45.524,-73.596</a>
+      </dd>
+      <dt>Find a representative set's representatives by latitude and longitude</dt>
+      <dd>
+        <a class="example" href="/representatives/house-of-commons/?point=45.524,-73.596&amp;format=apibrowser">/representatives/house-of-commons/?point=45.524,-73.596</a>
       </dd>
       <dt>Get the representatives for one boundary</dt>
       <dd>
@@ -271,7 +283,11 @@
       <dd>
         <a class="example" href="/representatives/?districts=calgary-wards/ward-1,calgary-wards/ward-2,calgary-wards/ward-3&amp;format=apibrowser">/representatives/?districts=calgary-wards/ward-1,calgary-wards/ward-2,calgary-wards/ward-3</a>
       </dd>
-      <dt>Filter representatives by <code>name</code>, <code>first_name</code>, <code>last_name</code>, <code>gender</code>, <code>district_name</code>, <code>elected_office</code> or <code>party_name</code></dt>
+      <dt>Filter all representatives by <code>name</code>, <code>first_name</code>, <code>last_name</code>, <code>gender</code>, <code>district_name</code>, <code>elected_office</code> or <code>party_name</code></dt>
+      <dd>
+        <a class="example" href="/representatives/?last_name=Harper&amp;format=apibrowser">/representatives/?last_name=Harper</a>
+      </dd>
+      <dt>Filter a representative set's representatives by <code>name</code>, <code>first_name</code>, <code>last_name</code>, <code>gender</code>, <code>district_name</code>, <code>elected_office</code> or <code>party_name</code></dt>
       <dd>
         <a class="example" href="/representatives/house-of-commons/?last_name=Harper&amp;format=apibrowser">/representatives/house-of-commons/?last_name=Harper</a>
       </dd>
