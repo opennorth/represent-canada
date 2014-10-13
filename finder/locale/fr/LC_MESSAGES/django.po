@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-11 18:53-0400\n"
+"POT-Creation-Date: 2014-10-13 10:19-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,11 +36,13 @@ msgstr "Téléchargez les coordonnées des représentants élus."
 msgid ""
 "All downloads are available in the <abbr title=\"Comma-Separated Value\" "
 "data-toggle=\"tooltip\">CSV</abbr> file format. Click any link to download a "
-"CSV."
+"CSV, which you can open in any spreadsheet software like Microsoft Excel or "
+"LibreOffice Calc."
 msgstr ""
 "Tous les téléchargements sont disponibles en format <abbr title=\"Comma-"
 "Separated Value\" data-toggle=\"tooltip\">CSV</abbr>. Cliquez sur un lien "
-"afin de télécharger un CSV."
+"afin de télécharger un CSV, que vous pouvez ouvrir dans un tableur comme "
+"Microsoft Excel ou LibreOffice Calc."
 
 #: templates/data.html:18
 msgid ""
@@ -63,15 +65,15 @@ msgstr "Encore plus de possibilités avec Represent!"
 msgid "What is Represent?"
 msgstr "En savoir plus"
 
-#: templates/data.html:29 templates/index.html:144
+#: templates/data.html:29 templates/index.html:147
 msgid "Read the API reference"
 msgstr "Lire la référence API"
 
-#: templates/data.html:30 templates/index.html:145
+#: templates/data.html:30 templates/index.html:148
 msgid "Try the “Find Your Reps” app"
 msgstr "Essayer le démo"
 
-#: templates/data.html:31 templates/index.html:12 templates/index.html.py:146
+#: templates/data.html:31 templates/index.html:12 templates/index.html.py:149
 msgid "Try the demo app"
 msgstr "Essayer le démo"
 
@@ -425,39 +427,39 @@ msgstr "À l'action"
 msgid "Council of Canadians"
 msgstr "Conseil des canadiens"
 
-#: templates/index.html:77
+#: templates/index.html:78
 msgid "Canadian Union of Public Employees"
 msgstr "Syndicat canadien de la fonction publique"
 
-#: templates/index.html:78
+#: templates/index.html:79
 msgid "Public Service Alliance of Canada"
 msgstr "Alliance de la fonction publique du Canada"
 
-#: templates/index.html:83
+#: templates/index.html:84
 msgid "Fair Vote Canada"
 msgstr "Représentation équitable au Canada"
 
-#: templates/index.html:84
+#: templates/index.html:86
 msgid "Canadians for Tax Fairness"
 msgstr "Canadiens pour une fiscalité équitable"
 
-#: templates/index.html:85
+#: templates/index.html:88
 msgid "Democracy Watch"
 msgstr "Démocratie en surveillance"
 
-#: templates/index.html:94
+#: templates/index.html:97
 msgid "The most comprehensive source in Canada for:"
 msgstr "La ressource la plus complète au Canada pour:"
 
-#: templates/index.html:97
+#: templates/index.html:100
 msgid "Elected officials"
 msgstr "Les représentants élus"
 
-#: templates/index.html:99
+#: templates/index.html:102
 msgid "All Members of Parliament (MPs)"
 msgstr "Tous les députés fédéraux"
 
-#: templates/index.html:100
+#: templates/index.html:103
 msgid ""
 "All <abbr data-toggle=\"tooltip\" title=\"Members of Legislative Assembly"
 "\">MLAs</abbr>, <abbr data-toggle=\"tooltip\" title=\"Members of Provincial "
@@ -467,27 +469,27 @@ msgid ""
 "Labrador)\">MHAs</abbr>"
 msgstr "Tous les députés provinciaux"
 
-#: templates/index.html:101
+#: templates/index.html:104
 msgid "Over 11,000 mayors and councillors"
 msgstr "Plus de 11 000 maires et conseillers municipaux"
 
-#: templates/index.html:105
+#: templates/index.html:108
 msgid "Electoral districts"
 msgstr "Les districts électoraux"
 
-#: templates/index.html:107
+#: templates/index.html:110
 msgid "All federal electoral districts"
 msgstr "Toutes les circonscriptions fédérales"
 
-#: templates/index.html:108
+#: templates/index.html:111
 msgid "All provincial electoral districts"
 msgstr "Toutes les circonscriptions provinciales"
 
-#: templates/index.html:109
+#: templates/index.html:112
 msgid "Over 8,000 municipal wards"
 msgstr "Plus de 8 000 districts municipaux"
 
-#: templates/index.html:124
+#: templates/index.html:127
 msgid ""
 "Easily integrate Represent into your CMS, using our <a href=\"https://drupal."
 "org/project/represent\">Drupal</a> and <a href=\"http://wordpress.org/"
@@ -497,7 +499,7 @@ msgstr ""
 "\"https://drupal.org/project/represent\">Drupal</a> ou <a href=\"http://"
 "wordpress.org/plugins/represent-api/\">WordPress</a>"
 
-#: templates/index.html:132
+#: templates/index.html:135
 msgid ""
 "Use the <a href=\"https://github.com/opennorth/govkit-ca#readme\">Ruby</a>, "
 "<a href=\"https://github.com/ncadou/pyrepresent#readme\">Python</a> or <a "
@@ -509,7 +511,7 @@ msgstr ""
 "\">Python</a> ou <a href=\"https://github.com/sprice/represent#readme\">Node."
 "js</a> pour développer rapidement de nouvelles applications"
 
-#: templates/index.html:138
+#: templates/index.html:141
 msgid ""
 "Represent is <a href=\"https://github.com/opennorth/represent-canada\">open "
 "source</a> and makes its <a href=\"https://github.com/opennorth/represent-"
@@ -519,7 +521,7 @@ msgstr ""
 "source</a> et rend ses <a href=\"https://github.com/opennorth/represent-"
 "canada-data\">données</a> disponibles où c’est possible"
 
-#: templates/index.html:152
+#: templates/index.html:155
 msgid ""
 "Join our <a href=\"https://groups.google.com/forum/#!forum/represent-canada"
 "\">Developer Forum</a> to be notified of API changes"
@@ -527,15 +529,15 @@ msgstr ""
 "Rejoignez notre <a href=\"https://groups.google.com/forum/#!forum/represent-"
 "canada\">forum</a> pour être informé de tout changement à l’API"
 
-#: templates/index.html:153
+#: templates/index.html:156
 msgid "Join Group"
 msgstr "Joindre le groupe"
 
-#: templates/index.html:155
+#: templates/index.html:158
 msgid "Government Officials and Open Data Managers:"
 msgstr "Fonctionnaires et gestionnaires de données ouvertes:"
 
-#: templates/index.html:155
+#: templates/index.html:158
 #, python-format
 msgid ""
 "Find out how to <a href=\"%(government_url)s\">add your elected officials to "
@@ -544,7 +546,7 @@ msgstr ""
 "découvrez comment <a href=\"%(government_url)s\">ajouter vos représentants "
 "élus à Represent</a>."
 
-#: templates/index.html:156
+#: templates/index.html:159
 msgid ""
 "We are excited to see how Represent is being used. <a href=\"mailto:"
 "represent@opennorth.ca\">Contact us</a> and show us what you've made!"
