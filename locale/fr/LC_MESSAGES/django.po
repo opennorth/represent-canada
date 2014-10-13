@@ -35,7 +35,7 @@ msgstr ""
 msgid ""
 "All downloads are available in the <abbr title=\"Comma-Separated Value\" "
 "data-toggle=\"tooltip\">CSV</abbr> file format. Click any link to download a "
-"CSV, which you can open in any spreadsheet software like Microsoft Excel or "
+"CSV, which you can open in spreadsheet software like Microsoft Excel or "
 "LibreOffice Calc."
 msgstr ""
 
