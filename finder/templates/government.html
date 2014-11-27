@@ -21,16 +21,15 @@
       <ul id="fields">
         <li><strong>{% trans "District name" %}</strong> {% trans "(if your municipality is divided into wards, districts or divisions)" %}</li>
         <li><strong>{% trans "District ID" %}</strong> {% trans "(if your wards have identifiers as well as names)" %}</li>
-        <li><strong>{% trans "Elected office" %}</strong> {% trans "(<code>Mayor</code> or <code>Councillor</code> for most municipalities)" %}</li>
+        <li><strong>{% trans "Primary role" %}</strong> {% trans "(<code>Mayor</code> or <code>Councillor</code> for most municipalities)" %}</li>
         <li><strong>{% trans "First name" %}</strong></li>
         <li><strong>{% trans "Last name" %}</strong></li>
         <li>{% trans "Gender" %} {% trans "(<code>M</code> or <code>F</code> for example)" %}</li>
         <li>{% trans "Party name" %}</li>
         <li><strong>{% trans "Email" %}</strong></li>
-        <li>{% trans "URL" %} {% trans "(a link to the elected official's profile on your municipal website)" %}</li>
         <li><strong>{% trans "Photo URL" %}</strong> {% trans "(a link to a photo of the elected official)" %}</li>
-        <li>{% trans "Personal URL" %} {% trans "(a link to the elected official's own website)" %}</li>
-        <li>{% trans "Office type" %} {% trans "(<code>Legislature</code>, <code>Constituency</code> or <code>Residence</code> for example)" %}</li>
+        <li>{% trans "Source URL" %} {% trans "(a link to the elected official's profile on your municipal website)" %}</li>
+        <li>{% trans "Website" %} {% trans "(a link to the elected official's own website)" %}</li>
         <li>{% trans "Address line 1" %}</li>
         <li>{% trans "Address line 2" %}</li>
         <li>{% trans "Locality" %}</li>
@@ -40,6 +39,7 @@
         <li>{% trans "Fax" %}</li>
       </ul>
     </li>
+    <li><p>{% trans "If you would like to specify multiple addresses or numbers, add a parenthesized label to the column header, e.g. <code>Phone (home)</code>." %}</p></li>
     <li><p>{% trans "Save the spreadsheet in the CSV file format. Microsoft Excel and other programs can do this." %}</p></li>
     <li><p>{% trans "Upload the CSV file to your municipal website. You may need to ask your webmaster." %}</p></li>
     <li><p>{% blocktrans %}<a href="mailto:represent@opennorth.ca">Email us</a> the link to the spreadsheet, and we'll quickly add the information to Represent.{% endblocktrans %}</p></li>

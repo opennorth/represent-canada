@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-13 10:16-0400\n"
+"POT-Creation-Date: 2014-11-27 18:01-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -149,7 +149,7 @@ msgid "(if your wards have identifiers as well as names)"
 msgstr ""
 
 #: finder/templates/government.html:24
-msgid "Elected office"
+msgid "Primary role"
 msgstr ""
 
 #: finder/templates/government.html:24
@@ -181,23 +181,23 @@ msgid "Email"
 msgstr ""
 
 #: finder/templates/government.html:30
-msgid "URL"
-msgstr ""
-
-#: finder/templates/government.html:30
-msgid "(a link to the elected official's profile on your municipal website)"
-msgstr ""
-
-#: finder/templates/government.html:31
 msgid "Photo URL"
 msgstr ""
 
-#: finder/templates/government.html:31
+#: finder/templates/government.html:30
 msgid "(a link to a photo of the elected official)"
 msgstr ""
 
+#: finder/templates/government.html:31
+msgid "Source URL"
+msgstr ""
+
+#: finder/templates/government.html:31
+msgid "(a link to the elected official's profile on your municipal website)"
+msgstr ""
+
 #: finder/templates/government.html:32
-msgid "Personal URL"
+msgid "Website"
 msgstr ""
 
 #: finder/templates/government.html:32
@@ -205,41 +205,37 @@ msgid "(a link to the elected official's own website)"
 msgstr ""
 
 #: finder/templates/government.html:33
-msgid "Office type"
-msgstr ""
-
-#: finder/templates/government.html:33
-msgid ""
-"(<code>Legislature</code>, <code>Constituency</code> or <code>Residence</"
-"code> for example)"
-msgstr ""
-
-#: finder/templates/government.html:34
 msgid "Address line 1"
 msgstr ""
 
-#: finder/templates/government.html:35
+#: finder/templates/government.html:34
 msgid "Address line 2"
 msgstr ""
 
-#: finder/templates/government.html:36
+#: finder/templates/government.html:35
 msgid "Locality"
 msgstr ""
 
-#: finder/templates/government.html:37
+#: finder/templates/government.html:36
 msgid "Postal code"
 msgstr ""
 
-#: finder/templates/government.html:38
+#: finder/templates/government.html:37
 msgid "Province"
 msgstr ""
 
-#: finder/templates/government.html:39
+#: finder/templates/government.html:38
 msgid "Phone"
 msgstr ""
 
-#: finder/templates/government.html:40
+#: finder/templates/government.html:39
 msgid "Fax"
+msgstr ""
+
+#: finder/templates/government.html:42
+msgid ""
+"If you would like to specify multiple addresses or numbers, add a "
+"parenthesized label to the column header, e.g. <code>Phone (home)</code>."
 msgstr ""
 
 #: finder/templates/government.html:43

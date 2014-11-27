@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-13 10:19-0400\n"
+"POT-Creation-Date: 2014-11-27 18:02-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -162,7 +162,7 @@ msgid "(if your wards have identifiers as well as names)"
 msgstr "(si vos districts ont des identifiants en plus des noms)"
 
 #: templates/government.html:24
-msgid "Elected office"
+msgid "Primary role"
 msgstr "Rôle"
 
 #: templates/government.html:24
@@ -195,69 +195,65 @@ msgstr "Nom du parti"
 msgid "Email"
 msgstr "Courriel"
 
-#: templates/government.html:30
-msgid "URL"
-msgstr "URL"
+#: templates/government.html:31
+msgid "Source URL"
+msgstr "URL source"
 
-#: templates/government.html:30
+#: templates/government.html:31
 msgid "(a link to the elected official's profile on your municipal website)"
 msgstr "(un lien au profil du représentant sur le site web de la municipalité)"
 
-#: templates/government.html:31
+#: templates/government.html:30
 msgid "Photo URL"
 msgstr "URL d’une photo"
 
-#: templates/government.html:31
+#: templates/government.html:30
 msgid "(a link to a photo of the elected official)"
 msgstr "(un lien pour une photo du représentant)"
 
 #: templates/government.html:32
-msgid "Personal URL"
-msgstr "URL personnel"
+msgid "Website"
+msgstr "Site web"
 
 #: templates/government.html:32
 msgid "(a link to the elected official's own website)"
 msgstr "(un lien pour le site web personnel du représentant)"
 
 #: templates/government.html:33
-msgid "Office type"
-msgstr "Type de bureau"
-
-#: templates/government.html:33
-msgid ""
-"(<code>Legislature</code>, <code>Constituency</code> or <code>Residence</"
-"code> for example)"
-msgstr ""
-"(<code>Législature</code>, <code>Circonscription</code> ou <code>Résidence</"
-"code>, par exemple)"
-
-#: templates/government.html:34
 msgid "Address line 1"
 msgstr "Adresse ligne 1"
 
-#: templates/government.html:35
+#: templates/government.html:34
 msgid "Address line 2"
 msgstr "Adresse ligne 2"
 
-#: templates/government.html:36
+#: templates/government.html:35
 msgid "Locality"
 msgstr "Localité"
 
-#: templates/government.html:37
+#: templates/government.html:36
 msgid "Postal code"
 msgstr "Code postal"
 
-#: templates/government.html:38
+#: templates/government.html:37
 msgid "Province"
 msgstr "Province"
 
-#: templates/government.html:39
+#: templates/government.html:38
 msgid "Phone"
 msgstr "Téléphone"
 
-#: templates/government.html:40
+#: templates/government.html:39
 msgid "Fax"
 msgstr "Fax"
+
+#: templates/government.html:42
+msgid ""
+"If you would like to specify multiple addresses or numbers, add a "
+"parenthesized label to the column header, e.g. <code>Phone (home)</code>."
+msgstr "Si vous souhaitez spécifier plusieurs adresses ou numéros, "
+"ajouter une étiquette entre parenthèse à la tête de la colonne, par exemple "
+"<code>Téléphone (maison)</code>."
 
 #: templates/government.html:43
 msgid ""
