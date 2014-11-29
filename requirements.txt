@@ -1,10 +1,9 @@
 django-extensions==1.4.3
-django-jsonfield==0.9.20 # in represent-boundaries
 Django==1.7
 psycopg2==2.5.4
 # python3-memcached==1.51 # used in production settings.py
 python-memcached==1.53 # used in production settings.py
-represent-boundaries==0.6.0
+represent-boundaries==0.6.1
 South==0.8.4
 Unidecode==0.04.16 # used by definition.py files
 -e git+http://github.com/rhymeswithcycle/represent-reps.git#egg=represent-reps
