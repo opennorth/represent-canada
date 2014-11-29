@@ -1,5 +1,5 @@
 django-extensions==1.4.3
-django-jsonfield>=0.7.1 # in represent-boundaries
+django-jsonfield==0.9.20 # in represent-boundaries
 Django==1.7
 psycopg2==2.5.4
 # python3-memcached==1.51 # used in production settings.py
