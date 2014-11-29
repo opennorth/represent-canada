@@ -1,14 +1,12 @@
-# Copy this file to settings.py and modify relevant settings.
-
 from represent.default_settings import *
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'boundaryservice', # Or path to database file if using sqlite3.
+        'NAME': 'represent',       # Or path to database file if using sqlite3.
         'USER': 'postgres',        # Not used with sqlite3.
         'PASSWORD': '',            # Not used with sqlite3.
         'HOST': 'localhost',       # Set to empty string for localhost. Not used with sqlite3.
@@ -17,50 +15,23 @@ DATABASES = {
 }
 
 ADMINS = (
-    ('My name', 'my@email'),
+    ('Name', 'email@example.com'),
 )
 MANAGERS = ADMINS
+
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+#         'LOCATION': '127.0.0.1:11211',
+#     }
+# }
+
+# REPRESENTATIVES_BOUNDARYSERVICE_URL = 'http://represent.opennorth.ca/'
 
 # You can put acceptable values for the Host header here,
 # to protect against certain potential attacks:
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
 # ALLOWED_HOSTS = ['.opennorth.ca']
 
-#CACHES = {
-#    'default': {
-#        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-#        'LOCATION': '127.0.0.1:11211',
-#    }
-#}
-
-# Uncomment to enable the API throttle.
-# The throttle also requires that caching be configured above.
-# BOUNDARIES_THROTTLE = 'boundaries.throttle.AnonRateThrottle'
-# BOUNDARIES_DEFAULT_THROTTLE_RATES = {
-#     'anon': (60, 60)
-# }
-
-# If you're enabling the throttle and are behind a reverse proxy,
-# you may need something like the following line, depending on
-# which HTTP header the user's IP is in.
-# BOUNDARIES_THROTTLE_IP_HEADER = 'X_REAL_IP'
-
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '+t(q+ljogaj(+7m@kueu-g881gb8xp_oaz)$iabxjp8a1@2#u!'
-
-# To enable Sentry logging, ensure the raven package is installed,
-# and uncomment and edit:
-#
-# INSTALLED_APPS.append('raven.contrib.django')
-# RAVEN_CONFIG = {
-#    'dsn': 'RAVEN DSN'
-# }
-# LOGGING['handlers']['sentry'] = {
-#     'level': 'WARNING',
-#     'class': 'raven.contrib.django.handlers.SentryHandler'
-# }
-# LOGGING['root'] = {
-#     'level': 'WARNING',
-#     'handlers': ['sentry']
-# }
-# del LOGGING['loggers']['django.request']
