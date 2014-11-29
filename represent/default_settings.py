@@ -27,7 +27,6 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django.contrib.gis',
     'django_extensions',
-    'south',
     'boundaries',
     'representatives',
     'postcodes',
