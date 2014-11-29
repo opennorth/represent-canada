@@ -1,8 +1,6 @@
 *.pyc
 *.swp
 .DS_Store
-build
-venv
 settings.py
 /static
 /fabfile.py
