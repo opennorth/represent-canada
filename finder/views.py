@@ -4,23 +4,30 @@ from django.shortcuts import render_to_response
 from django.utils.translation import check_for_language
 from django.utils.http import is_safe_url
 
+
 def index(request):
     return render_to_response('index.html')
+
 
 def api(request):
     return render_to_response('api.html')
 
+
 def data(request):
     return render_to_response('data.html')
+
 
 def demo(request):
     return render_to_response('demo.html')
 
+
 def government(request):
     return render_to_response('government.html')
 
+
 def privacy(request):
     return render_to_response('privacy.html')
+
 
 # @see django/views/i18n.py
 def set_language(request):
