@@ -1,6 +1,6 @@
 # coding: utf-8
 import os
-BASE_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__), '..'))
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # @see https://docs.djangoproject.com/en/1.5/topics/i18n/translation/
 from django.conf import global_settings
