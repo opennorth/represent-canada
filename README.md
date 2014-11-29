@@ -10,7 +10,7 @@ This repository contains a master Django project, documentation, and a demo app.
 * [represent-reps](http://github.com/rhymeswithcycle/represent-reps)
 * [represent-postcodes](http://github.com/rhymeswithcycle/represent-postcodes)
 
-While the Canada site doesn't currently use it, there's a plugin project to provide colourful district map tiles:
+There's also a package to provide colourful district map tiles:
 
 * [represent-maps](http://github.com/tauberer/represent-maps)
 
@@ -22,7 +22,7 @@ Follow the instructions in the [Python Quick Start Guide](https://github.com/ope
 
 Create a database using the PostGIS template:
 
-    createdb -h localhost boundaryservice -T template_postgis
+    createdb -h localhost represent -T template_postgis
 
 Install the project:
 
@@ -49,12 +49,10 @@ You can launch a development server with:
     mkdir data
     ln -s /path/to/represent-canada-data/ data/shapefiles
 
-To load the data into the API, see the documentation for the boundaries, representatives, and postcodes packages.
+To load the data into the API, see the boundaries, representatives, and postcodes packages.
 
-## International Use
+## Bugs? Questions?
 
-Apart from the postcode component, which is optional and simple to rewrite, we've tried to avoid any Canada-specific code in this project. We hope reusing our code isn't too difficult, and would love to hear about international project using this code.
+This repository is on GitHub: [http://github.com/opennorth/represent-canada](http://github.com/opennorth/represent-canada), where your contributions, forks, bug reports, feature requests, and feedback are greatly welcomed.
 
-## Contact
-
-Please use [GitHub Issues](http://github.com/opennorth/represent-canada/issues) for bug reports, feature requests, etc. You may also contact [represent@opennorth.ca](mailto:represent@opennorth.ca).
+Copyright (c) 2012 Open North Inc., released under the MIT license
