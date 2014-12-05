@@ -13,6 +13,7 @@ TEMPLATE_LOADERS = global_settings.TEMPLATE_LOADERS + (
 MIDDLEWARE_CLASSES = global_settings.MIDDLEWARE_CLASSES + (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.locale.LocaleMiddleware',
 )
 TEMPLATE_DIRS = (
