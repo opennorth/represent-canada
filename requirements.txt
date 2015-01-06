@@ -2,7 +2,7 @@ django-extensions==1.4.3
 Django==1.7
 psycopg2==2.5.4
 python3-memcached==1.51
-represent-boundaries==0.6.3
+represent-boundaries==0.6.4
 Unidecode==0.04.16 # used by definition.py files
 -e git+http://github.com/opennorth/represent-reps.git#egg=represent-reps
 -e git+http://github.com/opennorth/represent-postcodes.git#egg=represent-postcodes
