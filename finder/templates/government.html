@@ -13,6 +13,7 @@
 </div>
 
 {% static "img/template.csv" as spreadsheet_url %}
+{% url "government" as government_url %}
 <div class="container-fluid" id="instructions">
   <ol>
     <li>
@@ -43,6 +44,7 @@
     <li><p>{% trans "Save the spreadsheet in the CSV file format. Microsoft Excel and other programs can do this." %}</p></li>
     <li><p>{% trans "Upload the CSV file to your municipal website. You may need to ask your webmaster." %}</p></li>
     <li><p>{% blocktrans %}<a href="mailto:represent@opennorth.ca">Email us</a> the link to the spreadsheet, and we'll quickly add the information to Represent.{% endblocktrans %}</p></li>
+    <li><p>{% blocktrans %}If you have an open data catalog, you may specify that "This dataset conforms to the <a href="{{ government_url }}">Represent CSV Schema</a> for elected officials' contact information."{% endblocktrans %}</p></li>
   </ol>
 
   <p>{% trans "Now, all you have to do is update the spreadsheet when information changes. We'll automatically import those changes." %}</p>
