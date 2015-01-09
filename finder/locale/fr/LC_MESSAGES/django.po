@@ -326,7 +326,7 @@ msgid "City of Guelph"
 msgstr "Ville de Guelph"
 
 #: templates/government.html:60
-msgid "City of Oakville"
+msgid "Town of Oakville"
 msgstr "Ville d'Oakville"
 
 #: templates/government.html:63
