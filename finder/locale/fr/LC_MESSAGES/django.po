@@ -329,6 +329,14 @@ msgstr "Ville de Guelph"
 msgid "Town of Oakville"
 msgstr "Ville d'Oakville"
 
+#: templates/government.html:61
+msgid "City of Welland"
+msgstr "Ville de Welland"
+
+#: templates/government.html:62
+msgid "City of London"
+msgstr "Ville de London"
+
 #: templates/government.html:63
 msgid "Learn more about Represent"
 msgstr "Pour en savoir plus sur Represent"
