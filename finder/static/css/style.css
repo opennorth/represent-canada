@@ -108,11 +108,6 @@ pre .value {
   padding: 15px 30px;
   font-size: 18px;
 }
-@media (min-width: 768px) {
-  .jumbotron h1 {
-    font-size: 36px;
-  }
-}
 .jumbotron h1.solo {
   margin-bottom: 0;
 }
@@ -185,6 +180,11 @@ div div .row {
 #users img {
   margin: 20px 15px 0;
 }
+@media (max-width: 479px) {
+  #users img {
+    margin: 20px 10px 0;
+  }
+}
 
 #coverage {
   margin-bottom: 60px;
@@ -200,12 +200,6 @@ div div .row {
     margin-top: 20px;
   }
 }
-@media (max-width: 991px) {
-  #coverage h1 {
-    font-size: 30px;
-  }
-}
-
 #features {
   text-align: center;
 }
@@ -369,4 +363,39 @@ p#fields {
 }
 #api #representative .container-fluid {
   margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+  .jumbotron h1 {
+    font-size: 36px;
+  }
+}
+@media (max-width: 991px) {
+  h1,
+  h2,
+  #coverage h1 {
+    font-size: 28px;
+  }
+}
+@media (max-width: 479px) {
+  h1,
+  h2 {
+    font-size: 24px;
+  }
+
+  .navbar .navbar-nav,
+  .jumbotron p,
+  .jumbotron .btn,
+  .row p,
+  .row ul,
+  #getting-started .btn,
+  .banner p,
+  p#usage,
+  p#government,
+  #apibrowser,
+  #instructions,
+  #privacy,
+  #api section .container-fluid {
+    font-size: 16px;
+  }
 }

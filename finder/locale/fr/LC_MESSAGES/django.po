@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-08 12:50-0500\n"
+"POT-Creation-Date: 2015-01-21 15:30-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,21 +18,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: templates/data.html:5
+#: finder/templates/data.html:5
 msgid "CSV Downloads"
 msgstr "Téléchargements CSV"
 
-#: templates/data.html:5 templates/government.html:5 templates/index.html:5
+#: finder/templates/data.html:5 finder/templates/government.html:5
+#: finder/templates/index.html:5
 msgid "Represent Elected Officials and Electoral Districts API for Canada"
 msgstr ""
 "Represent: une API pour les représentants élus et les districts électoraux "
 "au Canada"
 
-#: templates/data.html:11
+#: finder/templates/data.html:11
 msgid "Download elected officials' contact information as a spreadsheet."
 msgstr "Téléchargez les coordonnées des représentants élus."
 
-#: templates/data.html:16
+#: finder/templates/data.html:16
 msgid ""
 "All downloads are available in the <abbr title=\"Comma-Separated Value\" "
 "data-toggle=\"tooltip\">CSV</abbr> file format. Click any link to download a "
@@ -44,7 +45,7 @@ msgstr ""
 "afin de télécharger un CSV, que vous pouvez ouvrir dans un tableur comme "
 "Microsoft Excel ou LibreOffice Calc."
 
-#: templates/data.html:18
+#: finder/templates/data.html:18
 msgid ""
 "Are we missing information that you need? <a href=\"mailto:"
 "represent@opennorth.ca\">Contact us</a> so that we can make it a priority."
@@ -53,35 +54,36 @@ msgstr ""
 "\"mailto:represent@opennorth.ca\">Contactez-nous</a> et nous en ferons une "
 "priorité."
 
-#: templates/data.html:21
+#: finder/templates/data.html:21
 msgid "Retrieving information…"
 msgstr "Chargement en cours…"
 
-#: templates/data.html:26
+#: finder/templates/data.html:26
 msgid "Do more with Represent."
 msgstr "Encore plus de possibilités avec Represent!"
 
-#: templates/data.html:28
+#: finder/templates/data.html:28
 msgid "What is Represent?"
 msgstr "En savoir plus"
 
-#: templates/data.html:29 templates/index.html:147
+#: finder/templates/data.html:29 finder/templates/index.html:155
 msgid "Read the API reference"
 msgstr "Lire la référence API"
 
-#: templates/data.html:30 templates/index.html:148
+#: finder/templates/data.html:30 finder/templates/index.html:156
 msgid "Try the “Find Your Reps” app"
 msgstr "Essayer le démo"
 
-#: templates/data.html:31 templates/index.html:12 templates/index.html.py:149
+#: finder/templates/data.html:31 finder/templates/index.html:12
+#: finder/templates/index.html.py:157
 msgid "Try the demo app"
 msgstr "Essayer le démo"
 
-#: templates/demo.html:5
+#: finder/templates/demo.html:5
 msgid "Find Your Canadian Representatives with the Represent API"
 msgstr "Trouvez vos représentants élus avec l'API Represent"
 
-#: templates/demo.html:16
+#: finder/templates/demo.html:16
 msgid ""
 "Find your <span class=\"hidden-xxs\">representatives</span><span class="
 "\"visible-xxs\">reps</span>"
@@ -89,52 +91,52 @@ msgstr ""
 "Trouvez vos <span class=\"hidden-xxs\">représentants</span><span class="
 "\"visible-xxs\">élus</span>"
 
-#: templates/demo.html:19 templates/demo.html.py:20
+#: finder/templates/demo.html:19 finder/templates/demo.html.py:20
 msgid "Enter an address or postal code"
 msgstr "Entrez une adresse ou un code postal"
 
-#: templates/demo.html:22
+#: finder/templates/demo.html:22
 msgid "Find"
 msgstr "Trouvez"
 
-#: templates/demo.html:28
+#: finder/templates/demo.html:28
 msgid "Which address is yours?"
 msgstr "Quelle adresse est la vôtre?"
 
-#: templates/demo.html:31
+#: finder/templates/demo.html:31
 msgid "We couldn't find your address. Please try again."
 msgstr "Nous ne pouvons trouver votre adresse. Veuillez réessayer."
 
-#: templates/demo.html:34
+#: finder/templates/demo.html:34
 msgid "Something went wrong. Please try again."
 msgstr "Une erreur a été commise de notre côté. Veuillez réessayer."
 
-#: templates/demo.html:46
+#: finder/templates/demo.html:46
 msgid "Do you want a representative lookup form on your website?"
 msgstr ""
 "Voulez-vous un moteur de recherche pour les représentants sur votre site web?"
 
-#: templates/demo.html:48 templates/index.html:13
+#: finder/templates/demo.html:48 finder/templates/index.html:13
 msgid "Use the free API"
 msgstr "Utilisez l’API"
 
-#: templates/demo.html:49
+#: finder/templates/demo.html:49
 msgid "Use the jQuery Find-Your-Rep plugin"
 msgstr "Utilisez le plugin jQuery “Find-Your-Rep”"
 
-#: templates/demo.html:50
+#: finder/templates/demo.html:50
 msgid "Use the jQuery plugin"
 msgstr "Utilisez le plugin jQuery"
 
-#: templates/government.html:5
+#: finder/templates/government.html:5
 msgid "For Government"
 msgstr "Pour les gouvernements"
 
-#: templates/government.html:11
+#: finder/templates/government.html:11
 msgid "Adding your elected officials to Represent is easy."
 msgstr "Il est facile d’ajouter vos représentants élus à Represent."
 
-#: templates/government.html:20
+#: finder/templates/government.html:20
 #, python-format
 msgid ""
 "Download our <a href=\"%(spreadsheet_url)s\">spreadsheet template</a>, or "
@@ -145,109 +147,109 @@ msgstr ""
 "créez votre propre tableau avec les colonnes ci-dessous. Vous pouvez omettre "
 "certaines informations. Les plus importantes sont en <strong>gras</strong>."
 
-#: templates/government.html:23
+#: finder/templates/government.html:23
 msgid "District name"
 msgstr "Nom du district"
 
-#: templates/government.html:23
+#: finder/templates/government.html:23
 msgid "(if your municipality is divided into wards, districts or divisions)"
 msgstr "(si votre municipalité est divisée en districts)"
 
-#: templates/government.html:24
+#: finder/templates/government.html:24
 msgid "District ID"
 msgstr "Identifiant du district"
 
-#: templates/government.html:24
+#: finder/templates/government.html:24
 msgid "(if your wards have identifiers as well as names)"
 msgstr "(si vos districts ont des identifiants en plus des noms)"
 
-#: templates/government.html:25
+#: finder/templates/government.html:25
 msgid "Primary role"
 msgstr "Rôle"
 
-#: templates/government.html:25
+#: finder/templates/government.html:25
 msgid "(<code>Mayor</code> or <code>Councillor</code> for most municipalities)"
 msgstr ""
 "(<code>Maire</code> ou <code>Conseiller</code> pour la plupart des "
 "municipalités)"
 
-#: templates/government.html:26
+#: finder/templates/government.html:26
 msgid "First name"
 msgstr "Prénom"
 
-#: templates/government.html:27
+#: finder/templates/government.html:27
 msgid "Last name"
 msgstr "Nom"
 
-#: templates/government.html:28
+#: finder/templates/government.html:28
 msgid "Gender"
 msgstr "Genre"
 
-#: templates/government.html:28
+#: finder/templates/government.html:28
 msgid "(<code>M</code> or <code>F</code> for example)"
 msgstr "(<code>M</code> ou <code>F</code>, par exemple)"
 
-#: templates/government.html:29
+#: finder/templates/government.html:29
 msgid "Party name"
 msgstr "Nom du parti"
 
-#: templates/government.html:30
+#: finder/templates/government.html:30
 msgid "Email"
 msgstr "Courriel"
 
-#: templates/government.html:31
+#: finder/templates/government.html:31
 msgid "Photo URL"
 msgstr "URL d’une photo"
 
-#: templates/government.html:31
+#: finder/templates/government.html:31
 msgid "(a link to a photo of the elected official)"
 msgstr "(un lien pour une photo du représentant)"
 
-#: templates/government.html:32
+#: finder/templates/government.html:32
 msgid "Source URL"
 msgstr "URL source"
 
-#: templates/government.html:32
+#: finder/templates/government.html:32
 msgid "(a link to the elected official's profile on your municipal website)"
 msgstr "(un lien au profil du représentant sur le site web de la municipalité)"
 
-#: templates/government.html:33
+#: finder/templates/government.html:33
 msgid "Website"
 msgstr "Site web"
 
-#: templates/government.html:33
+#: finder/templates/government.html:33
 msgid "(a link to the elected official's own website)"
 msgstr "(un lien pour le site web personnel du représentant)"
 
-#: templates/government.html:34
+#: finder/templates/government.html:34
 msgid "Address line 1"
 msgstr "Adresse ligne 1"
 
-#: templates/government.html:35
+#: finder/templates/government.html:35
 msgid "Address line 2"
 msgstr "Adresse ligne 2"
 
-#: templates/government.html:36
+#: finder/templates/government.html:36
 msgid "Locality"
 msgstr "Localité"
 
-#: templates/government.html:37
+#: finder/templates/government.html:37
 msgid "Postal code"
 msgstr "Code postal"
 
-#: templates/government.html:38
+#: finder/templates/government.html:38
 msgid "Province"
 msgstr "Province"
 
-#: templates/government.html:39
+#: finder/templates/government.html:39
 msgid "Phone"
 msgstr "Téléphone"
 
-#: templates/government.html:40
+#: finder/templates/government.html:40
 msgid "Fax"
 msgstr "Fax"
 
-#: templates/government.html:43
+#: finder/templates/government.html:43
 msgid ""
 "If you would like to specify multiple addresses or numbers, add a "
 "parenthesized label to the column header, e.g. <code>Phone (home)</code>."
@@ -256,7 +258,7 @@ msgstr ""
 "étiquette entre parenthèse à la tête de la colonne, par exemple "
 "<code>Téléphone (maison)</code>."
 
-#: templates/government.html:44
+#: finder/templates/government.html:44
 msgid ""
 "Save the spreadsheet in the CSV file format. Microsoft Excel and other "
 "programs can do this."
@@ -264,7 +266,7 @@ msgstr ""
 "Sauvegardez le tableau en format CSV. Il est possible de le faire sur "
 "Microsoft Excel ou sur d’autres programmes."
 
-#: templates/government.html:45
+#: finder/templates/government.html:45
 msgid ""
 "Upload the CSV file to your municipal website. You may need to ask your "
 "webmaster."
@@ -272,7 +274,7 @@ msgstr ""
 "Téléchargez le fichier CSV au site web de votre municipalité. Il est "
 "possible que vous ayez à demander l’aide du webmestre."
 
-#: templates/government.html:46
+#: finder/templates/government.html:46
 msgid ""
 "<a href=\"mailto:represent@opennorth.ca\">Email us</a> the link to the "
 "spreadsheet, and we'll quickly add the information to Represent."
@@ -281,7 +283,7 @@ msgstr ""
 "tableau par courriel, et nous ajouterons rapidement l’information à "
 "Represent. "
 
-#: templates/government.html:47
+#: finder/templates/government.html:47
 #, python-format
 msgid ""
 "If you have an open data catalog, you may specify that \"This dataset "
@@ -292,7 +294,7 @@ msgstr ""
 "« Ce jeu de données est conforme au <a href=\"%(government_url)s\">Schéma "
 "CSV Represent</a> pour les coordonnées des élus. »"
 
-#: templates/government.html:50
+#: finder/templates/government.html:50
 msgid ""
 "Now, all you have to do is update the spreadsheet when information changes. "
 "We'll automatically import those changes."
@@ -300,7 +302,7 @@ msgstr ""
 "Il suffit maintenant de mettre les informations à jour dans le tableau. Ces "
 "mises à jour seront automatiquement importées."
 
-#: templates/government.html:51
+#: finder/templates/government.html:51
 msgid ""
 "If you have any questions, please do not hesitate to <a href=\"mailto:"
 "represent@opennorth.ca\">contact us</a>."
@@ -308,40 +310,40 @@ msgstr ""
 "Pour toute question, n’hésitez pas à <a href=\"mailto:represent@opennorth.ca"
 "\">nous contacter</a>."
 
-#: templates/government.html:55
+#: finder/templates/government.html:55
 msgid ""
 "Thanks to the following municipalities for providing information as CSV!"
 msgstr "Merci à ces municipalités d'avoir fourni l'information en CSV!"
 
-#: templates/government.html:57
+#: finder/templates/government.html:57
 msgid "City of Ottawa"
 msgstr "Ville d'Ottawa"
 
-#: templates/government.html:58
+#: finder/templates/government.html:58
 msgid "City of Vancouver"
 msgstr "Ville de Vancouver"
 
-#: templates/government.html:59
+#: finder/templates/government.html:59
 msgid "City of Guelph"
 msgstr "Ville de Guelph"
 
-#: templates/government.html:60
+#: finder/templates/government.html:60
 msgid "Town of Oakville"
 msgstr "Ville d'Oakville"
 
-#: templates/government.html:61
+#: finder/templates/government.html:61
 msgid "City of Welland"
 msgstr "Ville de Welland"
 
-#: templates/government.html:62
+#: finder/templates/government.html:62
 msgid "City of London"
 msgstr "Ville de London"
 
-#: templates/government.html:63
+#: finder/templates/government.html:65
 msgid "Learn more about Represent"
 msgstr "Pour en savoir plus sur Represent"
 
-#: templates/index.html:10
+#: finder/templates/index.html:10
 msgid ""
 "Find the elected officials and electoral districts for any Canadian address "
 "or postal code, at all levels of government"
@@ -349,16 +351,16 @@ msgstr ""
 "Identifiez élus et districts électoraux à partir d’une adresse ou d’un code "
 "postal au Canada, pour chaque palier gouvernemental"
 
-#: templates/index.html:14
+#: finder/templates/index.html:14
 msgid "Download the data"
 msgstr "Téléchargez les données"
 
-#: templates/index.html:22
+#: finder/templates/index.html:22
 msgid "Connect your supporters with their political representatives."
 msgstr ""
 "Aidez vos militants à entrer en contact avec leurs représentants politiques."
 
-#: templates/index.html:23
+#: finder/templates/index.html:23
 msgid ""
 "Represent matches a supporter's postal code or geocoded address to the "
 "correct elected officials. It makes it easy for you to build “email your "
@@ -371,7 +373,7 @@ msgstr ""
 "nous pouvons identifier les candidats pour chaque circonscription ou "
 "district."
 
-#: templates/index.html:27
+#: finder/templates/index.html:27
 msgid ""
 "I used your municipal data as part of a successful letter writing campaign "
 "from constituents to their elected municipal politicians, which resulted in "
@@ -384,13 +386,13 @@ msgstr ""
 "l’augmentation du trafic des pétroliers sur la côte de la Colombie-"
 "Britannique."
 
-#: templates/index.html:38
+#: finder/templates/index.html:38
 msgid "Provide relevant information based on your user's electoral district."
 msgstr ""
 "Indiquez l’information pertinente selon le district électoral de "
 "l’utilisateur."
 
-#: templates/index.html:39
+#: finder/templates/index.html:39
 msgid ""
 "Collect a user's postal code or address, and use Represent to match it to an "
 "electoral district. By identifying their riding, you can invite supporters "
@@ -402,7 +404,7 @@ msgstr ""
 "niveau local ou offrir aux lecteurs des nouvelles liées à la course "
 "électorale qui s’y déroule."
 
-#: templates/index.html:43
+#: finder/templates/index.html:43
 msgid ""
 "For our BC Election Guide, we used a few endpoints of the Represent API: the "
 "representative lookup by riding, the BC provincial riding boundaries and "
@@ -416,13 +418,13 @@ msgstr ""
 "absorbé beaucoup de temps si les données n’avaient pas été disponibles); et "
 "la recherche de circonscriptions par latitude et longitude."
 
-#: templates/index.html:54
+#: finder/templates/index.html:54
 msgid "Map your potential voters, donors and volunteers to electoral ridings."
 msgstr ""
 "Identifiez vos électeurs potentiels, vos donateurs et vos bénévoles sur la "
 "carte électorale"
 
-#: templates/index.html:55
+#: finder/templates/index.html:55
 msgid ""
 "If your people database contains postal codes or addresses, use Represent to "
 "match people to their electoral districts. By mapping people geographically, "
@@ -435,55 +437,59 @@ msgstr ""
 "à-porte, mobiliser les bénévoles et organiser les collectes de dons de façon "
 "plus efficace."
 
-#: templates/index.html:70
-msgid "Used by nonprofits across Canada."
+#: finder/templates/index.html:70
+msgid "Used by nonprofits and unions across Canada."
 msgstr "Utilisé à travers le Canada par les organismes à but non lucratif."
 
-#: templates/index.html:72
+#: finder/templates/index.html:72
 msgid "David Suzuki Foundation"
 msgstr "Fondation David Suzuki"
 
-#: templates/index.html:73
-msgid "Leadnow"
-msgstr "À l'action"
-
-#: templates/index.html:74
+#: finder/templates/index.html:74
 msgid "Council of Canadians"
 msgstr "Conseil des canadiens"
 
-#: templates/index.html:78
+#: finder/templates/index.html:77
+msgid "Leadnow"
+msgstr "À l'action"
+
+#: finder/templates/index.html:81
 msgid "Canadian Union of Public Employees"
 msgstr "Syndicat canadien de la fonction publique"
 
-#: templates/index.html:79
+#: finder/templates/index.html:84
 msgid "Public Service Alliance of Canada"
 msgstr "Alliance de la fonction publique du Canada"
 
-#: templates/index.html:84
+#: finder/templates/index.html:88
+msgid "Canadian Union of Postal Workers"
+msgstr "Syndicat des travailleurs et travailleuses des postes"
+
+#: finder/templates/index.html:95
 msgid "Fair Vote Canada"
 msgstr "Représentation équitable au Canada"
 
-#: templates/index.html:86
+#: finder/templates/index.html:96
 msgid "Canadians for Tax Fairness"
 msgstr "Canadiens pour une fiscalité équitable"
 
-#: templates/index.html:88
+#: finder/templates/index.html:97
 msgid "Democracy Watch"
 msgstr "Démocratie en surveillance"
 
-#: templates/index.html:97
+#: finder/templates/index.html:105
 msgid "The most comprehensive source in Canada for:"
 msgstr "La ressource la plus complète au Canada pour:"
 
-#: templates/index.html:100
+#: finder/templates/index.html:108
 msgid "Elected officials"
 msgstr "Les représentants élus"
 
-#: templates/index.html:102
+#: finder/templates/index.html:110
 msgid "All Members of Parliament (MPs)"
 msgstr "Tous les députés fédéraux"
 
-#: templates/index.html:103
+#: finder/templates/index.html:111
 msgid ""
 "All <abbr data-toggle=\"tooltip\" title=\"Members of Legislative Assembly"
 "\">MLAs</abbr>, <abbr data-toggle=\"tooltip\" title=\"Members of Provincial "
@@ -493,27 +499,27 @@ msgid ""
 "Labrador)\">MHAs</abbr>"
 msgstr "Tous les députés provinciaux"
 
-#: templates/index.html:104
+#: finder/templates/index.html:112
 msgid "Over 11,000 mayors and councillors"
 msgstr "Plus de 11 000 maires et conseillers municipaux"
 
-#: templates/index.html:108
+#: finder/templates/index.html:116
 msgid "Electoral districts"
 msgstr "Les districts électoraux"
 
-#: templates/index.html:110
+#: finder/templates/index.html:118
 msgid "All federal electoral districts"
 msgstr "Toutes les circonscriptions fédérales"
 
-#: templates/index.html:111
+#: finder/templates/index.html:119
 msgid "All provincial electoral districts"
 msgstr "Toutes les circonscriptions provinciales"
 
-#: templates/index.html:112
+#: finder/templates/index.html:120
 msgid "Over 8,000 municipal wards"
 msgstr "Plus de 8 000 districts municipaux"
 
-#: templates/index.html:127
+#: finder/templates/index.html:135
 msgid ""
 "Easily integrate Represent into your CMS, using our <a href=\"https://drupal."
 "org/project/represent\">Drupal</a> and <a href=\"http://wordpress.org/"
@@ -523,7 +529,7 @@ msgstr ""
 "\"https://drupal.org/project/represent\">Drupal</a> ou <a href=\"http://"
 "wordpress.org/plugins/represent-api/\">WordPress</a>"
 
-#: templates/index.html:135
+#: finder/templates/index.html:143
 msgid ""
 "Use the <a href=\"https://github.com/opennorth/govkit-ca#readme\">Ruby</a>, "
 "<a href=\"https://github.com/ncadou/pyrepresent#readme\">Python</a> or <a "
@@ -535,7 +541,7 @@ msgstr ""
 "\">Python</a> ou <a href=\"https://github.com/sprice/represent#readme\">Node."
 "js</a> pour développer rapidement de nouvelles applications"
 
-#: templates/index.html:141
+#: finder/templates/index.html:149
 msgid ""
 "Represent is <a href=\"https://github.com/opennorth/represent-canada\">open "
 "source</a> and makes its <a href=\"https://github.com/opennorth/represent-"
@@ -545,7 +551,11 @@ msgstr ""
 "source</a> et rend ses <a href=\"https://github.com/opennorth/represent-"
 "canada-data\">données</a> disponibles où c’est possible"
 
-#: templates/index.html:156
+#: finder/templates/index.html:158
+msgid "Contact us"
+msgstr "Contactez-nous"
+
+#: finder/templates/index.html:164
 msgid ""
 "Join our <a href=\"https://groups.google.com/forum/#!forum/represent-canada"
 "\">Developer Forum</a> to be notified of API changes"
@@ -553,15 +563,15 @@ msgstr ""
 "Rejoignez notre <a href=\"https://groups.google.com/forum/#!forum/represent-"
 "canada\">forum</a> pour être informé de tout changement à l’API"
 
-#: templates/index.html:157
+#: finder/templates/index.html:165
 msgid "Join Group"
 msgstr "Joindre le groupe"
 
-#: templates/index.html:159
+#: finder/templates/index.html:167
 msgid "Government Officials and Open Data Managers:"
 msgstr "Fonctionnaires et gestionnaires de données ouvertes:"
 
-#: templates/index.html:159
+#: finder/templates/index.html:167
 #, python-format
 msgid ""
 "Find out how to <a href=\"%(government_url)s\">add your elected officials to "
@@ -570,7 +580,7 @@ msgstr ""
 "découvrez comment <a href=\"%(government_url)s\">ajouter vos représentants "
 "élus à Represent</a>."
 
-#: templates/index.html:160
+#: finder/templates/index.html:168
 msgid ""
 "We are excited to see how Represent is being used. <a href=\"mailto:"
 "represent@opennorth.ca\">Contact us</a> and show us what you've made!"
