@@ -17,7 +17,6 @@ DATABASES = {
 ADMINS = (
     ('Name', 'email@example.com'),
 )
-MANAGERS = ADMINS
 
 # CACHES = {
 #     'default': {
