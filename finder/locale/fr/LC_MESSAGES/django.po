@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-21 15:30-0500\n"
+"POT-Creation-Date: 2015-01-21 20:29-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -234,12 +234,24 @@ msgid "Locality"
 msgstr "Localité"
 
 #: finder/templates/government.html:37
-msgid "Postal code"
-msgstr "Code postal"
-
-#: finder/templates/government.html:38
 msgid "Province"
 msgstr "Province"
+
+#: finder/templates/government.html:37
+msgid ""
+"(<code>AB</code>, <code>BC</code>, <code>MB</code>, <code>NB</code>, "
+"<code>NL</code>, <code>NS</code>, <code>NT</code>, <code>NU</code>, "
+"<code>ON</code>, <code>PE</code>, <code>QC</code>, <code>SK</code> or "
+"<code>YT</code>)"
+msgstr ""
+"(<code>AB</code>, <code>BC</code>, <code>MB</code>, <code>NB</code>, "
+"<code>NL</code>, <code>NS</code>, <code>NT</code>, <code>NU</code>, "
+"<code>ON</code>, <code>PE</code>, <code>QC</code>, <code>SK</code> ou "
+"<code>YT</code>)"
+
+#: finder/templates/government.html:38
+msgid "Postal code"
+msgstr "Code postal"
 
 #: finder/templates/government.html:39
 msgid "Phone"
@@ -249,7 +261,27 @@ msgstr "Téléphone"
 msgid "Fax"
 msgstr "Fax"
 
+#: finder/templates/government.html:41
+msgid "Cell"
+msgstr "Cellulaire"
+
+#: finder/templates/government.html:42
+msgid "Facebook"
+msgstr "Facebook"
+
+#: finder/templates/government.html:42
+msgid "(a link to the elected official's Facebook page)"
+msgstr "(un lien pour la page Facebook du représentant)"
+
 #: finder/templates/government.html:43
+msgid "Twitter"
+msgstr "Twitter"
+
+#: finder/templates/government.html:43
+msgid "(a link to the elected official's Twitter page)"
+msgstr "(un lien pour la page Twitter du représentant)"
+
+#: finder/templates/government.html:46
 msgid ""
 "If you would like to specify multiple addresses or numbers, add a "
 "parenthesized label to the column header, e.g. <code>Phone (home)</code>."
@@ -258,7 +290,7 @@ msgstr ""
 "étiquette entre parenthèse à la tête de la colonne, par exemple "
 "<code>Téléphone (maison)</code>."
 
-#: finder/templates/government.html:44
+#: finder/templates/government.html:47
 msgid ""
 "Save the spreadsheet in the CSV file format. Microsoft Excel and other "
 "programs can do this."
@@ -266,7 +298,7 @@ msgstr ""
 "Sauvegardez le tableau en format CSV. Il est possible de le faire sur "
 "Microsoft Excel ou sur d’autres programmes."
 
-#: finder/templates/government.html:45
+#: finder/templates/government.html:48
 msgid ""
 "Upload the CSV file to your municipal website. You may need to ask your "
 "webmaster."
@@ -274,7 +306,7 @@ msgstr ""
 "Téléchargez le fichier CSV au site web de votre municipalité. Il est "
 "possible que vous ayez à demander l’aide du webmestre."
 
-#: finder/templates/government.html:46
+#: finder/templates/government.html:49
 msgid ""
 "<a href=\"mailto:represent@opennorth.ca\">Email us</a> the link to the "
 "spreadsheet, and we'll quickly add the information to Represent."
@@ -283,7 +315,7 @@ msgstr ""
 "tableau par courriel, et nous ajouterons rapidement l’information à "
 "Represent. "
 
-#: finder/templates/government.html:47
+#: finder/templates/government.html:50
 #, python-format
 msgid ""
 "If you have an open data catalog, you may specify that \"This dataset "
@@ -294,7 +326,7 @@ msgstr ""
 "« Ce jeu de données est conforme au <a href=\"%(government_url)s\">Schéma "
 "CSV Represent</a> pour les coordonnées des élus. »"
 
-#: finder/templates/government.html:50
+#: finder/templates/government.html:53
 msgid ""
 "Now, all you have to do is update the spreadsheet when information changes. "
 "We'll automatically import those changes."
@@ -302,7 +334,7 @@ msgstr ""
 "Il suffit maintenant de mettre les informations à jour dans le tableau. Ces "
 "mises à jour seront automatiquement importées."
 
-#: finder/templates/government.html:51
+#: finder/templates/government.html:54
 msgid ""
 "If you have any questions, please do not hesitate to <a href=\"mailto:"
 "represent@opennorth.ca\">contact us</a>."
@@ -310,36 +342,36 @@ msgstr ""
 "Pour toute question, n’hésitez pas à <a href=\"mailto:represent@opennorth.ca"
 "\">nous contacter</a>."
 
-#: finder/templates/government.html:55
+#: finder/templates/government.html:58
 msgid ""
 "Thanks to the following municipalities for providing information as CSV!"
 msgstr "Merci à ces municipalités d'avoir fourni l'information en CSV!"
 
-#: finder/templates/government.html:57
+#: finder/templates/government.html:60
 msgid "City of Ottawa"
 msgstr "Ville d'Ottawa"
 
-#: finder/templates/government.html:58
+#: finder/templates/government.html:61
 msgid "City of Vancouver"
 msgstr "Ville de Vancouver"
 
-#: finder/templates/government.html:59
+#: finder/templates/government.html:62
 msgid "City of Guelph"
 msgstr "Ville de Guelph"
 
-#: finder/templates/government.html:60
+#: finder/templates/government.html:63
 msgid "Town of Oakville"
 msgstr "Ville d'Oakville"
 
-#: finder/templates/government.html:61
+#: finder/templates/government.html:64
 msgid "City of Welland"
 msgstr "Ville de Welland"
 
-#: finder/templates/government.html:62
+#: finder/templates/government.html:65
 msgid "City of London"
 msgstr "Ville de London"
 
-#: finder/templates/government.html:65
+#: finder/templates/government.html:68
 msgid "Learn more about Represent"
 msgstr "Pour en savoir plus sur Represent"
 
@@ -550,10 +582,6 @@ msgstr ""
 "Represent est <a href=\"https://github.com/opennorth/represent-canada\">open "
 "source</a> et rend ses <a href=\"https://github.com/opennorth/represent-"
 "canada-data\">données</a> disponibles où c’est possible"
-
-#: finder/templates/index.html:158
-msgid "Contact us"
-msgstr "Contactez-nous"
 
 #: finder/templates/index.html:164
 msgid ""
