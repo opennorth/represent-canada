@@ -27,6 +27,7 @@ $(function () {
         '/representative-sets/burnaby-city-council/': 'BC',
         '/representative-sets/coquitlam-city-council/': 'BC',
         '/representative-sets/kelowna-city-council/': 'BC',
+        '/representative-sets/langley-township-council/': 'BC',
         '/representative-sets/langley-city-council/': 'BC',
         '/representative-sets/richmond-city-council/': 'BC',
         '/representative-sets/saanich-district-council/': 'BC',
