@@ -2,6 +2,6 @@
 *.swp
 .DS_Store
 settings.py
-/static
+/staticfiles
 /fabfile.py
 /data

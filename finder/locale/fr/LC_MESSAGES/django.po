@@ -371,6 +371,10 @@ msgstr "Ville de Welland"
 msgid "City of London"
 msgstr "Ville de London"
 
+#: finder/templates/government.html:66
+msgid "City of Langley"
+msgstr "Ville de Langley"
+
 #: finder/templates/government.html:68
 msgid "Learn more about Represent"
 msgstr "Pour en savoir plus sur Represent"
