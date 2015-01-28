@@ -51,9 +51,32 @@ function processLatLng(latlng) {
   map.panTo(latlng);
 
   getRepresentativesByLatLng(latlng).then(function (response) {
-    var $representatives = $('<div id="representatives"></div>');
-    var $row;
-    $.each(response.objects, function (i, object) {
+    var representatives = [],
+        $representatives = $('<div id="representatives"></div>'),
+        $row;
+
+    for (var i = response.objects.length; i--;) {
+      if (response.objects[i]['elected_office'] == 'MP') {
+        representatives.push(response.objects[i]);
+        response.objects.splice(i, 1);
+      }
+    }
+    for (var i = response.objects.length; i--;) {
+      if ('MHA|MLA|MNA|MPP'.indexOf(response.objects[i]['elected_office']) >= 0) {
+        representatives.push(response.objects[i]);
+        response.objects.splice(i, 1);
+      }
+    }
+    for (var i = response.objects.length; i--;) {
+      if (response.objects[i]['elected_office'] == 'Mayor') {
+        representatives.push(response.objects[i]);
+        response.objects.splice(i, 1);
+      }
+    }
+
+    representatives = representatives.concat(response.objects);
+
+    $.each(representatives, function (i, object) {
       if (i % 6 == 0) {
         $row = $('<div class="row"></div>');
         $representatives.append($row);
