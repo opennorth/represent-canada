@@ -380,6 +380,10 @@ msgstr "Ville de London"
 msgid "City of Langley"
 msgstr "Ville de Langley"
 
+#: templates/government.html:66
+msgid "City of Grande Prairie"
+msgstr "Ville de Grande Prairie"
+
 #: templates/government.html:69
 msgid "Learn more about Represent"
 msgstr "Pour en savoir plus sur Represent"
