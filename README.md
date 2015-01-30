@@ -2,21 +2,21 @@
 
 [![Dependency Status](https://gemnasium.com/opennorth/represent-canada.png)](https://gemnasium.com/opennorth/represent-canada)
 
-[Represent](http://represent.opennorth.ca) is the open database of Canadian elected officials and electoral districts. It provides a [REST API](http://represent.opennorth.ca/api/) to boundary, representative, and postcode resources.
+[Represent](https://represent.opennorth.ca) is the open database of Canadian elected officials and electoral districts. It provides a [REST API](https://represent.opennorth.ca/api/) to boundary, representative, and postcode resources.
 
 This repository contains a master Django project, documentation, and a demo app. Code for the individual components of the API is in separate packages, which this project depends on:
 
-* [represent-boundaries](http://github.com/rhymeswithcycle/represent-boundaries)
-* [represent-reps](http://github.com/rhymeswithcycle/represent-reps)
-* [represent-postcodes](http://github.com/rhymeswithcycle/represent-postcodes)
+* [represent-boundaries](https://github.com/rhymeswithcycle/represent-boundaries)
+* [represent-reps](https://github.com/rhymeswithcycle/represent-reps)
+* [represent-postcodes](https://github.com/rhymeswithcycle/represent-postcodes)
 
 There's also a package to provide colourful district map tiles:
 
-* [represent-maps](http://github.com/tauberer/represent-maps)
+* [represent-maps](https://github.com/tauberer/represent-maps)
 
 ## Getting Started
 
-The following instructions are to setup your own instance of Represent. If you just want access to data, [please read our API documentation](http://represent.opennorth.ca/api/).
+The following instructions are to setup your own instance of Represent. If you just want access to data, [please read our API documentation](https://represent.opennorth.ca/api/).
 
 Follow the instructions in the [Python Quick Start Guide](https://github.com/opennorth/opennorth.ca/wiki/Python-Quick-Start%3A-OS-X) to install Homebrew, Git, Python, virtualenv, GDAL and PostGIS.
 
@@ -53,6 +53,6 @@ To load the data into the API, see the boundaries, representatives, and postcode
 
 ## Bugs? Questions?
 
-This repository is on GitHub: [http://github.com/opennorth/represent-canada](http://github.com/opennorth/represent-canada), where your contributions, forks, bug reports, feature requests, and feedback are greatly welcomed.
+This repository is on GitHub: [https://github.com/opennorth/represent-canada](https://github.com/opennorth/represent-canada), where your contributions, forks, bug reports, feature requests, and feedback are greatly welcomed.
 
 Copyright (c) 2012 Open North Inc., released under the MIT license

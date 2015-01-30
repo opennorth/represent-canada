@@ -25,7 +25,7 @@ ADMINS = (
 #     }
 # }
 
-# REPRESENTATIVES_BOUNDARYSERVICE_URL = 'http://represent.opennorth.ca/'
+# REPRESENTATIVES_BOUNDARYSERVICE_URL = 'https://represent.opennorth.ca/'
 
 # You can put acceptable values for the Host header here,
 # to protect against certain potential attacks:

@@ -19,7 +19,7 @@
   <div class="container-fluid">
     <h3>Endpoints</h3>
 
-    <p>The base URL of all endpoints is <code>http://represent.opennorth.ca</code>. All endpoints output JSON.</p>
+    <p>The base URL of all endpoints is <code>https://represent.opennorth.ca</code>. All endpoints output JSON.</p>
 
     <ul>
       <li><a href="#postcode">Postal codes</a></li>
@@ -40,7 +40,7 @@
     <p>Perform substring searches by appending <code>__querytype</code> to the parameter name, where <code>querytype</code> is one of <code>iexact</code>, <code>contains</code>, <code>icontains</code>, <code>startswith</code>, <code>istartswith</code>, <code>endswith</code>, <code>iendswith</code> or <code>isnull</code>. A leading <code>i</code> makes the match case-insensitive. For example, to find representatives whose last name starts with “M” or “m”, request <code>/representatives/?last_name__istartswith=m</code>.</p>
 
     <h3>Download in bulk</h3>
-    <p>To download all representatives, send a request to <a href="http://represent.opennorth.ca/representatives/?limit=1000">http://represent.opennorth.ca/representatives/?limit=1000</a> and follow the <code>next</code> link under the <code>meta</code> field until you reach the end. We host the shapefiles and postal code concordances on <a href="https://github.com/opennorth/represent-canada-data">GitHub</a>.</p>
+    <p>To download all representatives, send a request to <a href="https://represent.opennorth.ca/representatives/?limit=1000">https://represent.opennorth.ca/representatives/?limit=1000</a> and follow the <code>next</code> link under the <code>meta</code> field until you reach the end. We host the shapefiles and postal code concordances on <a href="https://github.com/opennorth/represent-canada-data">GitHub</a>.</p>
 
     <h3>Rate limits</h3>
     <p>Represent is free up to 60 requests per minute (86,400 queries/day). If you need to make more queries, <a href="mailto:represent@opennorth.ca">contact us</a>; otherwise, you may get HTTP 503 errors.</p>

@@ -1,5 +1,5 @@
 $(function () {
-  $.getJSON('http://represent.opennorth.ca/boundary-sets/?limit=0', function (data) {
+  $.getJSON('https://represent.opennorth.ca/boundary-sets/?limit=0', function (data) {
     var boundary_sets = {}
       , key_map = {
         'NL': gettext('Newfoundland and Labrador councils')
@@ -40,7 +40,7 @@ $(function () {
       boundary_sets[boundary_set.url] = boundary_set.domain.split(', ')[1];
     });
 
-    $.getJSON('http://represent.opennorth.ca/representative-sets/?limit=0', function (data) {
+    $.getJSON('https://represent.opennorth.ca/representative-sets/?limit=0', function (data) {
       var representative_sets = {'Canada': ['<li><a href="http://represent.opennorth.ca.s3.amazonaws.com/csv/complete.csv">' + gettext('All elected officials') + '</a></li>']}
         , keys = []
         , key
