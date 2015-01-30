@@ -396,6 +396,10 @@ msgstr "Ville de Victoria"
 msgid "City of Kitchener"
 msgstr "Ville de Kitchener"
 
+#: templates/government.html:66
+msgid "City of Windsor"
+msgstr "Ville de Windsor"
+
 #: templates/government.html:69
 msgid "Learn more about Represent"
 msgstr "Pour en savoir plus sur Represent"
