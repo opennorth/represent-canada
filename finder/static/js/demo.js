@@ -30,7 +30,7 @@ function createCache(url) {
  * @param L.LatLng latlng
  */
 var getRepresentativesByLatLng = createCache(function (latlng) {
-  return '/representatives/?limit=0&point=' + latlng.lat + ',' + latlng.lng;
+  return 'https://represent.opennorth.ca/representatives/?limit=0&point=' + latlng.lat + ',' + latlng.lng;
 });
 
 /**
@@ -51,30 +51,26 @@ function processLatLng(latlng) {
   map.panTo(latlng);
 
   getRepresentativesByLatLng(latlng).then(function (response) {
-    var representatives = [],
-        $representatives = $('<div id="representatives"></div>'),
-        $row;
+    var representatives = response.objects.slice(),
+        groups = {},
+        order = 'MP|MHA|MLA|MNA|MPP|Chair|Maire|Mayor|Regional Chair|Warden|Deputy Mayor|Deputy Warden|Councillor at Large|Regional Councillor|Conseiller|Councillor|Commissioner';
 
-    for (var i = response.objects.length; i--;) {
-      if (response.objects[i]['elected_office'] == 'MP') {
-        representatives.push(response.objects[i]);
-        response.objects.splice(i, 1);
+    console.log(response.objects);
+    representatives.sort(function (a, b) {
+      var x = order.indexOf(a['elected_office']),
+          y = order.indexOf(b['elected_office']);
+      if (x < y) {
+        return -1;
       }
-    }
-    for (var i = response.objects.length; i--;) {
-      if ('MHA|MLA|MNA|MPP'.indexOf(response.objects[i]['elected_office']) >= 0) {
-        representatives.push(response.objects[i]);
-        response.objects.splice(i, 1);
+      else if (x > y) {
+        return 1;
       }
-    }
-    for (var i = response.objects.length; i--;) {
-      if (response.objects[i]['elected_office'] == 'Mayor') {
-        representatives.push(response.objects[i]);
-        response.objects.splice(i, 1);
+      else {
+        return a['last_name'] > b['last_name'];
       }
-    }
+    });
 
-    representatives = representatives.concat(response.objects);
+    var $representatives = $('<div id="representatives"></div>'), $row;
 
     $.each(representatives, function (i, object) {
       if (i % 6 == 0) {
@@ -87,8 +83,7 @@ function processLatLng(latlng) {
       else if (i % 2 == 0) {
         $row.append('<div class="clearfix visible-xs"></div>')
       }
-      var $representative = $(representativeTemplate(object));
-      $row.append($representative);
+      $row.append($(representativeTemplate(object)));
     });
 
     $('#representatives').replaceWith($representatives);
@@ -141,7 +136,8 @@ $(function ($) {
     ],
     maxZoom: 17,
     zoom: 13,
-    scrollWheelZoom: false
+    scrollWheelZoom: false,
+    touchZoom: false
   });
   marker = L.marker(latlng, {draggable: true});
   featureGroup = L.featureGroup();
