@@ -13,7 +13,7 @@ var geocoder = new google.maps.Geocoder(),
     );
 
 /**
- * @see http://learn.jquery.com/code-organization/deferreds/examples/
+ * @see https://learn.jquery.com/code-organization/deferreds/examples/
  */
 function createCache(url) {
   var cache = {};
@@ -137,7 +137,7 @@ $(function ($) {
     attributionControl: false,
     center: latlng,
     layers: [
-      L.tileLayer('http://{s}.tiles.mapbox.com/v3/jpmckinney.hlcgg444/{z}/{x}/{y}.png')
+      L.tileLayer('https://{s}.tiles.mapbox.com/v3/jpmckinney.hlcgg444/{z}/{x}/{y}.png')
     ],
     maxZoom: 17,
     zoom: 13,

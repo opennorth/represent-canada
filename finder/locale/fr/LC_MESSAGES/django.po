@@ -583,11 +583,11 @@ msgstr "Plus de 8 000 districts municipaux"
 #: templates/index.html:135
 msgid ""
 "Easily integrate Represent into your CMS, using our <a href=\"https://drupal."
-"org/project/represent\">Drupal</a> and <a href=\"http://wordpress.org/"
+"org/project/represent\">Drupal</a> and <a href=\"https://wordpress.org/"
 "plugins/represent-api/\">WordPress</a> plugins"
 msgstr ""
 "Intégrez facilement Represent à votre CMS en utilisant les plugins <a href="
-"\"https://drupal.org/project/represent\">Drupal</a> ou <a href=\"http://"
+"\"https://drupal.org/project/represent\">Drupal</a> ou <a href=\"https://"
 "wordpress.org/plugins/represent-api/\">WordPress</a>"
 
 #: templates/index.html:143

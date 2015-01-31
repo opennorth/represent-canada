@@ -144,7 +144,7 @@
   background-color: #158cba;
 }
 
-/* http://stackoverflow.com/questions/5445491/height-equal-to-dynamic-width-css-fluid-layout */
+/* https://stackoverflow.com/questions/5445491/height-equal-to-dynamic-width-css-fluid-layout */
 .avatar {
   overflow: hidden;
   width: 100%;
