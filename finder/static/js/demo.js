@@ -30,7 +30,7 @@ function createCache(url) {
  * @param L.LatLng latlng
  */
 var getRepresentativesByLatLng = createCache(function (latlng) {
-  return 'https://represent.opennorth.ca/representatives/?limit=0&point=' + latlng.lat + ',' + latlng.lng;
+  return '/representatives/?limit=0&point=' + latlng.lat + ',' + latlng.lng;
 });
 
 /**
@@ -55,7 +55,6 @@ function processLatLng(latlng) {
         groups = {},
         order = 'MP|MHA|MLA|MNA|MPP|Chair|Maire|Mayor|Regional Chair|Warden|Deputy Mayor|Deputy Warden|Councillor at Large|Regional Councillor|Conseiller|Councillor|Commissioner';
 
-    console.log(response.objects);
     representatives.sort(function (a, b) {
       var x = order.indexOf(a['elected_office']),
           y = order.indexOf(b['elected_office']);
@@ -65,8 +64,11 @@ function processLatLng(latlng) {
       else if (x > y) {
         return 1;
       }
+      else if (a['last_name'] < b['last_name']) {
+        return -1;
+      }
       else {
-        return a['last_name'] > b['last_name'];
+        return 1;
       }
     });
 
