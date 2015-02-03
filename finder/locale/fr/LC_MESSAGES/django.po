@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-22 16:15-0500\n"
+"POT-Creation-Date: 2015-02-03 15:19-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -154,7 +154,7 @@ msgid ""
 "(if your municipality is divided into wards, districts or divisions – "
 "<code>Ward 2</code> for example)"
 msgstr ""
-"(si votre municipalité est divisée en districts – <code>District 2</code> "
+"(si votre municipalité est divisée en districts – <code>District 2</code>, "
 "par exemple)"
 
 #: templates/government.html:24
@@ -163,9 +163,9 @@ msgstr "Identifiant du district"
 
 #: templates/government.html:24
 msgid ""
-"(if your wards have identifiers as well as names –<code>2</code> for example)"
+"(if your wards have identifiers as well as names – <code>2</code> for example)"
 msgstr ""
-"(si vos districts ont des identifiants en plus des noms – <code>2</code> par "
+"(si vos districts ont des identifiants en plus des noms – <code>2</code>, par "
 "exemple)"
 
 #: templates/government.html:25
@@ -258,9 +258,17 @@ msgstr ""
 msgid "Postal code"
 msgstr "Code postal"
 
+#: templates/government.html:38
+msgid "(<code>A1A 1A1</code> for example)"
+msgstr "(<code>A1A 1A1</code>, par exemple)"
+
 #: templates/government.html:39
 msgid "Phone"
 msgstr "Téléphone"
+
+#: templates/government.html:39
+msgid "(<code>1 555 555-5555 Ext. 5555</code> for example)"
+msgstr "(<code>1 555 555-5555 Ext. 5555</code>, par exemple)"
 
 #: templates/government.html:40
 msgid "Fax"
@@ -380,27 +388,27 @@ msgstr "Ville de London"
 msgid "City of Langley"
 msgstr "Ville de Langley"
 
-#: templates/government.html:66
+#: templates/government.html:68
 msgid "City of Grande Prairie"
 msgstr "Ville de Grande Prairie"
 
-#: templates/government.html:66
+#: templates/government.html:69
 msgid "City of Kelowna"
 msgstr "Ville de Kelowna"
 
-#: templates/government.html:66
+#: templates/government.html:70
 msgid "City of Victoria"
 msgstr "Ville de Victoria"
 
-#: templates/government.html:66
+#: templates/government.html:71
 msgid "City of Kitchener"
 msgstr "Ville de Kitchener"
 
-#: templates/government.html:66
+#: templates/government.html:72
 msgid "City of Windsor"
 msgstr "Ville de Windsor"
 
-#: templates/government.html:69
+#: templates/government.html:76
 msgid "Learn more about Represent"
 msgstr "Pour en savoir plus sur Represent"
 
@@ -645,7 +653,6 @@ msgstr ""
 "Montrez-nous comment vous avez utilisé Represent! <a href=\"mailto:"
 "represent@opennorth.ca\">Contactez-nous</a>, il nous fait toujours plaisir "
 "de voir vos projets!"
-
 
 #: templates/base.html:40
 msgid "Home"
