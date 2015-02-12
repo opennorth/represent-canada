@@ -74,20 +74,20 @@ function processLatLng(latlng) {
 
     var $representatives = $('<div id="representatives"></div>'), $row;
 
-    $.each(representatives, function (i, object) {
-      if (object['elected_office']) {
-        if (i % 6 == 0) {
-          $row = $('<div class="row"></div>');
-          $representatives.append($row);
-        }
-        else if (i % 3 == 0) {
-          $row.append('<div class="clearfix visible-sm"></div>')
-        }
-        else if (i % 2 == 0) {
-          $row.append('<div class="clearfix visible-xs"></div>')
-        }
-        $row.append($(representativeTemplate(object)));
+    $.each($.grep(representatives, function (i, object) {
+      return object['elected_office'];
+    }), function (i, object) {
+      if (i % 6 == 0) {
+        $row = $('<div class="row"></div>');
+        $representatives.append($row);
       }
+      else if (i % 3 == 0) {
+        $row.append('<div class="clearfix visible-sm"></div>')
+      }
+      else if (i % 2 == 0) {
+        $row.append('<div class="clearfix visible-xs"></div>')
+      }
+      $row.append($(representativeTemplate(object)));
     });
 
     $('#representatives').replaceWith($representatives);
