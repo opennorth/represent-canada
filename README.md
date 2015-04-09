@@ -18,7 +18,7 @@ There's also a package to provide colourful district map tiles:
 
 The following instructions are to setup your own instance of Represent. If you just want access to data, [please read our API documentation](https://represent.opennorth.ca/api/).
 
-Follow the instructions in the [Python Quick Start Guide](https://github.com/opennorth/opennorth.ca/wiki/Python-Quick-Start%3A-OS-X) to install Homebrew, Git, Python, virtualenv, GDAL and PostGIS.
+Follow the instructions in the [Python Quick Start Guide](https://github.com/opennorth/wiki/wiki/Python-Quick-Start%3A-OS-X) to install Homebrew, Git, Python, virtualenv, GDAL and PostGIS.
 
 Create a database using the PostGIS template:
 
