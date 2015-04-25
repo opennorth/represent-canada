@@ -416,15 +416,20 @@ msgid "City of Burlington"
 msgstr "Ville de Burlington"
 
 #: templates/government.html:78
-msgid "Thanks to support from"
-msgstr "Grâce au soutien de"
+msgid ""
+"This project was supported by a grant from the Canadian Internet "
+"Registration Authority."
+msgstr ""
+"Ce projet a été soutenu par une subvention de l'Autorité canadienne pour les "
+"enregistrements Internet."
 
 #: templates/government.html:78
 msgid ""
 "Canadian Internet Registration Authority (CIRA) Community Investment Program "
 "(CIP)"
-msgstr "Autorité canadienne pour les enregistrements Internet (ACEI) "
-"Programme d’investissement communautaire"
+msgstr ""
+"Autorité canadienne pour les enregistrements Internet (ACEI) Programme "
+"d’investissement communautaire"
 
 #: templates/government.html:81
 msgid "Learn more about Represent"
