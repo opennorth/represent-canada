@@ -298,8 +298,14 @@ ul#fields {
 #back .btn {
   margin: 20px 10px 0 10px;
 }
-#back img {
+#back .adoption {
+  margin-bottom: 40px;
+}
+#back .adoption img {
   margin: 20px 15px 0;
+}
+#back .support {
+  margin-bottom: 20px;
 }
 
 #api .banner h2 {

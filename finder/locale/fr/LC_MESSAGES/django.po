@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-03 15:19-0500\n"
+"POT-Creation-Date: 2015-04-25 16:14-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,8 @@ msgstr ""
 msgid "CSV Downloads"
 msgstr "Téléchargements CSV"
 
-#: templates/data.html:5 templates/government.html:5 templates/index.html:5
+#: templates/data.html:5 templates/government.html:5
+#: templates/index.html:5
 msgid "Represent Elected Officials and Electoral Districts API for Canada"
 msgstr ""
 "Represent: une API pour les représentants élus et les districts électoraux "
@@ -73,7 +74,8 @@ msgstr "Lire la référence API"
 msgid "Try the “Find Your Reps” app"
 msgstr "Essayer le démo"
 
-#: templates/data.html:31 templates/index.html:12 templates/index.html.py:157
+#: templates/data.html:31 templates/index.html:12
+#: templates/index.html.py:157
 msgid "Try the demo app"
 msgstr "Essayer le démo"
 
@@ -154,7 +156,7 @@ msgid ""
 "(if your municipality is divided into wards, districts or divisions – "
 "<code>Ward 2</code> for example)"
 msgstr ""
-"(si votre municipalité est divisée en districts – <code>District 2</code>, "
+"(si votre municipalité est divisée en districts – <code>District 2</code>, "
 "par exemple)"
 
 #: templates/government.html:24
@@ -163,10 +165,11 @@ msgstr "Identifiant du district"
 
 #: templates/government.html:24
 msgid ""
-"(if your wards have identifiers as well as names – <code>2</code> for example)"
+"(if your wards have identifiers as well as names – <code>2</code> for "
+"example)"
 msgstr ""
-"(si vos districts ont des identifiants en plus des noms – <code>2</code>, par "
-"exemple)"
+"(si vos districts ont des identifiants en plus des noms – <code>2</code>, "
+"par exemple)"
 
 #: templates/government.html:25
 msgid "Primary role"
@@ -412,7 +415,18 @@ msgstr "Ville de Windsor"
 msgid "City of Burlington"
 msgstr "Ville de Burlington"
 
-#: templates/government.html:76
+#: templates/government.html:78
+msgid "Thanks to support from"
+msgstr "Grâce au soutien de"
+
+#: templates/government.html:78
+msgid ""
+"Canadian Internet Registration Authority (CIRA) Community Investment Program "
+"(CIP)"
+msgstr "Autorité canadienne pour les enregistrements Internet (ACEI) "
+"Programme d’investissement communautaire"
+
+#: templates/government.html:81
 msgid "Learn more about Represent"
 msgstr "Pour en savoir plus sur Represent"
 

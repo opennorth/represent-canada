@@ -21,7 +21,7 @@
 
       <ul id="fields">
         <li><strong>{% trans "District name" %}</strong> {% trans "(if your municipality is divided into wards, districts or divisions – <code>Ward 2</code> for example)" %}</li>
-        <li><strong>{% trans "District ID" %}</strong> {% trans "(if your wards have identifiers as well as names – <code>2</code> for example)" %}</li>
+        <li><strong>{% trans "District ID" %}</strong> {% trans "(if your wards have identifiers as well as names – <code>2</code> for example)" %}</li>
         <li><strong>{% trans "Primary role" %}</strong> {% trans "(<code>Mayor</code> or <code>Councillor</code> for most municipalities)" %}</li>
         <li><strong>{% trans "First name" %}</strong></li>
         <li><strong>{% trans "Last name" %}</strong></li>
@@ -56,7 +56,7 @@
 
 <div class="container-fluid banner banner-default" id="back">
   <p>{% trans "Thanks to the following municipalities for providing information as CSV!" %}</p>
-  <div>
+  <div class="adoption">
     <img src="{% static "img/logos/ottawa.png" %}" width="119" height="50" alt="{% trans "City of Ottawa" %}" title="{% trans "City of Ottawa" %}" data-toggle="tooltip">
     <img src="{% static "img/logos/vancouver.png" %}" width="129" height="50" alt="{% trans "City of Vancouver" %}" title="{% trans "City of Vancouver" %}" data-toggle="tooltip">
     <img src="{% static "img/logos/guelph.png" %}" width="168" height="50" alt="{% trans "City of Guelph" %}" title="{% trans "City of Guelph" %}" data-toggle="tooltip">
@@ -73,6 +73,9 @@
     <img src="{% static "img/logos/peel.png" %}" width="171" height="50" alt="Region of Peel" title="Region of Peel" data-toggle="tooltip">
     <img src="{% static "img/logos/burlington.png" %}" width="196" height="50" alt="{% trans "City of Burlington" %}" title="{% trans "City of Burlington" %}" data-toggle="tooltip">
     <img src="{% static "img/logos/niagara.png" %}" width="362" height="50" alt="Niagara Region" title="Niagara Region" data-toggle="tooltip">
+  </div>
+  <div class="support">
+    <p>{% trans "Thanks to support from" %} <img src="{% static "img/logos/cira.png" %}" width="200" height="36" alt="{% trans "Canadian Internet Registration Authority (CIRA) Community Investment Program (CIP)" %}" title="{% trans "Canadian Internet Registration Authority (CIRA) Community Investment Program (CIP)" %}" data-toggle="tooltip"></p>
   </div>
   <div>
     <a class="btn btn-lg" role="button" href="/">{% trans "Learn more about Represent" %}</a>
