@@ -170,6 +170,12 @@ div div .row {
   font-style: italic;
 }
 
+#notices-home {
+  margin-bottom: 40px;
+}
+#notices-api {
+  margin-bottom: 60px;
+}
 #benefits h1 {
   color: #127ba3;
   font-weight: 200;
