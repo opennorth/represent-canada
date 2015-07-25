@@ -635,14 +635,6 @@ msgstr ""
 "source</a> et rend ses <a href=\"https://github.com/opennorth/represent-"
 "canada-data\">données</a> disponibles où c’est possible"
 
-#: templates/index.html:164
-msgid ""
-"Join our <a href=\"https://groups.google.com/forum/#!forum/represent-canada"
-"\">Developer Forum</a> to be notified of API changes"
-msgstr ""
-"Rejoignez notre <a href=\"https://groups.google.com/forum/#!forum/represent-"
-"canada\">forum</a> pour être informé de tout changement à l’API"
-
 #: templates/index.html:165
 msgid "Join Group"
 msgstr "Joindre le groupe"

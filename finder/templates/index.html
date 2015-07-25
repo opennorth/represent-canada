@@ -168,10 +168,6 @@
 
 {% url "government" as government_url %}
 <div class="container-fluid banner banner-default" id="newsletter">
-  <p>
-    <span>{% trans 'Join our <a href="https://groups.google.com/forum/#!forum/represent-canada">Developer Forum</a> to be notified of API changes' %}</span>
-    <a class="btn btn-lg" role="button" href="https://groups.google.com/forum/#!forum/represent-canada">{% trans "Join Group" %}</a>
-  </p>
   <p id="government"><strong>{% trans "Government Officials and Open Data Managers:" %}</strong> {% blocktrans %}Find out how to <a href="{{ government_url }}">add your elected officials to Represent</a>.{% endblocktrans %}</p>
   <p id="usage">{% blocktrans %}We are excited to see how Represent is being used. <a href="mailto:represent@opennorth.ca">Contact us</a> and show us what you've made!{% endblocktrans %}</p>
 </div>
