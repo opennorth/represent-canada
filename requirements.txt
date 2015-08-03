@@ -1,5 +1,5 @@
 django-extensions==1.4.3
-Django==1.7
+Django==1.7.9
 psycopg2==2.5.4
 python3-memcached==1.51
 represent-boundaries==0.6.4
