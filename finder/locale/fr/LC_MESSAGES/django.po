@@ -415,6 +415,10 @@ msgstr "Ville de Windsor"
 msgid "City of Burlington"
 msgstr "Ville de Burlington"
 
+#: templates/government.html:76
+msgid "City of Brampton"
+msgstr "Ville de Brampton"
+
 #: templates/government.html:78
 msgid ""
 "This project was supported by a grant from the Canadian Internet "
