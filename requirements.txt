@@ -6,3 +6,7 @@ represent-boundaries==0.6.4
 Unidecode==0.04.16 # used by definition.py files
 -e git+https://github.com/opennorth/represent-reps.git#egg=represent-reps
 -e git+https://github.com/opennorth/represent-postcodes.git#egg=represent-postcodes
+
+# Server
+eventlet==0.17.4
+gunicorn==19.3.0
