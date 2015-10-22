@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-25 16:15-0400\n"
+"POT-Creation-Date: 2015-10-22 15:01-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,16 +66,16 @@ msgstr "Encore plus de possibilités avec Represent!"
 msgid "What is Represent?"
 msgstr "En savoir plus"
 
-#: finder/templates/data.html:29 finder/templates/index.html:163
+#: finder/templates/data.html:29 finder/templates/index.html:155
 msgid "Read the API reference"
 msgstr "Lire la référence API"
 
-#: finder/templates/data.html:30 finder/templates/index.html:164
+#: finder/templates/data.html:30 finder/templates/index.html:156
 msgid "Try the “Find Your Reps” app"
 msgstr "Essayer le démo"
 
 #: finder/templates/data.html:31 finder/templates/index.html:12
-#: finder/templates/index.html.py:165
+#: finder/templates/index.html.py:157
 msgid "Try the demo app"
 msgstr "Essayer le démo"
 
@@ -419,7 +419,11 @@ msgstr "Ville de Burlington"
 msgid "City of Brampton"
 msgstr "Ville de Brampton"
 
-#: finder/templates/government.html:79
+#: finder/templates/government.html:77
+msgid "City of Waterloo"
+msgstr "Ville de Waterloo"
+
+#: finder/templates/government.html:80
 msgid ""
 "This project was supported by a grant from the Canadian Internet "
 "Registration Authority."
@@ -427,7 +431,7 @@ msgstr ""
 "Ce projet a été soutenu par une subvention de l'Autorité canadienne pour les "
 "enregistrements Internet."
 
-#: finder/templates/government.html:82
+#: finder/templates/government.html:83
 msgid "Learn more about Represent"
 msgstr "Pour en savoir plus sur Represent"
 
@@ -639,15 +643,15 @@ msgstr ""
 "source</a> et rend ses <a href=\"https://github.com/opennorth/represent-"
 "canada-data\">données</a> disponibles où c’est possible"
 
-#: finder/templates/index.html:166
+#: finder/templates/index.html:158
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: finder/templates/index.html:171
+#: finder/templates/index.html:163
 msgid "Government Officials and Open Data Managers:"
 msgstr "Fonctionnaires et gestionnaires de données ouvertes:"
 
-#: finder/templates/index.html:171
+#: finder/templates/index.html:163
 #, python-format
 msgid ""
 "Find out how to <a href=\"%(government_url)s\">add your elected officials to "
@@ -656,7 +660,7 @@ msgstr ""
 "découvrez comment <a href=\"%(government_url)s\">ajouter vos représentants "
 "élus à Represent</a>."
 
-#: finder/templates/index.html:172
+#: finder/templates/index.html:164
 msgid ""
 "We are excited to see how Represent is being used. <a href=\"mailto:"
 "represent@opennorth.ca\">Contact us</a> and show us what you've made!"
