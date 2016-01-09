@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-22 15:01-0400\n"
+"POT-Creation-Date: 2016-01-09 18:31-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -423,7 +423,19 @@ msgstr "Ville de Brampton"
 msgid "City of Waterloo"
 msgstr "Ville de Waterloo"
 
+#: finder/templates/government.html:78
+msgid "City of Toronto"
+msgstr "Ville de Toronto"
+
+#: finder/templates/government.html:79
+msgid "City of Greater Sudbury"
+msgstr "Ville de Greater Sudbury"
+
 #: finder/templates/government.html:80
+msgid "City of Kingston"
+msgstr "Ville de Kingston"
+
+#: finder/templates/government.html:83
 msgid ""
 "This project was supported by a grant from the Canadian Internet "
 "Registration Authority."
@@ -431,7 +443,7 @@ msgstr ""
 "Ce projet a été soutenu par une subvention de l'Autorité canadienne pour les "
 "enregistrements Internet."
 
-#: finder/templates/government.html:83
+#: finder/templates/government.html:86
 msgid "Learn more about Represent"
 msgstr "Pour en savoir plus sur Represent"
 
