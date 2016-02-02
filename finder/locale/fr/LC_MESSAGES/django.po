@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-09 20:44-0500\n"
+"POT-Creation-Date: 2016-02-02 01:20-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -439,7 +439,11 @@ msgstr "Ville de Kingston"
 msgid "Region of Waterloo"
 msgstr "Région de Waterloo"
 
-#: finder/templates/government.html:84
+#: finder/templates/government.html:82
+msgid "City of Montreal"
+msgstr "Ville de Montréal"
+
+#: finder/templates/government.html:85
 msgid ""
 "This project was supported by a grant from the Canadian Internet "
 "Registration Authority."
@@ -447,7 +451,7 @@ msgstr ""
 "Ce projet a été soutenu par une subvention de l'Autorité canadienne pour les "
 "enregistrements Internet."
 
-#: finder/templates/government.html:87
+#: finder/templates/government.html:88
 msgid "Learn more about Represent"
 msgstr "Pour en savoir plus sur Represent"
 
