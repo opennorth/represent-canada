@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-02 01:20-0500\n"
+"POT-Creation-Date: 2016-06-02 17:32-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -443,7 +443,15 @@ msgstr "Région de Waterloo"
 msgid "City of Montreal"
 msgstr "Ville de Montréal"
 
-#: finder/templates/government.html:85
+#: finder/templates/government.html:83
+msgid "Town of Grimsby"
+msgstr "Ville de Grimsby"
+
+#: finder/templates/government.html:84
+msgid "Town of Lincoln"
+msgstr "Ville de Lincoln"
+
+#: finder/templates/government.html:87
 msgid ""
 "This project was supported by a grant from the Canadian Internet "
 "Registration Authority."
@@ -451,7 +459,7 @@ msgstr ""
 "Ce projet a été soutenu par une subvention de l'Autorité canadienne pour les "
 "enregistrements Internet."
 
-#: finder/templates/government.html:88
+#: finder/templates/government.html:90
 msgid "Learn more about Represent"
 msgstr "Pour en savoir plus sur Represent"
 
