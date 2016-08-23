@@ -45,7 +45,7 @@ msgid "Contact"
 msgstr "Contact"
 
 #: templates/base.html:44
-msgid "fr-CA"
+msgid "fr"
 msgstr "en"
 
 #: templates/base.html:44

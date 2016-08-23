@@ -92,7 +92,7 @@ msgstr "Contacter"
 
 #: static/js/demo.js:116
 msgid "en"
-msgstr "fr-CA"
+msgstr "fr"
 
 #: static/js/demo.js:119
 msgid "Select your address"

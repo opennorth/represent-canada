@@ -716,7 +716,7 @@ msgstr ""
 #~ msgid "Contact"
 #~ msgstr "Contact"
 
-#~ msgid "fr-CA"
+#~ msgid "fr"
 #~ msgstr "en"
 
 #~ msgid "FR"
