@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-02 00:01-0400\n"
+"POT-Creation-Date: 2016-09-11 15:17-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -455,7 +455,11 @@ msgstr "Ville de Lincoln"
 msgid "Town of Newmarket"
 msgstr "Ville de Newmarket"
 
-#: finder/templates/government.html:89
+#: finder/templates/government.html:87
+msgid "City of Saint John"
+msgstr "Ville de Saint John"
+
+#: finder/templates/government.html:90
 msgid ""
 "This project was supported by a grant from the Canadian Internet "
 "Registration Authority."
@@ -463,7 +467,7 @@ msgstr ""
 "Ce projet a été soutenu par une subvention de l'Autorité canadienne pour les "
 "enregistrements Internet."
 
-#: finder/templates/government.html:92
+#: finder/templates/government.html:93
 msgid "Learn more about Represent"
 msgstr "Pour en savoir plus sur Represent"
 
@@ -624,7 +628,9 @@ msgid ""
 msgstr "Tous les députés provinciaux"
 
 #: finder/templates/index.html:112
-msgid "Over 11,000 mayors and councillors"
+#, fuzzy
+#| msgid "Over 11,000 mayors and councillors"
+msgid "Over 2,000 mayors and councillors"
 msgstr "Plus de 11 000 maires et conseillers municipaux"
 
 #: finder/templates/index.html:116
@@ -701,32 +707,40 @@ msgstr ""
 "represent@opennorth.ca\">Contactez-nous</a>, il nous fait toujours plaisir "
 "de voir vos projets!"
 
-#~ msgid "Home"
-#~ msgstr "Accueil"
+#: templates/base.html:40
+msgid "Home"
+msgstr "Accueil"
 
-#~ msgid "Demo"
-#~ msgstr "Démo"
+#: templates/base.html:41
+msgid "Demo"
+msgstr "Démo"
 
-#~ msgid "API"
-#~ msgstr "API"
+#: templates/base.html:42
+msgid "API"
+msgstr "API"
 
-#~ msgid "Downloads"
-#~ msgstr "Téléchargements"
+#: templates/base.html:43
+msgid "Downloads"
+msgstr "Téléchargements"
 
-#~ msgid "Contact"
-#~ msgstr "Contact"
+#: templates/base.html:44
+msgid "Contact"
+msgstr "Contact"
 
-#~ msgid "fr"
-#~ msgstr "en"
+#: templates/base.html:45
+msgid "fr"
+msgstr "en"
 
-#~ msgid "FR"
-#~ msgstr "EN"
+#: templates/base.html:45
+msgid "FR"
+msgstr "EN"
 
-#~ msgid ""
-#~ "A project of <a href=\"http://www.opennorth.ca/\">Open North</a>, a "
-#~ "nonprofit that builds digital tools for government transparency and civic "
-#~ "participation."
-#~ msgstr ""
-#~ "Un projet de <a href=\"http://www.nordouvert.ca/\">Nord Ouvert</a>, un "
-#~ "organisme sans but lucratif qui crée des outils numériques pour la "
-#~ "transparence gouvernementale et la participation civique."
+#: templates/base.html:54
+msgid ""
+"A project of <a href=\"http://www.opennorth.ca/\">Open North</a>, a "
+"nonprofit that builds digital tools for government transparency and civic "
+"participation."
+msgstr ""
+"Un projet de <a href=\"http://www.nordouvert.ca/\">Nord Ouvert</a>, un "
+"organisme sans but lucratif qui crée des outils numériques pour la "
+"transparence gouvernementale et la participation civique."
