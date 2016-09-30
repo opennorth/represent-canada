@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-11 15:17-0400\n"
+"POT-Creation-Date: 2016-09-29 20:38-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -589,6 +589,10 @@ msgstr "Syndicat canadien de la fonction publique"
 msgid "Public Service Alliance of Canada"
 msgstr "Alliance de la fonction publique du Canada"
 
+#: finder/templates/index.html:85
+msgid "Canadian Credit Union Association"
+msgstr ""
+
 #: finder/templates/index.html:88
 msgid "Canadian Union of Postal Workers"
 msgstr "Syndicat des travailleurs et travailleuses des postes"
@@ -707,40 +711,32 @@ msgstr ""
 "represent@opennorth.ca\">Contactez-nous</a>, il nous fait toujours plaisir "
 "de voir vos projets!"
 
-#: templates/base.html:40
-msgid "Home"
-msgstr "Accueil"
+#~ msgid "Home"
+#~ msgstr "Accueil"
 
-#: templates/base.html:41
-msgid "Demo"
-msgstr "Démo"
+#~ msgid "Demo"
+#~ msgstr "Démo"
 
-#: templates/base.html:42
-msgid "API"
-msgstr "API"
+#~ msgid "API"
+#~ msgstr "API"
 
-#: templates/base.html:43
-msgid "Downloads"
-msgstr "Téléchargements"
+#~ msgid "Downloads"
+#~ msgstr "Téléchargements"
 
-#: templates/base.html:44
-msgid "Contact"
-msgstr "Contact"
+#~ msgid "Contact"
+#~ msgstr "Contact"
 
-#: templates/base.html:45
-msgid "fr"
-msgstr "en"
+#~ msgid "fr"
+#~ msgstr "en"
 
-#: templates/base.html:45
-msgid "FR"
-msgstr "EN"
+#~ msgid "FR"
+#~ msgstr "EN"
 
-#: templates/base.html:54
-msgid ""
-"A project of <a href=\"http://www.opennorth.ca/\">Open North</a>, a "
-"nonprofit that builds digital tools for government transparency and civic "
-"participation."
-msgstr ""
-"Un projet de <a href=\"http://www.nordouvert.ca/\">Nord Ouvert</a>, un "
-"organisme sans but lucratif qui crée des outils numériques pour la "
-"transparence gouvernementale et la participation civique."
+#~ msgid ""
+#~ "A project of <a href=\"http://www.opennorth.ca/\">Open North</a>, a "
+#~ "nonprofit that builds digital tools for government transparency and civic "
+#~ "participation."
+#~ msgstr ""
+#~ "Un projet de <a href=\"http://www.nordouvert.ca/\">Nord Ouvert</a>, un "
+#~ "organisme sans but lucratif qui crée des outils numériques pour la "
+#~ "transparence gouvernementale et la participation civique."
