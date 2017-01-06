@@ -3,5 +3,4 @@
 .DS_Store
 settings.py
 /staticfiles
-/fabfile.py
 /data
