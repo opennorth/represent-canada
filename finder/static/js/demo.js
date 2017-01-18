@@ -75,7 +75,7 @@ function processLatLng(latlng) {
     var $representatives = $('<div id="representatives"></div>'), $row;
 
     $.each($.grep(representatives, function (object) {
-      return object['elected_office'];
+      return object['elected_office'] && object['related']['representative_set_url'].indexOf('/campaign-set-') === -1;
     }), function (i, object) {
       if (i % 6 == 0) {
         $row = $('<div class="row"></div>');
