@@ -51,6 +51,10 @@ You can launch a development server with:
 
 To load the data into the API, see the boundaries, representatives, and postcodes packages.
 
+## Maintenance
+
+[See the wiki](https://github.com/opennorth/represent-canada/wiki).
+
 ## Bugs? Questions?
 
 This repository is on GitHub: [https://github.com/opennorth/represent-canada](https://github.com/opennorth/represent-canada), where your contributions, forks, bug reports, feature requests, and feedback are greatly welcomed.
