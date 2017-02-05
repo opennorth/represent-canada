@@ -6,18 +6,19 @@ TEMPLATE_DEBUG = DEBUG
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'represent',       # Or path to database file if using sqlite3.
-        'USER': 'postgres',        # Not used with sqlite3.
-        'PASSWORD': '',            # Not used with sqlite3.
-        'HOST': 'localhost',       # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                # Set to empty string for default. Not used with sqlite3.
+        'NAME': 'represent',        # Or path to database file if using sqlite3.
+        'USER': 'postgres',         # Not used with sqlite3.
+        'PASSWORD': '',             # Not used with sqlite3.
+        'HOST': 'localhost',        # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                 # Set to empty string for default. Not used with sqlite3.
     }
 }
 
 ADMINS = (
-    ('Name', 'email@example.com'),
+    ('Represent admins', 'represent@opennorth.ca'),
 )
 
+# Uncomment in production:
 # CACHES = {
 #     'default': {
 #         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
@@ -25,12 +26,31 @@ ADMINS = (
 #     }
 # }
 
+# Uncomment in production:
 # REPRESENTATIVES_BOUNDARYSERVICE_URL = 'https://represent.opennorth.ca/'
 
 # You can put acceptable values for the Host header here,
 # to protect against certain potential attacks:
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
+# Uncomment in production:
 # ALLOWED_HOSTS = ['.opennorth.ca']
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '+t(q+ljogaj(+7m@kueu-g881gb8xp_oaz)$iabxjp8a1@2#u!'
+
+# To enable Sentry logging, ensure the raven package is installed,
+# and uncomment and edit:
+#
+# INSTALLED_APPS.append('raven.contrib.django')
+# RAVEN_CONFIG = {
+#    'dsn': 'RAVEN DSN'
+# }
+# LOGGING['handlers']['sentry'] = {
+#     'level': 'WARNING',
+#     'class': 'raven.contrib.django.handlers.SentryHandler'
+# }
+# LOGGING['root'] = {
+#     'level': 'WARNING',
+#     'handlers': ['sentry']
+# }
+# del LOGGING['loggers']['django.request']
