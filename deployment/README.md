@@ -47,9 +47,13 @@ Run `fab ohoh update_boundaries` to update the boundaries. You can pass argument
 
 `opennorth.ca` has a hosted zone and health check in [AWS Route 53](https://console.aws.amazon.com/route53/home?region=us-east-1#). Notably:
 
-* `represent-ohoh.opennorth.ca.` CNAME `ohoh.openparliament.ca.` TTL: 1800
-* `represent-tofu.opennorth.ca.` CNAME `tofu.michaelmulley.com.` TTL: 1800
-* `represent.opennorth.ca.` CNAME `ohoh.openparliament.ca.` TTL: 60, Routing Policy: Failover, Failover Record Type: Primary
-* `represent.opennorth.ca.` CNAME `tofu.openparliament.ca.` TTL: 60, Routing Policy: Failover, Failover Record Type: Secondary
+* `represent-ohoh.opennorth.ca.` CNAME `ohoh.openparliament.ca.`
+  * TTL: 1800
+* `represent-tofu.opennorth.ca.` CNAME `tofu.michaelmulley.com.`
+  * TTL: 1800
+* `represent.opennorth.ca.` CNAME `ohoh.openparliament.ca.`
+  * TTL: 60, Routing Policy: Failover, Failover Record Type: Primary
+* `represent.opennorth.ca.` CNAME `tofu.openparliament.ca.`
+  * TTL: 60, Routing Policy: Failover, Failover Record Type: Secondary
 
 A health check named `represent-ohoh.opennorth.ca` monitors an endpoint specified by domain name using the HTTP protocol. The domain name is `represent-ohoh.opennorth.ca` and the port is `80`.
