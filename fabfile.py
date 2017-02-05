@@ -1,4 +1,4 @@
-from fabric.api import *
+from fabric.api import cd, env, run
 
 import os
 

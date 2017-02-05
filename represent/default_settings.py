@@ -1,9 +1,11 @@
 # coding: utf-8
 import os
+
+from django.conf import global_settings
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # @see https://docs.djangoproject.com/en/1.5/topics/i18n/translation/
-from django.conf import global_settings
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
     'django.core.context_processors.i18n',
     'django.core.context_processors.request',

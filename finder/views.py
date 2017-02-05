@@ -29,8 +29,10 @@ def government(request):
 def privacy(request):
     return render('privacy.html', request)
 
+
 def render(template, request):
     return render_to_response(template, context_instance=RequestContext(request))
+
 
 # @see django/views/i18n.py
 def set_language(request):
