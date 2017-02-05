@@ -53,7 +53,7 @@ To load the data into the API, see the boundaries, representatives, and postcode
 
 ## Maintenance
 
-[See the wiki](https://github.com/opennorth/represent-canada/wiki).
+Read the [wiki](https://github.com/opennorth/represent-canada/wiki) and [deployment/](deployment/).
 
 ## Bugs? Questions?
 
