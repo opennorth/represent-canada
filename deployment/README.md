@@ -31,13 +31,13 @@ Add the maintainer's public key to `represent`'s `.ssh/authorized_keys` on `ohoh
 
 ### Running Fabric commands
 
-It's generally unnecessary to login to the servers, as all regular tasks are possible with Fabric. See `fabfile.py` for details.
+It's generally unnecessary to login to servers, as regular tasks can be done with Fabric. See `fabfile.py` for details.
 
     pip install Fabric
 
 The two most common tasks are to deploy code and update boundaries.
 
-Run `fab ohoh deploy` to update the deployment; every now and again, update the deployment on `tofu` (`fab tofu deploy`).
+Run `fab ohoh deploy` to update the deployment; occasionally, update the deployment on `tofu` (`fab tofu deploy`).
 
 Run `fab ohoh update_boundaries` to update the boundaries. You can pass arguments like:
 
