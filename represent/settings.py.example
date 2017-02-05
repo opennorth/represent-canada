@@ -3,6 +3,7 @@ from represent.default_settings import *
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
+# Change in production:
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
@@ -36,6 +37,9 @@ ADMINS = (
 # ALLOWED_HOSTS = ['.opennorth.ca']
 
 # Make this unique, and don't share it with anybody.
+# Change in production:
+# from django.utils.crypto import get_random_string
+# get_random_string(50, 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)')
 SECRET_KEY = '+t(q+ljogaj(+7m@kueu-g881gb8xp_oaz)$iabxjp8a1@2#u!'
 
 # To enable Sentry logging, ensure the raven package is installed,
