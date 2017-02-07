@@ -73,7 +73,7 @@ def restart():
 
 
 def update_boundaries(args=''):
-    """Pull shapefiles repository and load shapefiles."""
+    """Pull data repositories and load shapefiles."""
     _recursive_pull(env.data_dir)
     with cd(env.django_dir):
         run(env.python + ' manage.py loadshapefiles ' + args)
@@ -83,6 +83,20 @@ def update_representatives():
     """Update all representatives."""
     with cd(env.django_dir):
         run(env.python + ' manage.py updaterepresentatives')
+
+
+def update_concordances(args=''):
+    """Pull data repositories and load postcode concordances."""
+    _recursive_pull(env.data_dir)
+    with cd(env.django_dir):
+        run(env.python + ' manage.py loadpostcodeconcordance ' + args)
+
+
+def update_postcodes(args=''):
+    """Pull data repositories and load postcodes."""
+    _recursive_pull(env.data_dir)
+    with cd(env.django_dir):
+        run(env.python + ' manage.py loadpostcodes ' + args)
 
 
 def _recursive_pull(base_dir):
