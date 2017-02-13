@@ -1,37 +1,36 @@
 from django import http
 from django.conf import settings
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+from django.shortcuts import render
 from django.utils.translation import check_for_language
 from django.utils.http import is_safe_url
 
 
 def index(request):
-    return render('index.html', request)
+    return _render('index.html', request)
 
 
 def api(request):
-    return render('api.html', request)
+    return _render('api.html', request)
 
 
 def data(request):
-    return render('data.html', request)
+    return _render('data.html', request)
 
 
 def demo(request):
-    return render('demo.html', request)
+    return _render('demo.html', request)
 
 
 def government(request):
-    return render('government.html', request)
+    return _render('government.html', request)
 
 
 def privacy(request):
-    return render('privacy.html', request)
+    return _render('privacy.html', request)
 
 
-def render(template, request):
-    return render_to_response(template, context_instance=RequestContext(request))
+def _render(template_name, request):
+    return render(request, template_name)
 
 
 # @see django/views/i18n.py

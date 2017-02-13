@@ -35,7 +35,6 @@ Configure the `DATABASES` Django setting and and create the database tables:
 
     cp settings.py.example settings.py
     $EDITOR settings.py
-    python manage.py syncdb
     python manage.py migrate
 
 You can launch a development server with:

@@ -1,7 +1,7 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from finder import views
 
-urlpatterns = patterns('',
+urlpatterns = [
     (r'^jsi18n/$', 'django.views.i18n.javascript_catalog', {'packages': ('finder')}),
     url(r'^setlang/$', views.set_language, name='set_language'),
     url(r'^api/$', views.api, name='apidoc'),
@@ -10,4 +10,4 @@ urlpatterns = patterns('',
     url(r'^government/$', views.government, name='government'),
     url(r'^privacy/$', views.privacy, name='privacy'),
     url(r'^$', views.index),
-)
+]

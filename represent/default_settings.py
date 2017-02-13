@@ -5,23 +5,39 @@ from django.conf import global_settings
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-# @see https://docs.djangoproject.com/en/1.5/topics/i18n/translation/
-TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
-    'django.core.context_processors.i18n',
-    'django.core.context_processors.request',
-)
-TEMPLATE_LOADERS = global_settings.TEMPLATE_LOADERS + (
-    'django.template.loaders.eggs.Loader',
-)
-MIDDLEWARE_CLASSES = global_settings.MIDDLEWARE_CLASSES + (
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.request',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+            ],
+            'loaders': [
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
+                'django.template.loaders.eggs.Loader',
+            ],
+        },
+    },
+]
+
+MIDDLEWARE_CLASSES = list(global_settings.MIDDLEWARE_CLASSES) + [  # Django < 1.10
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-)
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'templates'),
-)
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',

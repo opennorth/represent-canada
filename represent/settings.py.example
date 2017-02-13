@@ -1,7 +1,6 @@
 from represent.default_settings import *
 
 DEBUG = False
-TEMPLATE_DEBUG = DEBUG
 
 # Change in production:
 DATABASES = {
