@@ -2,7 +2,7 @@
 
 ## Servers
 
-Two dedicated servers from [server4you.com](https://www.server4you.com/), `ohoh` and `tofu`, host [represent.opennorth.ca](https://represent.opennorth.ca/) and [openparliament.ca](https://openparliament.ca/). The servers are identical, except there is PostgreSQL master-slave replication between `ohoh` and `tofu`. If `ohoh` goes down, Represent fails over to `tofu` ([see below](#dns)). The servers run Nginx, PostGIS and Memcached.
+Two dedicated servers from [server4you.com](https://www.server4you.com/), `ohoh` and `tofu`, host [represent.opennorth.ca](https://represent.opennorth.ca/) and [openparliament.ca](https://openparliament.ca/). The servers are identical, except there is PostgreSQL master-slave replication between `ohoh` and `tofu`. If `ohoh` goes down, Represent fails over to `tofu` ([see below](#dns)). The servers run Nginx, PostgreSQL 9.1, PostGIS 1.5 and Memcached.
 
 This directory contains some server configuration files.
 
