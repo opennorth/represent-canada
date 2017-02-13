@@ -1,8 +1,10 @@
 from django.conf.urls import url
+from django.views.i18n import JavaScriptCatalog
+
 from finder import views
 
 urlpatterns = [
-    (r'^jsi18n/$', 'django.views.i18n.javascript_catalog', {'packages': ('finder')}),
+    url(r'^jsi18n/$', JavaScriptCatalog.as_view(packages=['finder']), name='javascript-catalog'),
     url(r'^setlang/$', views.set_language, name='set_language'),
     url(r'^api/$', views.api, name='apidoc'),
     url(r'^data/$', views.data, name='data'),

@@ -1,6 +1,6 @@
-from fabric.api import cd, env, run
-
 import os
+
+from fabric.api import cd, env, run
 
 
 def ohoh():
