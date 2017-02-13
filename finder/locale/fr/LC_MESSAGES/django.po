@@ -715,32 +715,40 @@ msgstr ""
 "represent@opennorth.ca\">Contactez-nous</a>, il nous fait toujours plaisir "
 "de voir vos projets!"
 
-#~ msgid "Home"
-#~ msgstr "Accueil"
+#: templates/base.html:39
+msgid "Home"
+msgstr "Accueil"
 
-#~ msgid "Demo"
-#~ msgstr "Démo"
+#: templates/base.html:40
+msgid "Demo"
+msgstr "Démo"
 
-#~ msgid "API"
-#~ msgstr "API"
+#: templates/base.html:41
+msgid "API"
+msgstr "API"
 
-#~ msgid "Downloads"
-#~ msgstr "Téléchargements"
+#: templates/base.html:42
+msgid "Downloads"
+msgstr "Téléchargements"
 
-#~ msgid "Contact"
-#~ msgstr "Contact"
+#: templates/base.html:43
+msgid "Contact"
+msgstr "Contact"
 
-#~ msgid "fr"
-#~ msgstr "en"
+#: templates/base.html:44
+msgid "fr"
+msgstr "en"
 
-#~ msgid "FR"
-#~ msgstr "EN"
+#: templates/base.html:44
+msgid "FR"
+msgstr "EN"
 
-#~ msgid ""
-#~ "A project of <a href=\"http://www.opennorth.ca/\">Open North</a>, a "
-#~ "nonprofit that builds digital tools for government transparency and civic "
-#~ "participation."
-#~ msgstr ""
-#~ "Un projet de <a href=\"http://www.nordouvert.ca/\">Nord Ouvert</a>, un "
-#~ "organisme sans but lucratif qui crée des outils numériques pour la "
-#~ "transparence gouvernementale et la participation civique."
+#: templates/base.html:54
+msgid ""
+"A project of <a href=\"http://www.opennorth.ca/\">Open North</a>, a "
+"nonprofit that builds digital tools for government transparency and civic "
+"participation."
+msgstr ""
+"Un projet de <a href=\"http://www.nordouvert.ca/\">Nord Ouvert</a>, un "
+"organisme sans but lucratif qui crée des outils numériques pour la "
+"transparence gouvernementale et la participation civique."
