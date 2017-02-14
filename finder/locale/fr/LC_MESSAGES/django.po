@@ -275,7 +275,7 @@ msgstr "(<code>1 555 555-5555 Ext. 5555</code>, par exemple)"
 
 #: finder/templates/government.html:40
 msgid "Fax"
-msgstr "Fax"
+msgstr "Télécopieur"
 
 #: finder/templates/government.html:41
 msgid "Cell"
