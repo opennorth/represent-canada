@@ -25,13 +25,16 @@ TEMPLATES = [
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
                 'django.template.loaders.app_directories.Loader',
+                # @see https://docs.djangoproject.com/en/1.10/releases/1.9/#id1 Django 1.9
                 'django.template.loaders.eggs.Loader',
             ],
         },
     },
 ]
 
-MIDDLEWARE_CLASSES = list(global_settings.MIDDLEWARE_CLASSES) + [  # Django < 1.10
+# @see https://docs.djangoproject.com/en/1.10/releases/1.9/#default-settings-that-were-tuples-are-now-lists Django 1.9
+# @see https://docs.djangoproject.com/en/1.10/topics/http/middleware/#upgrading-middleware Django 1.10
+MIDDLEWARE_CLASSES = list(global_settings.MIDDLEWARE_CLASSES) + [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',

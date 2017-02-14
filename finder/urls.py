@@ -1,5 +1,5 @@
 from django.conf.urls import url
-# @see https://docs.djangoproject.com/en/1.10/topics/i18n/translation/
+# @see https://docs.djangoproject.com/en/1.10/topics/i18n/translation/ Django 1.10
 from django.views.i18n import javascript_catalog
 
 from finder import views
