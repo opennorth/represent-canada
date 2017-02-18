@@ -71,19 +71,21 @@ $(function () {
         }
 
         $.each(data.objects, function (i, set) {
-          key = boundary_sets[set.related.boundary_set_url];
-          if (!key) {
-            if (/Assembl/.test(set.name)) {
-              key = provinces_key;
+          if (set.url.indexOf('/campaign-set-') === -1) {
+            key = boundary_sets[set.related.boundary_set_url];
+            if (!key) {
+              if (/Assembl/.test(set.name)) {
+                key = provinces_key;
+              }
+              else {
+                key = uncategorized_map[set.url] || gettext('Uncategorized');
+              }
             }
-            else {
-              key = uncategorized_map[set.url] || gettext('Uncategorized');
+            if (!sets[key]) {
+              sets[key] = [];
             }
+            sets[key].push('<li><a href="http://represent.opennorth.ca.s3.amazonaws.com/csv/' + path + '/' + set.related[field].split('/')[2] + '.csv">' + set.name + '</a></li>');
           }
-          if (!sets[key]) {
-            sets[key] = [];
-          }
-          sets[key].push('<li><a href="http://represent.opennorth.ca.s3.amazonaws.com/csv/' + path + '/' + set.related[field].split('/')[2] + '.csv">' + set.name + '</a></li>');
         });
 
         for (key in sets) {
