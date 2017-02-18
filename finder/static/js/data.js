@@ -22,9 +22,11 @@ $(function () {
       }, uncategorized_map = {
           '/elections/house-of-commons/': 'Canada'
         , '/representative-sets/house-of-commons/': 'Canada'
+        , '/representative-sets/new-brunswick-municipal-councils/': 'NB'
         , '/representative-sets/conseil-municipal-de-montreal/': 'QC'
         , '/representative-sets/grande-prairie-city-council/': 'AB'
         , '/representative-sets/lethbridge-city-council/': 'AB'
+        // Ontario
         , '/representative-sets/georgina-town-council/': 'ON'
         , '/representative-sets/lambton-county-council/': 'ON'
         , '/representative-sets/lasalle-town-council/': 'ON'
@@ -33,7 +35,8 @@ $(function () {
         , '/representative-sets/peel-regional-council/': 'ON'
         , '/representative-sets/waterloo-regional-council/': 'ON'
         , '/representative-sets/whitchurch-stouffville-town-council/': 'ON'
-        , '/representative-sets/uxbridge-town-council/': 'ON'
+        , '/representative-sets/uxbridge-township-council/': 'ON'
+        // British Columbia
         , '/representative-sets/abbotsford-city-council/': 'BC'
         , '/representative-sets/burnaby-city-council/': 'BC'
         , '/representative-sets/coquitlam-city-council/': 'BC'
