@@ -1,10 +1,10 @@
-Django==1.8.17
-psycopg2==2.5.5
+Django==1.10.5
+psycopg2==2.6.2
 python3-memcached==1.51
 represent-boundaries==0.8.0
--e git+https://github.com/opennorth/represent-reps.git#egg=represent-reps
+-e git+https://github.com/opennorth/represent-reps.git#egg=represent-representatives
 -e git+https://github.com/opennorth/represent-postcodes.git#egg=represent-postcodes
 
 # Server
-eventlet==0.17.4
-gunicorn==19.3.0
+eventlet==0.20.1
+gunicorn==19.6.0

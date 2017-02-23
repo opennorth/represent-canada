@@ -1,0 +1,19 @@
+# /etc/systemd/system/represent.service
+
+[Unit]
+Description=Represent gunicorn daemon
+After=network.target
+
+[Service]
+User=represent
+Group=represent
+WorkingDirectory=/home/represent/app
+ExecStart=/home/represent/represent-env/bin/gunicorn -c /home/represent/gunicorn_settings.py represent.wsgi:application
+PIDFile=/home/op/gunicorn.pid
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+PrivateTmp=true
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

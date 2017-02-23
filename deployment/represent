@@ -9,7 +9,7 @@ server {
   listen 80;
   listen 443 ssl;
 
-  server_name represent.opennorth.ca represent-ohoh.opennorth.ca;
+  server_name represent.opennorth.ca represent-alpheus.opennorth.ca;
 
   ssl_certificate /home/represent/ssl/represent.opennorth.ca.chained.crt;
   ssl_certificate_key /home/represent/ssl/represent.opennorth.ca.key;

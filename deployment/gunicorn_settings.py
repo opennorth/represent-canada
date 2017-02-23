@@ -1,6 +1,6 @@
 # /home/represent/gunicorn_settings.py
 
-workers = 5
+workers = 8
 
 worker_class = 'eventlet'
 

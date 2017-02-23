@@ -6,9 +6,9 @@
 
 This repository contains a master Django project, documentation, and a demo app. Code for the individual components of the API is in separate packages, which this project depends on:
 
-* [represent-boundaries](https://github.com/rhymeswithcycle/represent-boundaries)
-* [represent-reps](https://github.com/rhymeswithcycle/represent-reps)
-* [represent-postcodes](https://github.com/rhymeswithcycle/represent-postcodes)
+* [represent-boundaries](https://github.com/opennorth/represent-boundaries)
+* [represent-reps](https://github.com/opennorth/represent-reps)
+* [represent-postcodes](https://github.com/opennorth/represent-postcodes)
 
 There's also a package to provide colourful district map tiles:
 
@@ -20,14 +20,19 @@ The following instructions are to setup your own instance of Represent. If you j
 
 Follow the instructions in the [Python Quick Start Guide](https://github.com/opennorth/wiki/wiki/Python-Quick-Start%3A-OS-X) to install Homebrew, Git, Python, virtualenv, GDAL and PostGIS.
 
-Create a database using the PostGIS template:
+Open North's deployment of Represent uses Python 3.5, PostgreSQL 9.6, and PostGIS 2.3.
 
-    createdb -h localhost represent -T template_postgis
+Create a database and enable PostGIS: (commands should be issued as user `postgres`)
+
+    createdb represent
+    psql -c "CREATE EXTENSION postgis;" represent
+
 
 Install the project:
 
-    mkvirtualenv represent
-    git clone git://github.com/opennorth/represent-canada.git
+    pyvenv represent-env
+    source represent-env/bin/activate
+    git clone https://github.com/opennorth/represent-canada.git
     cd represent-canada
     pip install -r requirements.txt
 
@@ -58,4 +63,4 @@ Read the [wiki](https://github.com/opennorth/represent-canada/wiki) and [deploym
 
 This repository is on GitHub: [https://github.com/opennorth/represent-canada](https://github.com/opennorth/represent-canada), where your contributions, forks, bug reports, feature requests, and feedback are greatly welcomed.
 
-Copyright (c) 2012 Open North Inc., released under the MIT license
+Copyright (c) 2017 Open North Inc., released under the MIT license
