@@ -1,8 +1,6 @@
 # coding: utf-8
 import os
 
-from django.conf import global_settings
-
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 TEMPLATES = [
