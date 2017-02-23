@@ -33,7 +33,7 @@ Add the maintainer's public key to `represent`'s `.ssh/authorized_keys` on `alph
 
 It's generally unnecessary to login to servers, as regular tasks can be done with Fabric. See `fabfile.py` for details.
 
-    pip install Fabric
+    brew install Fabric
 
 The two most common tasks are to deploy code and update boundaries.
 
