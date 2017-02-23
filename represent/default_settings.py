@@ -11,6 +11,7 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
         ],
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
@@ -22,23 +23,19 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
             ],
-            'loaders': [
-                'django.template.loaders.filesystem.Loader',
-                'django.template.loaders.app_directories.Loader',
-                # @see https://docs.djangoproject.com/en/1.10/releases/1.9/#id1 Django 1.9
-                'django.template.loaders.eggs.Loader',
-            ],
         },
     },
 ]
 
-# @see https://docs.djangoproject.com/en/1.10/releases/1.9/#default-settings-that-were-tuples-are-now-lists Django 1.9
-# @see https://docs.djangoproject.com/en/1.10/topics/http/middleware/#upgrading-middleware Django 1.10
-MIDDLEWARE_CLASSES = list(global_settings.MIDDLEWARE_CLASSES) + [
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 INSTALLED_APPS = [
