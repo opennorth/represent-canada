@@ -47,11 +47,11 @@ Run `fab alpheus update_boundaries` to update the boundaries. You can pass argum
 
 `opennorth.ca` has a hosted zone and health check in [AWS Route 53](https://console.aws.amazon.com/route53/home?region=us-east-1#). Notably:
 
-* `represent-alpheus.opennorth.ca.` aliases `alpheus.opennorth.ca`
-* `represent-tempeh.opennorth.ca.` aliases `tempeh.opennorth.ca`
-* `represent.opennorth.ca.` alias `represent-alpheus.opennorth.ca.`
+* `represent-alpheus.opennorth.ca.` aliases `alpheus.opennorth.ca.`
+* `represent-tempeh.opennorth.ca.` aliases `tempeh.opennorth.ca.`
+* `represent.opennorth.ca.` aliases `represent-alpheus.opennorth.ca.`
   * TTL: 60, Routing Policy: Failover, Failover Record Type: Primary
-* `represent.opennorth.ca.` alias `represent-tempeh.opennorth.ca.`
+* `represent.opennorth.ca.` aliases `represent-tempeh.opennorth.ca.`
   * TTL: 60, Routing Policy: Failover, Failover Record Type: Secondary
 
 A health check named `represent-alpheus.opennorth.ca` monitors an endpoint specified by domain name using the HTTP protocol. The domain name is `represent-alpheus.opennorth.ca` and the port is `80`.
