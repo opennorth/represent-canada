@@ -3,23 +3,23 @@ import os
 from fabric.api import cd, env, run
 
 
-def ohoh():
+def alpheus():
     """Select the ohoh server for future commands."""
-    env.hosts = ['represent-ohoh.opennorth.ca']
+    env.hosts = ['represent-alpheus.opennorth.ca']
     env.user = 'represent'
-    _env_init('app35')
+    _env_init()
 
 
-def tofu():
+def tempeh():
     """Select the tofu server for future commands."""
-    env.hosts = ['represent-tofu.opennorth.ca']
+    env.hosts = ['represent-tempeh.opennorth.ca']
     env.user = 'represent'
-    _env_init('app34')
+    _env_init()
 
 
-def _env_init(virtualenv):
+def _env_init():
     env.home_dir = '/home/' + env.user
-    env.python = os.path.join(env.home_dir, '.virtualenvs', virtualenv, 'bin', 'python')
+    env.python = os.path.join(env.home_dir, 'represent-env', 'bin', 'python')
     env.base_dir = os.path.join(env.home_dir)
     env.django_dir = os.path.join(env.base_dir, 'app')
     env.pip = env.python.replace('bin/python', 'bin/pip')
@@ -30,7 +30,7 @@ def deploy(ref='master'):
     """Perform all the steps in a standard deployment"""
     pull(ref)
     update_requirements()
-    if env.host != 'represent-tofu.opennorth.ca':
+    if env.host != 'represent-tempeh.opennorth.ca':
         migrate()
     update_statics()
     restart()
