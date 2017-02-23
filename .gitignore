@@ -2,5 +2,6 @@
 *.swp
 .DS_Store
 settings.py
+/paramiko.log
 /staticfiles
 /data

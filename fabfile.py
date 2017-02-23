@@ -2,6 +2,20 @@ import os
 from functools import wraps
 
 from fabric.api import cd, env, run, task
+from fabric.network import ssh
+
+ssh.util.log_to_file('paramiko.log')
+
+
+def _require_db(target):
+    """Decorator to enforce env.read_only_db"""
+    @wraps(target)
+    def inner(*args, **kwargs):
+        if env.read_only_db:
+            raise Exception("This task cannot be performed on an environment with a read-only database.")
+        return target(*args, **kwargs)
+    return inner
+
 
 @task
 def alpheus():
@@ -10,6 +24,7 @@ def alpheus():
     env.user = 'represent'
     env.read_only_db = False
     _env_init()
+
 
 @task
 def tempeh():
@@ -39,14 +54,6 @@ def deploy(ref='master'):
     update_statics()
     restart()
 
-def _require_db(target):
-    """Decorator to enforce env.read_only_db"""
-    @wraps(target)
-    def inner(*args, **kwargs):
-        if env.read_only_db:
-            raise Exception("This task cannot be performed on an environment with a read-only database.")
-        return target(*args, **kwargs)
-    return inner
 
 @task
 def pull(ref='master'):
