@@ -2,7 +2,7 @@ var geocoder = new google.maps.Geocoder(),
     map,
     marker,
     featureGroup,
-    representativeTemplate = _.template( // @todo Replace this one underscore dependency.
+    representativeTemplate = _.template( // This is the only underscore dependency.
       '<div class="col-xs-6 col-sm-4 col-md-2 representative">' +
         '<div class="avatar" style="background-image: url(<% if (photo_url) { %><%= photo_url %><% } else { %>/static/img/silhouette.png<% } %>)"></div> ' +
         '<p><% if (party_name) { %><%= party_name %><% } %> ' + '<%= elected_office %> ' +
