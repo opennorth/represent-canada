@@ -39,4 +39,8 @@ server {
     gzip on;
     gzip_types application/javascript application/x-javascript text/css;
   }
+  
+  location /.well-known/ {
+    alias /home/letsencrypt/.well-known/;
+  }  
 }
