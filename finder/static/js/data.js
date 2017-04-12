@@ -74,6 +74,8 @@ $(function () {
         }
 
         $.each(data.objects, function (i, set) {
+          var basename;
+
           if (set.url.indexOf('/campaign-set-') === -1) {
             key = boundary_sets[set.related.boundary_set_url];
             if (!key) {
@@ -87,7 +89,12 @@ $(function () {
             if (!sets[key]) {
               sets[key] = [];
             }
-            sets[key].push('<li><a href="http://represent.opennorth.ca.s3.amazonaws.com/csv/' + path + '/' + set.related[field].split('/')[2] + '.csv">' + set.name + '</a></li>');
+            basename = set.related[field].split('/')[2];
+            // Exception.
+            if (field == 'candidates_url' && basename == 'legislative-assembly-of-british-columbia') {
+              basename = 'bc-legislature';
+            }
+            sets[key].push('<li><a href="http://represent.opennorth.ca.s3.amazonaws.com/csv/' + path + '/' + basename + '.csv">' + set.name + '</a></li>');
           }
         });
 
