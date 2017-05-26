@@ -133,10 +133,14 @@ $(function ($) {
 
   // Create the map, marker and feature group.
   map = L.map('map', {
-    attribution: 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    attribution: {
+      prefix: false
+    },
     center: latlng,
     layers: [
-      L.tileLayer('https://{s}.tiles.mapbox.com/v3/jpmckinney.hlcgg444/{z}/{x}/{y}.png')
+      L.tileLayer('https://{s}.tiles.mapbox.com/v3/jpmckinney.hlcgg444/{z}/{x}/{y}.png', {
+        attribution: 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>'
+      })
     ],
     maxZoom: 17,
     zoom: 13,
