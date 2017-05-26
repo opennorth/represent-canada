@@ -133,9 +133,6 @@ $(function ($) {
 
   // Create the map, marker and feature group.
   map = L.map('map', {
-    attribution: {
-      prefix: false
-    },
     center: latlng,
     layers: [
       L.tileLayer('https://{s}.tiles.mapbox.com/v3/jpmckinney.hlcgg444/{z}/{x}/{y}.png', {
@@ -147,6 +144,7 @@ $(function ($) {
     scrollWheelZoom: false,
     touchZoom: false
   });
+  map.attributionControl.setPrefix(false);
   marker = L.marker(latlng, {draggable: true});
   featureGroup = L.featureGroup();
   map.addLayer(marker);
