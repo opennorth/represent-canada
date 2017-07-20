@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-25 10:32-0500\n"
+"POT-Creation-Date: 2017-07-20 18:34-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,16 +66,16 @@ msgstr "Encore plus de possibilités avec Represent!"
 msgid "What is Represent?"
 msgstr "En savoir plus"
 
-#: finder/templates/data.html:29 finder/templates/index.html:155
+#: finder/templates/data.html:29 finder/templates/index.html:156
 msgid "Read the API reference"
 msgstr "Lire la référence API"
 
-#: finder/templates/data.html:30 finder/templates/index.html:156
+#: finder/templates/data.html:30 finder/templates/index.html:157
 msgid "Try the “Find Your Reps” app"
 msgstr "Essayer le démo"
 
 #: finder/templates/data.html:31 finder/templates/index.html:12
-#: finder/templates/index.html.py:157
+#: finder/templates/index.html:158
 msgid "Try the demo app"
 msgstr "Essayer le démo"
 
@@ -91,7 +91,7 @@ msgstr ""
 "Trouvez vos <span class=\"hidden-xxs\">représentants</span><span class="
 "\"visible-xxs\">élus</span>"
 
-#: finder/templates/demo.html:19 finder/templates/demo.html.py:20
+#: finder/templates/demo.html:19 finder/templates/demo.html:20
 msgid "Enter an address or postal code"
 msgstr "Entrez une adresse ou un code postal"
 
@@ -363,107 +363,7 @@ msgid ""
 "Thanks to the following municipalities for providing information as CSV!"
 msgstr "Merci à ces municipalités d'avoir fourni l'information en CSV!"
 
-#: finder/templates/government.html:60
-msgid "City of Ottawa"
-msgstr "Ville d'Ottawa"
-
-#: finder/templates/government.html:61
-msgid "City of Vancouver"
-msgstr "Ville de Vancouver"
-
-#: finder/templates/government.html:62
-msgid "City of Guelph"
-msgstr "Ville de Guelph"
-
-#: finder/templates/government.html:63
-msgid "Town of Oakville"
-msgstr "Ville d'Oakville"
-
-#: finder/templates/government.html:64
-msgid "City of Welland"
-msgstr "Ville de Welland"
-
-#: finder/templates/government.html:65
-msgid "City of London"
-msgstr "Ville de London"
-
-#: finder/templates/government.html:66
-msgid "City of Langley"
-msgstr "Ville de Langley"
-
-#: finder/templates/government.html:68
-msgid "City of Grande Prairie"
-msgstr "Ville de Grande Prairie"
-
-#: finder/templates/government.html:69
-msgid "City of Kelowna"
-msgstr "Ville de Kelowna"
-
-#: finder/templates/government.html:70
-msgid "City of Victoria"
-msgstr "Ville de Victoria"
-
-#: finder/templates/government.html:71
-msgid "City of Kitchener"
-msgstr "Ville de Kitchener"
-
-#: finder/templates/government.html:72
-msgid "City of Windsor"
-msgstr "Ville de Windsor"
-
-#: finder/templates/government.html:74
-msgid "City of Burlington"
-msgstr "Ville de Burlington"
-
-#: finder/templates/government.html:76
-msgid "City of Brampton"
-msgstr "Ville de Brampton"
-
-#: finder/templates/government.html:77
-msgid "City of Waterloo"
-msgstr "Ville de Waterloo"
-
-#: finder/templates/government.html:78
-msgid "City of Toronto"
-msgstr "Ville de Toronto"
-
-#: finder/templates/government.html:79
-msgid "City of Greater Sudbury"
-msgstr "Ville de Greater Sudbury"
-
-#: finder/templates/government.html:80
-msgid "City of Kingston"
-msgstr "Ville de Kingston"
-
-#: finder/templates/government.html:81
-msgid "Region of Waterloo"
-msgstr "Région de Waterloo"
-
-#: finder/templates/government.html:82
-msgid "City of Montreal"
-msgstr "Ville de Montréal"
-
-#: finder/templates/government.html:83
-msgid "Town of Grimsby"
-msgstr "Ville de Grimsby"
-
-#: finder/templates/government.html:84
-msgid "Town of Lincoln"
-msgstr "Ville de Lincoln"
-
-#: finder/templates/government.html:86
-msgid "Town of Newmarket"
-msgstr "Ville de Newmarket"
-
-#: finder/templates/government.html:87
-msgid "City of Saint John"
-msgstr "Ville de Saint John"
-
-#: finder/templates/government.html:88
-msgid "City of Moncton"
-msgstr "Ville de Moncton"
-
-#: finder/templates/government.html:91
+#: finder/templates/government.html:96
 msgid ""
 "This project was supported by a grant from the Canadian Internet "
 "Registration Authority."
@@ -471,7 +371,7 @@ msgstr ""
 "Ce projet a été soutenu par une subvention de l'Autorité canadienne pour les "
 "enregistrements Internet."
 
-#: finder/templates/government.html:94
+#: finder/templates/government.html:99
 msgid "Learn more about Represent"
 msgstr "Pour en savoir plus sur Represent"
 
@@ -636,10 +536,8 @@ msgid ""
 msgstr "Tous les députés provinciaux"
 
 #: finder/templates/index.html:112
-#, fuzzy
-#| msgid "Over 11,000 mayors and councillors"
 msgid "Over 2,000 mayors and councillors"
-msgstr "Plus de 11 000 maires et conseillers municipaux"
+msgstr "Plus de 2 000 maires et conseillers municipaux"
 
 #: finder/templates/index.html:116
 msgid "Electoral districts"
@@ -667,19 +565,21 @@ msgstr ""
 "\"https://drupal.org/project/represent\">Drupal</a> ou <a href=\"https://"
 "wordpress.org/plugins/represent-api/\">WordPress</a>"
 
-#: finder/templates/index.html:143
+#: finder/templates/index.html:144
 msgid ""
 "Use the <a href=\"https://github.com/opennorth/govkit-ca#readme\">Ruby</a>, "
-"<a href=\"https://github.com/ncadou/pyrepresent#readme\">Python</a> or <a "
-"href=\"https://github.com/sprice/represent#readme\">Node.js</a> API clients "
-"to quickly develop new apps"
+"<a href=\"https://github.com/ncadou/pyrepresent#readme\">Python</a>, <a href="
+"\"https://github.com/Seanmcn/php-represent#readme\">PHP</a> or <a href="
+"\"https://github.com/sprice/represent#readme\">Node.js</a> API clients to "
+"quickly develop new apps"
 msgstr ""
 "Utilisez les clients API <a href=\"https://github.com/opennorth/govkit-"
 "ca#readme\">Ruby</a>, <a href=\"https://github.com/ncadou/pyrepresent#readme"
-"\">Python</a> ou <a href=\"https://github.com/sprice/represent#readme\">Node."
+"\">Python</a>, <a href=\"https://github.com/Seanmcn/php-represent#readme"
+"\">PHP</a> ou <a href=\"https://github.com/sprice/represent#readme\">Node."
 "js</a> pour développer rapidement de nouvelles applications"
 
-#: finder/templates/index.html:149
+#: finder/templates/index.html:150
 msgid ""
 "Represent is <a href=\"https://github.com/opennorth/represent-canada\">open "
 "source</a> and makes its <a href=\"https://github.com/opennorth/represent-"
@@ -689,15 +589,15 @@ msgstr ""
 "source</a> et rend ses <a href=\"https://github.com/opennorth/represent-"
 "canada-data\">données</a> disponibles où c’est possible"
 
-#: finder/templates/index.html:158
+#: finder/templates/index.html:159
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: finder/templates/index.html:163
+#: finder/templates/index.html:164
 msgid "Government Officials and Open Data Managers:"
 msgstr "Fonctionnaires et gestionnaires de données ouvertes:"
 
-#: finder/templates/index.html:163
+#: finder/templates/index.html:164
 #, python-format
 msgid ""
 "Find out how to <a href=\"%(government_url)s\">add your elected officials to "
@@ -706,7 +606,7 @@ msgstr ""
 "découvrez comment <a href=\"%(government_url)s\">ajouter vos représentants "
 "élus à Represent</a>."
 
-#: finder/templates/index.html:164
+#: finder/templates/index.html:165
 msgid ""
 "We are excited to see how Represent is being used. <a href=\"mailto:"
 "represent@opennorth.ca\">Contact us</a> and show us what you've made!"
@@ -715,40 +615,107 @@ msgstr ""
 "represent@opennorth.ca\">Contactez-nous</a>, il nous fait toujours plaisir "
 "de voir vos projets!"
 
-#: templates/base.html:39
-msgid "Home"
-msgstr "Accueil"
+#~ msgid "City of Ottawa"
+#~ msgstr "Ville d'Ottawa"
 
-#: templates/base.html:40
-msgid "Demo"
-msgstr "Démo"
+#~ msgid "City of Vancouver"
+#~ msgstr "Ville de Vancouver"
 
-#: templates/base.html:41
-msgid "API"
-msgstr "API"
+#~ msgid "City of Guelph"
+#~ msgstr "Ville de Guelph"
 
-#: templates/base.html:42
-msgid "Downloads"
-msgstr "Téléchargements"
+#~ msgid "Town of Oakville"
+#~ msgstr "Ville d'Oakville"
 
-#: templates/base.html:43
-msgid "Contact"
-msgstr "Contact"
+#~ msgid "City of Welland"
+#~ msgstr "Ville de Welland"
 
-#: templates/base.html:44
-msgid "fr"
-msgstr "en"
+#~ msgid "City of London"
+#~ msgstr "Ville de London"
 
-#: templates/base.html:44
-msgid "FR"
-msgstr "EN"
+#~ msgid "City of Langley"
+#~ msgstr "Ville de Langley"
 
-#: templates/base.html:54
-msgid ""
-"A project of <a href=\"http://www.opennorth.ca/\">Open North</a>, a "
-"nonprofit that builds digital tools for government transparency and civic "
-"participation."
-msgstr ""
-"Un projet de <a href=\"http://www.nordouvert.ca/\">Nord Ouvert</a>, un "
-"organisme sans but lucratif qui crée des outils numériques pour la "
-"transparence gouvernementale et la participation civique."
+#~ msgid "City of Grande Prairie"
+#~ msgstr "Ville de Grande Prairie"
+
+#~ msgid "City of Kelowna"
+#~ msgstr "Ville de Kelowna"
+
+#~ msgid "City of Victoria"
+#~ msgstr "Ville de Victoria"
+
+#~ msgid "City of Kitchener"
+#~ msgstr "Ville de Kitchener"
+
+#~ msgid "City of Windsor"
+#~ msgstr "Ville de Windsor"
+
+#~ msgid "City of Burlington"
+#~ msgstr "Ville de Burlington"
+
+#~ msgid "City of Brampton"
+#~ msgstr "Ville de Brampton"
+
+#~ msgid "City of Waterloo"
+#~ msgstr "Ville de Waterloo"
+
+#~ msgid "City of Toronto"
+#~ msgstr "Ville de Toronto"
+
+#~ msgid "City of Greater Sudbury"
+#~ msgstr "Ville de Greater Sudbury"
+
+#~ msgid "City of Kingston"
+#~ msgstr "Ville de Kingston"
+
+#~ msgid "Region of Waterloo"
+#~ msgstr "Région de Waterloo"
+
+#~ msgid "City of Montreal"
+#~ msgstr "Ville de Montréal"
+
+#~ msgid "Town of Grimsby"
+#~ msgstr "Ville de Grimsby"
+
+#~ msgid "Town of Lincoln"
+#~ msgstr "Ville de Lincoln"
+
+#~ msgid "Town of Newmarket"
+#~ msgstr "Ville de Newmarket"
+
+#~ msgid "City of Saint John"
+#~ msgstr "Ville de Saint John"
+
+#~ msgid "City of Moncton"
+#~ msgstr "Ville de Moncton"
+
+#~ msgid "Home"
+#~ msgstr "Accueil"
+
+#~ msgid "Demo"
+#~ msgstr "Démo"
+
+#~ msgid "API"
+#~ msgstr "API"
+
+#~ msgid "Downloads"
+#~ msgstr "Téléchargements"
+
+#~ msgid "Contact"
+#~ msgstr "Contact"
+
+#~ msgid "fr"
+#~ msgstr "en"
+
+#~ msgid "FR"
+#~ msgstr "EN"
+
+#~ msgid ""
+#~ "A project of <a href=\"http://www.opennorth.ca/\">Open North</a>, a "
+#~ "nonprofit that builds digital tools for government transparency and civic "
+#~ "participation."
+#~ msgstr ""
+#~ "Un projet de <a href=\"http://www.nordouvert.ca/\">Nord Ouvert</a>, un "
+#~ "organisme sans but lucratif qui crée des outils numériques pour la "
+#~ "transparence gouvernementale et la participation civique."
