@@ -19,7 +19,7 @@ def _require_db(target):
 
 @task
 def alpheus():
-    """Select the ohoh server for future commands."""
+    """Select the primary server for future commands."""
     env.hosts = ['represent-alpheus.opennorth.ca']
     env.user = 'represent'
     env.read_only_db = False
@@ -28,7 +28,7 @@ def alpheus():
 
 @task
 def tempeh():
-    """Select the tofu server for future commands."""
+    """Select the secondary server for future commands."""
     env.hosts = ['represent-tempeh.opennorth.ca']
     env.user = 'represent'
     env.read_only_db = True
