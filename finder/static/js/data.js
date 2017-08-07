@@ -22,7 +22,6 @@ $(function () {
       }, uncategorized_map = {
           '/elections/house-of-commons/': 'Canada'
         , '/representative-sets/house-of-commons/': 'Canada'
-        , '/representative-sets/new-brunswick-municipal-councils/': 'NB'
         , '/representative-sets/conseil-municipal-de-montreal/': 'QC'
         , '/representative-sets/grande-prairie-city-council/': 'AB'
         , '/representative-sets/lethbridge-city-council/': 'AB'
@@ -76,7 +75,7 @@ $(function () {
         $.each(data.objects, function (i, set) {
           var basename;
 
-          if (set.url.indexOf('/campaign-set-') === -1) {
+          if (set.url.indexOf('/campaign-set-') === -1 && set.url.indexOf('-municipal-councils') === -1) {
             key = boundary_sets[set.related.boundary_set_url];
             if (!key) {
               if (/Assembl/.test(set.name)) {
