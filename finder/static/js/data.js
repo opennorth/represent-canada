@@ -93,6 +93,9 @@ $(function () {
             if (field == 'candidates_url' && basename == 'legislative-assembly-of-british-columbia') {
               basename = 'bc-legislature';
             }
+            else if (field == 'candidates_url' && basename == 'legislative-assembly-of-ontario-2018') {
+              basename = 'ontario-legislature';
+            }
             sets[key].push('<li><a href="http://represent.opennorth.ca.s3.amazonaws.com/csv/' + path + '/' + basename + '.csv">' + set.name + '</a></li>');
           }
         });
