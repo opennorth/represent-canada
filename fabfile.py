@@ -94,7 +94,7 @@ def update_statics():
 def restart():
     """Restart gunicorn."""
     with cd(env.base_dir):
-        run('kill -HUP `cat gunicorn.pid`')
+        run('systemctl restart represent')
 
 
 @task
