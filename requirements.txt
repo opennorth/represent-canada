@@ -1,5 +1,5 @@
 Django==1.11.11
-psycopg2==2.6.2
+psycopg2==2.7.4
 python3-memcached==1.51
 # represent-boundaries==0.9.1
 -e git+https://github.com/opennorth/represent-boundaries.git#egg=represent-boundaries
