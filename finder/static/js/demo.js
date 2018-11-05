@@ -74,7 +74,8 @@ function processLatLng(latlng) {
 
     var $representatives = $('<div id="representatives"></div>'), $row;
 
-    $.each(representatives, function (i, object) {
+    var i = 0;
+    $.each(representatives, function (j, object) {
       if (object['elected_office'] && object['related']['representative_set_url'].indexOf('/campaign-set-') === -1) {
         if (i % 6 == 0) {
           $row = $('<div class="row"></div>');
@@ -87,6 +88,7 @@ function processLatLng(latlng) {
           $row.append('<div class="clearfix visible-xs"></div>')
         }
         $row.append($(representativeTemplate(object)));
+        i++;
       }
     });
 
