@@ -142,7 +142,7 @@ def _recursive_pull(base_dir):
         ]
         if '.git' in dirs:
             # This is a git repo, update it
-            run('git pull')
+            run('git pull origin master')
         else:
             # Continue exploring
             for dir in dirs:
