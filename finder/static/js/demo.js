@@ -137,8 +137,10 @@ $(function ($) {
   map = L.map('map', {
     center: latlng,
     layers: [
-      L.tileLayer('https://{s}.tiles.mapbox.com/v3/mapbox.mapbox-streets-v8/{z}/{x}/{y}.png', {
-        attribution: 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>'
+      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        id: 'mapbox.streets',
+        accessToken: 'pk.eyJ1IjoianBtY2tpbm5leTIiLCJhIjoiY2p1M2Fzbm5pMGwzZTQ0bnl0ZDRrdHA3dyJ9.vtQ-f6tJQ3tYJc08ok03lQ'
       })
     ],
     maxZoom: 17,
