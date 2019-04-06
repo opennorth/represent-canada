@@ -120,14 +120,6 @@ msgstr ""
 msgid "Use the free API"
 msgstr "Utilisez l’API"
 
-#: finder/templates/demo.html:49
-msgid "Use the jQuery Find-Your-Rep plugin"
-msgstr "Utilisez le plugin jQuery “Find-Your-Rep”"
-
-#: finder/templates/demo.html:50
-msgid "Use the jQuery plugin"
-msgstr "Utilisez le plugin jQuery"
-
 #: finder/templates/government.html:5
 msgid "For Government"
 msgstr "Pour les gouvernements"
