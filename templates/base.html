@@ -12,6 +12,23 @@
 <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 {% block css %}
 <link rel="stylesheet" href="{% static "css/style.css" %}">
+<style>
+  .banner.top {
+    background-color: #E84B25;
+  }
+  .banner.top p {
+    color: #fff;
+    text-align: center;
+  }
+  .banner.top p a {
+    color: #fff;
+  }
+  .banner.top p a:hover,
+  .banner.top p a:focus,
+  .banner.top p a:active {
+    text-decoration: underline;
+  }
+</style>
 {% endblock %}
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -20,8 +37,14 @@
 </head>
 <body {% block bodyattributes %}{% endblock %}>
 
-<nav class="navbar" role="navigation" id="navbar">
+<div class="top banner">
   <div class="container-fluid">
+    <p>We are actively working to update the election candidates. Please email us at <a href="mailto:represent@opennorth.ca">represent@opennorth.ca</a> for feedback and enquiries. Thank you for your patience and for using Represent.</p>
+  </div>
+</div>
+
+<nav class="navbar" role="navigation" id="navbar">
+  <div class="container-fluid"
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
