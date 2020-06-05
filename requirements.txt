@@ -1,4 +1,4 @@
-Django==1.11.28
+Django==1.11.29
 psycopg2-binary==2.7.4
 python3-memcached==1.51
 represent-boundaries==0.9.3
