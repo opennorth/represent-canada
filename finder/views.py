@@ -1,8 +1,8 @@
 from django import http
 from django.conf import settings
 from django.shortcuts import render
-from django.utils.translation import check_for_language
 from django.utils.http import url_has_allowed_host_and_scheme
+from django.utils.translation import check_for_language
 
 
 def index(request):
