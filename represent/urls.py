@@ -1,12 +1,12 @@
-from django.conf.urls import include, url
+from django.urls import include, path, re_path
 from django.contrib import admin
 
 admin.autodiscover()
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url('', include('boundaries.urls')),
-    url('', include('representatives.urls')),
-    url('', include('postcodes.urls')),
-    url('', include('finder.urls')),
+    re_path(r'^admin/', admin.site.urls),
+    path('', include('boundaries.urls')),
+    path('', include('representatives.urls')),
+    path('', include('postcodes.urls')),
+    path('', include('finder.urls')),
 ]
