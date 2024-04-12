@@ -6,5 +6,5 @@ represent-boundaries==0.9.3
 -e git+https://github.com/opennorth/represent-postcodes.git#egg=represent-postcodes
 
 # Server
-eventlet==0.31.0
+eventlet==0.35.2
 gunicorn==19.6.0
