@@ -7,4 +7,4 @@ represent-boundaries==0.9.3
 
 # Server
 eventlet==0.35.2
-gunicorn==19.6.0
+gunicorn==22.0.0
