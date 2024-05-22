@@ -5,3 +5,4 @@ settings.py
 /paramiko.log
 /staticfiles
 /data
+/static
