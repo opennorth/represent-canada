@@ -1,4 +1,3 @@
-# coding: utf-8
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -63,6 +62,11 @@ STATIC_URL = '/static/'
 ROOT_URLCONF = 'represent.urls'
 WSGI_APPLICATION = 'represent.wsgi.application'
 
+# Default primary key field type
+# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
 LANGUAGES = (
     ('en', 'English'),
     ('fr', 'Français'),
@@ -116,3 +120,8 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
     },
 }
+
+if 'GDAL_LIBRARY_PATH' in os.environ:
+    GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH')
+if 'GEOS_LIBRARY_PATH' in os.environ:
+    GEOS_LIBRARY_PATH = os.getenv('GEOS_LIBRARY_PATH')

@@ -1,12 +1,19 @@
-from django.conf.urls import include, url
+from django.conf import settings
 from django.contrib import admin
+from django.contrib.staticfiles import views
+from django.urls import include, path, re_path
 
 admin.autodiscover()
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url('', include('boundaries.urls')),
-    url('', include('representatives.urls')),
-    url('', include('postcodes.urls')),
-    url('', include('finder.urls')),
+    re_path(r'^admin/', admin.site.urls),
+    path('', include('boundaries.urls')),
+    path('', include('representatives.urls')),
+    path('', include('postcodes.urls')),
+    path('', include('finder.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += [
+        re_path(r"^static/(?P<path>.*)$", views.serve),
+    ]

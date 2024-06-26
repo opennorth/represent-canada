@@ -1,8 +1,8 @@
 from django import http
 from django.conf import settings
 from django.shortcuts import render
+from django.utils.http import url_has_allowed_host_and_scheme
 from django.utils.translation import check_for_language
-from django.utils.http import is_safe_url
 
 
 def index(request):
@@ -36,9 +36,9 @@ def _render(template_name, request):
 # @see django/views/i18n.py
 def set_language(request):
     next = request.GET.get('next')
-    if not is_safe_url(url=next, host=request.get_host()):
-        next = request.META.get('HTTP_REFERER')
-        if not is_safe_url(url=next, host=request.get_host()):
+    if not url_has_allowed_host_and_scheme(url=next, host=request.get_host()):
+        next = request.headers.get('referer')
+        if not url_has_allowed_host_and_scheme(url=next, host=request.get_host()):
             next = '/'
     response = http.HttpResponseRedirect(next)
     lang_code = request.GET.get('language')
