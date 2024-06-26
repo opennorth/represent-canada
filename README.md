@@ -18,7 +18,7 @@ There's also a package to provide colourful district map tiles:
 
 The following instructions are to setup your own instance of Represent. If you just want access to data, [please read our API documentation](https://represent.opennorth.ca/api/).
 
-Follow the instructions in the [Python Quick Start Guide](https://github.com/opennorth/wiki/wiki/Python-Quick-Start%3A-OS-X) to install Homebrew, Git, Python, virtualenv, GDAL and PostGIS. The [deployment](deployment/) uses Python 3.5, PostgreSQL 9.6, and PostGIS 2.3.
+Follow the instructions in the [Python Quick Start Guide](https://github.com/opennorth/wiki/wiki/Python-Quick-Start%3A-OS-X) to install Homebrew, Git, Python, virtualenv, GDAL and PostGIS. The [deployment](deployment/) uses Python 3.9, PostgreSQL 9.6, and PostGIS 2.3.
 
 Create a database and enable PostGIS (commands should be issued as user `postgres`):
 
@@ -27,10 +27,10 @@ Create a database and enable PostGIS (commands should be issued as user `postgre
 
 Install the project:
 
-    pyvenv represent-env
-    source represent-env/bin/activate
-    git clone https://github.com/opennorth/represent-canada.git
-    cd represent-canada
+    pyenv virtualenv 3.9.19 represent
+    pyenv activate represent
+    git clone https://github.com/opennorth/represent-canada.git app
+    cd app
     pip install -r requirements.txt
 
 Configure the `DATABASES` Django setting and and create the database tables:

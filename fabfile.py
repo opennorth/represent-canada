@@ -37,7 +37,7 @@ def tempeh():
 
 def _env_init():
     env.home_dir = '/home/' + env.user
-    env.python = os.path.join(env.home_dir, 'represent-env', 'bin', 'python')
+    env.python = os.path.join(env.home_dir, '.pyenv', 'versions', 'represent', 'bin', 'python')
     env.base_dir = os.path.join(env.home_dir)
     env.django_dir = os.path.join(env.base_dir, 'app')
     env.pip = env.python.replace('bin/python', 'bin/pip')

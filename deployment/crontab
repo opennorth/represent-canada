@@ -1,3 +1,3 @@
 # m h  dom mon dow   command
 MAILTO=represent@opennorth.ca
-0 4 * * * /home/represent/represent-env/bin/python /home/represent/app/manage.py updaterepresentatives
+0 4 * * * /home/represent/.pyenv/versions/represent/bin/python /home/represent/app/manage.py updaterepresentatives

@@ -16,7 +16,7 @@ The `represent` user's directory contains:
 * `ssl/`: public key certificates
 * a clone of [represent-canada-data](https://github.com/opennorth/represent-canada-data/)
 * a clone of `represent-canada-private-data`
-* `represent-env/`: a Python 3.5 virtualenv
+* `.pyenv/versions/represent/`: a Python 3.9 virtualenv
 
 The `represent` user's crontab contains:
 
