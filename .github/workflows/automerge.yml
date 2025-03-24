@@ -1,0 +1,36 @@
+# Auto-merge pull requests by pre-commit.ci, and by dependabot for non-major version updates only.
+name: Auto-merge
+# The pull_request_target trigger is dangerous. Do not add unrelated logic to this workflow.
+# https://securitylab.github.com/research/github-actions-preventing-pwn-requests/
+# https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request_target
+on: pull_request_target
+permissions:
+  pull-requests: write # to approve PR
+  contents: write # to merge PR
+jobs:
+  dependabot:
+    if: ${{ github.event.pull_request.user.login == 'dependabot[bot]' }}
+    runs-on: ubuntu-latest
+    steps:
+      - id: dependabot-metadata
+        uses: dependabot/fetch-metadata@d7267f607e9d3fb96fc2fbe83e0af444713e90b7 # v2.3.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - if: ${{ steps.dependabot-metadata.outputs.update-type != 'version-update:semver-major' || steps.dependabot-metadata.outputs.package-ecosystem == 'github_actions' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr review --approve ${{ github.event.pull_request.html_url }}
+      - if: ${{ steps.dependabot-metadata.outputs.update-type != 'version-update:semver-major' || steps.dependabot-metadata.outputs.package-ecosystem == 'github_actions' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr merge --auto --squash ${{ github.event.pull_request.html_url }}
+  precommit:
+    if: ${{ github.event.pull_request.user.login == 'pre-commit-ci[bot]' }}
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr review --approve ${{ github.event.pull_request.html_url }}
+      - env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr merge --auto --squash ${{ github.event.pull_request.html_url }}
