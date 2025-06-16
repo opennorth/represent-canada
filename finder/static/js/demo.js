@@ -1,16 +1,18 @@
-var geocoder = new google.maps.Geocoder(),
-    map,
-    marker,
-    featureGroup,
-    representativeTemplate = _.template( // This is the only underscore dependency.
-      '<div class="col-xs-6 col-sm-4 col-md-2 representative">' +
-        '<div class="avatar" style="background-image: url(<% if (photo_url) { %><%= photo_url %><% } else { %>/static/img/silhouette.png<% } %>)"></div> ' +
-        '<p><% if (party_name) { %><%= party_name %><% } %> ' + '<%= elected_office %> ' +
-        '<strong><% if (url) { %><a href="<%= url %>"><%= name %></a><% } else { %><%= name %><% } %></strong></p> ' +
-        '<p class="district-name"><%= district_name %> <button type="button" class="btn btn-default btn-xs shape" data-url="<%= related.boundary_url %>">' + gettext('Map') + '</button></p> ' +
-        '<p><% if (email) { %><a href="mailto:<%= email %>">' + gettext('Email') + ' <%= first_name %></a><% } %></p> ' +
-      '</div>'
-    );
+function initMap() {
+  var geocoder = new google.maps.Geocoder(),
+      map,
+      marker,
+      featureGroup,
+      representativeTemplate = _.template( // This is the only underscore dependency.
+        '<div class="col-xs-6 col-sm-4 col-md-2 representative">' +
+          '<div class="avatar" style="background-image: url(<% if (photo_url) { %><%= photo_url %><% } else { %>/static/img/silhouette.png<% } %>)"></div> ' +
+          '<p><% if (party_name) { %><%= party_name %><% } %> ' + '<%= elected_office %> ' +
+          '<strong><% if (url) { %><a href="<%= url %>"><%= name %></a><% } else { %><%= name %><% } %></strong></p> ' +
+          '<p class="district-name"><%= district_name %> <button type="button" class="btn btn-default btn-xs shape" data-url="<%= related.boundary_url %>">' + gettext('Map') + '</button></p> ' +
+          '<p><% if (email) { %><a href="mailto:<%= email %>">' + gettext('Email') + ' <%= first_name %></a><% } %></p> ' +
+        '</div>'
+      );
+}
 
 /**
  * @see https://learn.jquery.com/code-organization/deferreds/examples/
