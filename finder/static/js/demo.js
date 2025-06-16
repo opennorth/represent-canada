@@ -1,19 +1,3 @@
-function initMap() {
-  var geocoder = new google.maps.Geocoder(),
-      map,
-      marker,
-      featureGroup,
-      representativeTemplate = _.template( // This is the only underscore dependency.
-        '<div class="col-xs-6 col-sm-4 col-md-2 representative">' +
-          '<div class="avatar" style="background-image: url(<% if (photo_url) { %><%= photo_url %><% } else { %>/static/img/silhouette.png<% } %>)"></div> ' +
-          '<p><% if (party_name) { %><%= party_name %><% } %> ' + '<%= elected_office %> ' +
-          '<strong><% if (url) { %><a href="<%= url %>"><%= name %></a><% } else { %><%= name %><% } %></strong></p> ' +
-          '<p class="district-name"><%= district_name %> <button type="button" class="btn btn-default btn-xs shape" data-url="<%= related.boundary_url %>">' + gettext('Map') + '</button></p> ' +
-          '<p><% if (email) { %><a href="mailto:<%= email %>">' + gettext('Email') + ' <%= first_name %></a><% } %></p> ' +
-        '</div>'
-      );
-}
-
 /**
  * @see https://learn.jquery.com/code-organization/deferreds/examples/
  */
@@ -104,33 +88,47 @@ function processLatLng(latlng) {
   });
 }
 
-function processAddress() {
-  $('.alert').hide();
-  $('#addresses').empty();
+function initMap() {
+  function processAddress() {
+    $('.alert').hide();
+    $('#addresses').empty();
 
-  geocoder.geocode({address: $('#address').val(), region: 'ca', language: gettext('en')}, function (results, status) {
-    if (status == google.maps.GeocoderStatus.OK) {
-      if (results.length > 1) {
-          $('#addresses').append('<option>' + gettext('Select your address') + '</option>');
-        $.each(results, function (i, result) {
-          $('#addresses').append('<option data-latitude="' + result.geometry.location.lat() + '" data-longitude="' + result.geometry.location.lng() + '">' + result.formatted_address + '</option>');
-        });
-        $('#many-results').fadeIn('slow');
+    geocoder.geocode({address: $('#address').val(), region: 'ca', language: gettext('en')}, function (results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        if (results.length > 1) {
+            $('#addresses').append('<option>' + gettext('Select your address') + '</option>');
+          $.each(results, function (i, result) {
+            $('#addresses').append('<option data-latitude="' + result.geometry.location.lat() + '" data-longitude="' + result.geometry.location.lng() + '">' + result.formatted_address + '</option>');
+          });
+          $('#many-results').fadeIn('slow');
+        }
+        else {
+          processLatLng(L.latLng(results[0].geometry.location.lat(), results[0].geometry.location.lng()));
+        }
+      }
+      else if (status == google.maps.GeocoderStatus.ZERO_RESULTS) {
+        $('#no-results').fadeIn('slow');
       }
       else {
-        processLatLng(L.latLng(results[0].geometry.location.lat(), results[0].geometry.location.lng()));
+        $('#unknown-error').fadeIn('slow');
       }
-    }
-    else if (status == google.maps.GeocoderStatus.ZERO_RESULTS) {
-      $('#no-results').fadeIn('slow');
-    }
-    else {
-      $('#unknown-error').fadeIn('slow');
-    }
-  });
-}
+    });
+  }
 
-$(function ($) {
+  var geocoder = new google.maps.Geocoder(),
+      map,
+      marker,
+      featureGroup,
+      representativeTemplate = _.template( // This is the only underscore dependency.
+        '<div class="col-xs-6 col-sm-4 col-md-2 representative">' +
+          '<div class="avatar" style="background-image: url(<% if (photo_url) { %><%= photo_url %><% } else { %>/static/img/silhouette.png<% } %>)"></div> ' +
+          '<p><% if (party_name) { %><%= party_name %><% } %> ' + '<%= elected_office %> ' +
+          '<strong><% if (url) { %><a href="<%= url %>"><%= name %></a><% } else { %><%= name %><% } %></strong></p> ' +
+          '<p class="district-name"><%= district_name %> <button type="button" class="btn btn-default btn-xs shape" data-url="<%= related.boundary_url %>">' + gettext('Map') + '</button></p> ' +
+          '<p><% if (email) { %><a href="mailto:<%= email %>">' + gettext('Email') + ' <%= first_name %></a><% } %></p> ' +
+        '</div>'
+      );
+
   var latlng = L.latLng(45.444369, -75.693832), // 24 Sussex Drive, Ottawa
       index = window.location.href.indexOf('#'),
       anchor;
@@ -205,4 +203,4 @@ $(function ($) {
   else {
     map.locate({setView: true, maxZoom: 13});
   }
-});
+}
